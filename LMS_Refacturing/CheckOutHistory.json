@@ -1,0 +1,50 @@
+[
+  {
+    "Title": "Les Miserables",
+    "Author": "Victor-Marie Hugo",
+    "Country": "France",
+    "Language": "French",
+    "Pages": 392,
+    "Year": 1862,
+    "Username": "Jordan",
+    "Subject": 0,
+    "ISBN": "978-1-940313-09-0123",
+    "ReturnDate": "2019-07-31T00:00:00"
+  },
+  {
+    "Title": "GodFather",
+    "Author": "Puzo",
+    "Country": "USA",
+    "Language": "English",
+    "Pages": 1333,
+    "Year": 1984,
+    "Username": "Todor",
+    "Subject": 0,
+    "ISBN": "978-1-940313-09-0143",
+    "ReturnDate": "2019-08-01T00:00:00"
+  },
+  {
+    "Title": "Les Miserables",
+    "Author": "Victor-Marie Hugo",
+    "Country": "France",
+    "Language": "French",
+    "Pages": 392,
+    "Year": 1862,
+    "Username": "Jordan",
+    "Subject": 0,
+    "ISBN": "978-1-940313-09-0129",
+    "ReturnDate": "2019-08-01T00:00:00+03:00"
+  },
+  {
+    "Title": "GodFather",
+    "Author": "Puzo",
+    "Country": "USA",
+    "Language": "English",
+    "Pages": 1333,
+    "Year": 1984,
+    "Username": "Todor",
+    "Subject": 0,
+    "ISBN": "978-1-940313-09-0142",
+    "ReturnDate": "2019-08-01T00:00:00"
+  }
+]
