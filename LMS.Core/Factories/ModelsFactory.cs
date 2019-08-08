@@ -10,7 +10,7 @@ namespace LMS.Core.Factories
 {
     public class ModelsFactory : IModelsFactory
     {
-        public IUser CreateUser(string username, string password)
+        public User CreateUser(string username, string password)
         {
             var user = new User(username, password);
             return user;

@@ -37,5 +37,9 @@ namespace LMS.DataBase
             var user = this.users.FirstOrDefault(u => u.Username == username);
             return user;
         }
+        public void AddUserToDb(User user)
+        {
+            this.users.Add(user);
+        }
     }
 }

@@ -28,6 +28,8 @@ namespace LMS.DataBase
         public User CheckUserCredetials(string username, string password)
         {
             var user = this._usersDb.CheckUserCredetials(username, password);
+
+
             return user;
         }
         public User CheckAdminCredetials(string username, string password)
@@ -35,15 +37,19 @@ namespace LMS.DataBase
             var admin = this._adminsDb.CheckAdminCredentials(username, password);
             return admin;
         }
-        public User CheckUsernameInAdminDb(string username)
+        public bool CheckUsernameInAdminDb(string username)
         {
             var admin = this._adminsDb.CheckUsernameInAdminDb(username);
-            return admin;
+            if (admin != null)
+                return true;
+            return false;
         }
-        public User CheckUsernameInUserDb(string username)
+        public bool CheckUsernameInUserDb(string username)
         {
             var user = this._usersDb.CheckUsernameInUserDb(username);
-            return user;
+            if (user != null)
+                return true;
+            return false;
         }
         public bool CheckCurrentUserStatus()
         {

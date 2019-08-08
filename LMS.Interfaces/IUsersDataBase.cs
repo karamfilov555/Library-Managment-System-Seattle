@@ -9,5 +9,6 @@ namespace LMS.Contracts
         void LoadUsersFromJson();
         User CheckUserCredetials(string username, string password);
         User CheckUsernameInUserDb(string username);
+        void AddUserToDb(User user);
     }
 }

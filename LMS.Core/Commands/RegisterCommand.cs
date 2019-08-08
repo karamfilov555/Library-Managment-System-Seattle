@@ -12,15 +12,18 @@ namespace LMS.Core.Commands
         private readonly IGlobalMessages _messages;
         private readonly ILoginAuthenticator _loginAuthenticator;
         private readonly IModelsFactory _modelsFactory;
+        private readonly IUsersDataBase _userDataBase;
         public RegisterCommand(IValidator validator,
                                IGlobalMessages messages,
                                ILoginAuthenticator loginAuthenticator,
-                               IModelsFactory modelsFactory)
+                               IModelsFactory modelsFactory,
+                               IUsersDataBase userDataBase)
         {
             this._validator = validator;
             this._messages = messages;
             this._loginAuthenticator = loginAuthenticator;
             this._modelsFactory = modelsFactory;
+            this._userDataBase = userDataBase;
         }
         public string Execute(IList<string> parameteres)
         {
@@ -30,15 +33,15 @@ namespace LMS.Core.Commands
             var username = parameteres[0];
             var password = parameteres[1];
 
-            var admin = this._loginAuthenticator.CheckUsernameInAdminDb(username);
-            if (!this._validator.IsNull(admin))
+            if (this._loginAuthenticator.CheckUsernameInAdminDb(username))
                 return this._messages.ThisUserAlreadyExistMessage();
 
-            var user = this._loginAuthenticator.CheckUsernameInUserDb(username);
-            if (!this._validator.IsNull(user))
+            if (this._loginAuthenticator.CheckUsernameInUserDb(username))
                 return this._messages.ThisUserAlreadyExistMessage();
 
             var newUser  = this._modelsFactory.CreateUser(username, password);
+
+            this._userDataBase.AddUserToDb(newUser);
 
             return this._messages.RegisterMessage(username);
         }
