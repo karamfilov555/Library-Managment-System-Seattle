@@ -19,5 +19,6 @@ namespace LMS.JasonDB.Contracts
         void AddBookToJsonDB(string title, string author, int pages, int year, string country, string language, string subject);
         void RemoveUserFromJsonDb(string userName);
         void RemoveAdminFromJsonDb(string userName);
+        void RemoveBookFromJsonDb(string title);
     }
 }

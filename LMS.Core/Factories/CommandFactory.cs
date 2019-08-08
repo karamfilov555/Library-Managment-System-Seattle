@@ -23,9 +23,9 @@ namespace LMS.Core.Factories
                  command = this.componentContext
                     .ResolveNamed<ICommand>(commandName.ToLower());
             }
-            catch (ArgumentException ex)
+            catch (Exception)
             {
-                throw new ArgumentException();
+                throw new ArgumentException("Invalid Command!");
             }
             return command;
 

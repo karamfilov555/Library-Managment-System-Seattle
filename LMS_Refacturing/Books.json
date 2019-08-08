@@ -1,8 +1,5 @@
 [
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0001",
-    "Reservation": "Available",
     "Title": "Things Fall Apart",
     "Subject": 2,
     "Author": "Chinua Achebe",
@@ -10,12 +7,12 @@
     "Year": 1958,
     "Country": "Nigeria",
     "Language": "English",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0001",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0002",
-    "Reservation": "Available",
     "Title": "Fairy tales",
     "Subject": 12,
     "Author": "Hans Christian Andersen",
@@ -23,12 +20,12 @@
     "Year": 1836,
     "Country": "Denmark",
     "Language": "Danish",
-    "Rack": "F"
+    "Rack": "F",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0002",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0003",
-    "Reservation": "Available",
     "Title": "The Divine Comedy",
     "Subject": 14,
     "Author": "Dante Alighieri",
@@ -36,12 +33,12 @@
     "Year": 1315,
     "Country": "Italy",
     "Language": "Italian",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0003",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0004",
-    "Reservation": "Available",
     "Title": "The Epic Of Gilgamesh",
     "Subject": 7,
     "Author": "Unknown",
@@ -49,12 +46,12 @@
     "Year": -1700,
     "Country": "Sumer and Akkadian Empire",
     "Language": "Akkadian",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0004",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0005",
-    "Reservation": "Available",
     "Title": "The Book Of Job",
     "Subject": 7,
     "Author": "Unknown",
@@ -62,12 +59,12 @@
     "Year": -600,
     "Country": "Achaemenid Empire",
     "Language": "Hebrew",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0005",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0006",
-    "Reservation": "Available",
     "Title": "One Thousand and One Nights",
     "Subject": 14,
     "Author": "Unknown",
@@ -75,12 +72,12 @@
     "Year": 1200,
     "Country": "India/Iran/Iraq/Egypt/Tajikistan",
     "Language": "Arabic",
-    "Rack": "O"
+    "Rack": "O",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0006",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0007",
-    "Reservation": "Available",
     "Title": "Njl's Saga",
     "Subject": 14,
     "Author": "Unknown",
@@ -88,12 +85,12 @@
     "Year": 1350,
     "Country": "Iceland",
     "Language": "Old Norse",
-    "Rack": "N"
+    "Rack": "N",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0007",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0008",
-    "Reservation": "Available",
     "Title": "Pride and Prejudice",
     "Subject": 18,
     "Author": "Jane Austen",
@@ -101,12 +98,12 @@
     "Year": 1813,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "P"
+    "Rack": "P",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0008",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0009",
-    "Reservation": "Available",
     "Title": "Le Pre Goriot",
     "Subject": 2,
     "Author": "Honor de Balzac",
@@ -114,12 +111,12 @@
     "Year": 1835,
     "Country": "France",
     "Language": "French",
-    "Rack": "L"
+    "Rack": "L",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0009",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0010",
-    "Reservation": "Available",
     "Title": "Molloy, Malone Dies, The Unnamable, the trilogy",
     "Subject": 2,
     "Author": "Samuel Beckett",
@@ -127,12 +124,12 @@
     "Year": 1958,
     "Country": "Nigeria",
     "Language": "English",
-    "Rack": "M"
+    "Rack": "M",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0010",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0011",
-    "Reservation": "Available",
     "Title": "The Decameron",
     "Subject": 18,
     "Author": "Giovanni Boccaccio",
@@ -140,12 +137,12 @@
     "Year": 1351,
     "Country": "Italy",
     "Language": "Italian",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0011",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0012",
-    "Reservation": "Available",
     "Title": "Ficciones",
     "Subject": 2,
     "Author": "Jorge Luis Borges",
@@ -153,12 +150,12 @@
     "Year": 1965,
     "Country": "Argentina",
     "Language": "Spanish",
-    "Rack": "F"
+    "Rack": "F",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0012",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0013",
-    "Reservation": "Available",
     "Title": "Wuthering Heights",
     "Subject": 7,
     "Author": "Emily Bront",
@@ -166,12 +163,12 @@
     "Year": 1847,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "W"
+    "Rack": "W",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0013",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0014",
-    "Reservation": "Available",
     "Title": "The Stranger",
     "Subject": 16,
     "Author": "Albert Camus",
@@ -179,12 +176,12 @@
     "Year": 1942,
     "Country": "Algeria, French Empire",
     "Language": "French",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0014",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0015",
-    "Reservation": "Available",
     "Title": "Poems",
     "Subject": 14,
     "Author": "Paul Celan",
@@ -192,12 +189,12 @@
     "Year": 1952,
     "Country": "Romania, France",
     "Language": "German",
-    "Rack": "P"
+    "Rack": "P",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0015",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0016",
-    "Reservation": "Available",
     "Title": "Journey to the End of the Night",
     "Subject": 1,
     "Author": "Louis-Ferdinand Cline",
@@ -205,12 +202,12 @@
     "Year": 1932,
     "Country": "France",
     "Language": "French",
-    "Rack": "J"
+    "Rack": "J",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0016",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0017",
-    "Reservation": "Available",
     "Title": "Don Quijote De La Mancha",
     "Subject": 18,
     "Author": "Miguel de Cervantes",
@@ -218,12 +215,12 @@
     "Year": 1610,
     "Country": "Spain",
     "Language": "Spanish",
-    "Rack": "D"
+    "Rack": "D",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0017",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0018",
-    "Reservation": "Available",
     "Title": "The Canterbury Tales",
     "Subject": 0,
     "Author": "Geoffrey Chaucer",
@@ -231,12 +228,12 @@
     "Year": 1450,
     "Country": "England",
     "Language": "English",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0018",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0019",
-    "Reservation": "Available",
     "Title": "Stories",
     "Subject": 14,
     "Author": "Anton Chekhov",
@@ -244,12 +241,12 @@
     "Year": 1886,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "S"
+    "Rack": "S",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0019",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0020",
-    "Reservation": "Available",
     "Title": "Nostromo",
     "Subject": 1,
     "Author": "Joseph Conrad",
@@ -257,12 +254,12 @@
     "Year": 1904,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "N"
+    "Rack": "N",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0020",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0021",
-    "Reservation": "Available",
     "Title": "Great Expectations",
     "Subject": 18,
     "Author": "Charles Dickens",
@@ -270,12 +267,12 @@
     "Year": 1861,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "G"
+    "Rack": "G",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0021",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0022",
-    "Reservation": "Available",
     "Title": "Jacques the Fatalist",
     "Subject": 6,
     "Author": "Denis Diderot",
@@ -283,12 +280,12 @@
     "Year": 1796,
     "Country": "France",
     "Language": "French",
-    "Rack": "J"
+    "Rack": "J",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0022",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0023",
-    "Reservation": "Available",
     "Title": "Berlin Alexanderplatz",
     "Subject": 20,
     "Author": "Alfred Dblin",
@@ -296,12 +293,12 @@
     "Year": 1929,
     "Country": "Germany",
     "Language": "German",
-    "Rack": "B"
+    "Rack": "B",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0023",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0024",
-    "Reservation": "Available",
     "Title": "Crime and Punishment",
     "Subject": 17,
     "Author": "Fyodor Dostoevsky",
@@ -309,12 +306,12 @@
     "Year": 1866,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "C"
+    "Rack": "C",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0024",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0025",
-    "Reservation": "Available",
     "Title": "The Idiot",
     "Subject": 20,
     "Author": "Fyodor Dostoevsky",
@@ -322,12 +319,12 @@
     "Year": 1869,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0025",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0026",
-    "Reservation": "Available",
     "Title": "The Possessed",
     "Subject": 8,
     "Author": "Fyodor Dostoevsky",
@@ -335,12 +332,12 @@
     "Year": 1872,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0026",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0027",
-    "Reservation": "Available",
     "Title": "The Brothers Karamazov",
     "Subject": 16,
     "Author": "Fyodor Dostoevsky",
@@ -348,12 +345,12 @@
     "Year": 1880,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0027",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0028",
-    "Reservation": "Available",
     "Title": "Middlemarch",
     "Subject": 7,
     "Author": "George Eliot",
@@ -361,12 +358,12 @@
     "Year": 1871,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "M"
+    "Rack": "M",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0028",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0029",
-    "Reservation": "Available",
     "Title": "Invisible Man",
     "Subject": 18,
     "Author": "Ralph Ellison",
@@ -374,12 +371,25 @@
     "Year": 1952,
     "Country": "United States",
     "Language": "English",
-    "Rack": "I"
+    "Rack": "I",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0029",
+    "Reservation": "Available"
   },
   {
+    "Title": "Medea",
+    "Subject": 14,
+    "Author": "Euripides",
+    "Pages": 104,
+    "Year": -431,
+    "Country": "Greece",
+    "Language": "Greek",
+    "Rack": "M",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0030",
-    "Reservation": "Available",
+    "Reservation": "Available"
+  },
+  {
     "Title": "Medea",
     "Subject": 14,
     "Author": "Euripides",
@@ -387,12 +397,12 @@
     "Year": -431,
     "Country": "Greece",
     "Language": "Greek",
-    "Rack": "M"
-  },
-  {
+    "Rack": "M",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0031",
-    "Reservation": "Available",
+    "Reservation": "Available"
+  },
+  {
     "Title": "Medea",
     "Subject": 14,
     "Author": "Euripides",
@@ -400,25 +410,12 @@
     "Year": -431,
     "Country": "Greece",
     "Language": "Greek",
-    "Rack": "M"
-  },
-  {
+    "Rack": "M",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0032",
-    "Reservation": "Available",
-    "Title": "Medea",
-    "Subject": 14,
-    "Author": "Euripides",
-    "Pages": 104,
-    "Year": -431,
-    "Country": "Greece",
-    "Language": "Greek",
-    "Rack": "M"
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0033",
-    "Reservation": "Available",
     "Title": "Absalom, Absalom!",
     "Subject": 8,
     "Author": "William Faulkner",
@@ -426,12 +423,12 @@
     "Year": -1936,
     "Country": "United States",
     "Language": "English",
-    "Rack": "A"
+    "Rack": "A",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0033",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0034",
-    "Reservation": "Available",
     "Title": "The Sound and the Fury",
     "Subject": 8,
     "Author": "William Faulkner",
@@ -439,12 +436,12 @@
     "Year": 1929,
     "Country": "United States",
     "Language": "English",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0034",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0035",
-    "Reservation": "Available",
     "Title": "Madame Bovary",
     "Subject": 18,
     "Author": "Gustave Flaubert",
@@ -452,12 +449,12 @@
     "Year": 1857,
     "Country": "France",
     "Language": "French",
-    "Rack": "M"
+    "Rack": "M",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0035",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0036",
-    "Reservation": "Available",
     "Title": "Sentimental Education",
     "Subject": 18,
     "Author": "Gustave Flaubert",
@@ -465,12 +462,12 @@
     "Year": 1869,
     "Country": "France",
     "Language": "French",
-    "Rack": "S"
+    "Rack": "S",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0036",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0037",
-    "Reservation": "Available",
     "Title": "Gypsy Ballads",
     "Subject": 14,
     "Author": "Federico Garca Lorca",
@@ -478,12 +475,12 @@
     "Year": 1928,
     "Country": "Spain",
     "Language": "Spanish",
-    "Rack": "G"
+    "Rack": "G",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0037",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0038",
-    "Reservation": "Available",
     "Title": "One Hundred Years of Solitude",
     "Subject": 2,
     "Author": "Gabriel Garca Mrquez",
@@ -491,12 +488,12 @@
     "Year": 1967,
     "Country": "Colombia",
     "Language": "Spanish",
-    "Rack": "O"
+    "Rack": "O",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0038",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0039",
-    "Reservation": "Available",
     "Title": "Love in the Time of Cholera",
     "Subject": 2,
     "Author": "Gabriel Garca Mrquez",
@@ -504,12 +501,12 @@
     "Year": 1985,
     "Country": "Colombia",
     "Language": "Spanish",
-    "Rack": "L"
+    "Rack": "L",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0039",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0040",
-    "Reservation": "Available",
     "Title": "Faust",
     "Subject": 14,
     "Author": "Johann Wolfgang von Goethe",
@@ -517,12 +514,12 @@
     "Year": 1832,
     "Country": "Saxe-Weimar",
     "Language": "German",
-    "Rack": "F"
+    "Rack": "F",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0040",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0041",
-    "Reservation": "Available",
     "Title": "Dead Souls",
     "Subject": 7,
     "Author": "Nikolai Gogol",
@@ -530,12 +527,12 @@
     "Year": 1842,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "D"
+    "Rack": "D",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0041",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0042",
-    "Reservation": "Available",
     "Title": "The Tin Drum",
     "Subject": 8,
     "Author": "Gnter Grass",
@@ -543,12 +540,12 @@
     "Year": 1959,
     "Country": "Germany",
     "Language": "German",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0042",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0043",
-    "Reservation": "Available",
     "Title": "The Devil to Pay in the Backlands",
     "Subject": 19,
     "Author": "Joo Guimares Rosa",
@@ -556,12 +553,12 @@
     "Year": 1956,
     "Country": "Brazil",
     "Language": "Portuguese",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0043",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0044",
-    "Reservation": "Available",
     "Title": "Hunger",
     "Subject": 7,
     "Author": "Knut Hamsun",
@@ -569,12 +566,12 @@
     "Year": 1890,
     "Country": "Norway",
     "Language": "Norwegian",
-    "Rack": "H"
+    "Rack": "H",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0044",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0045",
-    "Reservation": "Available",
     "Title": "The Old Man and the Sea",
     "Subject": 18,
     "Author": "Ernest Hemingway",
@@ -582,12 +579,12 @@
     "Year": 1952,
     "Country": "United States",
     "Language": "English",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0045",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0046",
-    "Reservation": "Available",
     "Title": "Iliad",
     "Subject": 14,
     "Author": "Homer",
@@ -595,12 +592,12 @@
     "Year": -735,
     "Country": "Greece",
     "Language": "Greek",
-    "Rack": "I"
+    "Rack": "I",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0046",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0047",
-    "Reservation": "Available",
     "Title": "Odyssey",
     "Subject": 14,
     "Author": "Homer",
@@ -608,12 +605,12 @@
     "Year": -800,
     "Country": "Greece",
     "Language": "Greek",
-    "Rack": "O"
+    "Rack": "O",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0047",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0048",
-    "Reservation": "Available",
     "Title": "A Doll's House",
     "Subject": 4,
     "Author": "Henrik Ibsen",
@@ -621,12 +618,12 @@
     "Year": 1879,
     "Country": "Norway",
     "Language": "Norwegian",
-    "Rack": "A"
+    "Rack": "A",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0048",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0049",
-    "Reservation": "Available",
     "Title": "Ulysses",
     "Subject": 18,
     "Author": "James Joyce",
@@ -634,12 +631,12 @@
     "Year": 1922,
     "Country": "Irish Free State",
     "Language": "English",
-    "Rack": "U"
+    "Rack": "U",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0049",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0050",
-    "Reservation": "Available",
     "Title": "Stories",
     "Subject": 6,
     "Author": "Franz Kafka",
@@ -647,12 +644,12 @@
     "Year": 1924,
     "Country": "Czechoslovakia",
     "Language": "German",
-    "Rack": "S"
+    "Rack": "S",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0050",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0051",
-    "Reservation": "Available",
     "Title": "The Trial",
     "Subject": 6,
     "Author": "Franz Kafka",
@@ -660,12 +657,12 @@
     "Year": 1925,
     "Country": "Czechoslovakia",
     "Language": "German",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0051",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0052",
-    "Reservation": "Available",
     "Title": "The Castle",
     "Subject": 18,
     "Author": "Franz Kafka",
@@ -673,12 +670,12 @@
     "Year": 1926,
     "Country": "Czechoslovakia",
     "Language": "German",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0052",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0053",
-    "Reservation": "Available",
     "Title": "The recognition of Shakuntala",
     "Subject": 6,
     "Author": "Klidsa",
@@ -686,12 +683,12 @@
     "Year": 150,
     "Country": "India",
     "Language": "Sanskrit",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0053",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0054",
-    "Reservation": "Available",
     "Title": "The Sound of the Mountain",
     "Subject": 14,
     "Author": "Yasunari Kawabata",
@@ -699,12 +696,12 @@
     "Year": 1954,
     "Country": "Japan",
     "Language": "Japanese",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0054",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0055",
-    "Reservation": "Available",
     "Title": "Zorba the Greek",
     "Subject": 18,
     "Author": "Nikos Kazantzakis",
@@ -712,12 +709,12 @@
     "Year": 1946,
     "Country": "Greece",
     "Language": "Greek",
-    "Rack": "Z"
+    "Rack": "Z",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0055",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0056",
-    "Reservation": "Available",
     "Title": "Sons and Lovers",
     "Subject": 6,
     "Author": "D. H. Lawrence",
@@ -725,12 +722,12 @@
     "Year": 1913,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "S"
+    "Rack": "S",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0056",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0057",
-    "Reservation": "Available",
     "Title": "Independent People",
     "Subject": 8,
     "Author": "Halldr Laxness",
@@ -738,12 +735,12 @@
     "Year": 1934,
     "Country": "Iceland",
     "Language": "Icelandic",
-    "Rack": "I"
+    "Rack": "I",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0057",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0058",
-    "Reservation": "Available",
     "Title": "Poems",
     "Subject": 14,
     "Author": "Giacomo Leopardi",
@@ -751,12 +748,12 @@
     "Year": 1818,
     "Country": "Italy",
     "Language": "Italian",
-    "Rack": "P"
+    "Rack": "P",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0058",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0059",
-    "Reservation": "Available",
     "Title": "The Golden Notebook",
     "Subject": 8,
     "Author": "Doris Lessing",
@@ -764,12 +761,12 @@
     "Year": 1962,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0059",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0060",
-    "Reservation": "Available",
     "Title": "Pippi Longstocking",
     "Subject": 12,
     "Author": "Astrid Lindgren",
@@ -777,12 +774,12 @@
     "Year": 1945,
     "Country": "Sweden",
     "Language": "Swedish",
-    "Rack": "P"
+    "Rack": "P",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0060",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0061",
-    "Reservation": "Available",
     "Title": "Diary of a Madman",
     "Subject": 16,
     "Author": "Lu Xun",
@@ -790,12 +787,12 @@
     "Year": 1918,
     "Country": "China",
     "Language": "Chinese",
-    "Rack": "D"
+    "Rack": "D",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0061",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0062",
-    "Reservation": "Available",
     "Title": "Children of Gebelawi",
     "Subject": 7,
     "Author": "Naguib Mahfouz",
@@ -803,12 +800,12 @@
     "Year": 1959,
     "Country": "Egypt",
     "Language": "Arabic",
-    "Rack": "C"
+    "Rack": "C",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0062",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0063",
-    "Reservation": "Available",
     "Title": "Buddenbrooks",
     "Subject": 2,
     "Author": "Thomas Mann",
@@ -816,12 +813,12 @@
     "Year": 1901,
     "Country": "Germany",
     "Language": "German",
-    "Rack": "B"
+    "Rack": "B",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0063",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0064",
-    "Reservation": "Available",
     "Title": "The Magic Mountain",
     "Subject": 19,
     "Author": "Thomas Mann",
@@ -829,12 +826,12 @@
     "Year": 1924,
     "Country": "Germany",
     "Language": "German",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0064",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0065",
-    "Reservation": "Available",
     "Title": "Moby Dick",
     "Subject": 19,
     "Author": "Herman Melville",
@@ -842,12 +839,12 @@
     "Year": 1851,
     "Country": "United States",
     "Language": "English",
-    "Rack": "M"
+    "Rack": "M",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0065",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0066",
-    "Reservation": "Available",
     "Title": "Essays",
     "Subject": 14,
     "Author": "Michel de Montaigne",
@@ -855,12 +852,12 @@
     "Year": 1595,
     "Country": "France",
     "Language": "French",
-    "Rack": "E"
+    "Rack": "E",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0066",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0067",
-    "Reservation": "Available",
     "Title": "History",
     "Subject": 7,
     "Author": "Elsa Morante",
@@ -868,12 +865,12 @@
     "Year": 1974,
     "Country": "Italy",
     "Language": "Italian",
-    "Rack": "H"
+    "Rack": "H",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0067",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0068",
-    "Reservation": "Available",
     "Title": "Beloved",
     "Subject": 18,
     "Author": "Toni Morrison",
@@ -881,12 +878,12 @@
     "Year": 1987,
     "Country": "United States",
     "Language": "English",
-    "Rack": "B"
+    "Rack": "B",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0068",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0069",
-    "Reservation": "Available",
     "Title": "The Tale of Genji",
     "Subject": 4,
     "Author": "Murasaki Shikibu",
@@ -894,12 +891,12 @@
     "Year": 1006,
     "Country": "Japan",
     "Language": "Japanese",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0069",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0070",
-    "Reservation": "Available",
     "Title": "The Man Without Qualities",
     "Subject": 10,
     "Author": "Robert Musil",
@@ -907,12 +904,12 @@
     "Year": 1931,
     "Country": "Austria",
     "Language": "German",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0070",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0071",
-    "Reservation": "Available",
     "Title": "Lolita",
     "Subject": 10,
     "Author": "Vladimir Nabokov",
@@ -920,12 +917,12 @@
     "Year": 1955,
     "Country": "Russia/United States",
     "Language": "English",
-    "Rack": "L"
+    "Rack": "L",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0071",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0072",
-    "Reservation": "Available",
     "Title": "Nineteen Eighty-Four",
     "Subject": 10,
     "Author": "George Orwell",
@@ -933,12 +930,12 @@
     "Year": 1949,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "N"
+    "Rack": "N",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0072",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0073",
-    "Reservation": "Available",
     "Title": "Metamorphoses",
     "Subject": 14,
     "Author": "Ovid",
@@ -946,12 +943,12 @@
     "Year": 100,
     "Country": "Roman Empire",
     "Language": "Classical Latin",
-    "Rack": "M"
+    "Rack": "M",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0073",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0074",
-    "Reservation": "Available",
     "Title": "The Book of Disquiet",
     "Subject": 4,
     "Author": "Fernando Pessoa",
@@ -959,12 +956,12 @@
     "Year": 1928,
     "Country": "Portugal",
     "Language": "Portuguese",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0074",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0075",
-    "Reservation": "Available",
     "Title": "Tales",
     "Subject": 6,
     "Author": "Edgar Allan Poe",
@@ -972,12 +969,12 @@
     "Year": 1950,
     "Country": "United States",
     "Language": "English",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0075",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0076",
-    "Reservation": "Available",
     "Title": "In Search of Lost Time",
     "Subject": 18,
     "Author": "Marcel Proust",
@@ -985,12 +982,12 @@
     "Year": 1920,
     "Country": "France",
     "Language": "French",
-    "Rack": "I"
+    "Rack": "I",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0076",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0077",
-    "Reservation": "Available",
     "Title": "Gargantua and Pantagruel",
     "Subject": 6,
     "Author": "Franois Rabelais",
@@ -998,12 +995,12 @@
     "Year": 1533,
     "Country": "France",
     "Language": "French",
-    "Rack": "G"
+    "Rack": "G",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0077",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0078",
-    "Reservation": "Available",
     "Title": "Pedro Pramo",
     "Subject": 10,
     "Author": "Juan Rulfo",
@@ -1011,12 +1008,12 @@
     "Year": 1955,
     "Country": "Mexico",
     "Language": "Spanish",
-    "Rack": "P"
+    "Rack": "P",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0078",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0079",
-    "Reservation": "Available",
     "Title": "The Masnavi",
     "Subject": 7,
     "Author": "Rumi",
@@ -1024,12 +1021,12 @@
     "Year": 1236,
     "Country": "Sultanate of Rum",
     "Language": "Persian",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0079",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0080",
-    "Reservation": "Available",
     "Title": "Midnight's Children",
     "Subject": 20,
     "Author": "Salman Rushdie",
@@ -1037,12 +1034,12 @@
     "Year": 1981,
     "Country": "United Kingdom, India",
     "Language": "English",
-    "Rack": "M"
+    "Rack": "M",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0080",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0081",
-    "Reservation": "Available",
     "Title": "Bostan",
     "Subject": 14,
     "Author": "Saadi",
@@ -1050,12 +1047,12 @@
     "Year": 1257,
     "Country": "Persia, Persian Empire",
     "Language": "Persian",
-    "Rack": "B"
+    "Rack": "B",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0081",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0082",
-    "Reservation": "Available",
     "Title": "Season of Migration to the North",
     "Subject": 7,
     "Author": "Tayeb Salih",
@@ -1063,12 +1060,12 @@
     "Year": 1966,
     "Country": "Sudan",
     "Language": "Arabic",
-    "Rack": "S"
+    "Rack": "S",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0082",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0083",
-    "Reservation": "Available",
     "Title": "Blindness",
     "Subject": 18,
     "Author": "Jos Saramago",
@@ -1076,12 +1073,12 @@
     "Year": 1995,
     "Country": "Portugal",
     "Language": "Portuguese",
-    "Rack": "B"
+    "Rack": "B",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0083",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0084",
-    "Reservation": "Available",
     "Title": "Hamlet",
     "Subject": 14,
     "Author": "William Shakespeare",
@@ -1089,12 +1086,12 @@
     "Year": 1603,
     "Country": "England",
     "Language": "English",
-    "Rack": "H"
+    "Rack": "H",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0084",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0085",
-    "Reservation": "Available",
     "Title": "King Lear",
     "Subject": 14,
     "Author": "William Shakespeare",
@@ -1102,12 +1099,12 @@
     "Year": 1608,
     "Country": "England",
     "Language": "English",
-    "Rack": "K"
+    "Rack": "K",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0085",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0086",
-    "Reservation": "Available",
     "Title": "Othello",
     "Subject": 14,
     "Author": "William Shakespeare",
@@ -1115,12 +1112,12 @@
     "Year": 1609,
     "Country": "England",
     "Language": "English",
-    "Rack": "O"
+    "Rack": "O",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0086",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0087",
-    "Reservation": "Available",
     "Title": "Oedipus the King",
     "Subject": 14,
     "Author": "Sophocles",
@@ -1128,12 +1125,12 @@
     "Year": -430,
     "Country": "Greece",
     "Language": "Greek",
-    "Rack": "O"
+    "Rack": "O",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0087",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0088",
-    "Reservation": "Available",
     "Title": "The Red and the Black",
     "Subject": 18,
     "Author": "Stendhal",
@@ -1141,12 +1138,12 @@
     "Year": 1830,
     "Country": "France",
     "Language": "French",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0088",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0089",
-    "Reservation": "Available",
     "Title": "The Life And Opinions of Tristram Shandy",
     "Subject": 6,
     "Author": "Laurence Sterne",
@@ -1154,12 +1151,12 @@
     "Year": 1760,
     "Country": "England",
     "Language": "English",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0089",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0090",
-    "Reservation": "Available",
     "Title": "Confessions of Zeno",
     "Subject": 6,
     "Author": "Italo Svevo",
@@ -1167,12 +1164,12 @@
     "Year": 1923,
     "Country": "Italy",
     "Language": "Italian",
-    "Rack": "C"
+    "Rack": "C",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0090",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0091",
-    "Reservation": "Available",
     "Title": "Gulliver's Travels",
     "Subject": 12,
     "Author": "Jonathan Swift",
@@ -1180,12 +1177,12 @@
     "Year": 1726,
     "Country": "Ireland",
     "Language": "English",
-    "Rack": "G"
+    "Rack": "G",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0091",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0092",
-    "Reservation": "Available",
     "Title": "War and Peace",
     "Subject": 20,
     "Author": "Leo Tolstoy",
@@ -1193,12 +1190,12 @@
     "Year": 1867,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "W"
+    "Rack": "W",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0092",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0093",
-    "Reservation": "Available",
     "Title": "Anna Karenina",
     "Subject": 16,
     "Author": "Leo Tolstoy",
@@ -1206,12 +1203,12 @@
     "Year": 1877,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "A"
+    "Rack": "A",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0093",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0094",
-    "Reservation": "Available",
     "Title": "The Death of Ivan Ilyich",
     "Subject": 16,
     "Author": "Leo Tolstoy",
@@ -1219,12 +1216,12 @@
     "Year": 1886,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0094",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0095",
-    "Reservation": "Available",
     "Title": "The Adventures of Huckleberry Finn",
     "Subject": 12,
     "Author": "Mark Twain",
@@ -1232,12 +1229,12 @@
     "Year": 1884,
     "Country": "United States",
     "Language": "English",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0095",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0096",
-    "Reservation": "Available",
     "Title": "Ramayana",
     "Subject": 14,
     "Author": "Valmiki",
@@ -1245,12 +1242,12 @@
     "Year": -450,
     "Country": "India",
     "Language": "Sanskrit",
-    "Rack": "R"
+    "Rack": "R",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0096",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0097",
-    "Reservation": "Available",
     "Title": "The Aeneid",
     "Subject": 14,
     "Author": "Virgil",
@@ -1258,12 +1255,12 @@
     "Year": -23,
     "Country": "Roman Empire",
     "Language": "Classical Latin",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0097",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0098",
-    "Reservation": "Available",
     "Title": "Mahabharata",
     "Subject": 7,
     "Author": "Vyasa",
@@ -1271,12 +1268,12 @@
     "Year": -700,
     "Country": "India",
     "Language": "Sanskrit",
-    "Rack": "M"
+    "Rack": "M",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0098",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0099",
-    "Reservation": "Available",
     "Title": "Leaves of Grass",
     "Subject": 2,
     "Author": "Walt Whitman",
@@ -1284,12 +1281,12 @@
     "Year": 1855,
     "Country": "United States",
     "Language": "English",
-    "Rack": "L"
+    "Rack": "L",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0099",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0100",
-    "Reservation": "Available",
     "Title": "Mrs Dalloway",
     "Subject": 10,
     "Author": "Virginia Woolf",
@@ -1297,12 +1294,12 @@
     "Year": 1925,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "M"
+    "Rack": "M",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0100",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0101",
-    "Reservation": "Available",
     "Title": "Learn english!",
     "Subject": 13,
     "Author": "Cambridge",
@@ -1310,12 +1307,12 @@
     "Year": 2019,
     "Country": "England",
     "Language": "English",
-    "Rack": "L"
+    "Rack": "L",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0101",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0102",
-    "Reservation": "Available",
     "Title": "To the Lighthouse",
     "Subject": 10,
     "Author": "Virginia Woolf",
@@ -1323,12 +1320,12 @@
     "Year": 1927,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "T"
+    "Rack": "T",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0102",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0103",
-    "Reservation": "Available",
     "Title": "Memoirs of Hadrian",
     "Subject": 16,
     "Author": "Marguerite Yourcenar",
@@ -1336,12 +1333,12 @@
     "Year": 1951,
     "Country": "France/Belgium",
     "Language": "French",
-    "Rack": "M"
+    "Rack": "M",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0103",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0104",
-    "Reservation": "Available",
     "Title": "Business English Dictionary: For Learners of English",
     "Subject": 13,
     "Author": "Oxford University",
@@ -1349,25 +1346,25 @@
     "Year": 2005,
     "Country": "USA",
     "Language": "English",
-    "Rack": "B"
-  },
-  {
+    "Rack": "B",
     "Copies": 1,
-    "ISBN": "978-1-940313-09-0107",
-    "Reservation": "Available",
-    "Title": "Under The Yuke",
-    "Subject": 18,
-    "Author": "Ivan Vazov",
-    "Pages": 503,
-    "Year": 1888,
-    "Country": "Bulgaria",
-    "Language": "bulgarian",
-    "Rack": "U"
+    "ISBN": "978-1-940313-09-0104",
+    "Reservation": "Available"
   },
   {
+    "Title": "Les Miserables",
+    "Subject": 2,
+    "Author": "Victor-Marie Hugo",
+    "Pages": 392,
+    "Year": 1862,
+    "Country": "France",
+    "Language": "French",
+    "Rack": "L",
     "Copies": 10,
     "ISBN": "978-1-940313-09-0122",
-    "Reservation": "Available",
+    "Reservation": "Available"
+  },
+  {
     "Title": "Les Miserables",
     "Subject": 2,
     "Author": "Victor-Marie Hugo",
@@ -1375,12 +1372,12 @@
     "Year": 1862,
     "Country": "France",
     "Language": "French",
-    "Rack": "L"
-  },
-  {
+    "Rack": "L",
     "Copies": 10,
     "ISBN": "978-1-940313-09-0124",
-    "Reservation": "Available",
+    "Reservation": "Available"
+  },
+  {
     "Title": "Les Miserables",
     "Subject": 2,
     "Author": "Victor-Marie Hugo",
@@ -1388,12 +1385,12 @@
     "Year": 1862,
     "Country": "France",
     "Language": "French",
-    "Rack": "L"
-  },
-  {
+    "Rack": "L",
     "Copies": 10,
     "ISBN": "978-1-940313-09-0127",
-    "Reservation": "Available",
+    "Reservation": "Available"
+  },
+  {
     "Title": "Les Miserables",
     "Subject": 2,
     "Author": "Victor-Marie Hugo",
@@ -1401,25 +1398,12 @@
     "Year": 1862,
     "Country": "France",
     "Language": "French",
-    "Rack": "L"
-  },
-  {
+    "Rack": "L",
     "Copies": 10,
     "ISBN": "978-1-940313-09-0130",
-    "Reservation": "Available",
-    "Title": "Les Miserables",
-    "Subject": 2,
-    "Author": "Victor-Marie Hugo",
-    "Pages": 392,
-    "Year": 1862,
-    "Country": "France",
-    "Language": "French",
-    "Rack": "L"
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0128",
-    "Reservation": "Available",
     "Title": "Les Miserables",
     "Subject": 0,
     "Author": "Victor-Marie Hugo",
@@ -1427,12 +1411,12 @@
     "Year": 1862,
     "Country": "France",
     "Language": "French",
-    "Rack": "L"
+    "Rack": "L",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0128",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0134",
-    "Reservation": "Available",
     "Title": "Mladost",
     "Subject": 0,
     "Author": "Todor",
@@ -1440,12 +1424,25 @@
     "Year": 2019,
     "Country": "Bulgaria",
     "Language": "bulgarian",
-    "Rack": "M"
+    "Rack": "M",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0134",
+    "Reservation": "Available"
   },
   {
+    "Title": "Sofia ",
+    "Subject": 0,
+    "Author": "Todor",
+    "Pages": 312,
+    "Year": 2013,
+    "Country": "Bulgaria",
+    "Language": "bulgarian",
+    "Rack": "S",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0137",
-    "Reservation": "Available",
+    "Reservation": "Available"
+  },
+  {
     "Title": "Sofia ",
     "Subject": 0,
     "Author": "Todor",
@@ -1453,12 +1450,12 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "bulgarian",
-    "Rack": "S"
-  },
-  {
+    "Rack": "S",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0138",
-    "Reservation": "Available",
+    "Reservation": "Available"
+  },
+  {
     "Title": "Sofia ",
     "Subject": 0,
     "Author": "Todor",
@@ -1466,12 +1463,12 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "bulgarian",
-    "Rack": "S"
-  },
-  {
+    "Rack": "S",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0136",
-    "Reservation": "Available",
+    "Reservation": "Available"
+  },
+  {
     "Title": "Sofia ",
     "Subject": 0,
     "Author": "Todor",
@@ -1479,25 +1476,90 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "bulgarian",
-    "Rack": "S"
-  },
-  {
+    "Rack": "S",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0139",
-    "Reservation": "Available",
-    "Title": "Sofia ",
-    "Subject": 0,
-    "Author": "Todor",
-    "Pages": 312,
-    "Year": 2013,
-    "Country": "Bulgaria",
-    "Language": "bulgarian",
-    "Rack": "S"
+    "Reservation": "Available"
   },
   {
+    "Title": "Les Miserables",
+    "Subject": 0,
+    "Author": "Victor-Marie Hugo",
+    "Pages": 392,
+    "Year": 1862,
+    "Country": "France",
+    "Language": "French",
+    "Rack": "L",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0125",
-    "Reservation": "Available",
+    "Reservation": "Available"
+  },
+  {
+    "Title": "Sailor's Life",
+    "Subject": 16,
+    "Author": "Yordan Gospodinov",
+    "Pages": 478,
+    "Year": 2019,
+    "Country": "Bulgaria",
+    "Language": "Bulgarian",
+    "Rack": "S",
+    "Copies": 5,
+    "ISBN": "978-1-940313-09-0126",
+    "Reservation": "Available"
+  },
+  {
+    "Title": "Sailor's Life",
+    "Subject": 16,
+    "Author": "Yordan Gospodinov",
+    "Pages": 478,
+    "Year": 2019,
+    "Country": "Bulgaria",
+    "Language": "Bulgarian",
+    "Rack": "S",
+    "Copies": 5,
+    "ISBN": "978-1-940313-09-0127",
+    "Reservation": "Available"
+  },
+  {
+    "Title": "Sailor's Life",
+    "Subject": 16,
+    "Author": "Yordan Gospodinov",
+    "Pages": 478,
+    "Year": 2019,
+    "Country": "Bulgaria",
+    "Language": "Bulgarian",
+    "Rack": "S",
+    "Copies": 5,
+    "ISBN": "978-1-940313-09-0128",
+    "Reservation": "Available"
+  },
+  {
+    "Title": "Sailor's Life",
+    "Subject": 16,
+    "Author": "Yordan Gospodinov",
+    "Pages": 478,
+    "Year": 2019,
+    "Country": "Bulgaria",
+    "Language": "Bulgarian",
+    "Rack": "S",
+    "Copies": 5,
+    "ISBN": "978-1-940313-09-0129",
+    "Reservation": "Available"
+  },
+  {
+    "Title": "Sailor's Life",
+    "Subject": 16,
+    "Author": "Yordan Gospodinov",
+    "Pages": 478,
+    "Year": 2019,
+    "Country": "Bulgaria",
+    "Language": "Bulgarian",
+    "Rack": "S",
+    "Copies": 5,
+    "ISBN": "978-1-940313-09-0130",
+    "Reservation": "Available"
+  },
+  {
     "Title": "Les Miserables",
     "Subject": 0,
     "Author": "Victor-Marie Hugo",
@@ -1505,155 +1567,25 @@
     "Year": 1862,
     "Country": "France",
     "Language": "French",
-    "Rack": "L"
-  },
-  {
-    "Copies": 5,
-    "ISBN": "978-1-940313-09-0126",
-    "Reservation": "Available",
-    "Title": "Sailor's Life",
-    "Subject": 16,
-    "Author": "Yordan Gospodinov",
-    "Pages": 478,
-    "Year": 2019,
-    "Country": "Bulgaria",
-    "Language": "Bulgarian",
-    "Rack": "S"
-  },
-  {
-    "Copies": 5,
-    "ISBN": "978-1-940313-09-0127",
-    "Reservation": "Available",
-    "Title": "Sailor's Life",
-    "Subject": 16,
-    "Author": "Yordan Gospodinov",
-    "Pages": 478,
-    "Year": 2019,
-    "Country": "Bulgaria",
-    "Language": "Bulgarian",
-    "Rack": "S"
-  },
-  {
-    "Copies": 5,
-    "ISBN": "978-1-940313-09-0128",
-    "Reservation": "Available",
-    "Title": "Sailor's Life",
-    "Subject": 16,
-    "Author": "Yordan Gospodinov",
-    "Pages": 478,
-    "Year": 2019,
-    "Country": "Bulgaria",
-    "Language": "Bulgarian",
-    "Rack": "S"
-  },
-  {
-    "Copies": 5,
-    "ISBN": "978-1-940313-09-0129",
-    "Reservation": "Available",
-    "Title": "Sailor's Life",
-    "Subject": 16,
-    "Author": "Yordan Gospodinov",
-    "Pages": 478,
-    "Year": 2019,
-    "Country": "Bulgaria",
-    "Language": "Bulgarian",
-    "Rack": "S"
-  },
-  {
-    "Copies": 5,
-    "ISBN": "978-1-940313-09-0130",
-    "Reservation": "Available",
-    "Title": "Sailor's Life",
-    "Subject": 16,
-    "Author": "Yordan Gospodinov",
-    "Pages": 478,
-    "Year": 2019,
-    "Country": "Bulgaria",
-    "Language": "Bulgarian",
-    "Rack": "S"
-  },
-  {
+    "Rack": "L",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0126",
-    "Reservation": "Available",
-    "Title": "Les Miserables",
-    "Subject": 0,
-    "Author": "Victor-Marie Hugo",
-    "Pages": 392,
-    "Year": 1862,
-    "Country": "France",
-    "Language": "French",
-    "Rack": "L"
+    "Reservation": "Available"
   },
   {
-    "Copies": 5,
-    "ISBN": "978-1-940313-09-0127",
-    "Reservation": "Available",
-    "Title": "Sofia",
+    "Title": "Holandia",
     "Subject": 2,
     "Author": "Todor",
-    "Pages": 321,
+    "Pages": 333,
     "Year": 2013,
     "Country": "Bulgaria",
-    "Language": "bulgarian",
-    "Rack": "S"
-  },
-  {
-    "Copies": 5,
-    "ISBN": "978-1-940313-09-0128",
-    "Reservation": "Available",
-    "Title": "Sofia",
-    "Subject": 2,
-    "Author": "Todor",
-    "Pages": 321,
-    "Year": 2013,
-    "Country": "Bulgaria",
-    "Language": "bulgarian",
-    "Rack": "S"
-  },
-  {
-    "Copies": 5,
-    "ISBN": "978-1-940313-09-0129",
-    "Reservation": "Available",
-    "Title": "Sofia",
-    "Subject": 2,
-    "Author": "Todor",
-    "Pages": 321,
-    "Year": 2013,
-    "Country": "Bulgaria",
-    "Language": "bulgarian",
-    "Rack": "S"
-  },
-  {
-    "Copies": 5,
-    "ISBN": "978-1-940313-09-0130",
-    "Reservation": "Available",
-    "Title": "Sofia",
-    "Subject": 2,
-    "Author": "Todor",
-    "Pages": 321,
-    "Year": 2013,
-    "Country": "Bulgaria",
-    "Language": "bulgarian",
-    "Rack": "S"
-  },
-  {
-    "Copies": 5,
-    "ISBN": "978-1-940313-09-0131",
-    "Reservation": "Available",
-    "Title": "Sofia",
-    "Subject": 2,
-    "Author": "Todor",
-    "Pages": 321,
-    "Year": 2013,
-    "Country": "Bulgaria",
-    "Language": "bulgarian",
-    "Rack": "S"
-  },
-  {
+    "Language": "Bulgarian",
+    "Rack": "H",
     "Copies": 3,
     "ISBN": "978-1-940313-09-0132",
-    "Reservation": "Available",
+    "Reservation": "Available"
+  },
+  {
     "Title": "Holandia",
     "Subject": 2,
     "Author": "Todor",
@@ -1661,12 +1593,12 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "Bulgarian",
-    "Rack": "H"
-  },
-  {
+    "Rack": "H",
     "Copies": 3,
     "ISBN": "978-1-940313-09-0133",
-    "Reservation": "Available",
+    "Reservation": "Available"
+  },
+  {
     "Title": "Holandia",
     "Subject": 2,
     "Author": "Todor",
@@ -1674,25 +1606,12 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "Bulgarian",
-    "Rack": "H"
-  },
-  {
+    "Rack": "H",
     "Copies": 3,
     "ISBN": "978-1-940313-09-0134",
-    "Reservation": "Available",
-    "Title": "Holandia",
-    "Subject": 2,
-    "Author": "Todor",
-    "Pages": 333,
-    "Year": 2013,
-    "Country": "Bulgaria",
-    "Language": "Bulgarian",
-    "Rack": "H"
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0135",
-    "Reservation": "Available",
     "Title": "Holandia",
     "Subject": 2,
     "Author": "Dancho",
@@ -1700,12 +1619,12 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "Bulgarian",
-    "Rack": "H"
+    "Rack": "H",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0135",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0136",
-    "Reservation": "Available",
     "Title": "Holandia",
     "Subject": 2,
     "Author": "Sasho",
@@ -1713,12 +1632,12 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "Bulgarian",
-    "Rack": "H"
+    "Rack": "H",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0136",
+    "Reservation": "Available"
   },
   {
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0137",
-    "Reservation": "Available",
     "Title": "Holandia",
     "Subject": 1,
     "Author": "Sasho",
@@ -1726,12 +1645,25 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "Bulgarian",
-    "Rack": "H"
+    "Rack": "H",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0137",
+    "Reservation": "Available"
   },
   {
+    "Title": "Karibski pirati",
+    "Subject": 4,
+    "Author": "Scifi",
+    "Pages": 546,
+    "Year": 2015,
+    "Country": "France",
+    "Language": "German",
+    "Rack": "K",
     "Copies": 3,
     "ISBN": "978-1-940313-09-0138",
-    "Reservation": "Available",
+    "Reservation": "Available"
+  },
+  {
     "Title": "Karibski pirati",
     "Subject": 4,
     "Author": "Scifi",
@@ -1739,12 +1671,12 @@
     "Year": 2015,
     "Country": "France",
     "Language": "German",
-    "Rack": "K"
-  },
-  {
+    "Rack": "K",
     "Copies": 3,
     "ISBN": "978-1-940313-09-0139",
-    "Reservation": "Available",
+    "Reservation": "Available"
+  },
+  {
     "Title": "Karibski pirati",
     "Subject": 4,
     "Author": "Scifi",
@@ -1752,25 +1684,12 @@
     "Year": 2015,
     "Country": "France",
     "Language": "German",
-    "Rack": "K"
-  },
-  {
+    "Rack": "K",
     "Copies": 3,
     "ISBN": "978-1-940313-09-0140",
-    "Reservation": "Available",
-    "Title": "Karibski pirati",
-    "Subject": 4,
-    "Author": "Scifi",
-    "Pages": 546,
-    "Year": 2015,
-    "Country": "France",
-    "Language": "German",
-    "Rack": "K"
+    "Reservation": "Available"
   },
   {
-    "Copies": 3,
-    "ISBN": "978-1-940313-09-0141",
-    "Reservation": "Reserved",
     "Title": "GodFather",
     "Subject": 17,
     "Author": "Puzo",
@@ -1778,55 +1697,110 @@
     "Year": 1984,
     "Country": "USA",
     "Language": "English",
-    "Rack": "G"
+    "Rack": "G",
+    "Copies": 3,
+    "ISBN": "978-1-940313-09-0141",
+    "Reservation": "Reserved"
   },
   {
-    "Copies": 2,
-    "ISBN": "978-1-940313-09-0144",
-    "Reservation": "Available",
-    "Title": "Sofia",
+    "Title": "Les Miserables",
     "Subject": 0,
+    "Author": "Victor-Marie Hugo",
+    "Pages": 392,
+    "Year": 1862,
+    "Country": "France",
+    "Language": "French",
+    "Rack": "L",
+    "Copies": 1,
+    "ISBN": "978-1-940313-09-0121",
+    "Reservation": null
+  },
+  {
+    "Author": "Ivan i Nikola",
+    "Country": "Bulgaria",
+    "Language": "french",
+    "Subject": "Action",
+    "Pages": 69,
+    "Title": "Chukalnqta",
+    "Year": 2019,
+    "Rack": "C",
+    "Reservation": "Available"
+  },
+  {
+    "Author": "Ivan i Nikola",
+    "Country": "Bulgaria",
+    "Language": "french",
+    "Subject": "Action",
+    "Pages": 69,
+    "Title": "Chukalnqta",
+    "Year": 2019,
+    "Rack": "C",
+    "Reservation": "Available"
+  },
+  {
+    "Author": "Ivan i Nikola",
+    "Country": "Bulgaria",
+    "Language": "french",
+    "Subject": "Action",
+    "Pages": 69,
+    "Title": "Chukalnqta",
+    "Year": 2019,
+    "Rack": "C",
+    "Reservation": "Available"
+  },
+  {
     "Author": "Todor",
-    "Pages": 312,
-    "Year": 2013,
     "Country": "Bulgaria",
-    "Language": "bulgarian",
-    "Rack": "S"
+    "Language": "German",
+    "Subject": "Crime",
+    "Pages": 333,
+    "Title": "Mladost",
+    "Year": 542,
+    "Rack": "M",
+    "Reservation": "Available"
   },
   {
-    "Copies": 2,
-    "ISBN": "978-1-940313-09-0145",
-    "Reservation": "Available",
-    "Title": "Sofia",
-    "Subject": 0,
     "Author": "Todor",
-    "Pages": 312,
-    "Year": 2013,
     "Country": "Bulgaria",
-    "Language": "bulgarian",
-    "Rack": "S"
+    "Language": "German",
+    "Subject": "Crime",
+    "Pages": 333,
+    "Title": "Mladost",
+    "Year": 542,
+    "Rack": "M",
+    "Reservation": "Available"
   },
   {
-    "author": "Victor-Marie Hugo",
-    "country": "France",
-    "language": "French",
-    "subject": "Thriler",
-    "pages": 392,
-    "title": "Les Miserables",
-    "year": 1862,
-    "isbn": "978-1-940313-09-0121",
-    "rack": 76,
-    "copies": 1
+    "Author": "Todor",
+    "Country": "Bulgaria",
+    "Language": "German",
+    "Subject": "Crime",
+    "Pages": 333,
+    "Title": "Mladost",
+    "Year": 542,
+    "Rack": "M",
+    "Reservation": "Available"
   },
   {
-    "Author": "Ivan Vazov",
+    "Author": "Todor",
     "Country": "Bulgaria",
-    "Language": "bulgarian",
-    "Subject": "Historical",
-    "Pages": 2003,
-    "Title": "Under The Yuke",
-    "Year": 1868,
-    "Rack": "U",
+    "Language": "German",
+    "Subject": "Crime",
+    "Pages": 333,
+    "Title": "Mladost",
+    "Year": 542,
+    "Rack": "M",
+    "Reservation": "Available"
+  },
+  {
+    "Author": "Todor",
+    "Country": "Bulgaria",
+    "Language": "German",
+    "Subject": "Crime",
+    "Pages": 333,
+    "Title": "Mladost",
+    "Year": 542,
+    "Rack": "M",
     "Reservation": "Available"
   }
 ]

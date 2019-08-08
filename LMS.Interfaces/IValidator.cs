@@ -8,6 +8,7 @@ namespace LMS.Contracts
     public interface IValidator
     {
         bool IsNull(IUser currentUser);
+        bool IsNull(IBook book);
         bool CommandNameIsLogin(string input);
         bool CommandNameIsRegister(string input);
         void IsParametersCountIsValid(IList<string> parameteres, int count);

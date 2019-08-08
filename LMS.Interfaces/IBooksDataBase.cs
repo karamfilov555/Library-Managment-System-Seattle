@@ -10,5 +10,7 @@ namespace LMS.Contracts
         void LoadBooksFromJson();
         void AddBookToJsonDb(string title, string author, int pages, int year, string country, string language, string subject);
         void AddBookToDb(Book book);
+        void RemoveFromDb(Book book);
+        Book FindBookInDb(string title);
     }
 }

@@ -8,7 +8,6 @@ namespace LMS.Core.Contracts
     {
         string ExtractCommandName(string input);
         IEnumerable<string> GetCommandParams(string input);
-        //bool LogInCommandExpected(string input);
-
+        string GetParams(IList<string> parameteres);
     }
 }

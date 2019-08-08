@@ -19,7 +19,7 @@ namespace LMS.Core.Utils
         public void LoginParametersCountValidation(IList<string> parameteres)
         {
             if (parameteres.Count != 2)
-                throw new ArgumentException("To Login into the System you should enter Username and Password!");
+                throw new ArgumentException($"To Login into the System you should enter Username and Password!");
         }
         public void RegisterParametersCountValidation(IList<string> parameteres)
         {
@@ -30,6 +30,12 @@ namespace LMS.Core.Utils
         public bool IsNull(IUser currentUser)
         {
             if (currentUser == null)
+                return true;
+            return false;
+        }
+        public bool IsNull(IBook book)
+        {
+            if (book == null)
                 return true;
             return false;
         }

@@ -18,6 +18,7 @@ namespace LMS.Core.Utils
         private const string CancelMemershipPasswordRequired = "If you want to cancel your membership, Please enter your password!";
         private const string CancelMemership = "Your membership is successfully canceled!";
         private const string WrongPassword = "You have enter wrong password!";
+        private const string BookRemoved = "Book with title: \"{0}\" was successfully removed";
         public string PleaseLoginOrRegisterMessage()
         {
             return PleaseLogOrReg;
@@ -61,6 +62,16 @@ namespace LMS.Core.Utils
         public string WrongPasswordMessage()
         {
             return WrongPassword;
+        }
+        public string BookRemovedMessage(string title)
+        {
+            return string.Format(BookRemoved,title);
+        }
+        public string PrintAddBookLabel()
+        {
+            return $"==================================={Environment.NewLine}" +
+                   $"=======>  New Book Added!  <======={Environment.NewLine}" +
+                   $"==================================={Environment.NewLine}";
         }
     }
 }

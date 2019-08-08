@@ -17,5 +17,7 @@ namespace LMS.Contracts
         string CancelMemership_PasswordRequiredMessage();
         string CancelMemershipMessage();
         string WrongPasswordMessage();
+        string BookRemovedMessage(string title);
+        string PrintAddBookLabel();
     }
 }

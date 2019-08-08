@@ -1,6 +1,7 @@
 ﻿using LMS.Contracts;
 using LMS.Core.CommandContracts;
 using LMS.Core.Contracts;
+using LMS.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -70,14 +71,15 @@ namespace LMS.Core.Commands
             {
                 throw new ArgumentException(this._messages.InvalidParametersMessage());
             }
-
-            var book = this._modelsFactory.CreateBook(title, author, pages, year, country, language, subject);
-
-            this._booksDataBase.AddBookToDb(book);
-
-            this._booksDataBase.AddBookToJsonDb(title, author, pages, year, country, language, subject);
-
-            return this._messages.BookCreated();
+            var strBuilder = new StringBuilder();
+            for (int i = 1; i <= copies; i++)
+            {
+                var book = this._modelsFactory.CreateBook(title, author, pages, year, country, language, subject);
+                this._booksDataBase.AddBookToDb(book);
+                this._booksDataBase.AddBookToJsonDb(title, author, pages, year, country, language, subject);
+                strBuilder.AppendLine(book.PrintBookInfo());
+            }
+                return this._messages.PrintAddBookLabel() + strBuilder.ToString() ;
         }
     }
 }

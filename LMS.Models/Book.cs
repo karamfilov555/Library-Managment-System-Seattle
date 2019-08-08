@@ -50,7 +50,7 @@ namespace LMS.Models
             {
                 return subject;
             }
-            set
+            private set
             {
                 if (!Enum.GetNames(typeof(SubjectCategory)).Contains(value.ToString()))
                 {
@@ -170,13 +170,18 @@ namespace LMS.Models
                 reservation = value;
             }
         }
-        public override string ToString()
+        public string PrintBookInfo()
         {
-            var bookInfo = base.ToString();
-            var key = this.Title + " " + this.Language + " " + this.Author + " " + this.Subject;
             var timeOfAdding = DateTime.Now.ToLongDateString();
 
-            return $"{bookInfo}{Environment.NewLine}" +
+            return  
+                $"Title: {this.Title}{Environment.NewLine}" +
+                $"Author: {this.Author}{Environment.NewLine}" +
+                $"Subject: {this.Subject}{Environment.NewLine}" +
+                $"Pages: {this.Pages}{Environment.NewLine}" +
+                $"Year: {this.Year}{Environment.NewLine}" +
+                $"Country: {this.Country}{Environment.NewLine}" +
+                $"Language: {this.Language}{Environment.NewLine}"+
                 $"Reservation: {this.Reservation}{Environment.NewLine}" +
                 $"ISBN: {this.ISBN}{Environment.NewLine}" +
                 //$"Copies available: {CopiesCount.GetCopiesCount(key)}{Environment.NewLine}" +

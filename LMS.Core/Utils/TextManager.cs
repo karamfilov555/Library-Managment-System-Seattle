@@ -24,5 +24,14 @@ namespace LMS.Core.Utils
             var parameters = laneParameters.Skip(1);
             return parameters;
         }
+        public string GetParams(IList<string> parameteres)
+        {
+            var strBuilder = new StringBuilder();
+            foreach (var item in parameteres)
+            {
+                strBuilder.Append(item + " ");
+            }
+            return strBuilder.ToString().Trim();
+        }
     }
 }

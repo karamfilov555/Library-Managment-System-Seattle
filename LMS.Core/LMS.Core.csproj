@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LMS.Enums\LMS.Enums.csproj" />
     <ProjectReference Include="..\LMS.Interfaces\LMS.Contracts.csproj" />
+    <ProjectReference Include="..\LMS.JasonDB\LMS.JasonDB.csproj" />
   </ItemGroup>
 
 </Project>
