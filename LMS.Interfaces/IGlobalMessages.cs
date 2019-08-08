@@ -12,5 +12,7 @@ namespace LMS.Contracts
         string LogOutMessage();
         string RegisterMessage(string username);
         string ThisUserAlreadyExistMessage();
+        string InvalidParametersMessage();
+        string BookCreated();
     }
 }

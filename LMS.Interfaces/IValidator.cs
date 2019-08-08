@@ -12,5 +12,6 @@ namespace LMS.Contracts
         bool CommandNameIsRegister(string input);
         void IsAlreadyLoggedIn();
         void IsParametersCountIsValid(IList<string> parameteres, int count);
+        //void IsAdmin();
     }
 }

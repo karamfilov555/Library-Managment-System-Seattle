@@ -13,6 +13,8 @@ namespace LMS.Core.Utils
         private const string LogOut = "You are successfully logged out. Hope to see you soon!";
         private const string NewUserCreated = "Created new Member with username: ";
         private const string UserWithThisNameAlreadyExist = "User with this username already exist!";
+        private const string InvalidParameters = "The parameters are not valid for this operation!";
+        private const string SuccessfullyAddedBook = "Book has been successfully created!";
         public string PleaseLoginOrRegisterMessage()
         {
             return PleaseLogOrReg;
@@ -36,6 +38,14 @@ namespace LMS.Core.Utils
         public string ThisUserAlreadyExistMessage()
         {
             return UserWithThisNameAlreadyExist;
+        }
+        public string InvalidParametersMessage()
+        {
+            return InvalidParameters;
+        }
+        public string BookCreated()
+        {
+            return SuccessfullyAddedBook;
         }
     }
 }

@@ -19,6 +19,16 @@ namespace LMS.Core.Utils
             if (parameteres.Count != count)
                 throw new ArgumentException("Parameters count is not valid!");
         }
+
+        //public void IsAdmin()
+        //{
+        //    var check = this._currentUser.CheckCurrentUserStatus();
+        //    if (check == false)
+        //    {
+        //        throw new ArgumentException("You have no admin rights!");
+        //    }
+        //}
+
         public void IsAlreadyLoggedIn()
         {
             var currUsr = this._currentUser.GetCurrentUser();

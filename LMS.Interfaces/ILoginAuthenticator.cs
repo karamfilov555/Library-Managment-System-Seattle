@@ -14,5 +14,7 @@ namespace LMS.Contracts
         User CheckAdminCredetials(string username, string password);
         User CheckUsernameInAdminDb(string username);
         User CheckUsernameInUserDb(string username);
+        bool CheckCurrentUserStatus();
+        void IsAdmin();
     }
 }

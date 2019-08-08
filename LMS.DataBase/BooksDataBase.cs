@@ -23,5 +23,10 @@ namespace LMS.DataBase
                  books.Add(book);
             }
         }
+
+        public void AddBookToDb(Book book)
+        {
+            this.books.Add(book);
+        }
     }
 }

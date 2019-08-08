@@ -1,6 +1,7 @@
 ﻿using LMS.Models.Enums;
 using LMS.Models.ModelsContracts;
 using System;
+using System.Linq;
 
 namespace LMS.Models
 {
@@ -51,6 +52,10 @@ namespace LMS.Models
             }
             set
             {
+                if (!Enum.GetNames(typeof(SubjectCategory)).Contains(value.ToString()))
+                {
+                    throw new ArgumentException("Such a subject does not exist in our library!");
+                }
                 this.subject = value;
             }
         }

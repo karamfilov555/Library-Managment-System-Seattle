@@ -53,5 +53,14 @@ namespace LMS.DataBase
                 return true;
             return false;
         }
+
+        public void IsAdmin()
+        {
+            var check = CheckCurrentUserStatus();
+            if (check == false)
+            {
+                throw new ArgumentException("You have no admin rights!");
+            }
+        }
     }
 }
