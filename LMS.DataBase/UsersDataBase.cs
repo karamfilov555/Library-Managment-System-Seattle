@@ -40,6 +40,7 @@ namespace LMS.DataBase
         public void AddUserToDb(User user)
         {
             this.users.Add(user);
+            this._json.AddUserToJsonDB(user.Username,user.Password);
         }
     }
 }

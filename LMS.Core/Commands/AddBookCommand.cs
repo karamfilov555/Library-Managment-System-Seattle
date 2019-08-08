@@ -75,6 +75,8 @@ namespace LMS.Core.Commands
 
             this._booksDataBase.AddBookToDb(book);
 
+            this._booksDataBase.AddBookToJsonDb(title, author, pages, year, country, language, subject);
+
             return this._messages.BookCreated();
         }
     }

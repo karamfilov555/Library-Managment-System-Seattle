@@ -2,6 +2,7 @@
 using LMS.Models;
 using LMS.Models.ModelsContracts;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -43,5 +44,35 @@ namespace LMS.JasonDB
         {
             File.WriteAllText(@"../../../User.json", jsonToOutput);
         }
+        public void AddUserToJsonDB(string username, string password)
+        {
+            string jsonIn = File.ReadAllText(@"../../../User.json");
+            var array = JArray.Parse(jsonIn);
+            var userToAdd = new JObject();
+            userToAdd["Username"] = username;
+            userToAdd["Password"] = password;
+            array.Add(userToAdd);
+            var jsonToOutput = JsonConvert.SerializeObject(array, Formatting.Indented);
+            File.WriteAllText(@"../../../User.json", jsonToOutput);
+        }
+        public void AddBookToJsonDB(string title, string author, int pages, int year, string country, string language, string subject)
+        {
+            var initialFile = File.ReadAllText(@"../../../Books.json");
+            var array = JArray.Parse(initialFile);
+            var bookToAdd = new JObject();
+            bookToAdd["Author"] = author;
+            bookToAdd["Country"] = country;
+            bookToAdd["Language"] = language;
+            bookToAdd["Subject"] = subject;
+            bookToAdd["Pages"] = pages;
+            bookToAdd["Title"] = title;
+            bookToAdd["Year"] = year;
+            bookToAdd["Rack"] = title[0].ToString().ToUpper();
+            bookToAdd["Reservation"] = "Available";
+            array.Add(bookToAdd);
+            var jsonToOutput = JsonConvert.SerializeObject(array, Formatting.Indented);
+            File.WriteAllText(@"../../../Books.json", jsonToOutput);
+        }
+
     }
 }

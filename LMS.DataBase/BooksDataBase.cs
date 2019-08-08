@@ -24,6 +24,10 @@ namespace LMS.DataBase
             }
         }
 
+        public void AddBookToJsonDb(string title,string author,int pages,int year,string country,string language,string subject)
+        {
+            this._json.AddBookToJsonDB(title, author, pages, year, country, language, subject);
+        }
         public void AddBookToDb(Book book)
         {
             this.books.Add(book);

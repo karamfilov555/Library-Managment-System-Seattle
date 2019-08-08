@@ -28,8 +28,6 @@ namespace LMS.DataBase
         public User CheckUserCredetials(string username, string password)
         {
             var user = this._usersDb.CheckUserCredetials(username, password);
-
-
             return user;
         }
         public User CheckAdminCredetials(string username, string password)

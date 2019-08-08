@@ -1817,5 +1817,16 @@
     "isbn": "978-1-940313-09-0121",
     "rack": 76,
     "copies": 1
+  },
+  {
+    "Author": "Ivan Vazov",
+    "Country": "Bulgaria",
+    "Language": "bulgarian",
+    "Subject": "Historical",
+    "Pages": 2003,
+    "Title": "Under The Yuke",
+    "Year": 1868,
+    "Rack": "U",
+    "Reservation": "Available"
   }
 ]
