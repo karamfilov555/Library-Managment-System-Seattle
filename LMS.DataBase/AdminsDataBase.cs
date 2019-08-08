@@ -44,5 +44,9 @@ namespace LMS.DataBase
                 return true;
             return false;
         }
+        public void RemoveUserFromDb(User user)
+        {
+            this.admins.Remove(user);
+        }
     }
 }

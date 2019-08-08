@@ -19,8 +19,7 @@ namespace LMS.Core.Commands
         }
         public string Execute(IList<string> parameteres)
         {
-            IUser nullUser = null;
-            this._loginAuthenticator.SetCurrentUser(nullUser);
+            this._loginAuthenticator.LogoutCurrentUser();
             return this._messages.LogOutMessage();
         }
     }

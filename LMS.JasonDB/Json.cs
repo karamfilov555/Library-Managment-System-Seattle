@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace LMS.JasonDB
 {
@@ -73,6 +74,13 @@ namespace LMS.JasonDB
             var jsonToOutput = JsonConvert.SerializeObject(array, Formatting.Indented);
             File.WriteAllText(@"../../../Books.json", jsonToOutput);
         }
-
+        public void RemoveUserFromJsonDb(string userName)
+        {
+            var existingUsers = ReadUsers();
+            var user = existingUsers.FirstOrDefault(x => x.Username == userName);
+            existingUsers.Remove(user);
+            var jsonToOutput = JsonConvert.SerializeObject(existingUsers, Formatting.Indented);
+            this.WriteUsers(jsonToOutput);
+        }
     }
 }

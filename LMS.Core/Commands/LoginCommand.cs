@@ -26,11 +26,11 @@ namespace LMS.Core.Commands
 
             var user = this._loginAuthenticator.CheckUserCredetials(username, password);
             if (!this._validator.IsNull(user))
-                this._loginAuthenticator.SetCurrentUser(user);
+                this._loginAuthenticator.SetCurrentUser(user, username, password);
 
             var admin = this._loginAuthenticator.CheckAdminCredetials(username, password);
             if (!this._validator.IsNull(admin))
-                this._loginAuthenticator.SetCurrentUser(admin);
+                this._loginAuthenticator.SetCurrentUser(admin, username, password);
 
             if (this._validator.IsNull(this._loginAuthenticator.GetCurrentUser()))
                 return this._messages.WrongCredentialsMessage();

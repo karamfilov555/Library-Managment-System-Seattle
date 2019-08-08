@@ -14,5 +14,8 @@ namespace LMS.Contracts
         string ThisUserAlreadyExistMessage();
         string InvalidParametersMessage();
         string BookCreated();
+        string CancleMemership_PasswordRequiredMessage();
+        string CancleMemershipMessage();
+        string WrongPasswordMessage();
     }
 }

@@ -12,6 +12,8 @@ namespace LMS.DataBase
         private IUser currentUser;
         private readonly IUsersDataBase _usersDb;
         private readonly IAdminsDataBase _adminsDb;
+        private string currentPassword;
+        private string currentUsername;
         public LoginAuthenticator(IUsersDataBase usersDb, IAdminsDataBase adminsDb)
         {
             this._usersDb = usersDb;
@@ -21,9 +23,15 @@ namespace LMS.DataBase
         {
             return currentUser;
         }
-        public void SetCurrentUser(IUser _currentUser)
+        public string GetCurrentUserName()
         {
+            return this.currentUsername;
+        }
+        public void SetCurrentUser(IUser _currentUser, string userName, string password)
+        {
+            this.currentPassword = password;
             this.currentUser = _currentUser;
+            this.currentUsername = userName;
         }
         public User CheckUserCredetials(string username, string password)
         {
@@ -66,5 +74,31 @@ namespace LMS.DataBase
                 throw new ArgumentException("You have no admin rights!");
             }
         }
+        public bool IsPasswordCorrect(string pass)
+        {
+            var user = GetCurrentUser();
+            if (pass == currentPassword)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void LogoutCurrentUser()
+        {
+            SetCurrentUser(null, null, null);
+        }
+
+        public void RemoveUserFromDb(string userName)
+        {
+            //if (CheckCurrentUserStatus())
+            //{
+            //    this._adminsDb.RemoveUserFromDb();
+            //}
+
+            this._usersDb.RemoveUserFromDb(userName);
+
+        }
+
     }
 }

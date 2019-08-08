@@ -15,6 +15,9 @@ namespace LMS.Core.Utils
         private const string UserWithThisNameAlreadyExist = "User with this username already exist!";
         private const string InvalidParameters = "The parameters are not valid for this operation!";
         private const string SuccessfullyAddedBook = "Book has been successfully created!";
+        private const string CancleMemershipPasswordRequired = "If you want to cancel your membership, Please enter your password!";
+        private const string CancleMemership = "Your membership is successfully canceled!";
+        private const string WrongPassword = "You have enter wrong password!";
         public string PleaseLoginOrRegisterMessage()
         {
             return PleaseLogOrReg;
@@ -46,6 +49,18 @@ namespace LMS.Core.Utils
         public string BookCreated()
         {
             return SuccessfullyAddedBook;
+        }
+        public string CancleMemership_PasswordRequiredMessage()
+        {
+            return CancleMemershipPasswordRequired;
+        }
+        public string CancleMemershipMessage()
+        {
+            return CancleMemership;
+        }
+        public string WrongPasswordMessage()
+        {
+            return WrongPassword;
         }
     }
 }

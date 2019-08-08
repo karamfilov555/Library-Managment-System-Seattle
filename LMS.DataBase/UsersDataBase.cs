@@ -2,6 +2,7 @@
 using LMS.JasonDB.Contracts;
 using LMS.Models;
 using LMS.Models.ModelsContracts;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,5 +43,19 @@ namespace LMS.DataBase
             this.users.Add(user);
             this._json.AddUserToJsonDB(user.Username,user.Password);
         }
+        public void RemoveUserFromDb(string username)
+        {
+            var userToBeDeleted = this.users.FirstOrDefault(x => x.Username == username);
+            this.users.Remove(userToBeDeleted);
+            this._json.RemoveUserFromJsonDb(username);
+        }
+        //public void RemoveUserFromJsonDb(string userName)
+        //{
+        //    var existingUsers = this._json.ReadUsers();
+        //    var user = existingUsers.FirstOrDefault(x => x.Username == userName);
+        //    existingUsers.Remove(user);
+        //    var jsonToOutput = JsonConvert.SerializeObject(existingUsers, Formatting.Indented);
+        //    this._json.WriteUsers(jsonToOutput);
+        //}
     }
 }
