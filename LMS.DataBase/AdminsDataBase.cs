@@ -37,5 +37,12 @@ namespace LMS.DataBase
             var admin = this.admins.FirstOrDefault(u => u.Username == username);
             return admin;
         }
+        public bool CheckIUserInAdminDb(IUser user)
+        {
+            var admin = this.admins.FirstOrDefault(u => u == user);
+            if (admin != null)
+                return true;
+            return false;
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace LMS.Core.Commands
         private readonly ILoginAuthenticator _loginAuthenticator;
         private readonly IModelsFactory _modelsFactory;
         public RegisterCommand(IValidator validator,
-                               IGlobalMessages messages, 
+                               IGlobalMessages messages,
                                ILoginAuthenticator loginAuthenticator,
                                IModelsFactory modelsFactory)
         {
@@ -39,8 +39,6 @@ namespace LMS.Core.Commands
                 return this._messages.ThisUserAlreadyExistMessage();
 
             var newUser  = this._modelsFactory.CreateUser(username, password);
-
-            // TO ADD NEW USER IN JSON and User DB!!!
 
             return this._messages.RegisterMessage(username);
         }

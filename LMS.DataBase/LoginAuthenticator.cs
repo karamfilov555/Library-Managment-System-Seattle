@@ -25,7 +25,7 @@ namespace LMS.DataBase
         {
             this.currentUser = _currentUser;
         }
-        public User CheckUserCredetials(string username,string password)
+        public User CheckUserCredetials(string username, string password)
         {
             var user = this._usersDb.CheckUserCredetials(username, password);
             return user;
@@ -44,6 +44,14 @@ namespace LMS.DataBase
         {
             var user = this._usersDb.CheckUsernameInUserDb(username);
             return user;
+        }
+        public bool CheckCurrentUserStatus()
+        {
+            var userToTest = GetCurrentUser();
+            bool result = this._adminsDb.CheckIUserInAdminDb(userToTest);
+            if (result == true)
+                return true;
+            return false;
         }
     }
 }
