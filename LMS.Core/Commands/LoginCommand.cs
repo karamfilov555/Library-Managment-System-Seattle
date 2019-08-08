@@ -19,8 +19,8 @@ namespace LMS.Core.Commands
         }
         public string Execute(IList<string> parameteres)
         {
-            this._validator.IsAlreadyLoggedIn();
-            this._validator.IsParametersCountIsValid(parameteres, 2);
+            this._loginAuthenticator.IsAlreadyLoggedIn();
+            this._validator.LoginParametersCountValidation(parameteres);
             var username = parameteres[0];
             var password = parameteres[1];
 
@@ -35,7 +35,7 @@ namespace LMS.Core.Commands
             if (this._validator.IsNull(this._loginAuthenticator.GetCurrentUser()))
                 return this._messages.WrongCredentialsMessage();
 
-            return this._messages.SuccessfullyLoginMessage();
+            return this._messages.SuccessfullyLoginMessage(username);
         }
     }
 }

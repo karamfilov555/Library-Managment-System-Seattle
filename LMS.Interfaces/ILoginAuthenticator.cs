@@ -20,5 +20,6 @@ namespace LMS.Contracts
         void LogoutCurrentUser();
         void RemoveUserFromDb(string userName);
         string GetCurrentUserName();
+        void IsAlreadyLoggedIn();
     }
 }

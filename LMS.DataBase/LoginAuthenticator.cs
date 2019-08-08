@@ -65,7 +65,14 @@ namespace LMS.DataBase
                 return true;
             return false;
         }
-
+        public void IsAlreadyLoggedIn()
+        {
+            var currUsr = GetCurrentUser();
+            if (currUsr != null)
+            {
+                throw new ArgumentException("You are already LoggedIn!");
+            }
+        }
         public void IsAdmin()
         {
             var check = CheckCurrentUserStatus();

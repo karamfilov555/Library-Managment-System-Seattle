@@ -11,7 +11,6 @@ namespace LMS.Core.Commands
         private readonly IValidator _validator;
         private readonly IGlobalMessages _message;
         private readonly ILoginAuthenticator _loginAuthenticator;
-
         public CancelMembershipCommand(IValidator validator, IGlobalMessages message, ILoginAuthenticator loginAuthenticator)
         {
             this._validator = validator;
@@ -21,7 +20,7 @@ namespace LMS.Core.Commands
         public string Execute(IList<string> parameteres)
         {
             this._validator.IsParametersCountIsValid(parameteres , 1);
-            this._message.CancleMemership_PasswordRequiredMessage();
+            this._message.CancelMemership_PasswordRequiredMessage();
             var password = parameteres[0];
             if (!this._loginAuthenticator.IsPasswordCorrect(password))
                 return this._message.WrongPasswordMessage();
@@ -29,8 +28,7 @@ namespace LMS.Core.Commands
             this._loginAuthenticator.RemoveUserFromDb(this._loginAuthenticator.GetCurrentUserName());
             this._loginAuthenticator.LogoutCurrentUser();
 
-
-            return "cancelMember";
+            return this._message.CancelMemershipMessage();
         }
     }
 }

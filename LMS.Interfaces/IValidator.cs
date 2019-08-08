@@ -10,8 +10,8 @@ namespace LMS.Contracts
         bool IsNull(IUser currentUser);
         bool CommandNameIsLogin(string input);
         bool CommandNameIsRegister(string input);
-        void IsAlreadyLoggedIn();
         void IsParametersCountIsValid(IList<string> parameteres, int count);
-        //void IsAdmin();
+        void LoginParametersCountValidation(IList<string> parameteres);
+        void RegisterParametersCountValidation(IList<string> parameteres);
     }
 }

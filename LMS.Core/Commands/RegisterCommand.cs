@@ -27,8 +27,8 @@ namespace LMS.Core.Commands
         }
         public string Execute(IList<string> parameteres)
         {
-            this._validator.IsAlreadyLoggedIn();
-            this._validator.IsParametersCountIsValid(parameteres, 2);
+            this._loginAuthenticator.IsAlreadyLoggedIn();
+            this._validator.RegisterParametersCountValidation(parameteres);
 
             var username = parameteres[0];
             var password = parameteres[1];

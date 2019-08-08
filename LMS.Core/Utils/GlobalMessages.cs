@@ -9,14 +9,14 @@ namespace LMS.Core.Utils
     {
         private const string PleaseLogOrReg = "Please, Login or Register";
         private const string WrongCredentials = "It doesn't exist user with those credentials. Notice that the login form is case-sensitive!";
-        private const string SuccessfullyLogin = "Successfully Login!";
+        private const string SuccessfullyLogin = "Successfully Login! Hello, ";
         private const string LogOut = "You are successfully logged out. Hope to see you soon!";
         private const string NewUserCreated = "Created new Member with username: ";
         private const string UserWithThisNameAlreadyExist = "User with this username already exist!";
         private const string InvalidParameters = "The parameters are not valid for this operation!";
         private const string SuccessfullyAddedBook = "Book has been successfully created!";
-        private const string CancleMemershipPasswordRequired = "If you want to cancel your membership, Please enter your password!";
-        private const string CancleMemership = "Your membership is successfully canceled!";
+        private const string CancelMemershipPasswordRequired = "If you want to cancel your membership, Please enter your password!";
+        private const string CancelMemership = "Your membership is successfully canceled!";
         private const string WrongPassword = "You have enter wrong password!";
         public string PleaseLoginOrRegisterMessage()
         {
@@ -26,9 +26,9 @@ namespace LMS.Core.Utils
         {
             return WrongCredentials;
         }
-        public string SuccessfullyLoginMessage()
+        public string SuccessfullyLoginMessage(string username)
         {
-            return SuccessfullyLogin;
+            return SuccessfullyLogin + username;
         }
         public string LogOutMessage()
         {
@@ -50,13 +50,13 @@ namespace LMS.Core.Utils
         {
             return SuccessfullyAddedBook;
         }
-        public string CancleMemership_PasswordRequiredMessage()
+        public string CancelMemership_PasswordRequiredMessage()
         {
-            return CancleMemershipPasswordRequired;
+            return CancelMemershipPasswordRequired;
         }
-        public string CancleMemershipMessage()
+        public string CancelMemershipMessage()
         {
-            return CancleMemership;
+            return CancelMemership;
         }
         public string WrongPasswordMessage()
         {

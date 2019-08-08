@@ -8,35 +8,25 @@ namespace LMS.Core.Utils
 {
     public class Validator : IValidator
     {
-        private const string ItemIsNull = "Null";
-        private readonly ILoginAuthenticator _currentUser;
-        public Validator(ILoginAuthenticator currentUser)
+        public Validator()
         {
-            this._currentUser = currentUser;
         }
         public void IsParametersCountIsValid(IList<string> parameteres,int count)
         {
             if (parameteres.Count != count)
                 throw new ArgumentException("Parameters count is not valid!");
         }
-
-        //public void IsAdmin()
-        //{
-        //    var check = this._currentUser.CheckCurrentUserStatus();
-        //    if (check == false)
-        //    {
-        //        throw new ArgumentException("You have no admin rights!");
-        //    }
-        //}
-
-        public void IsAlreadyLoggedIn()
+        public void LoginParametersCountValidation(IList<string> parameteres)
         {
-            var currUsr = this._currentUser.GetCurrentUser();
-            if (currUsr != null)
-            {
-                throw new ArgumentException("You are already LoggedIn!");
-            }
+            if (parameteres.Count != 2)
+                throw new ArgumentException("To Login into the System you should enter Username and Password!");
         }
+        public void RegisterParametersCountValidation(IList<string> parameteres)
+        {
+            if (parameteres.Count != 2)
+                throw new ArgumentException("To Register into the System you should enter Username and Password!");
+        }
+
         public bool IsNull(IUser currentUser)
         {
             if (currentUser == null)

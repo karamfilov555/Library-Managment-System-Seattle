@@ -8,14 +8,14 @@ namespace LMS.Contracts
     {
         string PleaseLoginOrRegisterMessage();
         string WrongCredentialsMessage();
-        string SuccessfullyLoginMessage();
+        string SuccessfullyLoginMessage(string username);
         string LogOutMessage();
         string RegisterMessage(string username);
         string ThisUserAlreadyExistMessage();
         string InvalidParametersMessage();
         string BookCreated();
-        string CancleMemership_PasswordRequiredMessage();
-        string CancleMemershipMessage();
+        string CancelMemership_PasswordRequiredMessage();
+        string CancelMemershipMessage();
         string WrongPasswordMessage();
     }
 }
