@@ -1,17 +1,14 @@
 [
   {
     "Username": "Todor",
-    "Password": "3333",
-    "Reservation": 0
-  },
-  {
-    "Username": "Jordan",
-    "Password": "1234",
-    "Reservation": 0
+    "Password": "3333"
   },
   {
     "Username": "Skala",
-    "Password": "1234",
-    "Reservation": 0
+    "Password": "1234"
+  },
+  {
+    "Username": "Nikola",
+    "Password": "1234"
   }
 ]

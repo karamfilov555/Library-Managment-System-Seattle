@@ -82,5 +82,13 @@ namespace LMS.JasonDB
             var jsonToOutput = JsonConvert.SerializeObject(existingUsers, Formatting.Indented);
             this.WriteUsers(jsonToOutput);
         }
+        public void RemoveAdminFromJsonDb(string userName)
+        {
+            var existingAdmins = ReadAdmins();
+            var admin = existingAdmins.FirstOrDefault(x => x.Username == userName);
+            existingAdmins.Remove(admin);
+            var jsonToOutput = JsonConvert.SerializeObject(existingAdmins, Formatting.Indented);
+            this.WriteAdmins(jsonToOutput);
+        }
     }
 }

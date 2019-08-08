@@ -12,6 +12,6 @@ namespace LMS.Contracts
         User CheckAdminCredentials(string username, string password);
         User CheckUsernameInAdminDb(string username);
         bool CheckIUserInAdminDb(IUser user);
-        void RemoveUserFromDb(User user);
+        void RemoveAdminFromDb(string username);
     }
 }

@@ -44,9 +44,11 @@ namespace LMS.DataBase
                 return true;
             return false;
         }
-        public void RemoveUserFromDb(User user)
+        public void RemoveAdminFromDb(string username)
         {
-            this.admins.Remove(user);
+            var adminToBeDeleted = this.admins.FirstOrDefault(x => x.Username == username);
+            this.admins.Remove(adminToBeDeleted);
+            this._json.RemoveAdminFromJsonDb(username);
         }
     }
 }

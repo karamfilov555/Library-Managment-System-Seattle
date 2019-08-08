@@ -91,10 +91,10 @@ namespace LMS.DataBase
 
         public void RemoveUserFromDb(string userName)
         {
-            //if (CheckCurrentUserStatus())
-            //{
-            //    this._adminsDb.RemoveUserFromDb();
-            //}
+            if (CheckCurrentUserStatus())
+            {
+                this._adminsDb.RemoveAdminFromDb(userName);
+            }
 
             this._usersDb.RemoveUserFromDb(userName);
 
