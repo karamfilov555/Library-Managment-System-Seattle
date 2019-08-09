@@ -10,5 +10,6 @@ namespace LMS.Contracts
         void CheckBooksOfCurrentUser();
         void LoadHistoryFromJson();
         void AddRegistryToHistoryDb(IHistoryRegistry registry);
+        string GetHistoryOfCurrentUser();
     }
 }

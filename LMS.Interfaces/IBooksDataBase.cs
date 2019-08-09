@@ -14,5 +14,9 @@ namespace LMS.Contracts
         void RemoveFromDb(IBook book);
         IBook FindBookInDb(string title);
         string AllExistingBooksToString();
+        string GiveAllBooksWithThisTitle(string title);
+        string ShowAllBooksWithThisTitle(string title);
+        string ShowAllBooksWithThisYear(int year);
+        string ShowAllBooksWithThisAuthor(string author);
     }
 }

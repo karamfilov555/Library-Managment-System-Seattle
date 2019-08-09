@@ -42,5 +42,21 @@ namespace LMS.Services
             if (repeat.Count >= 5)
                 throw new ArgumentException("You have reached the maximum amount of 5 checked-out books! If u want to check-out this item, you have to return book!");
         }
+        public string GetHistoryOfCurrentUser()
+        {
+            var currentUser = _loginAuthenticator.GetCurrentUserName();
+            var strBuilder = new StringBuilder();
+            foreach (var registry in history)
+            {
+                if (registry.Username == currentUser)
+                {
+                    strBuilder.AppendLine(registry.RegistryInfo());
+                }
+            }
+            return 
+                $"{Environment.NewLine}"+
+                $"========{currentUser}, this is your Check-Out History ========" +
+                $"{Environment.NewLine}" + strBuilder.ToString();
+        }
     }
 }

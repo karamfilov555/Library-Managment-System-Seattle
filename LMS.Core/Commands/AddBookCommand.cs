@@ -8,7 +8,7 @@ using System.Text;
 
 namespace LMS.Core.Commands
 {
-    public class AddBookCommand : ICommand
+    class AddBookCommand : ICommand
     {
         private readonly IValidator _validator;
         private readonly IGlobalMessages _messages;

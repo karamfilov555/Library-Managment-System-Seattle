@@ -8,7 +8,7 @@ using System.Text;
 
 namespace LMS.Core.Commands
 {
-    public class LogoutCommand : ICommand
+    class LogoutCommand : ICommand
     {
         private readonly IGlobalMessages _messages;
         private readonly ILoginAuthenticator _loginAuthenticator;

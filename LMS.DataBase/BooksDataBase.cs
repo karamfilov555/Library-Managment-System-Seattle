@@ -61,5 +61,57 @@ namespace LMS.Services
             }
             return strBuilder.ToString();
         }
+        public string GiveAllBooksWithThisTitle(string title)
+        {
+            var booksWithThisTitle = books.Where(x => x.Title == title);
+            var strBuilder = new StringBuilder();
+            foreach (var book in booksWithThisTitle)
+            {
+                strBuilder.AppendLine("ISBN: " + book.ISBN);
+            }
+            return strBuilder.ToString();
+        }
+        public string ShowAllBooksWithThisTitle(string title)
+        {
+            var booksWithThisTitle = books.Where(x => x.Title.ToLower().Contains(title));
+            var strBuilder = new StringBuilder();
+            int count = 1;
+            foreach (var book in booksWithThisTitle)
+            {
+                strBuilder.AppendLine(_messages.CatalogDelimiter(count) + Environment.NewLine + book.PrintBookInfo());
+                count++;
+            }
+            if (strBuilder.Length == 0)
+                throw new ArgumentException("There are no books with this title!");
+            return strBuilder.ToString();
+        }
+        public string ShowAllBooksWithThisAuthor(string author)
+        {
+            var booksWithThisAuthor = books.Where(x => x.Author.ToLower().Contains(author));
+            var strBuilder = new StringBuilder();
+            int count = 1;
+            foreach (var book in booksWithThisAuthor)
+            {
+                strBuilder.AppendLine(_messages.CatalogDelimiter(count) + Environment.NewLine + book.PrintBookInfo());
+                count++;
+            }
+            if (strBuilder.Length == 0)
+                throw new ArgumentException("There are no books with this auhtor!");
+            return strBuilder.ToString();
+        }
+        public string ShowAllBooksWithThisYear(int year)
+        {
+            var booksFromThisYear = books.Where(x => x.Year == year);
+            var strBuilder = new StringBuilder();
+            int count = 1;
+            foreach (var book in booksFromThisYear)
+            {
+                strBuilder.AppendLine(_messages.CatalogDelimiter(count) + Environment.NewLine + book.PrintBookInfo());
+                count++;
+            }
+            if (strBuilder.Length == 0)
+                throw new ArgumentException("There are no books with this publication year!");
+            return strBuilder.ToString();
+        }
     }
 }

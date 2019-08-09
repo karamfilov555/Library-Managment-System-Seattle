@@ -25,18 +25,18 @@ namespace LMS.Core.Factories
         }
         public IBook CreateBook(string title, string author, int pages, int year, string county, string language, string subject)
         {
-            SubjectCategory subj = (SubjectCategory)Enum.Parse(typeof(SubjectCategory), subject, true);
+            SubjectCategory _subject = (SubjectCategory)Enum.Parse(typeof(SubjectCategory), subject, true);
             var isbn = _isbnGenerator.GenerateISBN();
-            var book = new Book(title, author, pages, year, county, language, subj,isbn);
+            var book = new Book(title, author, pages, year, county, language, _subject, isbn);
             return book;
         }
-        public IHistoryRegistry CreateRegistry(string title)
+        public IHistoryRegistry CreateRegistry(string title, string isbn)
         {
             var today = DateTime.Now;
             var returnDate = today.AddDays(5).ToShortDateString();
             var currentUsername = _loginAuthenticator.GetCurrentUserName();
-            var isbn = "isbn";
-            var registry = new HistoryRegistry(title,isbn,currentUsername,returnDate);
+            var _isbn = isbn;
+            var registry = new HistoryRegistry(title,_isbn,currentUsername,returnDate);
             return registry;
         }
     }

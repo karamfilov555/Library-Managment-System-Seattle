@@ -26,12 +26,17 @@ namespace LMS.Core.Utils
             if (parameteres.Count != 2)
                 throw new ArgumentException("To Register into the System you should enter Username and Password!");
         }
-        public void CheckOutBookParamsValidation(IList<string> parameteres)
+        public void TryParseToInt(string year)
         {
-            if (parameteres.Count != 1)
-                throw new ArgumentException("To Check-out book you should enter book's title!");
+            try
+            {
+                int.Parse(year);
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException("Please, enter valid Number!");
+            }
         }
-
         public bool IsNull(IUser currentUser)
         {
             if (currentUser == null)
@@ -56,6 +61,5 @@ namespace LMS.Core.Utils
                 return true;
             return false;
         }
-       
     }
 }

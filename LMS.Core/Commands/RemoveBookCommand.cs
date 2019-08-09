@@ -9,7 +9,7 @@ using System.Text;
 
 namespace LMS.Core.Commands
 {
-    public class RemoveBookCommand : ICommand
+    class RemoveBookCommand : ICommand
     {
         private readonly IBooksDataBase _bookDb;
         private readonly IGlobalMessages _message;
