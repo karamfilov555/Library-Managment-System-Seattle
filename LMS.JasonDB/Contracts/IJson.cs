@@ -20,5 +20,8 @@ namespace LMS.JasonDB.Contracts
         void RemoveUserFromJsonDb(string userName);
         void RemoveAdminFromJsonDb(string userName);
         void RemoveBookFromJsonDb(string title);
+        IList<HistoryRegistry> ReadCheckOutHistory();
+        void WriteCheckOutHistory(string jsonToOutput);
+        void AddToCheckOutHistoryJson(string title, string author, int pages, int year, string country, string lang, string isbn, string username, string returnDate);
     }
 }

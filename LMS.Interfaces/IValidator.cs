@@ -14,5 +14,6 @@ namespace LMS.Contracts
         void IsParametersCountIsValid(IList<string> parameteres, int count);
         void LoginParametersCountValidation(IList<string> parameteres);
         void RegisterParametersCountValidation(IList<string> parameteres);
+        void CheckOutBookParamsValidation(IList<string> parameteres);
     }
 }

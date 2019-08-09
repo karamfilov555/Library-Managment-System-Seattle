@@ -9,16 +9,11 @@ namespace LMS.Models
     {
         private string username;
         private string password;
-        private static string status;
-        private static int books;
-        private static bool isLogin;
-        private static bool isAdmin;
-        private static string currentUser;
-        private static string currentPass;
+        
         public User(string username, string password)
         {
-            Username = username;
-            Password = password;
+            this.Password = password;
+            this.Username = username;
         }
         public string Username
         {

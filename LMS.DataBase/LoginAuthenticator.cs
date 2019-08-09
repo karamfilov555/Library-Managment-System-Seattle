@@ -12,12 +12,16 @@ namespace LMS.Services
         private IUser currentUser;
         private readonly IUsersDataBase _usersDb;
         private readonly IAdminsDataBase _adminsDb;
+        private readonly IValidator _validator;
         private string currentPassword;
         private string currentUsername;
-        public LoginAuthenticator(IUsersDataBase usersDb, IAdminsDataBase adminsDb)
+        public LoginAuthenticator(IUsersDataBase usersDb,
+                                  IAdminsDataBase adminsDb,
+                                  IValidator validator)
         {
             _usersDb = usersDb;
             _adminsDb = adminsDb;
+            _validator = validator;
         }
         public IUser GetCurrentUser()
         {
@@ -102,10 +106,16 @@ namespace LMS.Services
             {
                 _adminsDb.RemoveAdminFromDb(userName);
             }
-
             _usersDb.RemoveUserFromDb(userName);
-
         }
-
+        public bool CheckAllowedCommands(string consoleInput)
+        {
+            var currentUser = GetCurrentUser();
+            if (_validator.IsNull(currentUser)
+                && !_validator.CommandNameIsLogin(consoleInput)
+                && !_validator.CommandNameIsRegister(consoleInput))
+                return false;
+            return true;
+        }
     }
 }
