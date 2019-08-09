@@ -23,7 +23,8 @@ namespace LMS.Models
             }
             private set
             {
-                if (value.Length < 3 || value.Length > 15)
+                if (string.IsNullOrWhiteSpace(value) ||
+                    value.Length < 3 || value.Length > 15)
                 {
                     throw new ArgumentException("Invalid username or password!");
                 }
@@ -38,7 +39,8 @@ namespace LMS.Models
             }
             private set
             {
-                if (value.Length < 3 || value.Length > 15)
+                if (string.IsNullOrWhiteSpace(value)||
+                    value.Length < 3 || value.Length > 15)
                 {
                     throw new ArgumentException("Invalid username or password!");
                 }

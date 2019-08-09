@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.JasonDB", "LMS.JasonDB\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Generators", "LMS.Generators\LMS.Generators.csproj", "{195E4919-16D8-4D30-91C3-6538599D7F83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Tests", "LMS.Tests\LMS.Tests.csproj", "{BC6095B6-4A4A-40A5-B5C5-AB6C608C001D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{195E4919-16D8-4D30-91C3-6538599D7F83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{195E4919-16D8-4D30-91C3-6538599D7F83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{195E4919-16D8-4D30-91C3-6538599D7F83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC6095B6-4A4A-40A5-B5C5-AB6C608C001D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC6095B6-4A4A-40A5-B5C5-AB6C608C001D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC6095B6-4A4A-40A5-B5C5-AB6C608C001D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC6095B6-4A4A-40A5-B5C5-AB6C608C001D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
