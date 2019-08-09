@@ -6,7 +6,7 @@ namespace LMS.Models.ModelsContracts
 {
     public interface IUser
     {
-        string Username { get; }
-        string Password { get; }
+        string Username { get;}
+        string Password { get;}
     }
 }
