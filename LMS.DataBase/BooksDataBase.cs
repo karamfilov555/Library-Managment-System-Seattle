@@ -99,6 +99,34 @@ namespace LMS.Services
                 throw new ArgumentException("There are no books with this auhtor!");
             return strBuilder.ToString();
         }
+        public string ShowAllBooksWithThisLanguage(string language)
+        {
+            var booksWithThisLanguage = books.Where(x => x.Language.ToLower().Contains(language));
+            var strBuilder = new StringBuilder();
+            int count = 1;
+            foreach (var book in booksWithThisLanguage)
+            {
+                strBuilder.AppendLine(_messages.CatalogDelimiter(count) + Environment.NewLine + book.PrintBookInfo());
+                count++;
+            }
+            if (strBuilder.Length == 0)
+                throw new ArgumentException("There are no books with this language!");
+            return strBuilder.ToString();
+        }
+        public string ShowAllBooksWithThisSubject(string subject)
+        {
+            var booksWithThisSubject = books.Where(x => x.Subject.ToString().ToLower().Contains(subject));
+            var strBuilder = new StringBuilder();
+            int count = 1;
+            foreach (var book in booksWithThisSubject)
+            {
+                strBuilder.AppendLine(_messages.CatalogDelimiter(count) + Environment.NewLine + book.PrintBookInfo());
+                count++;
+            }
+            if (strBuilder.Length == 0)
+                throw new ArgumentException("There are no books with this subject!");
+            return strBuilder.ToString();
+        }
         public string ShowAllBooksWithThisYear(int year)
         {
             var booksFromThisYear = books.Where(x => x.Year == year);

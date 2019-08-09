@@ -18,5 +18,7 @@ namespace LMS.Contracts
         string ShowAllBooksWithThisTitle(string title);
         string ShowAllBooksWithThisYear(int year);
         string ShowAllBooksWithThisAuthor(string author);
+        string ShowAllBooksWithThisLanguage(string language);
+        string ShowAllBooksWithThisSubject(string subject);
     }
 }
