@@ -1,4 +1,5 @@
 ﻿using LMS.Models;
+using LMS.Models.ModelsContracts;
 using System;
 using System.Collections.Generic;
 
@@ -7,9 +8,9 @@ namespace LMS.Contracts
     public interface IUsersDataBase
     {
         void LoadUsersFromJson();
-        User CheckUserCredetials(string username, string password);
-        User CheckUsernameInUserDb(string username);
-        void AddUserToDb(User user);
+        IUser CheckUserCredetials(string username, string password);
+        IUser CheckUsernameInUserDb(string username);
+        void AddUserToDb(IUser user);
         void RemoveUserFromDb(string username);
         //void RemoveUserFromJsonDb(string userName);
     }

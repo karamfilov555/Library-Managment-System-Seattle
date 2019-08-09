@@ -12,7 +12,7 @@ namespace LMS.Services
 {
     public class UsersDataBase : IUsersDataBase
     {
-        private readonly IList<User> users = new List<User>();
+        private readonly IList<IUser> users = new List<IUser>();
         private readonly IJson _json;
         public UsersDataBase(IJson json)
         {
@@ -27,18 +27,18 @@ namespace LMS.Services
                 users.Add(user);
             }
         }
-        public User CheckUserCredetials(string username, string password)
+        public IUser CheckUserCredetials(string username, string password)
         {
             var user = users.FirstOrDefault(u => u.Username == username
                                                            && u.Password == password);
             return user;
         }
-        public User CheckUsernameInUserDb(string username)
+        public IUser CheckUsernameInUserDb(string username)
         {
             var user = users.FirstOrDefault(u => u.Username == username);
             return user;
         }
-        public void AddUserToDb(User user)
+        public void AddUserToDb(IUser user)
         {
             users.Add(user);
             _json.AddUserToJsonDB(user.Username,user.Password);

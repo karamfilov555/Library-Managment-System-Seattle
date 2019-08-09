@@ -19,5 +19,6 @@ namespace LMS.Contracts
         string WrongPasswordMessage();
         string BookRemovedMessage(string title);
         string PrintAddBookLabel();
+        string CatalogDelimiter(int counter);
     }
 }

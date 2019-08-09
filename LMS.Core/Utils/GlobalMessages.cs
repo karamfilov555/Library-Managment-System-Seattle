@@ -19,6 +19,7 @@ namespace LMS.Core.Utils
         private const string CancelMemership = "Your membership is successfully canceled!";
         private const string WrongPassword = "You have enter wrong password!";
         private const string BookRemoved = "Book with title: \"{0}\" was successfully removed";
+        private const string Delimiter = "=======>  Book # {0}  <=======";
         public string PleaseLoginOrRegisterMessage()
         {
             return PleaseLogOrReg;
@@ -72,6 +73,10 @@ namespace LMS.Core.Utils
             return $"==================================={Environment.NewLine}" +
                    $"=======>  New Book Added!  <======={Environment.NewLine}" +
                    $"==================================={Environment.NewLine}";
+        }
+        public string CatalogDelimiter(int counter)
+        {
+            return string.Format(Delimiter, counter);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace LMS.Models.ModelsContracts
         int Year { get; }
         string Country { get; }
         string Language { get; }
-        string ToString();
+        string PrintBookInfo();
 
     }
 }

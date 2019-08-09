@@ -1,10 +1,11 @@
 ﻿using LMS.Contracts;
 using LMS.JasonDB.Contracts;
 using LMS.Models;
-using LMS.Models.ModelsContracts;
+using System.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using LMS.Models.ModelsContracts;
 
 namespace LMS.Services
 {
@@ -12,11 +13,15 @@ namespace LMS.Services
     {
         private readonly IJson _json;
         private readonly IValidator _validator;
-        private IList<Book> books = new List<Book>();
-        public BooksDataBase(IJson json, IValidator validator)
+        private readonly IGlobalMessages _messages;
+        private IList<IBook> books = new List<IBook>();
+        public BooksDataBase(IJson json, 
+                             IValidator validator,
+                             IGlobalMessages messages)
         {
             _json = json;
             _validator = validator;
+            _messages = messages;
         }
         public void LoadBooksFromJson()
         {
@@ -30,21 +35,32 @@ namespace LMS.Services
         {
             _json.AddBookToJsonDB(title, author, pages, year, country, language, subject);
         }
-        public void AddBookToDb(Book book)
+        public void AddBookToDb(IBook book)
         {
             books.Add(book);
         }
-        public void RemoveFromDb(Book book)
+        public void RemoveFromDb(IBook book)
         {
             books.Remove(book);
         }
-        public Book FindBookInDb(string title)
+        public IBook FindBookInDb(string title)
         {
             var bookToFind = books.FirstOrDefault(x => x.Title == title);
             if (_validator.IsNull(bookToFind))
                 throw new ArgumentException("Book with such title does not exist!");
 
             return bookToFind;
+        }
+        public string AllExistingBooksToString()
+        {
+            var strBuilder = new StringBuilder();
+            var count = 1;
+            foreach (var book in books)
+            {
+                strBuilder.AppendLine(_messages.CatalogDelimiter(count) + Environment.NewLine + book.PrintBookInfo());
+                count++;
+            }
+            return strBuilder.ToString();
         }
     }
 }

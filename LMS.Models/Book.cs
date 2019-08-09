@@ -193,13 +193,13 @@ namespace LMS.Models
             var bookInfo = base.ToString();
             return $"{bookInfo}{Environment.NewLine}";
         }
-        public static string CheckOutTitle()
+        public string CheckOutTitle()
         {
             return $"==================================={Environment.NewLine}" +
                    $"=======> Book checked out! <======={Environment.NewLine}" +
                    $"==================================={Environment.NewLine}";
         }
-        public static string AddBookTitle()
+        public  string AddBookTitle()
         {
             return $"==================================={Environment.NewLine}" +
                    $"=======>  New Book Added!  <======={Environment.NewLine}" +

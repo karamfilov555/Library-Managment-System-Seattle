@@ -33,12 +33,12 @@ namespace LMS.Services
             currentUser = _currentUser;
             currentUsername = userName;
         }
-        public User CheckUserCredetials(string username, string password)
+        public IUser CheckUserCredetials(string username, string password)
         {
             var user = _usersDb.CheckUserCredetials(username, password);
             return user;
         }
-        public User CheckAdminCredetials(string username, string password)
+        public IUser CheckAdminCredetials(string username, string password)
         {
             var admin = _adminsDb.CheckAdminCredentials(username, password);
             return admin;

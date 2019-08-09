@@ -8,7 +8,7 @@ namespace LMS.Contracts
 {
     public interface IModelsFactory
     {
-        User CreateUser(string username, string password);
-        Book CreateBook(string title, string author, int pages, int year, string county, string language, string subject);
+        IUser CreateUser(string username, string password);
+        IBook CreateBook(string title, string author, int pages, int year, string county, string language, string subject);
     }
 }
