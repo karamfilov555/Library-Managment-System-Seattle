@@ -20,7 +20,7 @@ namespace LMS.Core.Factories
             ICommand command;
             try
             {
-                 command = componentContext
+                command = componentContext
                     .ResolveNamed<ICommand>(commandName.ToLower());
             }
             catch (Exception)

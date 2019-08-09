@@ -34,7 +34,7 @@ namespace LMS.Core.Commands
             var registry = _factory.CreateRegistry(titleToCheckOut);
             _history.AddRegistryToHistoryDb(registry);
 
-            return _message.BookCheckedOutMessage(titleToCheckOut);
+            return _message.BookCheckedOutMessage(registry.RegistryInfo());
         }
     }
 }

@@ -56,7 +56,7 @@ namespace LMS.JasonDB
             var jsonToOutput = JsonConvert.SerializeObject(array, Formatting.Indented);
             File.WriteAllText(@"../../../User.json", jsonToOutput);
         }
-        public void AddBookToJsonDB(string title, string author, int pages, int year, string country, string language, string subject)
+        public void AddBookToJsonDB(string title, string author, int pages, int year, string country, string language, string subject,string isbn)
         {
             var initialFile = File.ReadAllText(@"../../../Books.json");
             var array = JArray.Parse(initialFile);
@@ -70,6 +70,7 @@ namespace LMS.JasonDB
             bookToAdd["Year"] = year;
             bookToAdd["Rack"] = title[0].ToString().ToUpper();
             bookToAdd["Reservation"] = "Available";
+            bookToAdd["ISBN"] = isbn;
             array.Add(bookToAdd);
             var jsonToOutput = JsonConvert.SerializeObject(array, Formatting.Indented);
             File.WriteAllText(@"../../../Books.json", jsonToOutput);

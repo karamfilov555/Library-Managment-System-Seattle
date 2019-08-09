@@ -65,13 +65,13 @@ namespace LMS.Models
                 returnDate = value;
             }
         }
-        public string BookArchive()
+        public string RegistryInfo()
         {
-            string spaces = new string(' ', 13);
-            return $"{Environment.NewLine}" +
-                   $"{spaces}Title: {this.Title}{Environment.NewLine}" +
-                   $"{spaces}ReturnDate: {this.ReturnDate}{Environment.NewLine}" +
-                   $"{spaces}ISBN: {this.ISBN}{Environment.NewLine}";
+            string spaces = new string(' ', 8);
+
+            return $"{spaces}Title: {this.Title}{Environment.NewLine}" +
+                   $"{spaces}ISBN: {this.ISBN}{Environment.NewLine}" +
+                   $"{spaces}ReturnDate: {this.ReturnDate}{Environment.NewLine}";
         }
     }
 }

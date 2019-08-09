@@ -16,7 +16,7 @@ namespace LMS.JasonDB.Contracts
         IList<User> ReadUsers();
         void WriteUsers(string jsonToOutput);
         void AddUserToJsonDB(string username, string password);
-        void AddBookToJsonDB(string title, string author, int pages, int year, string country, string language, string subject);
+        void AddBookToJsonDB(string title, string author, int pages, int year, string country, string language, string subject, string isbn);
         void RemoveUserFromJsonDb(string userName);
         void RemoveAdminFromJsonDb(string userName);
         void RemoveBookFromJsonDb(string title);

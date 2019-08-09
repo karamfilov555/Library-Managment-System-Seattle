@@ -12,6 +12,8 @@ using LMS.Core.LmsEngine;
 using LMS.Models;
 using LMS.JasonDB;
 using LMS.JasonDB.Contracts;
+using LMS.Generators;
+using LMS.Generators.Contracts;
 
 namespace LMS.Start
 {
@@ -68,6 +70,9 @@ namespace LMS.Start
 
             builder.RegisterType<HistoryDataBase>()
                 .As<IHistoryDataBase>().SingleInstance();
+
+            builder.RegisterType<IsbnGenerator>()
+               .As<IIsbnGenerator>().SingleInstance();
         }
         private void RegisterCommandsWithStrings(ContainerBuilder builder, Assembly commandsAssembly)
         {

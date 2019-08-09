@@ -10,6 +10,6 @@ namespace LMS.Models.ModelsContracts
         string ISBN { get; }
         string Username { get; }
         string ReturnDate { get; }
-        string BookArchive();
+        string RegistryInfo();
     }
 }

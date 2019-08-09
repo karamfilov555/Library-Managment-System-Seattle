@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LMS.Generators\LMS.Generators.csproj" />
     <ProjectReference Include="..\LMS.Interfaces\LMS.Contracts.csproj" />
     <ProjectReference Include="..\LMS.JasonDB\LMS.JasonDB.csproj" />
   </ItemGroup>

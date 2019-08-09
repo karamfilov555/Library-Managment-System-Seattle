@@ -21,6 +21,6 @@ namespace LMS.Contracts
         void RemoveUserFromDb(string userName);
         string GetCurrentUserName();
         void IsAlreadyLoggedIn();
-        bool CheckAllowedCommands(string consoleInput);
+        void CheckAllowedCommands(string consoleInput);
     }
 }

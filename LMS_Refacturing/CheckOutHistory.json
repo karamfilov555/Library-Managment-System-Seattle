@@ -1,3 +1,32 @@
 [
-  
+  {
+    "Title": "Telerik",
+    "ISBN": "isbn",
+    "Username": "Todor",
+    "ReturnDate": "14-Aug-19"
+  },
+  {
+    "Title": "Telerik",
+    "ISBN": "isbn",
+    "Username": "Todor",
+    "ReturnDate": "14-Aug-19"
+  },
+  {
+    "Title": "Telerik",
+    "ISBN": "isbn",
+    "Username": "Todor",
+    "ReturnDate": "14-Aug-19"
+  },
+  {
+    "Title": "Telerik",
+    "ISBN": "isbn",
+    "Username": "Todor",
+    "ReturnDate": "14-Aug-19"
+  },
+  {
+    "Title": "Telerik",
+    "ISBN": "isbn",
+    "Username": "Todor",
+    "ReturnDate": "14-Aug-19"
+  }
 ]

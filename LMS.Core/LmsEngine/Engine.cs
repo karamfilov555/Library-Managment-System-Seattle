@@ -11,20 +11,17 @@ namespace LMS.Core.LmsEngine
         private readonly IOutputWriter _outputWriter;
         private readonly IDataBaseLoader _dataBaseLoader;
         private readonly ILoginAuthenticator _loginAuthenticator;
-        private readonly IGlobalMessages _globalMessages;
         private readonly ICommandProcessor _commandProcessor;
         public Engine(IOutputWriter outputWriter,
                       IInputReader inputReader,
                       IDataBaseLoader dataBaseLoader,
                       ILoginAuthenticator loginAuthenticator,
-                      IGlobalMessages globalMessages,
                       ICommandProcessor commandProcessor)
         {
             _outputWriter = outputWriter;
             _inputReader = inputReader;
             _dataBaseLoader = dataBaseLoader;
             _loginAuthenticator = loginAuthenticator;
-            _globalMessages = globalMessages;
             _commandProcessor = commandProcessor;
         }
         public void Run()
@@ -36,12 +33,7 @@ namespace LMS.Core.LmsEngine
             {
                 try
                 {
-                    if (!_loginAuthenticator.CheckAllowedCommands(consoleInput))
-                    {
-                        _outputWriter.WriteLine
-                            (_globalMessages.PleaseLoginOrRegisterMessage());
-                        continue;
-                    }
+                    _loginAuthenticator.CheckAllowedCommands(consoleInput);
                     var output = _commandProcessor.ProcessCommand(consoleInput);
                     _outputWriter.WriteLine(output);
                 }

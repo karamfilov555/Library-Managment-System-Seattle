@@ -21,14 +21,13 @@ namespace LMS.Models
 
         public Book(string title, string author, int pages, int year, string country, string language, SubjectCategory subject, string ISBN)
         {
-            Title = title;
-            Author = author;
-            Pages = pages;
-            Year = year;
-            Country = country;
-            Language = language;
-            Subject = subject;
-            Rack = rack;
+            this.Title = title;
+            this.Author = author;
+            this.Pages = pages;
+            this.Year = year;
+            this.Country = country;
+            this.Language = language;
+            this.Subject = subject;
             this.ISBN = ISBN;
         }
         public string Title
@@ -154,7 +153,7 @@ namespace LMS.Models
             {
                 return isbn;
             }
-            set
+            private set
             {
                 isbn = value;
             }
@@ -186,24 +185,6 @@ namespace LMS.Models
                 $"ISBN: {ISBN}{Environment.NewLine}" +
                 //$"Copies available: {CopiesCount.GetCopiesCount(key)}{Environment.NewLine}" +
                 $"Added on: {timeOfAdding}{Environment.NewLine}";
-        }
-
-        public string CheckOutBook()
-        {
-            var bookInfo = base.ToString();
-            return $"{bookInfo}{Environment.NewLine}";
-        }
-        public string CheckOutTitle()
-        {
-            return $"==================================={Environment.NewLine}" +
-                   $"=======> Book checked out! <======={Environment.NewLine}" +
-                   $"==================================={Environment.NewLine}";
-        }
-        public  string AddBookTitle()
-        {
-            return $"==================================={Environment.NewLine}" +
-                   $"=======>  New Book Added!  <======={Environment.NewLine}" +
-                   $"==================================={Environment.NewLine}";
         }
     }
 }

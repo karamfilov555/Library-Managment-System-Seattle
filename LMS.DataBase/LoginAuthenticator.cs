@@ -108,14 +108,13 @@ namespace LMS.Services
             }
             _usersDb.RemoveUserFromDb(userName);
         }
-        public bool CheckAllowedCommands(string consoleInput)
+        public void CheckAllowedCommands(string consoleInput)
         {
             var currentUser = GetCurrentUser();
             if (_validator.IsNull(currentUser)
-                && !_validator.CommandNameIsLogin(consoleInput)
-                && !_validator.CommandNameIsRegister(consoleInput))
-                return false;
-            return true;
+                && (!_validator.CommandNameIsLogin(consoleInput)
+                && !_validator.CommandNameIsRegister(consoleInput)))
+                throw new ArgumentException("For better expirience, plese LogIn or Register into the System...");
         }
     }
 }

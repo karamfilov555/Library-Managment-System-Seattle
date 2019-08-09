@@ -20,8 +20,7 @@ namespace LMS.Core.Utils
         private const string WrongPassword = "You have enter wrong password!";
         private const string BookRemoved = "Book with title: \"{0}\" was successfully removed";
         private const string Delimiter = "=======>  Book # {0}  <=======";
-        private const string BookCheckedOut = "You successfully checked-out book with title:" +
-            " \"{0}\"";
+        
         public string PleaseLoginOrRegisterMessage()
         {
             return PleaseLogOrReg;
@@ -72,17 +71,25 @@ namespace LMS.Core.Utils
         }
         public string PrintAddBookLabel()
         {
-            return $"==================================={Environment.NewLine}" +
+            return $"{Environment.NewLine}" +
+                   $"==================================={Environment.NewLine}" +
                    $"=======>  New Book Added!  <======={Environment.NewLine}" +
+                   $"==================================={Environment.NewLine}";
+        }
+        public string PrintCheckOutBookLabel()
+        {
+            return $"{Environment.NewLine}"+
+                   $"==================================={Environment.NewLine}" +
+                   $"=======> Book checked out! <======={Environment.NewLine}" +
                    $"==================================={Environment.NewLine}";
         }
         public string CatalogDelimiter(int counter)
         {
             return string.Format(Delimiter, counter);
         }
-        public string BookCheckedOutMessage(string title)
+        public string BookCheckedOutMessage(string bookInfo)
         {
-            return string.Format(BookCheckedOut, title);
+            return PrintCheckOutBookLabel() + $"{Environment.NewLine}" + bookInfo;
         }
     }
 }

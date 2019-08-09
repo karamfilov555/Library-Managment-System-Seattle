@@ -35,7 +35,8 @@ namespace LMS.Services
         {
             books.Add(book);
             var subj = book.Subject.ToString();
-            _json.AddBookToJsonDB(book.Title, book.Author, book.Pages, book.Year, book.Country, book.Language, subj);
+            var isbn = book.ISBN;
+            _json.AddBookToJsonDB(book.Title, book.Author, book.Pages, book.Year, book.Country, book.Language, subj, isbn);
         }
         public void RemoveFromDb(IBook book)
         {

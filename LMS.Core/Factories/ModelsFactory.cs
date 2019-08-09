@@ -1,4 +1,5 @@
 ﻿using LMS.Contracts;
+using LMS.Generators.Contracts;
 using LMS.Models;
 using LMS.Models.Enums;
 using LMS.Models.ModelsContracts;
@@ -11,9 +12,11 @@ namespace LMS.Core.Factories
     public class ModelsFactory : IModelsFactory
     {
         private readonly ILoginAuthenticator _loginAuthenticator;
-        public ModelsFactory(ILoginAuthenticator loginAuthenticator)
+        private readonly IIsbnGenerator _isbnGenerator;
+        public ModelsFactory(ILoginAuthenticator loginAuthenticator, IIsbnGenerator isbnGenerator)
         {
             _loginAuthenticator = loginAuthenticator;
+            _isbnGenerator = isbnGenerator;
         }
         public IUser CreateUser(string username, string password)
         {
@@ -23,7 +26,8 @@ namespace LMS.Core.Factories
         public IBook CreateBook(string title, string author, int pages, int year, string county, string language, string subject)
         {
             SubjectCategory subj = (SubjectCategory)Enum.Parse(typeof(SubjectCategory), subject, true);
-            var book = new Book(title, author, pages, year, county, language, subj,"isnm");
+            var isbn = _isbnGenerator.GenerateISBN();
+            var book = new Book(title, author, pages, year, county, language, subj,isbn);
             return book;
         }
         public IHistoryRegistry CreateRegistry(string title)
