@@ -2,16 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Moq;
 using LMS.Models;
 
-namespace LMS.Tests.UserTest
+namespace LMS.Tests.UserTests
 {
     [TestClass]
     public class Constructor_Should
     {
         [TestMethod]
-        public void AssignPassedValues()
+        public void MakeInstanceOfUserClass_WhenCorrectValuesPassed()
         {
             var sut = new User("Cool", "tool");
             Assert.IsInstanceOfType(sut, typeof(User));

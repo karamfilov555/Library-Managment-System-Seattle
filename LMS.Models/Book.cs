@@ -38,7 +38,8 @@ namespace LMS.Models
             }
             private set
             {
-                if (value.Length < 2 || value.Length > 100)
+                if (string.IsNullOrEmpty(value)||
+                    value.Length < 2 || value.Length > 100)
                     throw new ArgumentException("Book's title must be between 2 and 100 symbols!");
                 title = value.Replace('_', ' ');
             }
@@ -51,10 +52,6 @@ namespace LMS.Models
             }
             private set
             {
-                if (!Enum.GetNames(typeof(SubjectCategory)).Contains(value.ToString()))
-                {
-                    throw new ArgumentException("Such a subject does not exist in our library!");
-                }
                 subject = value;
             }
         }
@@ -66,7 +63,8 @@ namespace LMS.Models
             }
             private set
             {
-                if (value.Length < 3 || value.Length > 50)
+                if (string.IsNullOrEmpty(value) || 
+                    value.Length < 3 || value.Length > 50)
                     throw new ArgumentException("Book's author name must be between 3 and 50 symbols!");
                 author = value.Replace('_', ' ');
             }
@@ -80,7 +78,7 @@ namespace LMS.Models
             private set
             {
                 if (value < 1 || value > 100000)
-                    throw new ArgumentException("Book's pages must be between 1 and 100000");
+                    throw new ArgumentException("Book's pages must be between 1 and 100000!");
                 pages = value;
             }
         }
@@ -107,7 +105,8 @@ namespace LMS.Models
             }
             private set
             {
-                if (value.Length < 3 || value.Length > 50)
+                if (string.IsNullOrEmpty(value) ||
+                    value.Length < 3 || value.Length > 50)
                     throw new ArgumentException("Country name must be between 3 and 50 symbols!");
                 country = value;
             }
@@ -120,7 +119,8 @@ namespace LMS.Models
             }
             private set
             {
-                if (value.Length < 3 || value.Length > 50)
+                if (string.IsNullOrEmpty(value) || 
+                    value.Length < 3 || value.Length > 50)
                     throw new ArgumentException("Language name must be between 3 and 50 symbols!");
                 language = value;
             }
@@ -155,6 +155,8 @@ namespace LMS.Models
             }
             private set
             {
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentException("ISBN cannot be null!");
                 isbn = value;
             }
         }
