@@ -26,18 +26,18 @@ namespace LMS.Core.Commands
                              IOutputWriter outputWriter,
                              IBooksDataBase booksDataBase)
         {
-            this._validator = validator;
-            this._messages = globalMessages;
-            this._modelsFactory = modelsFactory;
-            this._inputReader = inputReader;
-            this._loginAuthenticator = loginAuthenticator;
-            this._outputWriter = outputWriter;
-            this._booksDataBase = booksDataBase;
+            _validator = validator;
+            _messages = globalMessages;
+            _modelsFactory = modelsFactory;
+            _inputReader = inputReader;
+            _loginAuthenticator = loginAuthenticator;
+            _outputWriter = outputWriter;
+            _booksDataBase = booksDataBase;
         }
         public string Execute(IList<string> parameteres)
         {
-            this._validator.IsParametersCountIsValid(parameteres, 0);
-            this._loginAuthenticator.IsAdmin();
+            _validator.IsParametersCountIsValid(parameteres, 0);
+            _loginAuthenticator.IsAdmin();
 
             string title;
             string author;
@@ -50,36 +50,36 @@ namespace LMS.Core.Commands
 
             try
             {
-                this._outputWriter.WriteLine("Book Title :");
-                title = this._inputReader.ReadLine();
-                this._outputWriter.WriteLine("Book Author :");
-                author = this._inputReader.ReadLine();
-                this._outputWriter.WriteLine("Book Pages :");
-                pages = int.Parse(this._inputReader.ReadLine());
-                this._outputWriter.WriteLine("Book Year :");
-                year = int.Parse(this._inputReader.ReadLine());
-                this._outputWriter.WriteLine("Book Country :");
-                country = this._inputReader.ReadLine();
-                this._outputWriter.WriteLine("Book Language :");
-                language = this._inputReader.ReadLine();
-                this._outputWriter.WriteLine("Book Subject :");
-                subject = this._inputReader.ReadLine();
-                this._outputWriter.WriteLine("Book Copies :");
-                copies = int.Parse(this._inputReader.ReadLine());
+                _outputWriter.WriteLine("Book Title :");
+                title = _inputReader.ReadLine();
+                _outputWriter.WriteLine("Book Author :");
+                author = _inputReader.ReadLine();
+                _outputWriter.WriteLine("Book Pages :");
+                pages = int.Parse(_inputReader.ReadLine());
+                _outputWriter.WriteLine("Book Year :");
+                year = int.Parse(_inputReader.ReadLine());
+                _outputWriter.WriteLine("Book Country :");
+                country = _inputReader.ReadLine();
+                _outputWriter.WriteLine("Book Language :");
+                language = _inputReader.ReadLine();
+                _outputWriter.WriteLine("Book Subject :");
+                subject = _inputReader.ReadLine();
+                _outputWriter.WriteLine("Book Copies :");
+                copies = int.Parse(_inputReader.ReadLine());
             }
             catch (Exception)
             {
-                throw new ArgumentException(this._messages.InvalidParametersMessage());
+                throw new ArgumentException(_messages.InvalidParametersMessage());
             }
             var strBuilder = new StringBuilder();
             for (int i = 1; i <= copies; i++)
             {
-                var book = this._modelsFactory.CreateBook(title, author, pages, year, country, language, subject);
-                this._booksDataBase.AddBookToDb(book);
-                this._booksDataBase.AddBookToJsonDb(title, author, pages, year, country, language, subject);
+                var book = _modelsFactory.CreateBook(title, author, pages, year, country, language, subject);
+                _booksDataBase.AddBookToDb(book);
+                _booksDataBase.AddBookToJsonDb(title, author, pages, year, country, language, subject);
                 strBuilder.AppendLine(book.PrintBookInfo());
             }
-                return this._messages.PrintAddBookLabel() + strBuilder.ToString() ;
+                return _messages.PrintAddBookLabel() + strBuilder.ToString() ;
         }
     }
 }

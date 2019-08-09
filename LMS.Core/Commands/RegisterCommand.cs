@@ -19,31 +19,31 @@ namespace LMS.Core.Commands
                                IModelsFactory modelsFactory,
                                IUsersDataBase userDataBase)
         {
-            this._validator = validator;
-            this._messages = messages;
-            this._loginAuthenticator = loginAuthenticator;
-            this._modelsFactory = modelsFactory;
-            this._userDataBase = userDataBase;
+            _validator = validator;
+            _messages = messages;
+            _loginAuthenticator = loginAuthenticator;
+            _modelsFactory = modelsFactory;
+            _userDataBase = userDataBase;
         }
         public string Execute(IList<string> parameteres)
         {
-            this._loginAuthenticator.IsAlreadyLoggedIn();
-            this._validator.RegisterParametersCountValidation(parameteres);
+            _loginAuthenticator.IsAlreadyLoggedIn();
+            _validator.RegisterParametersCountValidation(parameteres);
 
             var username = parameteres[0];
             var password = parameteres[1];
 
-            if (this._loginAuthenticator.CheckUsernameInAdminDb(username))
-                return this._messages.ThisUserAlreadyExistMessage();
+            if (_loginAuthenticator.CheckUsernameInAdminDb(username))
+                return _messages.ThisUserAlreadyExistMessage();
 
-            if (this._loginAuthenticator.CheckUsernameInUserDb(username))
-                return this._messages.ThisUserAlreadyExistMessage();
+            if (_loginAuthenticator.CheckUsernameInUserDb(username))
+                return _messages.ThisUserAlreadyExistMessage();
 
-            var newUser  = this._modelsFactory.CreateUser(username, password);
+            var newUser  = _modelsFactory.CreateUser(username, password);
 
-            this._userDataBase.AddUserToDb(newUser);
+            _userDataBase.AddUserToDb(newUser);
 
-            return this._messages.RegisterMessage(username);
+            return _messages.RegisterMessage(username);
         }
     }
 }

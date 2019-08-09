@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LMS.DataBase
+namespace LMS.Services
 {
     public class BooksDataBase : IBooksDataBase
     {
@@ -15,8 +15,8 @@ namespace LMS.DataBase
         private IList<Book> books = new List<Book>();
         public BooksDataBase(IJson json, IValidator validator)
         {
-            this._json = json;
-            this._validator = validator;
+            _json = json;
+            _validator = validator;
         }
         public void LoadBooksFromJson()
         {
@@ -28,20 +28,20 @@ namespace LMS.DataBase
         }
         public void AddBookToJsonDb(string title,string author,int pages,int year,string country,string language,string subject)
         {
-            this._json.AddBookToJsonDB(title, author, pages, year, country, language, subject);
+            _json.AddBookToJsonDB(title, author, pages, year, country, language, subject);
         }
         public void AddBookToDb(Book book)
         {
-            this.books.Add(book);
+            books.Add(book);
         }
         public void RemoveFromDb(Book book)
         {
-            this.books.Remove(book);
+            books.Remove(book);
         }
         public Book FindBookInDb(string title)
         {
-            var bookToFind = this.books.FirstOrDefault(x => x.Title == title);
-            if (this._validator.IsNull(bookToFind))
+            var bookToFind = books.FirstOrDefault(x => x.Title == title);
+            if (_validator.IsNull(bookToFind))
                 throw new ArgumentException("Book with such title does not exist!");
 
             return bookToFind;

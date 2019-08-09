@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LMS.DataBase
+namespace LMS.Services
 {
     public class LoginAuthenticator : ILoginAuthenticator
     {
@@ -16,8 +16,8 @@ namespace LMS.DataBase
         private string currentUsername;
         public LoginAuthenticator(IUsersDataBase usersDb, IAdminsDataBase adminsDb)
         {
-            this._usersDb = usersDb;
-            this._adminsDb = adminsDb;
+            _usersDb = usersDb;
+            _adminsDb = adminsDb;
         }
         public IUser GetCurrentUser()
         {
@@ -25,34 +25,34 @@ namespace LMS.DataBase
         }
         public string GetCurrentUserName()
         {
-            return this.currentUsername;
+            return currentUsername;
         }
         public void SetCurrentUser(IUser _currentUser, string userName, string password)
         {
-            this.currentPassword = password;
-            this.currentUser = _currentUser;
-            this.currentUsername = userName;
+            currentPassword = password;
+            currentUser = _currentUser;
+            currentUsername = userName;
         }
         public User CheckUserCredetials(string username, string password)
         {
-            var user = this._usersDb.CheckUserCredetials(username, password);
+            var user = _usersDb.CheckUserCredetials(username, password);
             return user;
         }
         public User CheckAdminCredetials(string username, string password)
         {
-            var admin = this._adminsDb.CheckAdminCredentials(username, password);
+            var admin = _adminsDb.CheckAdminCredentials(username, password);
             return admin;
         }
         public bool CheckUsernameInAdminDb(string username)
         {
-            var admin = this._adminsDb.CheckUsernameInAdminDb(username);
+            var admin = _adminsDb.CheckUsernameInAdminDb(username);
             if (admin != null)
                 return true;
             return false;
         }
         public bool CheckUsernameInUserDb(string username)
         {
-            var user = this._usersDb.CheckUsernameInUserDb(username);
+            var user = _usersDb.CheckUsernameInUserDb(username);
             if (user != null)
                 return true;
             return false;
@@ -60,7 +60,7 @@ namespace LMS.DataBase
         public bool CheckCurrentUserStatus()
         {
             var userToTest = GetCurrentUser();
-            bool result = this._adminsDb.CheckIUserInAdminDb(userToTest);
+            bool result = _adminsDb.CheckIUserInAdminDb(userToTest);
             if (result == true)
                 return true;
             return false;
@@ -100,10 +100,10 @@ namespace LMS.DataBase
         {
             if (CheckCurrentUserStatus())
             {
-                this._adminsDb.RemoveAdminFromDb(userName);
+                _adminsDb.RemoveAdminFromDb(userName);
             }
 
-            this._usersDb.RemoveUserFromDb(userName);
+            _usersDb.RemoveUserFromDb(userName);
 
         }
 

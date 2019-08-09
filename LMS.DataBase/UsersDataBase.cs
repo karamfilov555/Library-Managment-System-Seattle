@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace LMS.DataBase
+namespace LMS.Services
 {
     public class UsersDataBase : IUsersDataBase
     {
@@ -16,7 +16,7 @@ namespace LMS.DataBase
         private readonly IJson _json;
         public UsersDataBase(IJson json)
         {
-            this._json = json;
+            _json = json;
         }
         public void LoadUsersFromJson()
         {
@@ -29,25 +29,25 @@ namespace LMS.DataBase
         }
         public User CheckUserCredetials(string username, string password)
         {
-            var user = this.users.FirstOrDefault(u => u.Username == username
+            var user = users.FirstOrDefault(u => u.Username == username
                                                            && u.Password == password);
             return user;
         }
         public User CheckUsernameInUserDb(string username)
         {
-            var user = this.users.FirstOrDefault(u => u.Username == username);
+            var user = users.FirstOrDefault(u => u.Username == username);
             return user;
         }
         public void AddUserToDb(User user)
         {
-            this.users.Add(user);
-            this._json.AddUserToJsonDB(user.Username,user.Password);
+            users.Add(user);
+            _json.AddUserToJsonDB(user.Username,user.Password);
         }
         public void RemoveUserFromDb(string username)
         {
-            var userToBeDeleted = this.users.FirstOrDefault(x => x.Username == username);
-            this.users.Remove(userToBeDeleted);
-            this._json.RemoveUserFromJsonDb(username);
+            var userToBeDeleted = users.FirstOrDefault(x => x.Username == username);
+            users.Remove(userToBeDeleted);
+            _json.RemoveUserFromJsonDb(username);
         }
         //public void RemoveUserFromJsonDb(string userName)
         //{

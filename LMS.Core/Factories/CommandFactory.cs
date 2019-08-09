@@ -13,14 +13,14 @@ namespace LMS.Core.Factories
 
         public CommandFactory(IComponentContext context)
         {
-            this.componentContext = context;
+            componentContext = context;
         }
         public ICommand FindCommand(string commandName)
         {
             ICommand command;
             try
             {
-                 command = this.componentContext
+                 command = componentContext
                     .ResolveNamed<ICommand>(commandName.ToLower());
             }
             catch (Exception)

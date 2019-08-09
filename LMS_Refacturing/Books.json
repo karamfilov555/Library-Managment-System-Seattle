@@ -1802,5 +1802,38 @@
     "Year": 542,
     "Rack": "M",
     "Reservation": "Available"
+  },
+  {
+    "Author": "Viktor Ugo",
+    "Country": "France",
+    "Language": "french",
+    "Subject": "Drama",
+    "Pages": 3022,
+    "Title": "Les Miserables",
+    "Year": 1844,
+    "Rack": "L",
+    "Reservation": "Available"
+  },
+  {
+    "Author": "Viktor Ugo",
+    "Country": "France",
+    "Language": "french",
+    "Subject": "Drama",
+    "Pages": 3022,
+    "Title": "Les Miserables",
+    "Year": 1844,
+    "Rack": "L",
+    "Reservation": "Available"
+  },
+  {
+    "Author": "Viktor Ugo",
+    "Country": "France",
+    "Language": "french",
+    "Subject": "Drama",
+    "Pages": 3022,
+    "Title": "Les Miserables",
+    "Year": 1844,
+    "Rack": "L",
+    "Reservation": "Available"
   }
 ]

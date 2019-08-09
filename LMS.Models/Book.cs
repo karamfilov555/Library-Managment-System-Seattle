@@ -21,14 +21,14 @@ namespace LMS.Models
 
         public Book(string title, string author, int pages, int year, string country, string language, SubjectCategory subject, string ISBN)
         {
-            this.Title = title;
-            this.Author = author;
-            this.Pages = pages;
-            this.Year = year;
-            this.Country = country;
-            this.Language = language;
-            this.Subject = subject;
-            this.Rack = rack;
+            Title = title;
+            Author = author;
+            Pages = pages;
+            Year = year;
+            Country = country;
+            Language = language;
+            Subject = subject;
+            Rack = rack;
             this.ISBN = ISBN;
         }
         public string Title
@@ -56,7 +56,7 @@ namespace LMS.Models
                 {
                     throw new ArgumentException("Such a subject does not exist in our library!");
                 }
-                this.subject = value;
+                subject = value;
             }
         }
         public  string Author
@@ -134,7 +134,7 @@ namespace LMS.Models
             }
             private set
             {
-                rack = this.Title[0];
+                rack = Title[0];
             }
         }
         public int Copies
@@ -175,15 +175,15 @@ namespace LMS.Models
             var timeOfAdding = DateTime.Now.ToLongDateString();
 
             return  
-                $"Title: {this.Title}{Environment.NewLine}" +
-                $"Author: {this.Author}{Environment.NewLine}" +
-                $"Subject: {this.Subject}{Environment.NewLine}" +
-                $"Pages: {this.Pages}{Environment.NewLine}" +
-                $"Year: {this.Year}{Environment.NewLine}" +
-                $"Country: {this.Country}{Environment.NewLine}" +
-                $"Language: {this.Language}{Environment.NewLine}"+
-                $"Reservation: {this.Reservation}{Environment.NewLine}" +
-                $"ISBN: {this.ISBN}{Environment.NewLine}" +
+                $"Title: {Title}{Environment.NewLine}" +
+                $"Author: {Author}{Environment.NewLine}" +
+                $"Subject: {Subject}{Environment.NewLine}" +
+                $"Pages: {Pages}{Environment.NewLine}" +
+                $"Year: {Year}{Environment.NewLine}" +
+                $"Country: {Country}{Environment.NewLine}" +
+                $"Language: {Language}{Environment.NewLine}"+
+                $"Reservation: {Reservation}{Environment.NewLine}" +
+                $"ISBN: {ISBN}{Environment.NewLine}" +
                 //$"Copies available: {CopiesCount.GetCopiesCount(key)}{Environment.NewLine}" +
                 $"Added on: {timeOfAdding}{Environment.NewLine}";
         }

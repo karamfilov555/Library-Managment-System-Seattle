@@ -13,22 +13,22 @@ namespace LMS.Core.Commands
         private readonly ILoginAuthenticator _loginAuthenticator;
         public CancelMembershipCommand(IValidator validator, IGlobalMessages message, ILoginAuthenticator loginAuthenticator)
         {
-            this._validator = validator;
-            this._message = message;
-            this._loginAuthenticator = loginAuthenticator;
+            _validator = validator;
+            _message = message;
+            _loginAuthenticator = loginAuthenticator;
         }
         public string Execute(IList<string> parameteres)
         {
-            this._validator.IsParametersCountIsValid(parameteres , 1);
-            this._message.CancelMemership_PasswordRequiredMessage();
+            _validator.IsParametersCountIsValid(parameteres , 1);
+            _message.CancelMemership_PasswordRequiredMessage();
             var password = parameteres[0];
-            if (!this._loginAuthenticator.IsPasswordCorrect(password))
-                return this._message.WrongPasswordMessage();
+            if (!_loginAuthenticator.IsPasswordCorrect(password))
+                return _message.WrongPasswordMessage();
 
-            this._loginAuthenticator.RemoveUserFromDb(this._loginAuthenticator.GetCurrentUserName());
-            this._loginAuthenticator.LogoutCurrentUser();
+            _loginAuthenticator.RemoveUserFromDb(_loginAuthenticator.GetCurrentUserName());
+            _loginAuthenticator.LogoutCurrentUser();
 
-            return this._message.CancelMemershipMessage();
+            return _message.CancelMemershipMessage();
         }
     }
 }

@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LMS.Core\LMS.Core.csproj" />
-    <ProjectReference Include="..\LMS.DataBase\LMS.DataBase.csproj" />
+    <ProjectReference Include="..\LMS.DataBase\LMS.Services.csproj" />
     <ProjectReference Include="..\LMS.JasonDB\LMS.JasonDB.csproj" />
   </ItemGroup>
 

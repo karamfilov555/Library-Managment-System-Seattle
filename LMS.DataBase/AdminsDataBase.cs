@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace LMS.DataBase
+namespace LMS.Services
 {
     public class AdminsDataBase : IAdminsDataBase
     {
@@ -15,7 +15,7 @@ namespace LMS.DataBase
         private readonly IList<User> admins = new List<User>();
         public AdminsDataBase(IJson json)
         {
-            this._json = json;
+            _json = json;
         }
         public void LoadAdminsFromJson()
         {
@@ -28,27 +28,27 @@ namespace LMS.DataBase
         }
         public User CheckAdminCredentials(string username, string password)
         {
-            var admin = this.admins.FirstOrDefault(u => u.Username == username
+            var admin = admins.FirstOrDefault(u => u.Username == username
                                                             && u.Password == password);
             return admin;
         }
         public User CheckUsernameInAdminDb(string username)
         {
-            var admin = this.admins.FirstOrDefault(u => u.Username == username);
+            var admin = admins.FirstOrDefault(u => u.Username == username);
             return admin;
         }
         public bool CheckIUserInAdminDb(IUser user)
         {
-            var admin = this.admins.FirstOrDefault(u => u == user);
+            var admin = admins.FirstOrDefault(u => u == user);
             if (admin != null)
                 return true;
             return false;
         }
         public void RemoveAdminFromDb(string username)
         {
-            var adminToBeDeleted = this.admins.FirstOrDefault(x => x.Username == username);
-            this.admins.Remove(adminToBeDeleted);
-            this._json.RemoveAdminFromJsonDb(username);
+            var adminToBeDeleted = admins.FirstOrDefault(x => x.Username == username);
+            admins.Remove(adminToBeDeleted);
+            _json.RemoveAdminFromJsonDb(username);
         }
     }
 }

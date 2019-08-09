@@ -23,21 +23,21 @@ namespace LMS.Core.Commands
                                  ITextManager textManager,
                                  IJson json)
         {
-            this._bookDb = bookDb;
-            this._message = message;
-            this._loginAuthenticator = loginAuthenticator;
-            this._textManager = textManager;
-            this._json = json;
+            _bookDb = bookDb;
+            _message = message;
+            _loginAuthenticator = loginAuthenticator;
+            _textManager = textManager;
+            _json = json;
         }
         public string Execute(IList<string> parameteres)
         {
-            this._loginAuthenticator.IsAdmin();
-            var title = this._textManager.GetParams(parameteres);
-            var bookToRemove = this._bookDb.FindBookInDb(title);
-            this._bookDb.RemoveFromDb(bookToRemove);
-            this._json.RemoveBookFromJsonDb(title);
+            _loginAuthenticator.IsAdmin();
+            var title = _textManager.GetParams(parameteres);
+            var bookToRemove = _bookDb.FindBookInDb(title);
+            _bookDb.RemoveFromDb(bookToRemove);
+            _json.RemoveBookFromJsonDb(title);
 
-            return this._message.BookRemovedMessage(title);
+            return _message.BookRemovedMessage(title);
         }
     }
 }

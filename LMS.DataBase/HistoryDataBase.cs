@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LMS.DataBase
+namespace LMS.Services
 {
     public class HistoryDataBase
     {

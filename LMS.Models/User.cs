@@ -17,14 +17,14 @@ namespace LMS.Models
         private static string currentPass;
         public User(string username, string password)
         {
-            this.Username = username;
-            this.Password = password;
+            Username = username;
+            Password = password;
         }
         public string Username
         {
             get
             {
-                return this.username;
+                return username;
             }
             private set
             {
@@ -32,14 +32,14 @@ namespace LMS.Models
                 {
                     throw new ArgumentException("Invalid username or password!");
                 }
-                this.username = value;
+                username = value;
             }
         }
         public string Password
         {
             get
             {
-                return this.password;
+                return password;
             }
             private set
             {
@@ -47,7 +47,7 @@ namespace LMS.Models
                 {
                     throw new ArgumentException("Invalid username or password!");
                 }
-                this.password = value;
+                password = value;
             }
         }
     }

@@ -26,44 +26,44 @@ namespace LMS.Core.LmsEngine
                       IGlobalMessages globalMessages,
                       ICommandProcessor commandProcessor)
         {
-            this._outputWriter = outputWriter;
-            this._inputReader = inputReader;
-            this._booksDataBase = booksDB;
-            this._adminsDataBase = adminsDataBase;
-            this._usersDataBase = usersDataBase;
-            this._currentUser = currentUser;
-            this._validator = validator;
-            this._globalMessages = globalMessages;
-            this._commandProcessor = commandProcessor;
+            _outputWriter = outputWriter;
+            _inputReader = inputReader;
+            _booksDataBase = booksDB;
+            _adminsDataBase = adminsDataBase;
+            _usersDataBase = usersDataBase;
+            _currentUser = currentUser;
+            _validator = validator;
+            _globalMessages = globalMessages;
+            _commandProcessor = commandProcessor;
         }
         public void Run()
         {
-            this._booksDataBase.LoadBooksFromJson();
-            this._adminsDataBase.LoadAdminsFromJson();
-            this._usersDataBase.LoadUsersFromJson();
+            _booksDataBase.LoadBooksFromJson();
+            _adminsDataBase.LoadAdminsFromJson();
+            _usersDataBase.LoadUsersFromJson();
 
             string consoleInput = string.Empty;
-            while ((consoleInput = this._inputReader.ReadLine()) != "end")
+            while ((consoleInput = _inputReader.ReadLine()) != "end")
             {
                 try
                 {
                     //How to extract this...
-                    var currentUser = this._currentUser.GetCurrentUser();
-                    if (this._validator.IsNull(currentUser) 
-                        && !this._validator.CommandNameIsLogin(consoleInput)
-                        && !this._validator.CommandNameIsRegister(consoleInput))
+                    var currentUser = _currentUser.GetCurrentUser();
+                    if (_validator.IsNull(currentUser) 
+                        && !_validator.CommandNameIsLogin(consoleInput)
+                        && !_validator.CommandNameIsRegister(consoleInput))
                     {
-                        this._outputWriter.WriteLine
-                            (this._globalMessages.PleaseLoginOrRegisterMessage());
+                        _outputWriter.WriteLine
+                            (_globalMessages.PleaseLoginOrRegisterMessage());
                         continue;
                     }
                     //...in Method ?
-                    var output = this._commandProcessor.ProcessCommand(consoleInput);
-                    this._outputWriter.WriteLine(output);
+                    var output = _commandProcessor.ProcessCommand(consoleInput);
+                    _outputWriter.WriteLine(output);
                 }
                 catch (ArgumentException ex)
                 {
-                    this._outputWriter.WriteLine($"ERROR: {ex.Message}");
+                    _outputWriter.WriteLine($"ERROR: {ex.Message}");
                 }
             }
         }

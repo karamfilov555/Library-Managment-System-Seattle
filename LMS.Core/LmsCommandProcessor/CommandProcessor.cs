@@ -13,14 +13,14 @@ namespace LMS.Core.LmsCommandProcessor
         private readonly ITextManager _textManager;
         public CommandProcessor(ICommandFactory commandFactory, ITextManager textManager)
         {
-            this._commandFactory = commandFactory;
-            this._textManager = textManager;
+            _commandFactory = commandFactory;
+            _textManager = textManager;
         }
         public string ProcessCommand(string consoleInput)
         {
-            var parameters = this._textManager.GetCommandParams(consoleInput);
-            var commandName = this._textManager.ExtractCommandName(consoleInput);
-            var command = this._commandFactory.FindCommand(commandName);
+            var parameters = _textManager.GetCommandParams(consoleInput);
+            var commandName = _textManager.ExtractCommandName(consoleInput);
+            var command = _commandFactory.FindCommand(commandName);
             var output = command.Execute(parameters.ToList());
 
             return output;

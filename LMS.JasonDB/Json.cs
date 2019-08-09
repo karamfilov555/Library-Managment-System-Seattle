@@ -80,7 +80,7 @@ namespace LMS.JasonDB
             var user = existingUsers.FirstOrDefault(x => x.Username == userName);
             existingUsers.Remove(user);
             var jsonToOutput = JsonConvert.SerializeObject(existingUsers, Formatting.Indented);
-            this.WriteUsers(jsonToOutput);
+            WriteUsers(jsonToOutput);
         }
         public void RemoveAdminFromJsonDb(string userName)
         {
@@ -88,7 +88,7 @@ namespace LMS.JasonDB
             var admin = existingAdmins.FirstOrDefault(x => x.Username == userName);
             existingAdmins.Remove(admin);
             var jsonToOutput = JsonConvert.SerializeObject(existingAdmins, Formatting.Indented);
-            this.WriteAdmins(jsonToOutput);
+            WriteAdmins(jsonToOutput);
         }
         public void RemoveBookFromJsonDb(string title)
         {
@@ -96,7 +96,7 @@ namespace LMS.JasonDB
             var book = existingBooks.FirstOrDefault(x => x.Title == title);
             existingBooks.Remove(book);
             var jsonToOutput = JsonConvert.SerializeObject(existingBooks, Formatting.Indented);
-            this.WriteBooks(jsonToOutput);
+            WriteBooks(jsonToOutput);
         }
     }
 }
