@@ -1,11 +1,8 @@
 ﻿using Autofac;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using LMS.Core.IO;
-using System.Text;
-using LMS.Core;
 using LMS.Core.Factories;
 using LMS.Services;
 using LMS.Core.Commands;
@@ -51,7 +48,6 @@ namespace LMS.Start
             builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(Book)))
               .AsImplementedInterfaces();
 
-
             builder.RegisterType<Json>()
              .As<IJson>().SingleInstance();
 
@@ -66,6 +62,12 @@ namespace LMS.Start
 
             builder.RegisterType<AdminsDataBase>()
                 .As<IAdminsDataBase>().SingleInstance();
+
+            builder.RegisterType<DataBaseLoader>()
+                .As<IDataBaseLoader>().SingleInstance();
+
+            builder.RegisterType<HistoryDataBase>()
+                .As<IHistoryDataBase>().SingleInstance();
         }
         private void RegisterCommandsWithStrings(ContainerBuilder builder, Assembly commandsAssembly)
         {

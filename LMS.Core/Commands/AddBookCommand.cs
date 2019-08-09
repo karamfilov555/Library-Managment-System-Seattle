@@ -76,10 +76,9 @@ namespace LMS.Core.Commands
             {
                 var book = _modelsFactory.CreateBook(title, author, pages, year, country, language, subject);
                 _booksDataBase.AddBookToDb(book);
-                _booksDataBase.AddBookToJsonDb(title, author, pages, year, country, language, subject);
                 strBuilder.AppendLine(book.PrintBookInfo());
             }
-                return _messages.PrintAddBookLabel() + strBuilder.ToString() ;
+            return _messages.PrintAddBookLabel() + strBuilder.ToString();
         }
     }
 }

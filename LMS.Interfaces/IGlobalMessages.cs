@@ -20,5 +20,6 @@ namespace LMS.Contracts
         string BookRemovedMessage(string title);
         string PrintAddBookLabel();
         string CatalogDelimiter(int counter);
+        string BookCheckedOutMessage(string title);
     }
 }

@@ -31,24 +31,22 @@ namespace LMS.Services
                  books.Add(book);
             }
         }
-        public void AddBookToJsonDb(string title,string author,int pages,int year,string country,string language,string subject)
-        {
-            _json.AddBookToJsonDB(title, author, pages, year, country, language, subject);
-        }
         public void AddBookToDb(IBook book)
         {
             books.Add(book);
+            var subj = book.Subject.ToString();
+            _json.AddBookToJsonDB(book.Title, book.Author, book.Pages, book.Year, book.Country, book.Language, subj);
         }
         public void RemoveFromDb(IBook book)
         {
             books.Remove(book);
+            _json.RemoveBookFromJsonDb(book.Title);
         }
         public IBook FindBookInDb(string title)
         {
             var bookToFind = books.FirstOrDefault(x => x.Title == title);
             if (_validator.IsNull(bookToFind))
                 throw new ArgumentException("Book with such title does not exist!");
-
             return bookToFind;
         }
         public string AllExistingBooksToString()

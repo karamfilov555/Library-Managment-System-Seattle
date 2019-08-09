@@ -20,6 +20,8 @@ namespace LMS.Core.Utils
         private const string WrongPassword = "You have enter wrong password!";
         private const string BookRemoved = "Book with title: \"{0}\" was successfully removed";
         private const string Delimiter = "=======>  Book # {0}  <=======";
+        private const string BookCheckedOut = "You successfully checked-out book with title:" +
+            " \"{0}\"";
         public string PleaseLoginOrRegisterMessage()
         {
             return PleaseLogOrReg;
@@ -77,6 +79,10 @@ namespace LMS.Core.Utils
         public string CatalogDelimiter(int counter)
         {
             return string.Format(Delimiter, counter);
+        }
+        public string BookCheckedOutMessage(string title)
+        {
+            return string.Format(BookCheckedOut, title);
         }
     }
 }

@@ -19,12 +19,12 @@ namespace LMS.Services
             _json = json;
             _loginAuthenticator = loginAuthenticator;
         }
-        //public void AddBookToCheckOut(IHistoryRegistry registry)
-        //{
-        //    this.history.Add(registry);
-        //    var currentUsername = _loginAuthenticator.GetCurrentUserName();
-        //    _json.AddToCheckOutHistoryJson(book.Title, book.Author, book.Pages, book.Year, book.Country, book.Language, "ISbn", currentUsername, "datata");
-        //}
+        public void AddRegistryToHistoryDb(IHistoryRegistry registry)
+        {
+            history.Add(registry);
+            _json.AddToCheckOutHistoryJson
+                (registry.Title, registry.ISBN, registry.Username, registry.ReturnDate);
+        }
         public void LoadHistoryFromJson()
         {
             var existingHistory = _json.ReadCheckOutHistory();

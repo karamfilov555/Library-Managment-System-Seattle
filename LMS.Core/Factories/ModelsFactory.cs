@@ -10,6 +10,11 @@ namespace LMS.Core.Factories
 {
     public class ModelsFactory : IModelsFactory
     {
+        private readonly ILoginAuthenticator _loginAuthenticator;
+        public ModelsFactory(ILoginAuthenticator loginAuthenticator)
+        {
+            _loginAuthenticator = loginAuthenticator;
+        }
         public IUser CreateUser(string username, string password)
         {
             var user = new User(username, password);
@@ -20,6 +25,15 @@ namespace LMS.Core.Factories
             SubjectCategory subj = (SubjectCategory)Enum.Parse(typeof(SubjectCategory), subject, true);
             var book = new Book(title, author, pages, year, county, language, subj,"isnm");
             return book;
+        }
+        public IHistoryRegistry CreateRegistry(string title)
+        {
+            var today = DateTime.Now;
+            var returnDate = today.AddDays(5).ToShortDateString();
+            var currentUsername = _loginAuthenticator.GetCurrentUserName();
+            var isbn = "isbn";
+            var registry = new HistoryRegistry(title,isbn,currentUsername,returnDate);
+            return registry;
         }
     }
 }

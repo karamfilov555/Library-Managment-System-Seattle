@@ -108,18 +108,13 @@ namespace LMS.JasonDB
         {
             File.WriteAllText(@"../../../CheckOutHistory.json", jsonToOutput);
         }
-        public void AddToCheckOutHistoryJson(string title, string author, int pages, int year, string country, string lang, string isbn, string username, string returnDate)
+        public void AddToCheckOutHistoryJson(string title,string isbn, string username, string returnDate)
         {
             var initialFile = File.ReadAllText(@"../../../CheckOutHistory.json");
             var array = JArray.Parse(initialFile);
             var bookToAdd = new JObject();
 
             bookToAdd["Title"] = title;
-            bookToAdd["Author"] = author;
-            bookToAdd["Pages"] = pages;
-            bookToAdd["Year"] = year;
-            bookToAdd["Country"] = country;
-            bookToAdd["Language"] = lang;
             bookToAdd["ISBN"] = isbn;
             bookToAdd["Username"] = username;
             bookToAdd["ReturnDate"] = returnDate;
@@ -127,5 +122,6 @@ namespace LMS.JasonDB
             var jsonToOutput = JsonConvert.SerializeObject(array, Formatting.Indented);
             WriteCheckOutHistory(jsonToOutput);
         }
+       
     }
 }

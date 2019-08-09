@@ -15,19 +15,16 @@ namespace LMS.Core.Commands
         private readonly IGlobalMessages _message;
         private readonly ILoginAuthenticator _loginAuthenticator;
         private readonly ITextManager _textManager;
-        private readonly IJson _json;
 
         public RemoveBookCommand(IBooksDataBase bookDb, 
                                  IGlobalMessages message,
                                  ILoginAuthenticator loginAuthenticator,
-                                 ITextManager textManager,
-                                 IJson json)
+                                 ITextManager textManager)
         {
             _bookDb = bookDb;
             _message = message;
             _loginAuthenticator = loginAuthenticator;
             _textManager = textManager;
-            _json = json;
         }
         public string Execute(IList<string> parameteres)
         {
@@ -35,8 +32,6 @@ namespace LMS.Core.Commands
             var title = _textManager.GetParams(parameteres);
             var bookToRemove = _bookDb.FindBookInDb(title);
             _bookDb.RemoveFromDb(bookToRemove);
-            _json.RemoveBookFromJsonDb(title);
-
             return _message.BookRemovedMessage(title);
         }
     }
