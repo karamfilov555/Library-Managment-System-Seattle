@@ -19,7 +19,7 @@ namespace LMS.Models
         {
             get
             {
-                return username;
+                return this.username;
             }
             private set
             {
@@ -28,7 +28,7 @@ namespace LMS.Models
                 {
                     throw new ArgumentException("Invalid username or password!");
                 }
-                username = value;
+                this.username = value;
             }
         }
         public string Password

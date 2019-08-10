@@ -12,11 +12,15 @@ namespace LMS.Tests.UserTests
     public class Username_Should
     {
         private const string username = "username";
-        private const string pass = "pass";
+        private const string author = "author";
         [TestMethod]
-        public void SetUsername_WhenCorrectValuePassed()
+        public void ThrowArgumentException_WhenUsernameShorterThanMinValuePassed()
         {
-          
+            // tuk trqbva da izberem mejdu unit testove i private set
+            //var user = new User("cool", "tool");
+            //Assert.ThrowsException<ArgumentException>(
+            //   () => user.Username = "1");
+            
         }
     }
 }
