@@ -1,12 +1,7 @@
-﻿using LMS.Core.IO;
-using LMS.Core.Utils;
-using LMS.Models;
-using LMS.Models.ModelsContracts;
+﻿using LMS.Core.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace LMS.Tests.LMS.CoreTests
 {

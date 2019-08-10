@@ -2,12 +2,8 @@
 using LMS.Core.Factories;
 using LMS.Generators.Contracts;
 using LMS.Models;
-using LMS.Models.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LMS.Tests.LMS.CoreTests
 {
