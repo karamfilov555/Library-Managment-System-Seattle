@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using LMS.Models;
+using LMS.Models.ModelsContracts;
 
 namespace LMS.Tests.UserTests
 {
@@ -11,7 +12,7 @@ namespace LMS.Tests.UserTests
         public void MakeInstanceOfUserClass_WhenCorrectValuesPassed()
         {
             var sut = new User("Cool", "tool");
-            Assert.IsInstanceOfType(sut, typeof(User));
+            Assert.IsInstanceOfType(sut, typeof(IUser));
         }
         [TestMethod]
         public void SetUsername_WhenCorrectValuePassed()

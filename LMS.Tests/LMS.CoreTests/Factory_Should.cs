@@ -2,6 +2,7 @@
 using LMS.Core.Factories;
 using LMS.Generators.Contracts;
 using LMS.Models;
+using LMS.Models.ModelsContracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -31,7 +32,7 @@ namespace LMS.Tests.LMS.CoreTests
             //Act
             var sut = factory.CreateBook(title, author, pages, year, country, language, subject);
             //Assert
-            Assert.IsInstanceOfType(sut, typeof(Book));
+            Assert.IsInstanceOfType(sut, typeof(IBook));
         }
         [TestMethod]
         public void CreateInstanceOfUser_WhenValidValuesPassed()
@@ -43,7 +44,7 @@ namespace LMS.Tests.LMS.CoreTests
             //Act
             var sut = factory.CreateUser(username,password);
             //Assert
-            Assert.IsInstanceOfType(sut, typeof(User));
+            Assert.IsInstanceOfType(sut, typeof(IUser));
         }
         [TestMethod]
         public void CreateInstanceOfHistoryRegistry_WhenValidValuesPassed()
@@ -56,7 +57,7 @@ namespace LMS.Tests.LMS.CoreTests
             //Act
             var sut = factory.CreateRegistry(title, isbn);
             //Assert
-            Assert.IsInstanceOfType(sut, typeof(HistoryRegistry));
+            Assert.IsInstanceOfType(sut, typeof(IHistoryRegistry));
         }
         [TestMethod]
         public void ConstructorShould_CreateInstanceOfModelsFactory()
@@ -66,7 +67,7 @@ namespace LMS.Tests.LMS.CoreTests
             var generatorMocked = new Mock<IIsbnGenerator>();
             var factory = new ModelsFactory(authenticatorMocked.Object, generatorMocked.Object);
             //Act & Assert
-            Assert.IsInstanceOfType(factory, typeof(ModelsFactory));
+            Assert.IsInstanceOfType(factory, typeof(IModelsFactory));
         }
     }
 }

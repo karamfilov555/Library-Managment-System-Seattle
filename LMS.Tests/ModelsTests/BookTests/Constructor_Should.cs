@@ -1,5 +1,6 @@
 ﻿using LMS.Models;
 using LMS.Models.Enums;
+using LMS.Models.ModelsContracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
@@ -21,7 +22,7 @@ namespace LMS.Tests.BookTests
         public void MakeInstanceOfBookClass_WhenCorrectValuesPassed()
         {
             var sut = new Book(title,author,pages,year,country,language,subject,isbn);
-            Assert.IsInstanceOfType(sut, typeof(Book));
+            Assert.IsInstanceOfType(sut, typeof(IBook));
         }
         [TestMethod]
         public void SetTitle_WhenCorrectValuePassed()

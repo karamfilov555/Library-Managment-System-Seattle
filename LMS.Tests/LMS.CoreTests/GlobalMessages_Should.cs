@@ -1,4 +1,5 @@
-﻿using LMS.Core.Utils;
+﻿using LMS.Contracts;
+using LMS.Core.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace LMS.Tests.LMS.CoreTests
         public void Constructor_ShouldMakeInstanceOfGlobalMsg()
         {
             var sut = new GlobalMessages();
-            Assert.IsInstanceOfType(sut, typeof(GlobalMessages));
+            Assert.IsInstanceOfType(sut, typeof(IGlobalMessages));
         }
         [TestMethod]
         public void PleaseLoginOrRegisterMessageMethod_ShouldReturnCorrectMessage()

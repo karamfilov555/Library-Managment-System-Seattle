@@ -1,4 +1,5 @@
-﻿using LMS.Core.Utils;
+﻿using LMS.Contracts;
+using LMS.Core.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace LMS.Tests.LMS.CoreTests
         public void Constructor_ShouldMakeInstanceOfValidator()
         {
             var sut = new Validator();
-            Assert.IsInstanceOfType(sut, typeof(Validator));
+            Assert.IsInstanceOfType(sut, typeof(IValidator));
         }
         [TestMethod]
         public void IsParametersCountIsValid_ShouldThrowArgumentExWhenParamsAreInvalid()

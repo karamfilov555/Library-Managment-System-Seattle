@@ -1,4 +1,5 @@
-﻿using LMS.Core.Utils;
+﻿using LMS.Core.Contracts;
+using LMS.Core.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace LMS.Tests.LMS.CoreTests
         public void Constructor_ShouldMakeInstanceOfTextManager()
         {
             var sut = new TextManager();
-            Assert.IsInstanceOfType(sut, typeof(TextManager));
+            Assert.IsInstanceOfType(sut, typeof(ITextManager));
         }
         [TestMethod]
         public void ExtractCommandNameMethod_ShouldReturnCommandName()
