@@ -6,7 +6,7 @@ using System.Text;
 
 namespace LMS.Core.Commands
 {
-    class MyBooksCommand : ICommand
+    public class MyBooksCommand : ICommand
     {
         private readonly IHistoryDataBase _history;
         public MyBooksCommand(IHistoryDataBase history)

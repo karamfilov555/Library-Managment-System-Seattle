@@ -6,7 +6,7 @@ using System.Text;
 
 namespace LMS.Core.Commands
 {
-    class CancelMembershipCommand : ICommand
+    public class CancelMembershipCommand : ICommand
     {
         private readonly IValidator _validator;
         private readonly IGlobalMessages _message;

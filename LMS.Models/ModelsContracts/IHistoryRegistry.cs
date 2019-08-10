@@ -6,10 +6,10 @@ namespace LMS.Models.ModelsContracts
 {
     public interface IHistoryRegistry
     {
-        string Title { get; }
-        string ISBN { get; }
-        string Username { get; }
-        string ReturnDate { get; }
+        string Title { get; set; }
+        string ISBN { get; set; }
+        string Username { get; set; }
+        string ReturnDate { get; set; }
         string RegistryInfo();
     }
 }

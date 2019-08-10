@@ -25,7 +25,7 @@ namespace LMS.Models
             {
                 return title;
             }
-            private set
+            set
             {
                 title = value;
             }
@@ -37,7 +37,7 @@ namespace LMS.Models
             {
                 return username;
             }
-            private set
+            set
             {
                 username = value;
             }
@@ -49,7 +49,7 @@ namespace LMS.Models
             {
                 return isbn;
             }
-            private set
+            set
             {
                 isbn = value;
             }
@@ -60,7 +60,7 @@ namespace LMS.Models
             {
                 return returnDate;
             }
-            private set
+            set
             {
                 returnDate = value;
             }

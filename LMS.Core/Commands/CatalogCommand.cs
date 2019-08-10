@@ -6,7 +6,7 @@ using System.Text;
 
 namespace LMS.Core.Commands
 {
-    class CatalogCommand : ICommand
+    public class CatalogCommand : ICommand
     {
         private readonly IValidator _validator;
         private readonly IBooksDataBase _booksDb;

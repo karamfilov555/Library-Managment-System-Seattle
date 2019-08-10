@@ -12,53 +12,59 @@ namespace LMS.JasonDB
 {
     public class Json:IJson
     {
+        private const string bookPath = @"../../../Books.json";
+        private const string adminPath = @"../../../Admin.json";
+        private const string userPath = @"../../../User.json";
+        private const string historyPath = @"../../../CheckOutHistory.json";
+
+
         public Json()
         {
         }
         public IList<Book> ReadBooks()
         {
-            string jsonIn = File.ReadAllText(@"../../../Books.json");
+            string jsonIn = File.ReadAllText(bookPath);
             var existingBooks = JsonConvert.DeserializeObject<IList<Book>>(jsonIn);
             return existingBooks;
         }
         public void WriteBooks(string jsonToOutput)
         {
-            File.WriteAllText(@"../../../Books.json", jsonToOutput);
+            File.WriteAllText(bookPath, jsonToOutput);
         }
         public IList<User> ReadAdmins()
         {
-            string jsonIn = File.ReadAllText(@"../../../Admin.json");
+            string jsonIn = File.ReadAllText(adminPath);
             var existingAdmins = JsonConvert.DeserializeObject<IList<User>>(jsonIn);
             return existingAdmins;
         }
         public void WriteAdmins(string jsonToOutput)
         {
-            File.WriteAllText(@"../../../Admin.json", jsonToOutput);
+            File.WriteAllText(adminPath, jsonToOutput);
         }
         public IList<User> ReadUsers()
         {
-            string jsonIn = File.ReadAllText(@"../../../User.json");
+            string jsonIn = File.ReadAllText(userPath);
             var existingUsers = JsonConvert.DeserializeObject<IList<User>>(jsonIn);
             return existingUsers;
         }
         public void WriteUsers(string jsonToOutput)
         {
-            File.WriteAllText(@"../../../User.json", jsonToOutput);
+            File.WriteAllText(userPath, jsonToOutput);
         }
         public void AddUserToJsonDB(string username, string password)
         {
-            string jsonIn = File.ReadAllText(@"../../../User.json");
+            string jsonIn = File.ReadAllText(userPath);
             var array = JArray.Parse(jsonIn);
             var userToAdd = new JObject();
             userToAdd["Username"] = username;
             userToAdd["Password"] = password;
             array.Add(userToAdd);
             var jsonToOutput = JsonConvert.SerializeObject(array, Formatting.Indented);
-            File.WriteAllText(@"../../../User.json", jsonToOutput);
+            File.WriteAllText(userPath, jsonToOutput);
         }
         public void AddBookToJsonDB(string title, string author, int pages, int year, string country, string language, string subject,string isbn)
         {
-            var initialFile = File.ReadAllText(@"../../../Books.json");
+            var initialFile = File.ReadAllText(bookPath);
             var array = JArray.Parse(initialFile);
             var bookToAdd = new JObject();
             bookToAdd["Author"] = author;
@@ -73,7 +79,7 @@ namespace LMS.JasonDB
             bookToAdd["ISBN"] = isbn;
             array.Add(bookToAdd);
             var jsonToOutput = JsonConvert.SerializeObject(array, Formatting.Indented);
-            File.WriteAllText(@"../../../Books.json", jsonToOutput);
+            File.WriteAllText(bookPath, jsonToOutput);
         }
         public void RemoveUserFromJsonDb(string userName)
         {
@@ -101,17 +107,17 @@ namespace LMS.JasonDB
         }
         public IList<HistoryRegistry> ReadCheckOutHistory()
         {
-            string jsonIn = File.ReadAllText(@"../../../CheckOutHistory.json");
+            string jsonIn = File.ReadAllText(historyPath);
             var existingHistory = JsonConvert.DeserializeObject<List<HistoryRegistry>>(jsonIn);
             return existingHistory;
         }
         public void WriteCheckOutHistory(string jsonToOutput)
         {
-            File.WriteAllText(@"../../../CheckOutHistory.json", jsonToOutput);
+            File.WriteAllText(historyPath, jsonToOutput);
         }
         public void AddToCheckOutHistoryJson(string title,string isbn, string username, string returnDate)
         {
-            var initialFile = File.ReadAllText(@"../../../CheckOutHistory.json");
+            var initialFile = File.ReadAllText(historyPath);
             var array = JArray.Parse(initialFile);
             var bookToAdd = new JObject();
 
