@@ -30,7 +30,7 @@ namespace LMS.Tests.LMS.CoreTests
             generatorMocked.Setup(x => x.GenerateISBN()).Returns("dddddd");
             var factory = new ModelsFactory(authenticatorMocked.Object,generatorMocked.Object);
             //Act
-            var sut = factory.CreateBook(title, author, pages, year, country, language, subject);
+            var sut = factory.CreateBook(title, author, pages, year, country, language, subject,isbn);
             //Assert
             Assert.IsInstanceOfType(sut, typeof(IBook));
         }
@@ -55,7 +55,7 @@ namespace LMS.Tests.LMS.CoreTests
             var generatorMocked = new Mock<IIsbnGenerator>();
             var factory = new ModelsFactory(authenticatorMocked.Object, generatorMocked.Object);
             //Act
-            var sut = factory.CreateRegistry(title, isbn);
+            var sut = factory.CreateRegistry(title, author, pages, year, country, language, subject, isbn);
             //Assert
             Assert.IsInstanceOfType(sut, typeof(IHistoryRegistry));
         }
