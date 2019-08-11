@@ -22,7 +22,5 @@ namespace LMS.Tests.CommandsTests
             history.Verify(h => h.GetHistoryOfCurrentUser(), Times.Once);
 
         }
-        
-
     }
 }
