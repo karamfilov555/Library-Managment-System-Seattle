@@ -1,8 +1,14 @@
 [
   {
     "Title": "Under The Yuke",
-    "ISBN": "978-1-940313-09--1581655632",
     "Username": "Todor",
-    "ReturnDate": "16-Aug-19"
+    "ISBN": "978-1-940313-09--554379742",
+    "ReturnDate": "16-Aug-19",
+    "Author": "Ivan Vazov",
+    "Pages": 1932,
+    "Year": 1885,
+    "Country": "Bulgaria",
+    "Language": "bulgarian",
+    "Subject": 7
   }
 ]

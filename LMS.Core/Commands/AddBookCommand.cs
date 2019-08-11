@@ -1,6 +1,7 @@
 ﻿using LMS.Contracts;
 using LMS.Core.CommandContracts;
 using LMS.Core.Contracts;
+using LMS.Generators.Contracts;
 using LMS.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Text;
 
 namespace LMS.Core.Commands
 {
-    class AddBookCommand : ICommand
+    public class AddBookCommand : ICommand
     {
         private readonly IGlobalMessages _messages;
         private readonly IModelsFactory _modelsFactory;
@@ -16,13 +17,15 @@ namespace LMS.Core.Commands
         private readonly IInputReader _inputReader;
         private readonly ILoginAuthenticator _loginAuthenticator;
         private readonly IOutputWriter _outputWriter;
+        private readonly IIsbnGenerator _isbnGenerator;
 
         public AddBookCommand(IGlobalMessages globalMessages,
                               IModelsFactory modelsFactory,
                               IInputReader inputReader,
                               ILoginAuthenticator loginAuthenticator,
-                             IOutputWriter outputWriter,
-                             IBookServices bookServices)
+                              IOutputWriter outputWriter,
+                              IBookServices bookServices,
+                              IIsbnGenerator isbnGenerator)
         {
             _messages = globalMessages;
             _modelsFactory = modelsFactory;
@@ -30,6 +33,7 @@ namespace LMS.Core.Commands
             _loginAuthenticator = loginAuthenticator;
             _outputWriter = outputWriter;
             _bookServices = bookServices;
+            _isbnGenerator = isbnGenerator;
         }
         public string Execute(IList<string> parameteres)
         {
@@ -70,7 +74,8 @@ namespace LMS.Core.Commands
             var strBuilder = new StringBuilder();
             for (int i = 1; i <= copies; i++)
             {
-                var book = _modelsFactory.CreateBook(title, author, pages, year, country, language, subject);
+                var isbn = _isbnGenerator.GenerateISBN();
+                var book = _modelsFactory.CreateBook(title, author, pages, year, country, language, subject, isbn);
                 _bookServices.AddBookToDb(book);
                 strBuilder.AppendLine(book.PrintBookInfo());
             }

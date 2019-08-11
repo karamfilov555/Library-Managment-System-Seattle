@@ -17,7 +17,7 @@ namespace LMS.Models
         private string country;
         private int pages;
         private int year;
-        private char  rack;
+        private char _rack;
 
         public Book(string title, string author, int pages, int year, string country, string language, SubjectCategory subject, string ISBN)
         {
@@ -29,6 +29,7 @@ namespace LMS.Models
             this.Language = language;
             this.Subject = subject;
             this.ISBN = ISBN;
+            Rack = _rack;
         }
         public string Title
         {
@@ -129,11 +130,11 @@ namespace LMS.Models
         {
             get
             {
-                return rack;
+                return _rack;
             }
             private set
             {
-                rack = Title[0];
+                _rack = Title[0];
             }
         }
         public int Copies
@@ -185,7 +186,7 @@ namespace LMS.Models
                 $"Language: {Language}{Environment.NewLine}"+
                 $"Reservation: {Reservation}{Environment.NewLine}" +
                 $"ISBN: {ISBN}{Environment.NewLine}" +
-                //$"Copies available: {CopiesCount.GetCopiesCount(key)}{Environment.NewLine}" +
+                $"Rack: {Rack}{Environment.NewLine}" +
                 $"Added on: {timeOfAdding}{Environment.NewLine}";
         }
     }

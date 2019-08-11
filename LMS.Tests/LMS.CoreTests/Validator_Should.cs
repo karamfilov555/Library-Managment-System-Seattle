@@ -10,7 +10,7 @@ namespace LMS.Tests.LMS.CoreTests
     public class Validator_
     {
         List<string> parameters = new List<string> { "dddd", "dasdada" };
-        List<string> invalidParameters = new List<string> { "dddd"};
+        List<string> pramateresWithOneValue = new List<string> { "dddd"};
 
         [TestMethod]
         public void Constructor_ShouldMakeInstanceOfValidator()
@@ -19,27 +19,27 @@ namespace LMS.Tests.LMS.CoreTests
             Assert.IsInstanceOfType(sut, typeof(IValidator));
         }
         [TestMethod]
-        public void IsParametersCountIsValid_ShouldThrowArgumentExWhenParamsAreInvalid()
+        public void CancelMembershipCountValidation_ShouldThrowArgumentExWhenParamsAreInvalid()
         {
             var sut = new Validator();
 
             Assert.ThrowsException<ArgumentException>(
-                () => sut.IsParametersCountIsValid(parameters, 1));
+                () => sut.CancelMembershipCountValidation(parameters));
         }
         [TestMethod]
-        public void IsParametersCountIsValid_ShouldThrowCorrectArgumentExMessage()
+        public void CancelMembershipCountValidation_ShouldThrowCorrectArgumentExMessage()
         {
             var sut = new Validator();
-            var expectedMsg = "Parameters count is not valid!";
+            var expectedMsg = "To Cancel your membership you should enter valid password!";
             var ex = Assert.ThrowsException<ArgumentException>(
-                () => sut.IsParametersCountIsValid(parameters, 1));
+                () => sut.CancelMembershipCountValidation(parameters));
             Assert.AreEqual(expectedMsg, ex.Message);
         }
         [TestMethod]
-        public void IsParametersCountIsValid_ShouldNotThrowWhenValidValuesPassed()
+        public void CancelMembershipCountValidation_ShouldNotThrowWhenValidValuesPassed()
         {
             var sut = new Validator();
-            sut.IsParametersCountIsValid(parameters, 2);
+            sut.CancelMembershipCountValidation(pramateresWithOneValue);
             var expectedCount = 2;
             Assert.AreEqual(expectedCount, parameters.Count);
         }
@@ -49,7 +49,7 @@ namespace LMS.Tests.LMS.CoreTests
             var sut = new Validator();
 
             Assert.ThrowsException<ArgumentException>(
-                () => sut.LoginParametersCountValidation(invalidParameters));
+                () => sut.LoginParametersCountValidation(pramateresWithOneValue));
         }
         [TestMethod]
         public void LoginParametersCountValidation_ShouldThrowCorrectArgumentExMessage()
@@ -57,7 +57,7 @@ namespace LMS.Tests.LMS.CoreTests
             var sut = new Validator();
 
             var ex = Assert.ThrowsException<ArgumentException>(
-                () => sut.LoginParametersCountValidation(invalidParameters));
+                () => sut.LoginParametersCountValidation(pramateresWithOneValue));
             var expectedMsg = "To Login into the System you should enter Username and Password!";
             Assert.AreEqual(expectedMsg, ex.Message);
         }
@@ -84,7 +84,7 @@ namespace LMS.Tests.LMS.CoreTests
             var sut = new Validator();
 
             Assert.ThrowsException<ArgumentException>(
-                ()=> sut.RegisterParametersCountValidation(invalidParameters));
+                ()=> sut.RegisterParametersCountValidation(pramateresWithOneValue));
         }
         [TestMethod]
         public void
@@ -93,7 +93,7 @@ namespace LMS.Tests.LMS.CoreTests
             var sut = new Validator();
 
             var ex =  Assert.ThrowsException<ArgumentException>(
-                () => sut.RegisterParametersCountValidation(invalidParameters));
+                () => sut.RegisterParametersCountValidation(pramateresWithOneValue));
             var expectedMsg = "To Register into the System you should enter Username and Password!";
 
             Assert.AreEqual(expectedMsg, ex.Message);
@@ -150,6 +150,22 @@ namespace LMS.Tests.LMS.CoreTests
             var sut = new Validator();
             var result = sut.CommandNameIsRegister("register");
             Assert.AreEqual(true, result);
+        }
+        [TestMethod]
+        public void SearchByYearParametersCountValidation_ShouldNotThrowWhenValidValuesPassed()
+        {
+            var sut = new Validator();
+            sut.SearchByYearParametersCountValidation(pramateresWithOneValue);
+            var expectedCount = 1;
+            Assert.AreEqual(expectedCount, pramateresWithOneValue.Count);
+        }
+        [TestMethod]
+        public void SearchByYearParametersCountValidation_ShouldThrowArgumentExWhenInvalidValuesPassed()
+        {
+            var sut = new Validator();
+
+            Assert.ThrowsException<ArgumentException>(
+                () => sut.SearchByYearParametersCountValidation(parameters));
         }
     }
 }

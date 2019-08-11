@@ -22,5 +22,7 @@ namespace LMS.Contracts
         string CatalogDelimiter(int counter);
         string BookCheckedOutMessage(string title);
         string PrintCheckOutBookLabel();
+        string WichBookYouWantToReturnMessage();
+        string SuccessfullyReturnBookMessage(string title);
     }
 }

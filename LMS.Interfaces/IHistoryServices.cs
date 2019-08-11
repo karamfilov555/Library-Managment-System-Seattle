@@ -11,5 +11,7 @@ namespace LMS.Contracts
         void LoadHistoryFromJson();
         void AddRegistryToHistoryDb(IHistoryRegistry registry);
         string GetHistoryOfCurrentUser();
+        IHistoryRegistry FindHistoryRegistry(string isbn);
+        void RemoveFromHistory(IHistoryRegistry registry);
     }
 }

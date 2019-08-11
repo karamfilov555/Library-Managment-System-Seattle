@@ -20,7 +20,10 @@ namespace LMS.Core.Utils
         private const string WrongPassword = "You have enter wrong password!";
         private const string BookRemoved = "Book with title: \"{0}\" was successfully removed";
         private const string Delimiter = "=======>  Book # {0}  <=======";
-        
+        private const string WichBookYouWantToReturn = "Please, type the ISBN of book that you want to return: ";
+        private const string SuccessfullyReturnBook = "You successfully return the book: " +
+            "\"{0}\"";
+
         public string PleaseLoginOrRegisterMessage()
         {
             return PleaseLogOrReg;
@@ -90,6 +93,14 @@ namespace LMS.Core.Utils
         public string BookCheckedOutMessage(string bookInfo)
         {
             return PrintCheckOutBookLabel() + $"{Environment.NewLine}" + bookInfo;
+        }
+        public string WichBookYouWantToReturnMessage()
+        {
+            return WichBookYouWantToReturn;
+        }
+        public string SuccessfullyReturnBookMessage(string title)
+        {
+            return string.Format(SuccessfullyReturnBook,title);
         }
     }
 }

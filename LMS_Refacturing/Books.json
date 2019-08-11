@@ -1712,45 +1712,6 @@
     "Language": "bulgarian",
     "Rack": "\u0000",
     "Copies": 0,
-    "ISBN": "978-1-940313-09--1567816780",
-    "Reservation": "Available"
-  },
-  {
-    "Title": "Under The Yuke",
-    "Subject": 7,
-    "Author": "Ivan Vazov",
-    "Pages": 1932,
-    "Year": 1885,
-    "Country": "Bulgaria",
-    "Language": "bulgarian",
-    "Rack": "\u0000",
-    "Copies": 0,
-    "ISBN": "978-1-940313-09--554379742",
-    "Reservation": "Available"
-  },
-  {
-    "Title": "Under The Yuke",
-    "Subject": 7,
-    "Author": "Ivan Vazov",
-    "Pages": 1932,
-    "Year": 1885,
-    "Country": "Bulgaria",
-    "Language": "bulgarian",
-    "Rack": "\u0000",
-    "Copies": 0,
-    "ISBN": "978-1-940313-09--214586485",
-    "Reservation": "Available"
-  },
-  {
-    "Title": "Under The Yuke",
-    "Subject": 7,
-    "Author": "Ivan Vazov",
-    "Pages": 1932,
-    "Year": 1885,
-    "Country": "Bulgaria",
-    "Language": "bulgarian",
-    "Rack": "\u0000",
-    "Copies": 0,
     "ISBN": "978-1-940313-09--1756667268",
     "Reservation": "Available"
   },
@@ -1818,5 +1779,30 @@
     "Copies": 0,
     "ISBN": "978-1-940313-09-605792893",
     "Reservation": "Available"
+  },
+  {
+    "Title": "Under The Yuke",
+    "Subject": 7,
+    "Author": "Ivan Vazov",
+    "Pages": 1932,
+    "Year": 1885,
+    "Country": "Bulgaria",
+    "Language": "bulgarian",
+    "Rack": "\u0000",
+    "Copies": 0,
+    "ISBN": "978-1-940313-09--1567816780",
+    "Reservation": "Available"
+  },
+  {
+    "Author": "Ivan Vazov",
+    "Country": "Bulgaria",
+    "Language": "bulgarian",
+    "Subject": "Historical",
+    "Pages": 1932,
+    "Title": "Under The Yuke",
+    "Year": 1885,
+    "Rack": "U",
+    "Reservation": "Available",
+    "ISBN": "978-1-940313-09--214586485"
   }
 ]

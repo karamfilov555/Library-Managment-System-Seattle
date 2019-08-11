@@ -30,7 +30,9 @@ namespace LMS.Core.Commands
             _historyServices.CheckBooksOfCurrentUser();
             var book = _bookServices.FindBookInDb(titleToCheckOut);
 
-            var registry = _factory.CreateRegistry(titleToCheckOut , book.ISBN);
+            var registry = _factory.CreateRegistry(book.Title,book.Author,book.Pages,book.Year,book.Country,book.Language,
+                book.Subject.ToString(),book.ISBN);
+
             _historyServices.AddRegistryToHistoryDb(registry);
             _bookServices.RemoveFromDb(book);
 

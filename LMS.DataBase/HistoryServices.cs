@@ -20,11 +20,13 @@ namespace LMS.Services
             _historyDataBase = historyDataBase;
             _loginAuthenticator = loginAuthenticator;
         }
+        
         public void AddRegistryToHistoryDb(IHistoryRegistry registry)
         {
             history.Add(registry);
-            _historyDataBase.AddToCheckOutHistoryJson
-                (registry.Title, registry.ISBN, registry.Username, registry.ReturnDate);
+
+            _historyDataBase.AddToCheckOutHistoryJson(registry.Title,registry.Author,registry.Pages,registry.Year, registry.Country,
+               registry.Language,registry.Subject.ToString(), registry.ISBN, registry.Username,registry.ReturnDate);
         }
         public void LoadHistoryFromJson()
         {
@@ -58,6 +60,18 @@ namespace LMS.Services
                 $"{Environment.NewLine}"+
                 $"========{currentUser}, this is your Check-Out History ========" +
                 $"{Environment.NewLine}" + strBuilder.ToString();
+        }
+        public IHistoryRegistry FindHistoryRegistry(string isbn)
+        {
+            var registyToFind = history.FirstOrDefault(x => x.ISBN == isbn);
+            if (registyToFind == null)
+                throw new ArgumentException("There are no book with this ISBN in your check-out history!");
+            return registyToFind;
+        }
+        public void RemoveFromHistory(IHistoryRegistry registry)
+        {
+            history.Remove(registry);
+            _historyDataBase.RemoveRegistryFromJsonDb(registry.ISBN);
         }
     }
 }
