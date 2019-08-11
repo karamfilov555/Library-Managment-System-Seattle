@@ -9,17 +9,17 @@ namespace LMS.Core.Commands
     public class CatalogCommand : ICommand
     {
         private readonly IValidator _validator;
-        private readonly IBooksDataBase _booksDb;
-        public CatalogCommand(IBooksDataBase booksDb, 
+        private readonly IBookServices _bookServices;
+        public CatalogCommand(IBookServices bookServices, 
                               IValidator validator)
         {
-            _booksDb = booksDb;
+            _bookServices = bookServices;
             _validator = validator;
         }
         public string Execute(IList<string> parameteres)
         {
             _validator.IsParametersCountIsValid(parameteres, 0);
-            return _booksDb.AllExistingBooksToString();
+            return _bookServices.AllExistingBooksToString();
         }
     }
 }

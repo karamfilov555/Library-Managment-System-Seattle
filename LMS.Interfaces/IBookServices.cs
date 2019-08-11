@@ -6,7 +6,7 @@ using System.Text;
 
 namespace LMS.Contracts
 {
-    public interface IBooksDataBase
+    public interface IBookServices
     {
         void LoadBooksFromJson();
         

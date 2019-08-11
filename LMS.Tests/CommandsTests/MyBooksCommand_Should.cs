@@ -15,7 +15,7 @@ namespace LMS.Tests.CommandsTests
         public void CallsGetHistoryOfCurrentUserMethod()
         {
             IList<string> parameters = new List<string>();
-            var history = new Mock<IHistoryDataBase>();
+            var history = new Mock<IHistoryServices>();
             history.Setup(h => h.GetHistoryOfCurrentUser());
             var sut = new MyBooksCommand(history.Object);
             sut.Execute(parameters);

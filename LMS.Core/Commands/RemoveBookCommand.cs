@@ -11,17 +11,17 @@ namespace LMS.Core.Commands
 {
     class RemoveBookCommand : ICommand
     {
-        private readonly IBooksDataBase _bookDb;
+        private readonly IBookServices _bookServices;
         private readonly IGlobalMessages _message;
         private readonly ILoginAuthenticator _loginAuthenticator;
         private readonly ITextManager _textManager;
 
-        public RemoveBookCommand(IBooksDataBase bookDb, 
+        public RemoveBookCommand(IBookServices bookServices, 
                                  IGlobalMessages message,
                                  ILoginAuthenticator loginAuthenticator,
                                  ITextManager textManager)
         {
-            _bookDb = bookDb;
+            _bookServices = bookServices;
             _message = message;
             _loginAuthenticator = loginAuthenticator;
             _textManager = textManager;
@@ -30,8 +30,8 @@ namespace LMS.Core.Commands
         {
             _loginAuthenticator.IsAdmin();
             var title = _textManager.GetParams(parameteres);
-            var bookToRemove = _bookDb.FindBookInDb(title);
-            _bookDb.RemoveFromDb(bookToRemove);
+            var bookToRemove = _bookServices.FindBookInDb(title);
+            _bookServices.RemoveFromDb(bookToRemove);
             return _message.BookRemovedMessage(title);
         }
     }

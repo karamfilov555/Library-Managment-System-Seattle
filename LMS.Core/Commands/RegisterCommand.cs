@@ -12,18 +12,18 @@ namespace LMS.Core.Commands
         private readonly IGlobalMessages _messages;
         private readonly ILoginAuthenticator _loginAuthenticator;
         private readonly IModelsFactory _modelsFactory;
-        private readonly IUsersDataBase _userDataBase;
+        private readonly IUsersServices _usersServices;
         public RegisterCommand(IValidator validator,
                                IGlobalMessages messages,
                                ILoginAuthenticator loginAuthenticator,
                                IModelsFactory modelsFactory,
-                               IUsersDataBase userDataBase)
+                               IUsersServices usersServices)
         {
             _validator = validator;
             _messages = messages;
             _loginAuthenticator = loginAuthenticator;
             _modelsFactory = modelsFactory;
-            _userDataBase = userDataBase;
+            _usersServices = usersServices;
         }
         public string Execute(IList<string> parameteres)
         {
@@ -41,7 +41,7 @@ namespace LMS.Core.Commands
 
             var newUser  = _modelsFactory.CreateUser(username, password);
 
-            _userDataBase.AddUserToDb(newUser);
+            _usersServices.AddUserToDb(newUser);
 
             return _messages.RegisterMessage(username);
         }

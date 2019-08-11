@@ -13,7 +13,7 @@ namespace LMS.Core.Commands
         private readonly IValidator _validator;
         private readonly IGlobalMessages _messages;
         private readonly IModelsFactory _modelsFactory;
-        private readonly IBooksDataBase _booksDataBase;
+        private readonly IBookServices _bookServices;
         private readonly IInputReader _inputReader;
         private readonly ILoginAuthenticator _loginAuthenticator;
         private readonly IOutputWriter _outputWriter;
@@ -24,7 +24,7 @@ namespace LMS.Core.Commands
                               IInputReader inputReader,
                               ILoginAuthenticator loginAuthenticator,
                              IOutputWriter outputWriter,
-                             IBooksDataBase booksDataBase)
+                             IBookServices bookServices)
         {
             _validator = validator;
             _messages = globalMessages;
@@ -32,7 +32,7 @@ namespace LMS.Core.Commands
             _inputReader = inputReader;
             _loginAuthenticator = loginAuthenticator;
             _outputWriter = outputWriter;
-            _booksDataBase = booksDataBase;
+            _bookServices = bookServices;
         }
         public string Execute(IList<string> parameteres)
         {
@@ -75,7 +75,7 @@ namespace LMS.Core.Commands
             for (int i = 1; i <= copies; i++)
             {
                 var book = _modelsFactory.CreateBook(title, author, pages, year, country, language, subject);
-                _booksDataBase.AddBookToDb(book);
+                _bookServices.AddBookToDb(book);
                 strBuilder.AppendLine(book.PrintBookInfo());
             }
             return _messages.PrintAddBookLabel() + strBuilder.ToString();

@@ -9,11 +9,11 @@ using System.Text;
 
 namespace LMS.Services
 {
-    public class AdminsDataBase : IAdminsDataBase
+    public class AdminServices : IAdminServices
     {
         private readonly IJson _json;
         private readonly IList<User> admins = new List<User>();
-        public AdminsDataBase(IJson json)
+        public AdminServices(IJson json)
         {
             _json = json;
         }

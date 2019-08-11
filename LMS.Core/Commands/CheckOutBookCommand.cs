@@ -11,41 +11,41 @@ namespace LMS.Core.Commands
     {
         private readonly IValidator _validator;
         private readonly ITextManager _textManager;
-        private readonly IHistoryDataBase _history;
+        private readonly IHistoryServices _historyServices;
         private readonly IModelsFactory _factory;
         private readonly IGlobalMessages _message;
-        private readonly IBooksDataBase _bookDb;
+        private readonly IBookServices _bookServices;
         private readonly IOutputWriter _writer;
         private readonly IInputReader _reader;
         public CheckOutBookCommand(IValidator validator, 
-                                   ITextManager textManager, 
-                                   IHistoryDataBase history,
+                                   ITextManager textManager,
+                                   IHistoryServices historyServices,
                                    IModelsFactory factory,
                                    IGlobalMessages message,
-                                   IBooksDataBase bookDb,
+                                   IBookServices bookServices,
                                    IOutputWriter writer,
                                    IInputReader reader)
         {
             _validator = validator;
             _textManager = textManager;
-            _history = history;
+            _historyServices = historyServices;
             _factory = factory;
             _message = message;
-            _bookDb = bookDb;
+            _bookServices = bookServices;
             _writer = writer;
             _reader = reader;
         }
         public string Execute(IList<string> parameteres)
         {
             var titleToCheckOut = _textManager.GetParams(parameteres);
-            _history.CheckBooksOfCurrentUser();
-            _bookDb.FindBookInDb(titleToCheckOut);
+            _historyServices.CheckBooksOfCurrentUser();
+            _bookServices.FindBookInDb(titleToCheckOut);
 
-            _writer.WriteLine(_bookDb.GiveAllBooksWithThisTitle(titleToCheckOut)+ $"{Environment.NewLine}" + "Type ISBN of book that you want to checkout: ");
+            _writer.WriteLine(_bookServices.GiveAllBooksWithThisTitle(titleToCheckOut)+ $"{Environment.NewLine}" + "Type ISBN of book that you want to checkout: ");
 
             var isbn = _reader.ReadLine();
             var registry = _factory.CreateRegistry(titleToCheckOut , isbn);
-            _history.AddRegistryToHistoryDb(registry);
+            _historyServices.AddRegistryToHistoryDb(registry);
 
             return _message.BookCheckedOutMessage(registry.RegistryInfo());
         }

@@ -11,7 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LMS.Generators\LMS.Generators.csproj" />
     <ProjectReference Include="..\LMS.Interfaces\LMS.Contracts.csproj" />
-    <ProjectReference Include="..\LMS.JasonDB\LMS.JasonDB.csproj" />
+    <ProjectReference Include="..\LMS.JasonDB\LMS.JsonDB.csproj" />
   </ItemGroup>
 
 </Project>

@@ -7,26 +7,26 @@ namespace LMS.Services
 {
     public class DataBaseLoader : IDataBaseLoader
     {
-        private readonly IBooksDataBase _booksDataBase;
-        private readonly IAdminsDataBase _adminsDataBase;
-        private readonly IUsersDataBase _usersDataBase;
-        private readonly IHistoryDataBase _historyDataBase;
-        public DataBaseLoader(IBooksDataBase booksDataBase,
-                              IAdminsDataBase adminsDataBase,
-                              IUsersDataBase usersDataBase,
-                              IHistoryDataBase historyDataBase)
+        private readonly IBookServices _bookServices;
+        private readonly IAdminServices _adminServices;
+        private readonly IUsersServices _usersServices;
+        private readonly IHistoryServices _historyServices;
+        public DataBaseLoader(IBookServices bookServices,
+                              IAdminServices adminServices,
+                              IUsersServices usersServices,
+                              IHistoryServices historyServices)
         {
-            _booksDataBase = booksDataBase;
-            _usersDataBase = usersDataBase;
-            _adminsDataBase = adminsDataBase;
-            _historyDataBase = historyDataBase;
+            _bookServices = bookServices;
+            _usersServices = usersServices;
+            _adminServices = adminServices;
+            _historyServices = historyServices;
         }
         public void FillDataBase()
         {
-            _booksDataBase.LoadBooksFromJson();
-            _adminsDataBase.LoadAdminsFromJson();
-            _usersDataBase.LoadUsersFromJson();
-            _historyDataBase.LoadHistoryFromJson();
+            _bookServices.LoadBooksFromJson();
+            _adminServices.LoadAdminsFromJson();
+            _usersServices.LoadUsersFromJson();
+            _historyServices.LoadHistoryFromJson();
         }
     }
 }

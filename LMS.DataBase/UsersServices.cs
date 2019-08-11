@@ -10,11 +10,11 @@ using System.Text;
 
 namespace LMS.Services
 {
-    public class UsersDataBase : IUsersDataBase
+    public class UsersServices : IUsersServices
     {
         private readonly IList<IUser> users = new List<IUser>();
         private readonly IJson _json;
-        public UsersDataBase(IJson json)
+        public UsersServices(IJson json)
         {
             _json = json;
         }

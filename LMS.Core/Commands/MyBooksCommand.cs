@@ -8,14 +8,14 @@ namespace LMS.Core.Commands
 {
     public class MyBooksCommand : ICommand
     {
-        private readonly IHistoryDataBase _history;
-        public MyBooksCommand(IHistoryDataBase history)
+        private readonly IHistoryServices _historyServices;
+        public MyBooksCommand(IHistoryServices historyServices)
         {
-            _history = history;
+            _historyServices = historyServices;
         }
         public string Execute(IList<string> parameteres)
         {
-            return _history.GetHistoryOfCurrentUser();
+            return _historyServices.GetHistoryOfCurrentUser();
         }
     }
 }

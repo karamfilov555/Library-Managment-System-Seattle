@@ -9,12 +9,12 @@ using System.Text;
 
 namespace LMS.Services
 {
-    public class HistoryDataBase : IHistoryDataBase
+    public class HistoryServices : IHistoryServices
     {
         private readonly IJson _json;
         private readonly ILoginAuthenticator _loginAuthenticator;
         private IList<IHistoryRegistry> history = new List<IHistoryRegistry>();
-        public HistoryDataBase(IJson json, ILoginAuthenticator loginAuthenticator)
+        public HistoryServices(IJson json, ILoginAuthenticator loginAuthenticator)
         {
             _json = json;
             _loginAuthenticator = loginAuthenticator;

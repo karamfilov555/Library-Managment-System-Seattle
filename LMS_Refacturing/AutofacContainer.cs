@@ -44,7 +44,7 @@ namespace LMS.Start
             builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(CommandFactory)))
               .AsImplementedInterfaces();
 
-            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(BooksDataBase)))
+            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(BookServices)))
               .AsImplementedInterfaces();
 
             builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(Book)))
@@ -53,23 +53,23 @@ namespace LMS.Start
             builder.RegisterType<Json>()
              .As<IJson>().SingleInstance();
 
-            builder.RegisterType<BooksDataBase>()
-              .As<IBooksDataBase>().SingleInstance();
+            builder.RegisterType<BookServices>()
+              .As<IBookServices>().SingleInstance();
 
-            builder.RegisterType<UsersDataBase>()
-              .As<IUsersDataBase>().SingleInstance();
+            builder.RegisterType<UsersServices>()
+              .As<IUsersServices>().SingleInstance();
 
             builder.RegisterType<LoginAuthenticator>()
               .As<ILoginAuthenticator>().SingleInstance();
 
-            builder.RegisterType<AdminsDataBase>()
-                .As<IAdminsDataBase>().SingleInstance();
+            builder.RegisterType<AdminServices>()
+                .As<IAdminServices>().SingleInstance();
 
             builder.RegisterType<DataBaseLoader>()
                 .As<IDataBaseLoader>().SingleInstance();
 
-            builder.RegisterType<HistoryDataBase>()
-                .As<IHistoryDataBase>().SingleInstance();
+            builder.RegisterType<HistoryServices>()
+                .As<IHistoryServices>().SingleInstance();
 
             builder.RegisterType<IsbnGenerator>()
                .As<IIsbnGenerator>().SingleInstance();

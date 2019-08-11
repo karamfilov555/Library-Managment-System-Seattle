@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LMS.Contracts
 {
-    public interface IHistoryDataBase
+    public interface IHistoryServices
     {
         void CheckBooksOfCurrentUser();
         void LoadHistoryFromJson();

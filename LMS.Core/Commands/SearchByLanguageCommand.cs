@@ -9,17 +9,18 @@ namespace LMS.Core.Commands
 {
     class SearchByLanguageCommand : ICommand
     {
-        private readonly IBooksDataBase _booksDb;
+        private readonly IBookServices _bookServices;
         private readonly ITextManager _textManager;
-        public SearchByLanguageCommand(IBooksDataBase booksDb, ITextManager textManager)
+        public SearchByLanguageCommand(IBookServices bookServices, 
+                                       ITextManager textManager)
         {
-            _booksDb = booksDb;
+            _bookServices = bookServices;
             _textManager = textManager;
         }
         public string Execute(IList<string> parameteres)
         {
             var languageToSearchBy = _textManager.GetParams(parameteres);
-            return _booksDb.ShowAllBooksWithThisLanguage(languageToSearchBy);
+            return _bookServices.ShowAllBooksWithThisLanguage(languageToSearchBy);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace LMS.Contracts
 {
-    public interface IAdminsDataBase
+    public interface IAdminServices
     {
         void LoadAdminsFromJson();
         User CheckAdminCredentials(string username, string password);

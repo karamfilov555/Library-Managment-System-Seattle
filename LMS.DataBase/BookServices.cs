@@ -9,15 +9,15 @@ using LMS.Models.ModelsContracts;
 
 namespace LMS.Services
 {
-    public class BooksDataBase : IBooksDataBase
+    public class BookServices : IBookServices
     {
         private readonly IJson _json;
         private readonly IValidator _validator;
         private readonly IGlobalMessages _messages;
         private IList<IBook> books = new List<IBook>();
-        public BooksDataBase(IJson json, 
-                             IValidator validator,
-                             IGlobalMessages messages)
+        public BookServices(IJson json, 
+                            IValidator validator,
+                            IGlobalMessages messages)
         {
             _json = json;
             _validator = validator;

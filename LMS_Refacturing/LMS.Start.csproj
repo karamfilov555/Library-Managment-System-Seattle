@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -12,7 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LMS.Core\LMS.Core.csproj" />
     <ProjectReference Include="..\LMS.DataBase\LMS.Services.csproj" />
-    <ProjectReference Include="..\LMS.JasonDB\LMS.JasonDB.csproj" />
+    <ProjectReference Include="..\LMS.JasonDB\LMS.JsonDB.csproj" />
   </ItemGroup>
 
 </Project>

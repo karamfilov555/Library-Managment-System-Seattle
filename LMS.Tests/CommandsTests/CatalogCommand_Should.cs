@@ -15,7 +15,7 @@ namespace LMS.Tests.CommandsTests
         {
             IList<string> parameters = new List<string>();
             var validator = new Mock<IValidator>();
-            var bookDb = new Mock<IBooksDataBase>();
+            var bookDb = new Mock<IBookServices>();
 
             bookDb.Setup(b => b.AllExistingBooksToString());
             var sut = new CatalogCommand(bookDb.Object, validator.Object);
@@ -28,7 +28,7 @@ namespace LMS.Tests.CommandsTests
             IList<string> parameters = new List<string> { "neshto" };
             IList<string> validParameters = new List<string>();
             var validator = new Mock<IValidator>();
-            var bookDb = new Mock<IBooksDataBase>();
+            var bookDb = new Mock<IBookServices>();
 
             var sut = new CatalogCommand(bookDb.Object, validator.Object);
             validator.Setup(v => v.IsParametersCountIsValid(validParameters, 0));

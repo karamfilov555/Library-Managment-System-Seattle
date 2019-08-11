@@ -10,17 +10,17 @@ namespace LMS.Services
     public class LoginAuthenticator : ILoginAuthenticator
     {
         private IUser currentUser;
-        private readonly IUsersDataBase _usersDb;
-        private readonly IAdminsDataBase _adminsDb;
+        private readonly IUsersServices _usersServices;
+        private readonly IAdminServices _adminServices;
         private readonly IValidator _validator;
         private string currentPassword;
         private string currentUsername;
-        public LoginAuthenticator(IUsersDataBase usersDb,
-                                  IAdminsDataBase adminsDb,
+        public LoginAuthenticator(IUsersServices usersServices,
+                                  IAdminServices adminServices,
                                   IValidator validator)
         {
-            _usersDb = usersDb;
-            _adminsDb = adminsDb;
+            _usersServices = usersServices;
+            _adminServices = adminServices;
             _validator = validator;
         }
         public IUser GetCurrentUser()
@@ -39,24 +39,24 @@ namespace LMS.Services
         }
         public IUser CheckUserCredetials(string username, string password)
         {
-            var user = _usersDb.CheckUserCredetials(username, password);
+            var user = _usersServices.CheckUserCredetials(username, password);
             return user;
         }
         public IUser CheckAdminCredetials(string username, string password)
         {
-            var admin = _adminsDb.CheckAdminCredentials(username, password);
+            var admin = _adminServices.CheckAdminCredentials(username, password);
             return admin;
         }
         public bool CheckUsernameInAdminDb(string username)
         {
-            var admin = _adminsDb.CheckUsernameInAdminDb(username);
+            var admin = _adminServices.CheckUsernameInAdminDb(username);
             if (admin != null)
                 return true;
             return false;
         }
         public bool CheckUsernameInUserDb(string username)
         {
-            var user = _usersDb.CheckUsernameInUserDb(username);
+            var user = _usersServices.CheckUsernameInUserDb(username);
             if (user != null)
                 return true;
             return false;
@@ -64,7 +64,7 @@ namespace LMS.Services
         public bool CheckCurrentUserStatus()
         {
             var userToTest = GetCurrentUser();
-            bool result = _adminsDb.CheckIUserInAdminDb(userToTest);
+            bool result = _adminServices.CheckIUserInAdminDb(userToTest);
             if (result == true)
                 return true;
             return false;
@@ -104,9 +104,9 @@ namespace LMS.Services
         {
             if (CheckCurrentUserStatus())
             {
-                _adminsDb.RemoveAdminFromDb(userName);
+                _adminServices.RemoveAdminFromDb(userName);
             }
-            _usersDb.RemoveUserFromDb(userName);
+            _usersServices.RemoveUserFromDb(userName);
         }
         public void CheckAllowedCommands(string consoleInput)
         {

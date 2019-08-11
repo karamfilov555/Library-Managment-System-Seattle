@@ -22,9 +22,9 @@ namespace LMS.Tests.ModelsTests.ServicesTests.BooksDatabaseTest
             var json = new Mock<IJson>();
             var validator = new Mock<IValidator>();
             var messages = new Mock<IGlobalMessages>();
-            var sut = new BooksDataBase(json.Object, validator.Object, messages.Object);
+            var sut = new BookServices(json.Object, validator.Object, messages.Object);
 
-            Assert.IsInstanceOfType(sut, typeof(IBooksDataBase));
+            Assert.IsInstanceOfType(sut, typeof(IBookServices));
         }
         [TestMethod]
         public void AddBookCommand_Should_AddBookToDb()

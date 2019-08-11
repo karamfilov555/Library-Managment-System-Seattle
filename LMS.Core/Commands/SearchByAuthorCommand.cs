@@ -9,17 +9,18 @@ namespace LMS.Core.Commands
 {
     class SearchByAuthorCommand : ICommand
     {
-        private readonly IBooksDataBase _booksDb;
+        private readonly IBookServices _bookServices;
         private readonly ITextManager _textManager;
-        public SearchByAuthorCommand(IBooksDataBase booksDb, ITextManager textManager)
+        public SearchByAuthorCommand(IBookServices bookServices,
+                                     ITextManager textManager)
         {
-            _booksDb = booksDb;
+            _bookServices = bookServices;
             _textManager = textManager;
         }
         public string Execute(IList<string> parameteres)
         {
             var authorToSearchBy = _textManager.GetParams(parameteres);
-            return _booksDb.ShowAllBooksWithThisAuthor(authorToSearchBy);
+            return _bookServices.ShowAllBooksWithThisAuthor(authorToSearchBy);
         }
     }
 }
