@@ -11,9 +11,10 @@ namespace LMS.Contracts
         bool IsNull(IBook book);
         bool CommandNameIsLogin(string input);
         bool CommandNameIsRegister(string input);
-        void IsParametersCountIsValid(IList<string> parameteres, int count);
+        void CancelMembershipCountValidation(IList<string> parameteres);
         void LoginParametersCountValidation(IList<string> parameteres);
         void RegisterParametersCountValidation(IList<string> parameteres);
+        void SearchByYearParametersCountValidation(IList<string> parameteres);
         void TryParseToInt(string year);
     }
 }

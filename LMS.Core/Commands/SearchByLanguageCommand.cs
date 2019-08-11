@@ -1,13 +1,11 @@
 ﻿using LMS.Contracts;
 using LMS.Core.CommandContracts;
 using LMS.Core.Contracts;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace LMS.Core.Commands
 {
-    class SearchByLanguageCommand : ICommand
+    public class SearchByLanguageCommand : ICommand
     {
         private readonly IBookServices _bookServices;
         private readonly ITextManager _textManager;

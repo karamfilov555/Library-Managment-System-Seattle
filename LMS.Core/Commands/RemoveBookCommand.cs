@@ -1,14 +1,11 @@
 ﻿using LMS.Contracts;
 using LMS.Core.CommandContracts;
 using LMS.Core.Contracts;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace LMS.Core.Commands
 {
-    class RemoveBookCommand : ICommand
+    public class RemoveBookCommand : ICommand
     {
         private readonly IBookServices _bookServices;
         private readonly IGlobalMessages _message;

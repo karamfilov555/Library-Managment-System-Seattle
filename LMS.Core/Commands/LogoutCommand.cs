@@ -1,18 +1,15 @@
 ﻿using LMS.Contracts;
 using LMS.Core.CommandContracts;
-using LMS.Models;
-using LMS.Models.ModelsContracts;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace LMS.Core.Commands
 {
-    class LogoutCommand : ICommand
+    public class LogoutCommand : ICommand
     {
         private readonly IGlobalMessages _messages;
         private readonly ILoginAuthenticator _loginAuthenticator;
-        public LogoutCommand(IGlobalMessages messages, ILoginAuthenticator loginAuthenticator)
+        public LogoutCommand(IGlobalMessages messages, 
+                             ILoginAuthenticator loginAuthenticator)
         {
             _messages = messages;
             _loginAuthenticator = loginAuthenticator;

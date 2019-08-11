@@ -13,27 +13,15 @@ namespace LMS.Tests.CommandsTests
         [TestMethod]
         public void ReturnAllExistingBooksToString()
         {
+            //Arange
             IList<string> parameters = new List<string>();
-            var validator = new Mock<IValidator>();
             var bookDb = new Mock<IBookServices>();
-
             bookDb.Setup(b => b.AllExistingBooksToString());
-            var sut = new CatalogCommand(bookDb.Object, validator.Object);
+            var sut = new CatalogCommand(bookDb.Object);
+            //Act
             sut.Execute(parameters);
+            //Assert
             bookDb.Verify(b => b.AllExistingBooksToString(), Times.Once);
-        }
-        [TestMethod]
-        public void Parameters_Should_PassThruValidator()
-        {
-            IList<string> parameters = new List<string> { "neshto" };
-            IList<string> validParameters = new List<string>();
-            var validator = new Mock<IValidator>();
-            var bookDb = new Mock<IBookServices>();
-
-            var sut = new CatalogCommand(bookDb.Object, validator.Object);
-            validator.Setup(v => v.IsParametersCountIsValid(validParameters, 0));
-            sut.Execute(validParameters);
-            validator.Verify(v => v.IsParametersCountIsValid(validParameters, 0), Times.Once);
         }
     }
 }

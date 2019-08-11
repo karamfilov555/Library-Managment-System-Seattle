@@ -10,7 +10,6 @@ namespace LMS.Core.Commands
 {
     class AddBookCommand : ICommand
     {
-        private readonly IValidator _validator;
         private readonly IGlobalMessages _messages;
         private readonly IModelsFactory _modelsFactory;
         private readonly IBookServices _bookServices;
@@ -18,15 +17,13 @@ namespace LMS.Core.Commands
         private readonly ILoginAuthenticator _loginAuthenticator;
         private readonly IOutputWriter _outputWriter;
 
-        public AddBookCommand(IValidator validator,
-                              IGlobalMessages globalMessages,
+        public AddBookCommand(IGlobalMessages globalMessages,
                               IModelsFactory modelsFactory,
                               IInputReader inputReader,
                               ILoginAuthenticator loginAuthenticator,
                              IOutputWriter outputWriter,
                              IBookServices bookServices)
         {
-            _validator = validator;
             _messages = globalMessages;
             _modelsFactory = modelsFactory;
             _inputReader = inputReader;
@@ -36,7 +33,6 @@ namespace LMS.Core.Commands
         }
         public string Execute(IList<string> parameteres)
         {
-            _validator.IsParametersCountIsValid(parameteres, 0);
             _loginAuthenticator.IsAdmin();
 
             string title;

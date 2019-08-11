@@ -6,7 +6,7 @@ using System.Text;
 
 namespace LMS.Core.Commands
 {
-    class RegisterCommand : ICommand
+    public class RegisterCommand : ICommand
     {
         private readonly IValidator _validator;
         private readonly IGlobalMessages _messages;

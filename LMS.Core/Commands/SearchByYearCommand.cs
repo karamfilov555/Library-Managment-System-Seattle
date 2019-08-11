@@ -1,12 +1,10 @@
 ﻿using LMS.Contracts;
 using LMS.Core.CommandContracts;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace LMS.Core.Commands
 {
-    class SearchByYearCommand : ICommand
+    public class SearchByYearCommand : ICommand
     {
         private readonly IBookServices _bookServices;
         private readonly IValidator _validator;
@@ -18,7 +16,7 @@ namespace LMS.Core.Commands
         }
         public string Execute(IList<string> parameteres)
         {
-            _validator.IsParametersCountIsValid(parameteres, 1);
+            _validator.SearchByYearParametersCountValidation(parameteres);
             _validator.TryParseToInt(parameteres[0]);
             var year = int.Parse(parameteres[0]);
             return _bookServices.ShowAllBooksWithThisYear(year);

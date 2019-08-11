@@ -11,10 +11,10 @@ namespace LMS.Core.Utils
         public Validator()
         {
         }
-        public void IsParametersCountIsValid(IList<string> parameteres,int count)
+        public void CancelMembershipCountValidation(IList<string> parameteres)
         {
-            if (parameteres.Count != count)
-                throw new ArgumentException("Parameters count is not valid!");
+            if (parameteres.Count != 1)
+                throw new ArgumentException("To Cancel your membership you should enter valid password!");
         }
         public void LoginParametersCountValidation(IList<string> parameteres)
         {
@@ -25,6 +25,11 @@ namespace LMS.Core.Utils
         {
             if (parameteres.Count != 2)
                 throw new ArgumentException("To Register into the System you should enter Username and Password!");
+        }
+        public void SearchByYearParametersCountValidation(IList<string> parameteres)
+        {
+            if (parameteres.Count != 1)
+                throw new ArgumentException("Please, enter publication year of a book!");
         }
         public void TryParseToInt(string year)
         {

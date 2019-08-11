@@ -1,8 +1,6 @@
 ﻿using LMS.Contracts;
 using LMS.Core.CommandContracts;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace LMS.Core.Commands
 {
@@ -11,7 +9,9 @@ namespace LMS.Core.Commands
         private readonly IValidator _validator;
         private readonly IGlobalMessages _message;
         private readonly ILoginAuthenticator _loginAuthenticator;
-        public CancelMembershipCommand(IValidator validator, IGlobalMessages message, ILoginAuthenticator loginAuthenticator)
+        public CancelMembershipCommand(IValidator validator, 
+                                       IGlobalMessages message, 
+                                       ILoginAuthenticator loginAuthenticator)
         {
             _validator = validator;
             _message = message;
@@ -19,7 +19,7 @@ namespace LMS.Core.Commands
         }
         public string Execute(IList<string> parameteres)
         {
-            _validator.IsParametersCountIsValid(parameteres , 1);
+            _validator.CancelMembershipCountValidation(parameteres);
             _message.CancelMemership_PasswordRequiredMessage();
             var password = parameteres[0];
             if (!_loginAuthenticator.IsPasswordCorrect(password))
