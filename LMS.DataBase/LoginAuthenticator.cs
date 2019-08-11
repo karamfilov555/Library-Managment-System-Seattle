@@ -31,11 +31,11 @@ namespace LMS.Services
         {
             return currentUsername;
         }
-        public void SetCurrentUser(IUser _currentUser, string userName, string password)
+        public void SetCurrentUser(IUser _currentUser, string username, string password)
         {
             currentPassword = password;
             currentUser = _currentUser;
-            currentUsername = userName;
+            currentUsername = username;
         }
         public IUser CheckUserCredetials(string username, string password)
         {

@@ -29,7 +29,7 @@ namespace LMS.Tests.CommandsTests
             Assert.AreEqual("Wrong password!", actual);
         }
         [TestMethod]
-        public void CallsRemoveUserFromDbMethod_WithCurrentUser_WhenValidPasswordPassed()
+        public void Invoke_RemoveUserFromDbMethod_WithCurrentUser_WhenValidPasswordPassed()
         {
             //Arrange
             IList<string> parameters = new List<string> { "pass" };
@@ -47,7 +47,7 @@ namespace LMS.Tests.CommandsTests
             loginAuthenticatorMocked.Verify(r => r.RemoveUserFromDb(currentUserMocked.Object.Username), Times.Once);
         }
         [TestMethod]
-        public void CallsLogoutCurrentUserMethod_WhenValidPasswordPassed()
+        public void Invoke_LogoutCurrentUserMethod_WhenValidPasswordPassed()
         {
             //Arrange
             IList<string> parameters = new List<string> { "pass" };

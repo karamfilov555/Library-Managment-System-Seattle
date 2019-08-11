@@ -25,7 +25,7 @@ namespace LMS.Tests.CommandsTests
         private const string returnDate = "14-04-2019";
 
         [TestMethod]
-        public void CheckTheHistoryOfCurrentUser()
+        public void Invoke_CheckTheHistoryOfCurrentUserMethod()
         {
             //Arrange
             IList<string> parameters = new List<string> { "title" };
@@ -93,7 +93,7 @@ namespace LMS.Tests.CommandsTests
             factoryMocked.Verify(ch => ch.CreateRegistry(bookMocked.Object.Title, bookMocked.Object.Author, bookMocked.Object.Pages, bookMocked.Object.Year, bookMocked.Object.Country, bookMocked.Object.Language, bookMocked.Object.Subject.ToString(), bookMocked.Object.ISBN), Times.Once);
         }
         [TestMethod]
-        public void Call_AddRegistryToDbMethod()
+        public void Invoke_AddRegistryToDbMethod()
         {
             //Arrange
             IList<string> parameters = new List<string> { "title" };
@@ -130,7 +130,7 @@ namespace LMS.Tests.CommandsTests
             historyMocked.Verify(a => a.AddRegistryToHistoryDb(registryMocked.Object),Times.Once);
         }
         [TestMethod]
-        public void Call_RemoveFromDbBookServicesMethod()
+        public void Invoke_RemoveFromDbBookServicesMethod()
         {
             //Arrange
             IList<string> parameters = new List<string> { "title" };
@@ -167,7 +167,7 @@ namespace LMS.Tests.CommandsTests
             bookServicesMocked.Verify(b => b.RemoveFromDb(bookMocked.Object), Times.Once);
         }
         [TestMethod]
-        public void Call_BookCheckOutMessage_WithRegistryInfo()
+        public void Invoke_BookCheckOutMessage_WithRegistryInfo()
         {
             //Arrange
             IList<string> parameters = new List<string> { "title" };
