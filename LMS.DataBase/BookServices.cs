@@ -55,18 +55,13 @@ namespace LMS.Services
             var count = 1;
             foreach (var book in books)
             {
-                strBuilder.AppendLine(_messages.CatalogDelimiter(count) + Environment.NewLine + book.PrintBookInfo());
+                if (strBuilder.ToString().Contains(book.Title) && strBuilder.ToString().Contains(book.Author) && strBuilder.ToString().Contains(book.Language))
+                {
+                    continue;
+                }
+                strBuilder.AppendLine(_messages.CatalogDelimiter(count) + Environment.NewLine + book.PrintBookInfo() + "Copies Alvailable: " + 
+                    GetCopiesCount(book.Title + " " + book.Language + " " + book.Author + " " + book.Subject).ToString() + Environment.NewLine);
                 count++;
-            }
-            return strBuilder.ToString();
-        }
-        public string GiveAllBooksWithThisTitle(string title)
-        {
-            var booksWithThisTitle = books.Where(x => x.Title == title);
-            var strBuilder = new StringBuilder();
-            foreach (var book in booksWithThisTitle)
-            {
-                strBuilder.AppendLine("ISBN: " + book.ISBN);
             }
             return strBuilder.ToString();
         }
@@ -139,6 +134,21 @@ namespace LMS.Services
             if (strBuilder.Length == 0)
                 throw new ArgumentException("There are no books with this publication year!");
             return strBuilder.ToString();
+        }
+        public int GetCopiesCount(string bookKey)
+        {
+            IDictionary<string, int> counts = new Dictionary<string, int>();
+            var existingBooks = books;
+
+            foreach (var item in existingBooks)
+            {
+                var key = item.Title + " " + item.Language + " " + item.Author + " " + item.Subject;
+                if (!counts.ContainsKey(key))
+                    counts.Add(key, 1);
+                else
+                    counts[key]++;
+            }
+            return counts[bookKey];
         }
     }
 }
