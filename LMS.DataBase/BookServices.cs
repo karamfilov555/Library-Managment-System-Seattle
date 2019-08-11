@@ -1,31 +1,30 @@
 ﻿using LMS.Contracts;
-using LMS.JasonDB.Contracts;
-using LMS.Models;
 using System.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using LMS.Models.ModelsContracts;
+using LMS.Contracts.DataBaseContracts;
 
 namespace LMS.Services
 {
     public class BookServices : IBookServices
     {
-        private readonly IJson _json;
+        private readonly IBookDataBase _bookDataBase;
         private readonly IValidator _validator;
         private readonly IGlobalMessages _messages;
         private IList<IBook> books = new List<IBook>();
-        public BookServices(IJson json, 
+        public BookServices(IBookDataBase bookDataBase, 
                             IValidator validator,
                             IGlobalMessages messages)
         {
-            _json = json;
+            _bookDataBase = bookDataBase;
             _validator = validator;
             _messages = messages;
         }
         public void LoadBooksFromJson()
         {
-            var booksFromJson = _json.ReadBooks();
+            var booksFromJson = _bookDataBase.ReadBooks();
             foreach (var book in booksFromJson)
             {
                  books.Add(book);
@@ -36,12 +35,12 @@ namespace LMS.Services
             books.Add(book);
             var subj = book.Subject.ToString();
             var isbn = book.ISBN;
-            _json.AddBookToJsonDB(book.Title, book.Author, book.Pages, book.Year, book.Country, book.Language, subj, isbn);
+            _bookDataBase.AddBookToJsonDB(book.Title, book.Author, book.Pages, book.Year, book.Country, book.Language, subj, isbn);
         }
         public void RemoveFromDb(IBook book)
         {
             books.Remove(book);
-            _json.RemoveBookFromJsonDb(book.Title);
+            _bookDataBase.RemoveBookFromJsonDb(book.Title);
         }
         public IBook FindBookInDb(string title)
         {

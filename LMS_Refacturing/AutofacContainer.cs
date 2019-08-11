@@ -10,8 +10,6 @@ using LMS.Core.CommandContracts;
 using LMS.Contracts;
 using LMS.Core.LmsEngine;
 using LMS.Models;
-using LMS.JasonDB;
-using LMS.JasonDB.Contracts;
 using LMS.Generators;
 using LMS.Generators.Contracts;
 using LMS.JsonDB;
@@ -52,11 +50,17 @@ namespace LMS.Start
             builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(Book)))
               .AsImplementedInterfaces();
 
-            builder.RegisterType<Json>()
-             .As<IJson>().SingleInstance();
+            builder.RegisterType<BookDataBase>()
+             .As<IBookDataBase>().SingleInstance();
 
             builder.RegisterType<AdminDataBase>()
             .As<IAdminDataBase>().SingleInstance();
+
+            builder.RegisterType<UserDataBase>()
+           .As<IUserDataBase>().SingleInstance();
+
+            builder.RegisterType<HistoryDataBase>()
+           .As<IHistoryDataBase>().SingleInstance();
 
             builder.RegisterType<BookServices>()
               .As<IBookServices>().SingleInstance();

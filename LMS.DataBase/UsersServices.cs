@@ -1,26 +1,22 @@
 ﻿using LMS.Contracts;
-using LMS.JasonDB.Contracts;
-using LMS.Models;
+using LMS.Contracts.DataBaseContracts;
 using LMS.Models.ModelsContracts;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace LMS.Services
 {
     public class UsersServices : IUsersServices
     {
         private readonly IList<IUser> users = new List<IUser>();
-        private readonly IJson _json;
-        public UsersServices(IJson json)
+        private readonly IUserDataBase _userDb;
+        public UsersServices(IUserDataBase userDb)
         {
-            _json = json;
+            _userDb = userDb;
         }
         public void LoadUsersFromJson()
         {
-            var existingUsers = _json.ReadUsers();
+            var existingUsers = _userDb.ReadUsers();
 
             foreach (var user in existingUsers)
             {
@@ -41,21 +37,13 @@ namespace LMS.Services
         public void AddUserToDb(IUser user)
         {
             users.Add(user);
-            _json.AddUserToJsonDB(user.Username,user.Password);
+            _userDb.AddUserToJsonDB(user.Username,user.Password);
         }
         public void RemoveUserFromDb(string username)
         {
             var userToBeDeleted = users.FirstOrDefault(x => x.Username == username);
             users.Remove(userToBeDeleted);
-            _json.RemoveUserFromJsonDb(username);
+            _userDb.RemoveUserFromJsonDb(username);
         }
-        //public void RemoveUserFromJsonDb(string userName)
-        //{
-        //    var existingUsers = this._json.ReadUsers();
-        //    var user = existingUsers.FirstOrDefault(x => x.Username == userName);
-        //    existingUsers.Remove(user);
-        //    var jsonToOutput = JsonConvert.SerializeObject(existingUsers, Formatting.Indented);
-        //    this._json.WriteUsers(jsonToOutput);
-        //}
     }
 }

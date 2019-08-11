@@ -1,5 +1,5 @@
 ﻿using LMS.Contracts;
-using LMS.JasonDB.Contracts;
+using LMS.Contracts.DataBaseContracts;
 using LMS.Models;
 using LMS.Models.ModelsContracts;
 using System;
@@ -11,23 +11,24 @@ namespace LMS.Services
 {
     public class HistoryServices : IHistoryServices
     {
-        private readonly IJson _json;
+        private readonly IHistoryDataBase _historyDataBase;
         private readonly ILoginAuthenticator _loginAuthenticator;
         private IList<IHistoryRegistry> history = new List<IHistoryRegistry>();
-        public HistoryServices(IJson json, ILoginAuthenticator loginAuthenticator)
+        public HistoryServices(IHistoryDataBase historyDataBase, 
+                               ILoginAuthenticator loginAuthenticator)
         {
-            _json = json;
+            _historyDataBase = historyDataBase;
             _loginAuthenticator = loginAuthenticator;
         }
         public void AddRegistryToHistoryDb(IHistoryRegistry registry)
         {
             history.Add(registry);
-            _json.AddToCheckOutHistoryJson
+            _historyDataBase.AddToCheckOutHistoryJson
                 (registry.Title, registry.ISBN, registry.Username, registry.ReturnDate);
         }
         public void LoadHistoryFromJson()
         {
-            var existingHistory = _json.ReadCheckOutHistory();
+            var existingHistory = _historyDataBase.ReadCheckOutHistory();
 
             foreach (var registry in existingHistory)
             {

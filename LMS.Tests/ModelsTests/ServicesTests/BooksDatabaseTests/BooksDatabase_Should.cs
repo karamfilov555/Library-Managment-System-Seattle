@@ -1,14 +1,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using Moq;
-using LMS.JasonDB.Contracts;
 using LMS.Contracts;
 using LMS.Services;
-using LMS.Core.Contracts;
-using LMS.Core.Commands;
-using LMS.Models.ModelsContracts;
-using System.Collections;
 using System.Collections.Generic;
+using LMS.Contracts.DataBaseContracts;
 
 namespace LMS.Tests.ModelsTests.ServicesTests.BooksDatabaseTest
 {
@@ -19,7 +14,7 @@ namespace LMS.Tests.ModelsTests.ServicesTests.BooksDatabaseTest
         [TestMethod]
         public void Constructor_Should_MakeInstance()
         {
-            var json = new Mock<IJson>();
+            var json = new Mock<IBookDataBase>();
             var validator = new Mock<IValidator>();
             var messages = new Mock<IGlobalMessages>();
             var sut = new BookServices(json.Object, validator.Object, messages.Object);
