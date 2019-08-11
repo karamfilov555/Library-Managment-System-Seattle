@@ -13,7 +13,7 @@ namespace LMS.JasonDB
     public class Json:IJson
     {
         private const string bookPath = @"../../../Books.json";
-        private const string adminPath = @"../../../Admin.json";
+        //private const string adminPath = @"../../../Admin.json";
         private const string userPath = @"../../../User.json";
         private const string historyPath = @"../../../CheckOutHistory.json";
 
@@ -31,16 +31,16 @@ namespace LMS.JasonDB
         {
             File.WriteAllText(bookPath, jsonToOutput);
         }
-        public IList<User> ReadAdmins()
-        {
-            string jsonIn = File.ReadAllText(adminPath);
-            var existingAdmins = JsonConvert.DeserializeObject<IList<User>>(jsonIn);
-            return existingAdmins;
-        }
-        public void WriteAdmins(string jsonToOutput)
-        {
-            File.WriteAllText(adminPath, jsonToOutput);
-        }
+        //public IList<User> ReadAdmins()
+        //{
+        //    string jsonIn = File.ReadAllText(adminPath);
+        //    var existingAdmins = JsonConvert.DeserializeObject<IList<User>>(jsonIn);
+        //    return existingAdmins;
+        //}
+        //public void WriteAdmins(string jsonToOutput)
+        //{
+        //    File.WriteAllText(adminPath, jsonToOutput);
+        //}
         public IList<User> ReadUsers()
         {
             string jsonIn = File.ReadAllText(userPath);
@@ -89,14 +89,14 @@ namespace LMS.JasonDB
             var jsonToOutput = JsonConvert.SerializeObject(existingUsers, Formatting.Indented);
             WriteUsers(jsonToOutput);
         }
-        public void RemoveAdminFromJsonDb(string userName)
-        {
-            var existingAdmins = ReadAdmins();
-            var admin = existingAdmins.FirstOrDefault(x => x.Username == userName);
-            existingAdmins.Remove(admin);
-            var jsonToOutput = JsonConvert.SerializeObject(existingAdmins, Formatting.Indented);
-            WriteAdmins(jsonToOutput);
-        }
+        //public void RemoveAdminFromJsonDb(string userName)
+        //{
+        //    var existingAdmins = ReadAdmins();
+        //    var admin = existingAdmins.FirstOrDefault(x => x.Username == userName);
+        //    existingAdmins.Remove(admin);
+        //    var jsonToOutput = JsonConvert.SerializeObject(existingAdmins, Formatting.Indented);
+        //    WriteAdmins(jsonToOutput);
+        //}
         public void RemoveBookFromJsonDb(string title)
         {
             var existingBooks = ReadBooks();

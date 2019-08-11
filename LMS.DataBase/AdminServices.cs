@@ -1,4 +1,5 @@
 ﻿using LMS.Contracts;
+using LMS.Contracts.DataBaseContracts;
 using LMS.JasonDB.Contracts;
 using LMS.Models;
 using LMS.Models.ModelsContracts;
@@ -11,15 +12,15 @@ namespace LMS.Services
 {
     public class AdminServices : IAdminServices
     {
-        private readonly IJson _json;
+        private readonly IAdminDataBase _adminDB;
         private readonly IList<User> admins = new List<User>();
-        public AdminServices(IJson json)
+        public AdminServices(IAdminDataBase adminDB)
         {
-            _json = json;
+            _adminDB = adminDB;
         }
         public void LoadAdminsFromJson()
         {
-            var existingAdmins = _json.ReadAdmins();
+            var existingAdmins = _adminDB.ReadAdmins();
 
             foreach (var admin in existingAdmins)
             {
@@ -48,7 +49,7 @@ namespace LMS.Services
         {
             var adminToBeDeleted = admins.FirstOrDefault(x => x.Username == username);
             admins.Remove(adminToBeDeleted);
-            _json.RemoveAdminFromJsonDb(username);
+            _adminDB.RemoveAdminFromJsonDb(username);
         }
     }
 }

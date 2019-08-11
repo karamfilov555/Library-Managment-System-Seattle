@@ -14,6 +14,8 @@ using LMS.JasonDB;
 using LMS.JasonDB.Contracts;
 using LMS.Generators;
 using LMS.Generators.Contracts;
+using LMS.JsonDB;
+using LMS.Contracts.DataBaseContracts;
 
 namespace LMS.Start
 {
@@ -52,6 +54,9 @@ namespace LMS.Start
 
             builder.RegisterType<Json>()
              .As<IJson>().SingleInstance();
+
+            builder.RegisterType<AdminDataBase>()
+            .As<IAdminDataBase>().SingleInstance();
 
             builder.RegisterType<BookServices>()
               .As<IBookServices>().SingleInstance();
