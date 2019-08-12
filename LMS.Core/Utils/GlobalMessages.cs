@@ -24,7 +24,7 @@ namespace LMS.Core.Utils
         private const string WichBookYouWantToReturn = "Please, type the ISBN of book that you want to return: ";
         private const string SuccessfullyReturnBook = "You successfully return the book: " +
             "\"{0}\"";
-        private const string SayWelcome = "WELCOME, into our Library!{Environment.NewLine}For better expirience, Please Login or Register in to the System!";
+        private const string SayWelcome = "WELCOME, into our Library!\r\nFor better expirience, Please Login or Register in to the System!";
         private const string Statistics = "The Engine time report: worked for {0} seconds.";
         public string PleaseLoginOrRegisterMessage()
         {
