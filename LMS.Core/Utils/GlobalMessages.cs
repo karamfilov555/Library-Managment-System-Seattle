@@ -1,4 +1,5 @@
 ﻿using LMS.Contracts;
+using LMS.Core.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,7 +24,8 @@ namespace LMS.Core.Utils
         private const string WichBookYouWantToReturn = "Please, type the ISBN of book that you want to return: ";
         private const string SuccessfullyReturnBook = "You successfully return the book: " +
             "\"{0}\"";
-
+        private const string SayWelcome = "WELCOME, into our Library!{Environment.NewLine}For better expirience, Please Login or Register in to the System!";
+        private const string Statistics = "The Engine worked for {0} seconds.";
         public string PleaseLoginOrRegisterMessage()
         {
             return PleaseLogOrReg;
@@ -101,6 +103,14 @@ namespace LMS.Core.Utils
         public string SuccessfullyReturnBookMessage(string title)
         {
             return string.Format(SuccessfullyReturnBook,title);
+        }
+        public string WelcomeMessage()
+        {
+            return SayWelcome;
+        }
+        public string GetTimeStatisticsMessage()
+        {
+            return Statistics;
         }
     }
 }

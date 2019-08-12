@@ -12,9 +12,9 @@ namespace LMS.Start
 
             var container = builder.RegisterContainer();
 
-            var engine = container.Resolve<IEngine>();
+            var decoratorEngine = container.Resolve<IDecoratorEngine>();
 
-            engine.Run();
+            decoratorEngine.Start();
         }
     }
 }

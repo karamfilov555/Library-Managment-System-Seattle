@@ -15,5 +15,17 @@ namespace LMS.Core.IO
         {
             Console.WriteLine(lane);
         }
+        public void WriteLine()
+        {
+            Console.WriteLine();
+        }
+        public void Write(string text)
+        {
+            Console.Write(text);
+        }
+        public void Write(string t, string e, string x, string c, string s)
+        {
+            Console.Write(t+e+x+c+s);
+        }
     }
 }
