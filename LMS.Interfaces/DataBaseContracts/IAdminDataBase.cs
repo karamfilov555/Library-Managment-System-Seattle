@@ -5,6 +5,7 @@ using System.Text;
 
 namespace LMS.Contracts.DataBaseContracts
 {
+    //Open/Close example 
     public interface IAdminDataBase
     {
         IList<User> ReadAdmins();

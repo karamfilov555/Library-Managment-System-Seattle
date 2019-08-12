@@ -6,6 +6,7 @@ namespace LMS.Contracts
 {
     public interface ICommandProcessor
     {
+       
         string ProcessCommand(string consoleInput);
     }
 }
