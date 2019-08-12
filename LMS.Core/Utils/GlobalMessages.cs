@@ -25,7 +25,7 @@ namespace LMS.Core.Utils
         private const string SuccessfullyReturnBook = "You successfully return the book: " +
             "\"{0}\"";
         private const string SayWelcome = "WELCOME, into our Library!{Environment.NewLine}For better expirience, Please Login or Register in to the System!";
-        private const string Statistics = "The Engine worked for {0} seconds.";
+        private const string Statistics = "The Engine time report: worked for {0} seconds.";
         public string PleaseLoginOrRegisterMessage()
         {
             return PleaseLogOrReg;
@@ -108,9 +108,9 @@ namespace LMS.Core.Utils
         {
             return SayWelcome;
         }
-        public string GetTimeStatisticsMessage()
+        public string GetTimeReportMessage(double sec)
         {
-            return Statistics;
+            return string.Format(Statistics,sec);
         }
     }
 }

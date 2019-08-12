@@ -25,6 +25,6 @@ namespace LMS.Contracts
         string WichBookYouWantToReturnMessage();
         string SuccessfullyReturnBookMessage(string title);
         string WelcomeMessage();
-        string GetTimeStatisticsMessage();
+        string GetTimeReportMessage(double sec);
     }
 }

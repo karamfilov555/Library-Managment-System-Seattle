@@ -7,7 +7,7 @@
     "Year": 1958,
     "Country": "Nigeria",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0001",
     "Reservation": "Available"
@@ -20,7 +20,7 @@
     "Year": 1836,
     "Country": "Denmark",
     "Language": "Danish",
-    "Rack": "\u0000",
+    "Rack": "F",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0002",
     "Reservation": "Available"
@@ -33,7 +33,7 @@
     "Year": 1315,
     "Country": "Italy",
     "Language": "Italian",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0003",
     "Reservation": "Available"
@@ -46,7 +46,7 @@
     "Year": -1700,
     "Country": "Sumer and Akkadian Empire",
     "Language": "Akkadian",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0004",
     "Reservation": "Available"
@@ -59,7 +59,7 @@
     "Year": -600,
     "Country": "Achaemenid Empire",
     "Language": "Hebrew",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0005",
     "Reservation": "Available"
@@ -72,7 +72,7 @@
     "Year": 1200,
     "Country": "India/Iran/Iraq/Egypt/Tajikistan",
     "Language": "Arabic",
-    "Rack": "\u0000",
+    "Rack": "O",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0006",
     "Reservation": "Available"
@@ -85,7 +85,7 @@
     "Year": 1350,
     "Country": "Iceland",
     "Language": "Old Norse",
-    "Rack": "\u0000",
+    "Rack": "N",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0007",
     "Reservation": "Available"
@@ -98,7 +98,7 @@
     "Year": 1813,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "P",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0008",
     "Reservation": "Available"
@@ -111,7 +111,7 @@
     "Year": 1835,
     "Country": "France",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "L",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0009",
     "Reservation": "Available"
@@ -124,7 +124,7 @@
     "Year": 1958,
     "Country": "Nigeria",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "M",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0010",
     "Reservation": "Available"
@@ -137,7 +137,7 @@
     "Year": 1351,
     "Country": "Italy",
     "Language": "Italian",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0011",
     "Reservation": "Available"
@@ -150,7 +150,7 @@
     "Year": 1965,
     "Country": "Argentina",
     "Language": "Spanish",
-    "Rack": "\u0000",
+    "Rack": "F",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0012",
     "Reservation": "Available"
@@ -163,7 +163,7 @@
     "Year": 1847,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "W",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0013",
     "Reservation": "Available"
@@ -176,7 +176,7 @@
     "Year": 1942,
     "Country": "Algeria, French Empire",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0014",
     "Reservation": "Available"
@@ -189,7 +189,7 @@
     "Year": 1952,
     "Country": "Romania, France",
     "Language": "German",
-    "Rack": "\u0000",
+    "Rack": "P",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0015",
     "Reservation": "Available"
@@ -202,22 +202,9 @@
     "Year": 1932,
     "Country": "France",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "J",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0016",
-    "Reservation": "Available"
-  },
-  {
-    "Title": "Don Quijote De La Mancha",
-    "Subject": 18,
-    "Author": "Miguel de Cervantes",
-    "Pages": 1056,
-    "Year": 1610,
-    "Country": "Spain",
-    "Language": "Spanish",
-    "Rack": "\u0000",
-    "Copies": 1,
-    "ISBN": "978-1-940313-09-0017",
     "Reservation": "Available"
   },
   {
@@ -228,7 +215,7 @@
     "Year": 1450,
     "Country": "England",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0018",
     "Reservation": "Available"
@@ -241,7 +228,7 @@
     "Year": 1886,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "\u0000",
+    "Rack": "S",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0019",
     "Reservation": "Available"
@@ -254,7 +241,7 @@
     "Year": 1904,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "N",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0020",
     "Reservation": "Available"
@@ -267,7 +254,7 @@
     "Year": 1861,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "G",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0021",
     "Reservation": "Available"
@@ -280,7 +267,7 @@
     "Year": 1796,
     "Country": "France",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "J",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0022",
     "Reservation": "Available"
@@ -293,7 +280,7 @@
     "Year": 1929,
     "Country": "Germany",
     "Language": "German",
-    "Rack": "\u0000",
+    "Rack": "B",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0023",
     "Reservation": "Available"
@@ -306,7 +293,7 @@
     "Year": 1866,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "\u0000",
+    "Rack": "C",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0024",
     "Reservation": "Available"
@@ -319,7 +306,7 @@
     "Year": 1869,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0025",
     "Reservation": "Available"
@@ -332,7 +319,7 @@
     "Year": 1872,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0026",
     "Reservation": "Available"
@@ -345,7 +332,7 @@
     "Year": 1880,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0027",
     "Reservation": "Available"
@@ -358,7 +345,7 @@
     "Year": 1871,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "M",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0028",
     "Reservation": "Available"
@@ -371,7 +358,7 @@
     "Year": 1952,
     "Country": "United States",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "I",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0029",
     "Reservation": "Available"
@@ -384,7 +371,7 @@
     "Year": -431,
     "Country": "Greece",
     "Language": "Greek",
-    "Rack": "\u0000",
+    "Rack": "M",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0030",
     "Reservation": "Available"
@@ -397,7 +384,7 @@
     "Year": -431,
     "Country": "Greece",
     "Language": "Greek",
-    "Rack": "\u0000",
+    "Rack": "M",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0031",
     "Reservation": "Available"
@@ -410,7 +397,7 @@
     "Year": -431,
     "Country": "Greece",
     "Language": "Greek",
-    "Rack": "\u0000",
+    "Rack": "M",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0032",
     "Reservation": "Available"
@@ -423,7 +410,7 @@
     "Year": -1936,
     "Country": "United States",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "A",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0033",
     "Reservation": "Available"
@@ -436,7 +423,7 @@
     "Year": 1929,
     "Country": "United States",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0034",
     "Reservation": "Available"
@@ -449,7 +436,7 @@
     "Year": 1857,
     "Country": "France",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "M",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0035",
     "Reservation": "Available"
@@ -462,7 +449,7 @@
     "Year": 1869,
     "Country": "France",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "S",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0036",
     "Reservation": "Available"
@@ -475,7 +462,7 @@
     "Year": 1928,
     "Country": "Spain",
     "Language": "Spanish",
-    "Rack": "\u0000",
+    "Rack": "G",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0037",
     "Reservation": "Available"
@@ -488,7 +475,7 @@
     "Year": 1967,
     "Country": "Colombia",
     "Language": "Spanish",
-    "Rack": "\u0000",
+    "Rack": "O",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0038",
     "Reservation": "Available"
@@ -501,7 +488,7 @@
     "Year": 1985,
     "Country": "Colombia",
     "Language": "Spanish",
-    "Rack": "\u0000",
+    "Rack": "L",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0039",
     "Reservation": "Available"
@@ -514,7 +501,7 @@
     "Year": 1832,
     "Country": "Saxe-Weimar",
     "Language": "German",
-    "Rack": "\u0000",
+    "Rack": "F",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0040",
     "Reservation": "Available"
@@ -527,7 +514,7 @@
     "Year": 1842,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "\u0000",
+    "Rack": "D",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0041",
     "Reservation": "Available"
@@ -540,7 +527,7 @@
     "Year": 1959,
     "Country": "Germany",
     "Language": "German",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0042",
     "Reservation": "Available"
@@ -553,7 +540,7 @@
     "Year": 1956,
     "Country": "Brazil",
     "Language": "Portuguese",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0043",
     "Reservation": "Available"
@@ -566,7 +553,7 @@
     "Year": 1890,
     "Country": "Norway",
     "Language": "Norwegian",
-    "Rack": "\u0000",
+    "Rack": "H",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0044",
     "Reservation": "Available"
@@ -579,7 +566,7 @@
     "Year": 1952,
     "Country": "United States",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0045",
     "Reservation": "Available"
@@ -592,7 +579,7 @@
     "Year": -735,
     "Country": "Greece",
     "Language": "Greek",
-    "Rack": "\u0000",
+    "Rack": "I",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0046",
     "Reservation": "Available"
@@ -605,7 +592,7 @@
     "Year": -800,
     "Country": "Greece",
     "Language": "Greek",
-    "Rack": "\u0000",
+    "Rack": "O",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0047",
     "Reservation": "Available"
@@ -618,7 +605,7 @@
     "Year": 1879,
     "Country": "Norway",
     "Language": "Norwegian",
-    "Rack": "\u0000",
+    "Rack": "A",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0048",
     "Reservation": "Available"
@@ -631,7 +618,7 @@
     "Year": 1922,
     "Country": "Irish Free State",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "U",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0049",
     "Reservation": "Available"
@@ -644,7 +631,7 @@
     "Year": 1924,
     "Country": "Czechoslovakia",
     "Language": "German",
-    "Rack": "\u0000",
+    "Rack": "S",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0050",
     "Reservation": "Available"
@@ -657,7 +644,7 @@
     "Year": 1925,
     "Country": "Czechoslovakia",
     "Language": "German",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0051",
     "Reservation": "Available"
@@ -670,7 +657,7 @@
     "Year": 1926,
     "Country": "Czechoslovakia",
     "Language": "German",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0052",
     "Reservation": "Available"
@@ -683,7 +670,7 @@
     "Year": 150,
     "Country": "India",
     "Language": "Sanskrit",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0053",
     "Reservation": "Available"
@@ -696,7 +683,7 @@
     "Year": 1954,
     "Country": "Japan",
     "Language": "Japanese",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0054",
     "Reservation": "Available"
@@ -709,7 +696,7 @@
     "Year": 1946,
     "Country": "Greece",
     "Language": "Greek",
-    "Rack": "\u0000",
+    "Rack": "Z",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0055",
     "Reservation": "Available"
@@ -722,7 +709,7 @@
     "Year": 1913,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "S",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0056",
     "Reservation": "Available"
@@ -735,7 +722,7 @@
     "Year": 1934,
     "Country": "Iceland",
     "Language": "Icelandic",
-    "Rack": "\u0000",
+    "Rack": "I",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0057",
     "Reservation": "Available"
@@ -748,7 +735,7 @@
     "Year": 1818,
     "Country": "Italy",
     "Language": "Italian",
-    "Rack": "\u0000",
+    "Rack": "P",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0058",
     "Reservation": "Available"
@@ -761,7 +748,7 @@
     "Year": 1962,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0059",
     "Reservation": "Available"
@@ -774,7 +761,7 @@
     "Year": 1945,
     "Country": "Sweden",
     "Language": "Swedish",
-    "Rack": "\u0000",
+    "Rack": "P",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0060",
     "Reservation": "Available"
@@ -787,7 +774,7 @@
     "Year": 1918,
     "Country": "China",
     "Language": "Chinese",
-    "Rack": "\u0000",
+    "Rack": "D",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0061",
     "Reservation": "Available"
@@ -800,7 +787,7 @@
     "Year": 1959,
     "Country": "Egypt",
     "Language": "Arabic",
-    "Rack": "\u0000",
+    "Rack": "C",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0062",
     "Reservation": "Available"
@@ -813,7 +800,7 @@
     "Year": 1901,
     "Country": "Germany",
     "Language": "German",
-    "Rack": "\u0000",
+    "Rack": "B",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0063",
     "Reservation": "Available"
@@ -826,7 +813,7 @@
     "Year": 1924,
     "Country": "Germany",
     "Language": "German",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0064",
     "Reservation": "Available"
@@ -839,7 +826,7 @@
     "Year": 1851,
     "Country": "United States",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "M",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0065",
     "Reservation": "Available"
@@ -852,7 +839,7 @@
     "Year": 1595,
     "Country": "France",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "E",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0066",
     "Reservation": "Available"
@@ -865,7 +852,7 @@
     "Year": 1974,
     "Country": "Italy",
     "Language": "Italian",
-    "Rack": "\u0000",
+    "Rack": "H",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0067",
     "Reservation": "Available"
@@ -878,7 +865,7 @@
     "Year": 1987,
     "Country": "United States",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "B",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0068",
     "Reservation": "Available"
@@ -891,7 +878,7 @@
     "Year": 1006,
     "Country": "Japan",
     "Language": "Japanese",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0069",
     "Reservation": "Available"
@@ -904,7 +891,7 @@
     "Year": 1931,
     "Country": "Austria",
     "Language": "German",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0070",
     "Reservation": "Available"
@@ -917,7 +904,7 @@
     "Year": 1955,
     "Country": "Russia/United States",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "L",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0071",
     "Reservation": "Available"
@@ -930,7 +917,7 @@
     "Year": 1949,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "N",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0072",
     "Reservation": "Available"
@@ -943,7 +930,7 @@
     "Year": 100,
     "Country": "Roman Empire",
     "Language": "Classical Latin",
-    "Rack": "\u0000",
+    "Rack": "M",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0073",
     "Reservation": "Available"
@@ -956,7 +943,7 @@
     "Year": 1928,
     "Country": "Portugal",
     "Language": "Portuguese",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0074",
     "Reservation": "Available"
@@ -969,7 +956,7 @@
     "Year": 1950,
     "Country": "United States",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0075",
     "Reservation": "Available"
@@ -982,7 +969,7 @@
     "Year": 1920,
     "Country": "France",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "I",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0076",
     "Reservation": "Available"
@@ -995,7 +982,7 @@
     "Year": 1533,
     "Country": "France",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "G",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0077",
     "Reservation": "Available"
@@ -1008,7 +995,7 @@
     "Year": 1955,
     "Country": "Mexico",
     "Language": "Spanish",
-    "Rack": "\u0000",
+    "Rack": "P",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0078",
     "Reservation": "Available"
@@ -1021,7 +1008,7 @@
     "Year": 1236,
     "Country": "Sultanate of Rum",
     "Language": "Persian",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0079",
     "Reservation": "Available"
@@ -1034,7 +1021,7 @@
     "Year": 1981,
     "Country": "United Kingdom, India",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "M",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0080",
     "Reservation": "Available"
@@ -1047,7 +1034,7 @@
     "Year": 1257,
     "Country": "Persia, Persian Empire",
     "Language": "Persian",
-    "Rack": "\u0000",
+    "Rack": "B",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0081",
     "Reservation": "Available"
@@ -1060,7 +1047,7 @@
     "Year": 1966,
     "Country": "Sudan",
     "Language": "Arabic",
-    "Rack": "\u0000",
+    "Rack": "S",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0082",
     "Reservation": "Available"
@@ -1073,7 +1060,7 @@
     "Year": 1995,
     "Country": "Portugal",
     "Language": "Portuguese",
-    "Rack": "\u0000",
+    "Rack": "B",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0083",
     "Reservation": "Available"
@@ -1086,7 +1073,7 @@
     "Year": 1603,
     "Country": "England",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "H",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0084",
     "Reservation": "Available"
@@ -1099,7 +1086,7 @@
     "Year": 1608,
     "Country": "England",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "K",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0085",
     "Reservation": "Available"
@@ -1112,7 +1099,7 @@
     "Year": 1609,
     "Country": "England",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "O",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0086",
     "Reservation": "Available"
@@ -1125,7 +1112,7 @@
     "Year": -430,
     "Country": "Greece",
     "Language": "Greek",
-    "Rack": "\u0000",
+    "Rack": "O",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0087",
     "Reservation": "Available"
@@ -1138,7 +1125,7 @@
     "Year": 1830,
     "Country": "France",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0088",
     "Reservation": "Available"
@@ -1151,7 +1138,7 @@
     "Year": 1760,
     "Country": "England",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0089",
     "Reservation": "Available"
@@ -1164,7 +1151,7 @@
     "Year": 1923,
     "Country": "Italy",
     "Language": "Italian",
-    "Rack": "\u0000",
+    "Rack": "C",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0090",
     "Reservation": "Available"
@@ -1177,7 +1164,7 @@
     "Year": 1726,
     "Country": "Ireland",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "G",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0091",
     "Reservation": "Available"
@@ -1190,7 +1177,7 @@
     "Year": 1867,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "\u0000",
+    "Rack": "W",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0092",
     "Reservation": "Available"
@@ -1203,7 +1190,7 @@
     "Year": 1877,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "\u0000",
+    "Rack": "A",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0093",
     "Reservation": "Available"
@@ -1216,7 +1203,7 @@
     "Year": 1886,
     "Country": "Russia",
     "Language": "Russian",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0094",
     "Reservation": "Available"
@@ -1229,7 +1216,7 @@
     "Year": 1884,
     "Country": "United States",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0095",
     "Reservation": "Available"
@@ -1242,7 +1229,7 @@
     "Year": -450,
     "Country": "India",
     "Language": "Sanskrit",
-    "Rack": "\u0000",
+    "Rack": "R",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0096",
     "Reservation": "Available"
@@ -1255,7 +1242,7 @@
     "Year": -23,
     "Country": "Roman Empire",
     "Language": "Classical Latin",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0097",
     "Reservation": "Available"
@@ -1268,7 +1255,7 @@
     "Year": -700,
     "Country": "India",
     "Language": "Sanskrit",
-    "Rack": "\u0000",
+    "Rack": "M",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0098",
     "Reservation": "Available"
@@ -1281,7 +1268,7 @@
     "Year": 1855,
     "Country": "United States",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "L",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0099",
     "Reservation": "Available"
@@ -1294,7 +1281,7 @@
     "Year": 1925,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "M",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0100",
     "Reservation": "Available"
@@ -1307,7 +1294,7 @@
     "Year": 2019,
     "Country": "England",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "L",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0101",
     "Reservation": "Available"
@@ -1320,7 +1307,7 @@
     "Year": 1927,
     "Country": "United Kingdom",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "T",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0102",
     "Reservation": "Available"
@@ -1333,7 +1320,7 @@
     "Year": 1951,
     "Country": "France/Belgium",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "M",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0103",
     "Reservation": "Available"
@@ -1346,7 +1333,7 @@
     "Year": 2005,
     "Country": "USA",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "B",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0104",
     "Reservation": "Available"
@@ -1359,7 +1346,7 @@
     "Year": 1862,
     "Country": "France",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "L",
     "Copies": 10,
     "ISBN": "978-1-940313-09-0122",
     "Reservation": "Available"
@@ -1372,7 +1359,7 @@
     "Year": 1862,
     "Country": "France",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "L",
     "Copies": 10,
     "ISBN": "978-1-940313-09-0124",
     "Reservation": "Available"
@@ -1385,7 +1372,7 @@
     "Year": 1862,
     "Country": "France",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "L",
     "Copies": 10,
     "ISBN": "978-1-940313-09-0127",
     "Reservation": "Available"
@@ -1398,7 +1385,7 @@
     "Year": 1862,
     "Country": "France",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "L",
     "Copies": 10,
     "ISBN": "978-1-940313-09-0130",
     "Reservation": "Available"
@@ -1411,7 +1398,7 @@
     "Year": 1862,
     "Country": "France",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "L",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0128",
     "Reservation": "Available"
@@ -1424,7 +1411,7 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "bulgarian",
-    "Rack": "\u0000",
+    "Rack": "S",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0137",
     "Reservation": "Available"
@@ -1437,7 +1424,7 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "bulgarian",
-    "Rack": "\u0000",
+    "Rack": "S",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0138",
     "Reservation": "Available"
@@ -1450,7 +1437,7 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "bulgarian",
-    "Rack": "\u0000",
+    "Rack": "S",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0136",
     "Reservation": "Available"
@@ -1463,7 +1450,7 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "bulgarian",
-    "Rack": "\u0000",
+    "Rack": "S",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0139",
     "Reservation": "Available"
@@ -1476,7 +1463,7 @@
     "Year": 1862,
     "Country": "France",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "L",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0125",
     "Reservation": "Available"
@@ -1489,7 +1476,7 @@
     "Year": 2019,
     "Country": "Bulgaria",
     "Language": "Bulgarian",
-    "Rack": "\u0000",
+    "Rack": "S",
     "Copies": 5,
     "ISBN": "978-1-940313-09-0126",
     "Reservation": "Available"
@@ -1502,7 +1489,7 @@
     "Year": 2019,
     "Country": "Bulgaria",
     "Language": "Bulgarian",
-    "Rack": "\u0000",
+    "Rack": "S",
     "Copies": 5,
     "ISBN": "978-1-940313-09-0127",
     "Reservation": "Available"
@@ -1515,7 +1502,7 @@
     "Year": 2019,
     "Country": "Bulgaria",
     "Language": "Bulgarian",
-    "Rack": "\u0000",
+    "Rack": "S",
     "Copies": 5,
     "ISBN": "978-1-940313-09-0128",
     "Reservation": "Available"
@@ -1528,7 +1515,7 @@
     "Year": 2019,
     "Country": "Bulgaria",
     "Language": "Bulgarian",
-    "Rack": "\u0000",
+    "Rack": "S",
     "Copies": 5,
     "ISBN": "978-1-940313-09-0129",
     "Reservation": "Available"
@@ -1541,7 +1528,7 @@
     "Year": 2019,
     "Country": "Bulgaria",
     "Language": "Bulgarian",
-    "Rack": "\u0000",
+    "Rack": "S",
     "Copies": 5,
     "ISBN": "978-1-940313-09-0130",
     "Reservation": "Available"
@@ -1554,7 +1541,7 @@
     "Year": 1862,
     "Country": "France",
     "Language": "French",
-    "Rack": "\u0000",
+    "Rack": "L",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0126",
     "Reservation": "Available"
@@ -1567,7 +1554,7 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "Bulgarian",
-    "Rack": "\u0000",
+    "Rack": "H",
     "Copies": 3,
     "ISBN": "978-1-940313-09-0132",
     "Reservation": "Available"
@@ -1580,7 +1567,7 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "Bulgarian",
-    "Rack": "\u0000",
+    "Rack": "H",
     "Copies": 3,
     "ISBN": "978-1-940313-09-0133",
     "Reservation": "Available"
@@ -1593,7 +1580,7 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "Bulgarian",
-    "Rack": "\u0000",
+    "Rack": "H",
     "Copies": 3,
     "ISBN": "978-1-940313-09-0134",
     "Reservation": "Available"
@@ -1606,7 +1593,7 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "Bulgarian",
-    "Rack": "\u0000",
+    "Rack": "H",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0135",
     "Reservation": "Available"
@@ -1619,7 +1606,7 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "Bulgarian",
-    "Rack": "\u0000",
+    "Rack": "H",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0136",
     "Reservation": "Available"
@@ -1632,7 +1619,7 @@
     "Year": 2013,
     "Country": "Bulgaria",
     "Language": "Bulgarian",
-    "Rack": "\u0000",
+    "Rack": "H",
     "Copies": 1,
     "ISBN": "978-1-940313-09-0137",
     "Reservation": "Available"
@@ -1645,7 +1632,7 @@
     "Year": 2015,
     "Country": "France",
     "Language": "German",
-    "Rack": "\u0000",
+    "Rack": "K",
     "Copies": 3,
     "ISBN": "978-1-940313-09-0138",
     "Reservation": "Available"
@@ -1658,7 +1645,7 @@
     "Year": 2015,
     "Country": "France",
     "Language": "German",
-    "Rack": "\u0000",
+    "Rack": "K",
     "Copies": 3,
     "ISBN": "978-1-940313-09-0139",
     "Reservation": "Available"
@@ -1671,7 +1658,7 @@
     "Year": 2015,
     "Country": "France",
     "Language": "German",
-    "Rack": "\u0000",
+    "Rack": "K",
     "Copies": 3,
     "ISBN": "978-1-940313-09-0140",
     "Reservation": "Available"
@@ -1684,7 +1671,7 @@
     "Year": 1984,
     "Country": "USA",
     "Language": "English",
-    "Rack": "\u0000",
+    "Rack": "G",
     "Copies": 3,
     "ISBN": "978-1-940313-09-0141",
     "Reservation": "Reserved"
@@ -1697,7 +1684,7 @@
     "Year": 2019,
     "Country": "Bulgaria",
     "Language": "bulgarian",
-    "Rack": "\u0000",
+    "Rack": "H",
     "Copies": 0,
     "ISBN": "978-1-940313-09--1581283828",
     "Reservation": "Available"
@@ -1710,7 +1697,7 @@
     "Year": 1885,
     "Country": "Bulgaria",
     "Language": "bulgarian",
-    "Rack": "\u0000",
+    "Rack": "U",
     "Copies": 0,
     "ISBN": "978-1-940313-09--1756667268",
     "Reservation": "Available"
@@ -1723,7 +1710,7 @@
     "Year": 1885,
     "Country": "Bulgaria",
     "Language": "bulgarian",
-    "Rack": "\u0000",
+    "Rack": "U",
     "Copies": 0,
     "ISBN": "978-1-940313-09--2056333374",
     "Reservation": "Available"
@@ -1736,7 +1723,7 @@
     "Year": 1885,
     "Country": "Bulgaria",
     "Language": "bulgarian",
-    "Rack": "\u0000",
+    "Rack": "U",
     "Copies": 0,
     "ISBN": "978-1-940313-09-789401131",
     "Reservation": "Available"
@@ -1749,7 +1736,7 @@
     "Year": 1885,
     "Country": "Bulgaria",
     "Language": "bulgarian",
-    "Rack": "\u0000",
+    "Rack": "U",
     "Copies": 0,
     "ISBN": "978-1-940313-09-1013370964",
     "Reservation": "Available"
@@ -1762,7 +1749,7 @@
     "Year": 1885,
     "Country": "Bulgaria",
     "Language": "bulgarian",
-    "Rack": "\u0000",
+    "Rack": "U",
     "Copies": 0,
     "ISBN": "978-1-940313-09--1170356394",
     "Reservation": "Available"
@@ -1775,7 +1762,7 @@
     "Year": 1885,
     "Country": "Bulgaria",
     "Language": "bulgarian",
-    "Rack": "\u0000",
+    "Rack": "U",
     "Copies": 0,
     "ISBN": "978-1-940313-09-605792893",
     "Reservation": "Available"
@@ -1788,21 +1775,34 @@
     "Year": 1885,
     "Country": "Bulgaria",
     "Language": "bulgarian",
-    "Rack": "\u0000",
+    "Rack": "U",
     "Copies": 0,
     "ISBN": "978-1-940313-09--1567816780",
     "Reservation": "Available"
   },
   {
+    "Title": "Under The Yuke",
+    "Subject": 7,
     "Author": "Ivan Vazov",
+    "Pages": 1932,
+    "Year": 1885,
     "Country": "Bulgaria",
     "Language": "bulgarian",
-    "Subject": "Historical",
-    "Pages": 1932,
-    "Title": "Under The Yuke",
-    "Year": 1885,
     "Rack": "U",
+    "Copies": 0,
+    "ISBN": "978-1-940313-09--214586485",
+    "Reservation": "Available"
+  },
+  {
+    "Author": "Miguel de Cervantes",
+    "Country": "Spain",
+    "Language": "Spanish",
+    "Subject": "Novel",
+    "Pages": 1056,
+    "Title": "Don Quijote De La Mancha",
+    "Year": 1610,
+    "Rack": "D",
     "Reservation": "Available",
-    "ISBN": "978-1-940313-09--214586485"
+    "ISBN": "978-1-940313-09-0017"
   }
 ]

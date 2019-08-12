@@ -9,7 +9,6 @@ namespace LMS.Core.LmsEngine
     {
         private readonly IInputReader _inputReader;
         private readonly IOutputWriter _outputWriter;
-        private readonly IDataBaseLoader _dataBaseLoader;
         private readonly ILoginAuthenticator _loginAuthenticator;
         private readonly ICommandProcessor _commandProcessor;
         public Engine(IOutputWriter outputWriter,
@@ -20,14 +19,11 @@ namespace LMS.Core.LmsEngine
         {
             _outputWriter = outputWriter;
             _inputReader = inputReader;
-            _dataBaseLoader = dataBaseLoader;
             _loginAuthenticator = loginAuthenticator;
             _commandProcessor = commandProcessor;
         }
         public void Run()
         {
-            _dataBaseLoader.FillDataBase();
-
             string consoleInput = string.Empty;
             while ((consoleInput = _inputReader.ReadLine()) != "end")
             {
