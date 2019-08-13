@@ -23,3 +23,23 @@ seemingly wrapped in a large steel net around glass skin. Architectural tours of
 
 In 2007, the building was voted #108 on the American Institute of Architects' list of Americans' 150 favorite structures in the US
 It was one of two Seattle buildings included on the list of 150 structures, the other being Safeco Field.
+
+
+# LMS Seattle Public Library Project Refactoring
+Team name and list of team members : 
+Todor Karamfilov & Nikola Rangelov
+
+What problems did the application have before you started refactoring?
+1. - Singleton 
+2. - Tightly - coupled 
+3. - Low Cohesion
+4. - Was not SOLID at all!
+
+What design patterns have you used and why?
+1. Decorator design patern 
+2. Factory DP
+
+Class diagram of your types
+diagrams added
+Any other information (optionally)
+Abstraction level is good.
