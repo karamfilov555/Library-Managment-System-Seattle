@@ -73,14 +73,15 @@ namespace LMS.Start
 
             builder.RegisterType<BookServices>()
               .As<IBookServices>().SingleInstance();
-          //  builder.RegisterType<OutputWriter>()
-          //    .As<IOutputWriter>();
-          //  builder.RegisterType<InputReader>()
-          //    .As<IInputReader>();
-          //  builder.RegisterType<GlobalMessages>()
-          // .As<IGlobalMessages>();
-          //  builder.RegisterType<FactoryModels>()
-          //.As<IModelsFactory>();
+           
+            //  builder.RegisterType<OutputWriter>()
+            //    .As<IOutputWriter>();
+            //  builder.RegisterType<InputReader>()
+            //    .As<IInputReader>();
+            //  builder.RegisterType<GlobalMessages>()
+            // .As<IGlobalMessages>();
+            //  builder.RegisterType<FactoryModels>()
+            //.As<IModelsFactory>();
             // builder.RegisterType<UsersServices>()
             //   .As<IUsersServices>().SingleInstance();
 

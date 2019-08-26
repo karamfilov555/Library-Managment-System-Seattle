@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMS.Data.Migrations
 {
     [DbContext(typeof(LMSContext))]
-    [Migration("20190821214122_Initial")]
-    partial class Initial
+    [Migration("20190826134530_Role")]
+    partial class Role
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -88,6 +88,20 @@ namespace LMS.Data.Migrations
                     b.ToTable("HistoryRegistry");
                 });
 
+            modelBuilder.Entity("LMS.Data.Models.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Role");
+                });
+
             modelBuilder.Entity("LMS.Data.Models.SubjectCategory", b =>
                 {
                     b.Property<int>("Id")
@@ -108,16 +122,17 @@ namespace LMS.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AccessLevel")
-                        .IsRequired();
-
                     b.Property<string>("Password")
                         .IsRequired();
+
+                    b.Property<int>("RoleId");
 
                     b.Property<string>("Username")
                         .IsRequired();
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
 
                     b.ToTable("User");
                 });
@@ -145,6 +160,14 @@ namespace LMS.Data.Migrations
                     b.HasOne("LMS.Data.Models.User", "User")
                         .WithMany("BooksOfCurrentUser")
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("LMS.Data.Models.User", b =>
+                {
+                    b.HasOne("LMS.Data.Models.Role", "Role")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

@@ -6,6 +6,6 @@ namespace LMS.Services.Validator
 {
     public interface IServicesValidator
     {
-        //TODO
+        void CheckIfUsernameExists(string username);
     }
 }

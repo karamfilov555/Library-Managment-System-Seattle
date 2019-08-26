@@ -10,10 +10,11 @@ namespace LMS.Data.Models
         internal User()
         {
         }
-        internal User(string username, string password)
+        internal User(string username, string password, Role role)
         {
             this.Username = username;
             this.Password = password;
+            this.Role = role;
         }
         public int Id { get; set; }
 
@@ -23,10 +24,12 @@ namespace LMS.Data.Models
         [Required]
         public string Password { get; set; }
 
-        [Required]
+        //[Required]
+        //public string Role { get; set; }
         public Role Role { get; set; }
 
-        [Required]
+        //public int RoleId  { get; set; }
+
         public ICollection<HistoryRegistry> BooksOfCurrentUser { get; set; }
 
         //[Required]

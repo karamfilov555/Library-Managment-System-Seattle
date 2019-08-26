@@ -5,9 +5,9 @@ using LMS.Data.Models;
 
 namespace LMS.Services.Contracts
 {
-    public interface IUserServices
+    public interface IRoleServices
     {
-        void AddUserToDb(User user);
-
+        void AddRoleToDb(Role role);
+        bool CheckIfRoleExist(string roleName);
     }
 }

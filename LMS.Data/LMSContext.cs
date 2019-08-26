@@ -6,6 +6,10 @@ namespace LMS.Data
 {
     public class LMSContext : DbContext
     {
+        public LMSContext()
+        {
+                
+        }
         public LMSContext(DbContextOptions options)
         {
 
