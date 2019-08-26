@@ -4,7 +4,6 @@ using System.Security.Cryptography;
 
 namespace LMS.Generators
 {
-    //SRP example
     public class IsbnGenerator : IIsbnGenerator
     {
         private string isbn = "978-1-940313-09-";

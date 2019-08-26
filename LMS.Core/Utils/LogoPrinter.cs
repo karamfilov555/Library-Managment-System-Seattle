@@ -11,7 +11,7 @@ namespace LMS.Core.Utils
         {
 
         }
-        public void PrintLogo() 
+        public void PrintLogo()
         {
             int n = 14;
             Console.WriteLine();

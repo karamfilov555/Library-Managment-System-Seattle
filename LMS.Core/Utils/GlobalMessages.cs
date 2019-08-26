@@ -1,5 +1,4 @@
-﻿using LMS.Contracts;
-using LMS.Core.Contracts;
+﻿using LMS.Core.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -72,7 +71,7 @@ namespace LMS.Core.Utils
         }
         public string BookRemovedMessage(string title)
         {
-            return string.Format(BookRemoved,title);
+            return string.Format(BookRemoved, title);
         }
         public string PrintAddBookLabel()
         {
@@ -83,7 +82,7 @@ namespace LMS.Core.Utils
         }
         public string PrintCheckOutBookLabel()
         {
-            return $"{Environment.NewLine}"+
+            return $"{Environment.NewLine}" +
                    $"==================================={Environment.NewLine}" +
                    $"=======> Book checked out! <======={Environment.NewLine}" +
                    $"==================================={Environment.NewLine}";
@@ -102,7 +101,7 @@ namespace LMS.Core.Utils
         }
         public string SuccessfullyReturnBookMessage(string title)
         {
-            return string.Format(SuccessfullyReturnBook,title);
+            return string.Format(SuccessfullyReturnBook, title);
         }
         public string WelcomeMessage()
         {
@@ -110,7 +109,7 @@ namespace LMS.Core.Utils
         }
         public string GetTimeReportMessage(double sec)
         {
-            return string.Format(Statistics,sec);
+            return string.Format(Statistics, sec);
         }
     }
 }

@@ -1,22 +1,16 @@
-﻿using LMS.Contracts;
-using LMS.Core.CommandContracts;
+﻿using LMS.Core.Commands.Contracts;
+using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace LMS.Core.Commands
 {
-    //Liskov(ICommand)
     public class CatalogCommand : ICommand
     {
-        private readonly IBookServices _bookServices;
-        public CatalogCommand(IBookServices bookServices) 
-        {
-            _bookServices = bookServices;
-        }
-        //Interface segregation (Execute from ICommand for 20 commands) 
+        //TODO
         public string Execute(IList<string> parameteres)
         {
-            return _bookServices.AllExistingBooksToString();
+            throw new NotImplementedException();
         }
-        //Dependency Inversion with constr injection(bookServices) 
     }
 }

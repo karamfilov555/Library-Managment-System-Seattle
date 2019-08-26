@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LMS.Core.IO
 {
-    public class InputReader : IInputReader
+    public class InputReader :  IInputReader
     {
         public InputReader()
         {
@@ -16,6 +16,5 @@ namespace LMS.Core.IO
             var laneToRead = Console.ReadLine();
             return laneToRead;
         }
-
     }
 }

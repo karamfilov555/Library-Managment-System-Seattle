@@ -1,8 +1,8 @@
-﻿using LMS.Contracts;
-using LMS.Core.CommandContracts;
+﻿using LMS.Core.Commands.Contracts;
 using LMS.Core.Contracts;
+using LMS.Data.Models.ModelsFactory;
 using LMS.Generators.Contracts;
-using LMS.Models;
+using LMS.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,30 +15,26 @@ namespace LMS.Core.Commands
         private readonly IModelsFactory _modelsFactory;
         private readonly IBookServices _bookServices;
         private readonly IInputReader _inputReader;
-        private readonly ILoginAuthenticator _loginAuthenticator;
+        //private readonly ILoginAuthenticator _loginAuthenticator;
         private readonly IOutputWriter _outputWriter;
-        private readonly IIsbnGenerator _isbnGenerator;
 
         public AddBookCommand(IGlobalMessages globalMessages,
                               IModelsFactory modelsFactory,
                               IInputReader inputReader,
-                              ILoginAuthenticator loginAuthenticator,
+                              //ILoginAuthenticator loginAuthenticator,
                               IOutputWriter outputWriter,
-                              IBookServices bookServices,
-                              IIsbnGenerator isbnGenerator)
+                              IBookServices bookServices
+                              )
         {
             _messages = globalMessages;
             _modelsFactory = modelsFactory;
             _inputReader = inputReader;
-            _loginAuthenticator = loginAuthenticator;
+            //_loginAuthenticator = loginAuthenticator;
             _outputWriter = outputWriter;
             _bookServices = bookServices;
-            _isbnGenerator = isbnGenerator;
         }
         public string Execute(IList<string> parameteres)
         {
-            _loginAuthenticator.IsAdmin();
-
             string title;
             string author;
             int pages;
@@ -71,15 +67,12 @@ namespace LMS.Core.Commands
             {
                 throw new ArgumentException(_messages.InvalidParametersMessage());
             }
-            var strBuilder = new StringBuilder();
-            for (int i = 1; i <= copies; i++)
-            {
-                var isbn = _isbnGenerator.GenerateISBN();
-                var book = _modelsFactory.CreateBook(title, author, pages, year, country, language, subject, isbn);
-                _bookServices.AddBookToDb(book);
-                strBuilder.AppendLine(book.PrintBookInfo());
-            }
-            return _messages.PrintAddBookLabel() + strBuilder.ToString();
+
+            var book = _modelsFactory.CreateBook(title,author,pages,year,country,language,subject);
+
+            _bookServices.AddBookToDb(book);
+
+            return "Book Added!";
         }
     }
 }

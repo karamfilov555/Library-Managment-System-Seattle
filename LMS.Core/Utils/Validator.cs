@@ -1,5 +1,4 @@
-﻿using LMS.Contracts;
-using LMS.Models.ModelsContracts;
+﻿using LMS.Core.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -42,18 +41,18 @@ namespace LMS.Core.Utils
                 throw new ArgumentException("Please, enter valid Number!");
             }
         }
-        public bool IsNull(IUser currentUser)
-        {
-            if (currentUser == null)
-                return true;
-            return false;
-        }
-        public bool IsNull(IBook book)
-        {
-            if (book == null)
-                return true;
-            return false;
-        }
+        //public bool IsNull(IUser currentUser)
+        //{
+        //    if (currentUser == null)
+        //        return true;
+        //    return false;
+        //}
+        //public bool IsNull(IBook book)
+        //{
+        //    if (book == null)
+        //        return true;
+        //    return false;
+        //}
         public bool CommandNameIsLogin(string input)
         {
             if (input.ToLower().Split()[0] == "login")

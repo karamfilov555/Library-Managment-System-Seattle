@@ -5,13 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="4.9.3" />
+    <PackageReference Include="Autofac" Version="4.9.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LMS.Generators\LMS.Generators.csproj" />
-    <ProjectReference Include="..\LMS.Interfaces\LMS.Contracts.csproj" />
-    <ProjectReference Include="..\LMS.JasonDB\LMS.JsonDB.csproj" />
+    <ProjectReference Include="..\LMS.Data\LMS.Data.csproj" />
+    <ProjectReference Include="..\LMS.Services\LMS.Services.csproj" />
   </ItemGroup>
 
 </Project>

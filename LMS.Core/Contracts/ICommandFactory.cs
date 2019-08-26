@@ -1,4 +1,4 @@
-﻿using LMS.Core.CommandContracts;
+﻿using LMS.Core.Commands.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
