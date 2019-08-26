@@ -8,18 +8,13 @@ namespace LMS.Services.Contracts
     public interface ILoginAuthenticator
     {
         User LoggedUser();
+        string GetCurrentUserName();
         void SetCurrentUser(User _currentUser, string username, string password);
         User CheckUserCredetials(string username, string password);
-        User CheckAdminCredetials(string username, string password);
-        bool CheckCurrentUserStatus();
+        void IsAlreadyLoggedIn();
         void IsAdmin();
-        bool CheckUsernameInAdminDb(string username);
-        bool CheckUsernameInUserDb(string username);
         bool IsPasswordCorrect(string pass);
         void LogoutCurrentUser();
-        void RemoveUserFromDb(string userName);
-        string GetCurrentUserName();
-        void IsAlreadyLoggedIn();
         void CheckAllowedCommands(string consoleInput);
     }
 }

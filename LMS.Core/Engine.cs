@@ -1,4 +1,5 @@
 ﻿using LMS.Core.Contracts;
+using LMS.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,17 +10,17 @@ namespace LMS.Core
     {
         private readonly IInputReader _inputReader;
         private readonly IOutputWriter _outputWriter;
-        //private readonly ILoginAuthenticator _loginAuthenticator;
+        private readonly ILoginAuthenticator _loginAuthenticator;
         private readonly ICommandProcessor _commandProcessor;
         public Engine(IOutputWriter outputWriter,
                       IInputReader inputReader,
                       //IDataBaseLoader dataBaseLoader,
-                      //ILoginAuthenticator loginAuthenticator,
+                      ILoginAuthenticator loginAuthenticator,
                       ICommandProcessor commandProcessor)
         {
             _outputWriter = outputWriter;
             _inputReader = inputReader;
-            //_loginAuthenticator = loginAuthenticator;
+            _loginAuthenticator = loginAuthenticator;
             _commandProcessor = commandProcessor;
         }
         public void Run()
@@ -29,7 +30,7 @@ namespace LMS.Core
             {
                 try
                 {
-                    //_loginAuthenticator.CheckAllowedCommands(consoleInput);
+                    _loginAuthenticator.CheckAllowedCommands(consoleInput);
                     var output = _commandProcessor.ProcessCommand(consoleInput);
                     _outputWriter.WriteLine(output);
                 }

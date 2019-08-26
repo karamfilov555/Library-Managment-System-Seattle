@@ -3,80 +3,94 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using LMS.Data.Models;
+using LMS.Services.Validator;
 
 namespace LMS.Services
 {
     public class LoginAuthenticator : ILoginAuthenticator
     {
-        //TODO
+        private User currentUser;
+        private readonly IUserServices _usersServices;
+        private readonly IServicesValidator _validator;
+        private string currentPassword;
+        private string currentUsername;
+        public LoginAuthenticator(IUserServices usersServices,
+                                  IServicesValidator validator)
+        {
+            _usersServices = usersServices;
+            _validator = validator;
+        }
         public User LoggedUser()
         {
-            throw new NotImplementedException();
+            return currentUser;
         }
-
+        public string GetCurrentUserName()
+        {
+            return currentUsername;
+        }
         public void SetCurrentUser(User _currentUser, string username, string password)
         {
-            throw new NotImplementedException();
+            currentPassword = password;
+            currentUser = _currentUser;
+            currentUsername = username;
         }
-
         public User CheckUserCredetials(string username, string password)
         {
-            throw new NotImplementedException();
+            var user = _usersServices.CheckUserCredetials(username, password);
+            return user;
         }
-
-        public User CheckAdminCredetials(string username, string password)
+        //public bool CheckUsernameInDb(string username)
+        //{
+        //    var user = _usersServices.CheckUsernameInDb(username);
+        //    if (user != null)
+        //        return true;
+        //    return false;
+        //}
+       
+        public void IsAlreadyLoggedIn()
         {
-            throw new NotImplementedException();
+            var currUsr = LoggedUser();
+            if (currUsr != null)
+            {
+                throw new ArgumentException("You are already LoggedIn!");
+            }
         }
-
-        public bool CheckCurrentUserStatus()
-        {
-            throw new NotImplementedException();
-        }
-
         public void IsAdmin()
         {
-            throw new NotImplementedException();
+            var currentUser = LoggedUser();
+            if (currentUser.Role.Name != "admin")
+                throw new ArgumentException("You have no admin rights!");
         }
-
-        public bool CheckUsernameInAdminDb(string username)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CheckUsernameInUserDb(string username)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool IsPasswordCorrect(string pass)
         {
-            throw new NotImplementedException();
+            var user = LoggedUser();
+            if (pass == user.Password)
+            {
+                return true;
+            }
+            return false;
         }
 
         public void LogoutCurrentUser()
         {
-            throw new NotImplementedException();
+            SetCurrentUser(null, null, null);
         }
 
-        public void RemoveUserFromDb(string userName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetCurrentUserName()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void IsAlreadyLoggedIn()
-        {
-            throw new NotImplementedException();
-        }
-
+        //public void RemoveUserFromDb(string userName)
+        //{
+        //    if (CheckCurrentUserStatus())
+        //    {
+        //        _adminServices.RemoveAdminFromDb(userName);
+        //    }
+        //    _usersServices.RemoveUserFromDb(userName);
+        //}
         public void CheckAllowedCommands(string consoleInput)
         {
-            throw new NotImplementedException();
+            var currentUser = LoggedUser();
+            if (_validator.IsNull(currentUser)
+                && (!_validator.CommandNameIsLogin(consoleInput)
+                && !_validator.CommandNameIsRegister(consoleInput)))
+                throw new ArgumentException("For better expirience, plese LogIn or Register into the System...");
         }
     }
 }

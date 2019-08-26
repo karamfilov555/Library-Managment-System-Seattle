@@ -73,7 +73,7 @@ namespace LMS.Start
 
             builder.RegisterType<BookServices>()
               .As<IBookServices>().SingleInstance();
-           
+
             //  builder.RegisterType<OutputWriter>()
             //    .As<IOutputWriter>();
             //  builder.RegisterType<InputReader>()
@@ -85,8 +85,8 @@ namespace LMS.Start
             // builder.RegisterType<UsersServices>()
             //   .As<IUsersServices>().SingleInstance();
 
-            // builder.RegisterType<LoginAuthenticator>()
-            //   .As<ILoginAuthenticator>().SingleInstance();
+            builder.RegisterType<LoginAuthenticator>()
+              .As<ILoginAuthenticator>().SingleInstance();
 
             // builder.RegisterType<AdminServices>()
             //     .As<IAdminServices>().SingleInstance();

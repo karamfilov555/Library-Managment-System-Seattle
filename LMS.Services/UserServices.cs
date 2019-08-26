@@ -5,6 +5,7 @@ using System.Text;
 using LMS.Data;
 using LMS.Data.Models;
 using LMS.Services.Validator;
+using System.Linq;
 
 namespace LMS.Services
 {
@@ -24,6 +25,13 @@ namespace LMS.Services
             _validator.CheckIfUsernameExists(user.Username);
             _context.User.Add(user);
             _context.SaveChanges();
+        }
+        public User CheckUserCredetials(string username, string password)
+        {
+            var user = _context.User.FirstOrDefault(x => x.Username == username && x.Password == password);
+            if (user == null)
+                throw new ArgumentException("Wrong Credentials!");
+            return user;
         }
     }
 }
