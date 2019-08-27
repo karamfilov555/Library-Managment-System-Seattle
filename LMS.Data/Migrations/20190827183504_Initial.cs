@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LMS.Data.Migrations
 {
-    public partial class First : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Author",
+                name: "Authors",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -17,11 +17,11 @@ namespace LMS.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Author", x => x.Id);
+                    table.PrimaryKey("PK_Authors", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Role",
+                name: "Roles",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -30,51 +30,29 @@ namespace LMS.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Role", x => x.Id);
+                    table.PrimaryKey("PK_Roles", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubjectCategory",
+                name: "SubjectCategories",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    SubjectName = table.Column<string>(nullable: false)
+                    SubjectName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubjectCategory", x => x.Id);
+                    table.PrimaryKey("PK_SubjectCategories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Books",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Username = table.Column<string>(nullable: false),
-                    Password = table.Column<string>(nullable: false),
-                    RoleId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_User_Role_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "Role",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Book",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(nullable: false),
-                    SubjectCategoryId = table.Column<int>(nullable: false),
+                    Title = table.Column<string>(maxLength: 255, nullable: false),
                     AuthorId = table.Column<int>(nullable: false),
                     Pages = table.Column<int>(nullable: false),
                     Year = table.Column<int>(nullable: false),
@@ -84,23 +62,62 @@ namespace LMS.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Book", x => x.Id);
+                    table.PrimaryKey("PK_Books", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Book_Author_AuthorId",
+                        name: "FK_Books_Authors_AuthorId",
                         column: x => x.AuthorId,
-                        principalTable: "Author",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Book_SubjectCategory_SubjectCategoryId",
-                        column: x => x.SubjectCategoryId,
-                        principalTable: "SubjectCategory",
+                        principalTable: "Authors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HistoryRegistry",
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Username = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false),
+                    RoleId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Roles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "Roles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BooksSubjects",
+                columns: table => new
+                {
+                    BookId = table.Column<int>(nullable: false),
+                    SubjectCategoryId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BooksSubjects", x => new { x.BookId, x.SubjectCategoryId });
+                    table.ForeignKey(
+                        name: "FK_BooksSubjects_Books_BookId",
+                        column: x => x.BookId,
+                        principalTable: "Books",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BooksSubjects_SubjectCategories_SubjectCategoryId",
+                        column: x => x.SubjectCategoryId,
+                        principalTable: "SubjectCategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HistoryRegistries",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -110,66 +127,69 @@ namespace LMS.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HistoryRegistry", x => x.Id);
+                    table.PrimaryKey("PK_HistoryRegistries", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_HistoryRegistry_Book_BookId",
+                        name: "FK_HistoryRegistries_Books_BookId",
                         column: x => x.BookId,
-                        principalTable: "Book",
+                        principalTable: "Books",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_HistoryRegistry_User_UserId",
+                        name: "FK_HistoryRegistries_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Book_AuthorId",
-                table: "Book",
+                name: "IX_Books_AuthorId",
+                table: "Books",
                 column: "AuthorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Book_SubjectCategoryId",
-                table: "Book",
+                name: "IX_BooksSubjects_SubjectCategoryId",
+                table: "BooksSubjects",
                 column: "SubjectCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HistoryRegistry_BookId",
-                table: "HistoryRegistry",
+                name: "IX_HistoryRegistries_BookId",
+                table: "HistoryRegistries",
                 column: "BookId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HistoryRegistry_UserId",
-                table: "HistoryRegistry",
+                name: "IX_HistoryRegistries_UserId",
+                table: "HistoryRegistries",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_User_RoleId",
-                table: "User",
+                name: "IX_Users_RoleId",
+                table: "Users",
                 column: "RoleId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "HistoryRegistry");
+                name: "BooksSubjects");
 
             migrationBuilder.DropTable(
-                name: "Book");
+                name: "HistoryRegistries");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "SubjectCategories");
 
             migrationBuilder.DropTable(
-                name: "Author");
+                name: "Books");
 
             migrationBuilder.DropTable(
-                name: "SubjectCategory");
+                name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Role");
+                name: "Authors");
+
+            migrationBuilder.DropTable(
+                name: "Roles");
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using LMS.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using LMS.Models;
 
 namespace LMS.Services.Validator
 {

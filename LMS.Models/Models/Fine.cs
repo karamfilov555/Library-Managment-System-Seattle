@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LMS.Data.Models
+namespace LMS.Models
 {
-    public class Reservation
+    public class Fine
     {
         //TODO
     }

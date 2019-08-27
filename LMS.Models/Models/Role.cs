@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace LMS.Data.Models
+namespace LMS.Models
 {
     public class Role
     {
-        internal Role()
+        public Role()
         {
                 
         }
-        internal Role(string roleName)
+        public Role(string roleName)
         {
             this.Name = roleName;
         }

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using LMS.Data.Models;
+using LMS.Models;
 using LMS.Services.Validator;
 
 namespace LMS.Services
@@ -61,14 +61,11 @@ namespace LMS.Services
             if (currentUser.Role.Name != "admin")
                 throw new ArgumentException("You have no admin rights!");
         }
-        public bool IsPasswordCorrect(string pass)
+        public void IsPasswordCorrect(string pass)
         {
             var user = LoggedUser();
-            if (pass == user.Password)
-            {
-                return true;
-            }
-            return false;
+            if (pass != user.Password)
+                throw new ArgumentException("Wrong credentials!");
         }
 
         public void LogoutCurrentUser()

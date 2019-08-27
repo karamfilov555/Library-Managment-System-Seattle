@@ -1,25 +1,25 @@
 ﻿using LMS.Core.Commands.Contracts;
 using LMS.Core.Contracts;
-using LMS.Data.Models.ModelsFactory;
 using LMS.Generators.Contracts;
 using LMS.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using LMS.Services.ModelProviders.Contracts;
 
 namespace LMS.Core.Commands
 {
     public class AddBookCommand : ICommand
     {
         private readonly IGlobalMessages _messages;
-        private readonly IModelsFactory _modelsFactory;
+        private readonly IBookFactory _modelsFactory;
         private readonly IBookServices _bookServices;
         private readonly IInputReader _inputReader;
         //private readonly ILoginAuthenticator _loginAuthenticator;
         private readonly IOutputWriter _outputWriter;
 
         public AddBookCommand(IGlobalMessages globalMessages,
-                              IModelsFactory modelsFactory,
+                              IBookFactory modelsFactory,
                               IInputReader inputReader,
                               //ILoginAuthenticator loginAuthenticator,
                               IOutputWriter outputWriter,
@@ -67,8 +67,8 @@ namespace LMS.Core.Commands
             {
                 throw new ArgumentException(_messages.InvalidParametersMessage());
             }
-
-            var book = _modelsFactory.CreateBook(title,author,pages,year,country,language,subject);
+            var subjects = subject.Split();
+            var book = _modelsFactory.CreateBook(title,author,pages,year,country,language,subjects);
 
             _bookServices.AddBookToDb(book);
 

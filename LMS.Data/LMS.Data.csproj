@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20190826134530_Role.cs" />
-    <Compile Remove="Migrations\20190826134530_Role.Designer.cs" />
-    <Compile Remove="Migrations\20190826164715_LAJDS.cs" />
-    <Compile Remove="Migrations\20190826164715_LAJDS.Designer.cs" />
-    <Compile Remove="Migrations\20190826170734_DBb.cs" />
-    <Compile Remove="Migrations\20190826170734_DBb.Designer.cs" />
+    <Compile Remove="Migrations\20190827124524_InitialModel.cs" />
+    <Compile Remove="Migrations\20190827124524_InitialModel.Designer.cs" />
+    <Compile Remove="Migrations\20190827125508_InitialModel.cs" />
+    <Compile Remove="Migrations\20190827125508_InitialModel.Designer.cs" />
+    <Compile Remove="Migrations\20190827143657_Initial.cs" />
+    <Compile Remove="Migrations\20190827143657_Initial.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LMS.Generators\LMS.Generators.csproj" />
+    <ProjectReference Include="..\LMS.Models\LMS.Models.csproj" />
   </ItemGroup>
 
 </Project>

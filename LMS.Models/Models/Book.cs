@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
 
-namespace LMS.Data.Models
+namespace LMS.Models
 {
     public class Book
     {
-        internal Book()
+        public Book()
         {
 
         }
-        internal Book(string title, Author author, int pages, int year, string country, string language, SubjectCategory subject, string isbn)
+        public Book(string title, Author author, int pages, int year, string country, string language, string isbn)
         {
             this.Title = title;
             this.Author = author;
@@ -19,7 +20,7 @@ namespace LMS.Data.Models
             this.Year = year;
             this.Country = country;
             this.Language = language;
-            this.SubjectCategory = subject;
+            this.BookSubject = new List<BookSubject>();
             this.ISBN = isbn;
         }
         public int Id { get; set; }
@@ -27,7 +28,8 @@ namespace LMS.Data.Models
         [Required]
         public string Title { get; set; }
         [Required]
-        public SubjectCategory SubjectCategory { get; set; }
+        public virtual ICollection<BookSubject> BookSubject { get; set; }
+        public int AuthorId { get; set; }
         [Required]
         public Author Author { get; set; }
         [Required]

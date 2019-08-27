@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LMS.Data.Models;
+using LMS.Models;
 
 namespace LMS.Services.Contracts
 {
@@ -9,5 +9,7 @@ namespace LMS.Services.Contracts
     {
         void AddRoleToDb(Role role);
         bool CheckIfRoleExist(string roleName);
+        Role FindRoleInDb(string name);
+        Role ProvideRole(string roleName);
     }
 }

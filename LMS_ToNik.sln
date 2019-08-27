@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Start", "LMS_ToNik\LMS.Start.csproj", "{846DA455-D658-4D3D-87B5-6FD2176163EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.Start", "LMS_ToNik\LMS.Start.csproj", "{846DA455-D658-4D3D-87B5-6FD2176163EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Core", "LMS.Core\LMS.Core.csproj", "{16F7B85E-018B-4022-869E-8613284E9854}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.Core", "LMS.Core\LMS.Core.csproj", "{16F7B85E-018B-4022-869E-8613284E9854}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Services", "LMS.Services\LMS.Services.csproj", "{4F4F6286-9688-44C3-ACE9-C8D0AFEB200C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.Services", "LMS.Services\LMS.Services.csproj", "{4F4F6286-9688-44C3-ACE9-C8D0AFEB200C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Data", "LMS.Data\LMS.Data.csproj", "{70DA3EF3-D1E5-4569-9081-4021B96C4D38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.Data", "LMS.Data\LMS.Data.csproj", "{70DA3EF3-D1E5-4569-9081-4021B96C4D38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Generators", "LMS.Generators\LMS.Generators.csproj", "{D744DFB8-5A20-4841-B768-290578AC2506}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.Generators", "LMS.Generators\LMS.Generators.csproj", "{D744DFB8-5A20-4841-B768-290578AC2506}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Tests", "LMS.Tests\LMS.Tests.csproj", "{3231A49A-470A-4CC8-9FE6-4F0F1706C155}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.Tests", "LMS.Tests\LMS.Tests.csproj", "{3231A49A-470A-4CC8-9FE6-4F0F1706C155}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Models", "LMS.Models\LMS.Models.csproj", "{C13259AB-8745-4061-B20A-87C132D3E856}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{3231A49A-470A-4CC8-9FE6-4F0F1706C155}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3231A49A-470A-4CC8-9FE6-4F0F1706C155}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3231A49A-470A-4CC8-9FE6-4F0F1706C155}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C13259AB-8745-4061-B20A-87C132D3E856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C13259AB-8745-4061-B20A-87C132D3E856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C13259AB-8745-4061-B20A-87C132D3E856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C13259AB-8745-4061-B20A-87C132D3E856}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

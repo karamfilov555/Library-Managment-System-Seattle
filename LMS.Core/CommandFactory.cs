@@ -18,15 +18,15 @@ namespace LMS.Core
         public ICommand FindCommand(string commandName)
         {
             ICommand command;
-            try
-            {
+            //try
+            //{
                 command = componentContext
                     .ResolveNamed<ICommand>(commandName.ToLower());
-            }
-            catch (Exception)
-            {
-                throw new ArgumentException("Invalid Command!");
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    throw new ArgumentException("Invalid Command!");
+            //}
             return command;
         }
     }

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace LMS.Data.Models
+namespace LMS.Models
 {
     public class HistoryRegistry
     {
-        internal HistoryRegistry()
+        public HistoryRegistry()
         { }
-        internal HistoryRegistry(User user, Book book)
+        public HistoryRegistry(User user, Book book)
         {
             this.User = user;
             this.Book = book;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LMS.Data.Models;
+using LMS.Models;
 
 namespace LMS.Services.Contracts
 {
@@ -13,7 +13,7 @@ namespace LMS.Services.Contracts
         User CheckUserCredetials(string username, string password);
         void IsAlreadyLoggedIn();
         void IsAdmin();
-        bool IsPasswordCorrect(string pass);
+        void IsPasswordCorrect(string pass);
         void LogoutCurrentUser();
         void CheckAllowedCommands(string consoleInput);
     }

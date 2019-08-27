@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LMS.Data.Models;
+using LMS.Models;
 
 namespace LMS.Services.Contracts
 {
@@ -9,5 +9,6 @@ namespace LMS.Services.Contracts
     {
         void AddUserToDb(User user);
         User CheckUserCredetials(string username, string password);
+        void RemoveUserFromDb(User user);
     }
 }

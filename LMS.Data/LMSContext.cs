@@ -1,6 +1,6 @@
-﻿using LMS.Data.Models;
+﻿using LMS.Data.Configurations;
+using LMS.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace LMS.Data
 {
@@ -8,18 +8,20 @@ namespace LMS.Data
     {
         public LMSContext()
         {
-                
+
         }
         public LMSContext(DbContextOptions options)
+            :base(options)
         {
 
         }
-        public DbSet<Book> Book { get; set; }
-        public DbSet<Author> Author { get; set; }
-        public DbSet<HistoryRegistry> HistoryRegistry { get; set; }
-        public DbSet<User> User { get; set; }
-        public DbSet<Role> Role { get; set; }
-        public DbSet<SubjectCategory> SubjectCategory { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<HistoryRegistry> HistoryRegistries { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<SubjectCategory> SubjectCategories { get; set; }
+        public DbSet<BookSubject> BooksSubjects { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -28,6 +30,19 @@ namespace LMS.Data
 
             optionsBuilder.UseSqlServer(connectionString);
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new BookSubjectConfiguration());
+            modelBuilder.ApplyConfiguration(new AuthorConfiguration());
 
+
+            modelBuilder
+                .Entity<Book>()
+                .Property(t => t.Title)
+                .IsRequired()
+                .HasMaxLength(255);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

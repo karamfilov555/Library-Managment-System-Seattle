@@ -1,5 +1,5 @@
 ﻿using LMS.Data;
-using LMS.Data.Models;
+using LMS.Models;
 using LMS.Services.Contracts;
 using System;
 
@@ -15,7 +15,7 @@ namespace LMS.Services
         }
         public void AddBookToDb(Book book)
         {
-            _context.Book.Add(book);
+            _context.Books.Add(book);
             _context.SaveChanges();
         }
     }

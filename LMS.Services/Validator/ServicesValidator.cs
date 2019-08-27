@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using LMS.Data;
 using System.Linq;
-using LMS.Data.Models;
+using LMS.Models;
 
 namespace LMS.Services.Validator
 {
@@ -17,7 +17,7 @@ namespace LMS.Services.Validator
         }
         public void CheckIfUsernameExists(string username)
         {
-            if (_context.User.Any(n => n.Username == username))
+            if (_context.Users.Any(n => n.Username == username))
               throw new ArgumentException($"Username: {username} is taken.");
         }
         public bool CommandNameIsLogin(string input)

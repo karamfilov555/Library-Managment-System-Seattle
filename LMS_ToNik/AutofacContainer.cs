@@ -2,15 +2,13 @@
 using LMS.Core;
 using LMS.Core.Commands;
 using LMS.Core.Commands.Contracts;
-using LMS.Core.Contracts;
 using LMS.Core.IO;
-using LMS.Core.Utils;
 using LMS.Data;
-using LMS.Data.Models;
-using LMS.Data.Models.ModelsFactory;
 using LMS.Generators;
+using LMS.Models;
 using LMS.Services;
 using LMS.Services.Contracts;
+using LMS.Services.ModelProviders;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -50,7 +48,7 @@ namespace LMS.Start
             builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(BookServices)))
               .AsImplementedInterfaces();
 
-            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(FactoryModels)))
+            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(BookFactory)))
              .AsImplementedInterfaces();
 
             builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(Book)))
