@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LMS.Models.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace LMS.Models
             this.Country = country;
             this.Language = language;
             this.BookSubject = new List<BookSubject>();
+            this.HistoryRegistries = new List<HistoryRegistry>();
             this.ISBN = isbn;
         }
         public int Id { get; set; }
@@ -29,6 +31,7 @@ namespace LMS.Models
         public string Title { get; set; }
         
         public ICollection<BookSubject> BookSubject { get; set; }
+        public ICollection<HistoryRegistry> HistoryRegistries { get; set; }
         public int AuthorId { get; set; }
         [Required]
         public Author Author { get; set; }
@@ -42,6 +45,8 @@ namespace LMS.Models
         public string Language { get; set; }
         [Required]
         public string ISBN { get; set; }
+
+        public ICollection<ReserveBook> ReservedBooks { get; set; } = new List<ReserveBook>();
 
         //public char Rack
 

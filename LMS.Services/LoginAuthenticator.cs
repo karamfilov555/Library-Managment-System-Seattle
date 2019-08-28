@@ -58,7 +58,7 @@ namespace LMS.Services
         public void IsAdmin()
         {
             var currentUser = LoggedUser();
-            if (currentUser.Role.Name != "admin")
+            if (currentUser.RoleId != 1) // RoleId 1 ==> is Admin
                 throw new ArgumentException("You have no admin rights!");
         }
         public void IsPasswordCorrect(string pass)

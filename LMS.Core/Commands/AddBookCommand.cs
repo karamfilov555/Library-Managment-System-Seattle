@@ -15,13 +15,13 @@ namespace LMS.Core.Commands
         private readonly IBookFactory _modelsFactory;
         private readonly IBookServices _bookServices;
         private readonly IInputReader _inputReader;
-        //private readonly ILoginAuthenticator _loginAuthenticator;
+        private readonly ILoginAuthenticator _loginAuthenticator;
         private readonly IOutputWriter _outputWriter;
 
         public AddBookCommand(IGlobalMessages globalMessages,
                               IBookFactory modelsFactory,
                               IInputReader inputReader,
-                              //ILoginAuthenticator loginAuthenticator,
+                              ILoginAuthenticator loginAuthenticator,
                               IOutputWriter outputWriter,
                               IBookServices bookServices
                               )
@@ -29,12 +29,13 @@ namespace LMS.Core.Commands
             _messages = globalMessages;
             _modelsFactory = modelsFactory;
             _inputReader = inputReader;
-            //_loginAuthenticator = loginAuthenticator;
+            _loginAuthenticator = loginAuthenticator;
             _outputWriter = outputWriter;
             _bookServices = bookServices;
         }
         public string Execute(IList<string> parameteres)
         {
+            _loginAuthenticator.IsAdmin();
             string title;
             string author;
             int pages;
@@ -72,7 +73,7 @@ namespace LMS.Core.Commands
 
             _bookServices.AddBookToDb(book);
 
-            return "Book Added!";
+            return $"Book with title \"{title}\" was added!";
         }
     }
 }

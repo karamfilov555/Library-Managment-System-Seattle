@@ -5,27 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20190827124524_InitialModel.cs" />
-    <Compile Remove="Migrations\20190827124524_InitialModel.Designer.cs" />
-    <Compile Remove="Migrations\20190827125508_InitialModel.cs" />
-    <Compile Remove="Migrations\20190827125508_InitialModel.Designer.cs" />
-    <Compile Remove="Migrations\20190827143657_Initial.cs" />
-    <Compile Remove="Migrations\20190827143657_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20190827183504_Initial.cs" />
-    <Compile Remove="Migrations\20190827183504_Initial.Designer.cs" />
-    <Compile Remove="Migrations\20190827195036_Todor.cs" />
-    <Compile Remove="Migrations\20190827195036_Todor.Designer.cs" />
-    <Compile Remove="Migrations\20190828095611_nextInitial.cs" />
-    <Compile Remove="Migrations\20190828095611_nextInitial.Designer.cs" />
-    <Compile Remove="Migrations\20190828131933_Todor.cs" />
-    <Compile Remove="Migrations\20190828131933_Todor.Designer.cs" />
-    <Compile Remove="Migrations\20190828132413_InitialSeed.cs" />
-    <Compile Remove="Migrations\20190828132413_InitialSeed.Designer.cs" />
-    <Compile Remove="Migrations\20190828140652_newInitial.cs" />
-    <Compile Remove="Migrations\20190828140652_newInitial.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>

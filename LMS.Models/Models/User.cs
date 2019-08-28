@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LMS.Models.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -15,7 +16,7 @@ namespace LMS.Models
             this.Username = username;
             this.Password = password;
             this.Role = role;
-            this.BooksOfCurrentUser = new List<HistoryRegistry>();
+            this.HistoryRegistries = new List<HistoryRegistry>();
         }
         public int Id { get; set; }
 
@@ -28,6 +29,7 @@ namespace LMS.Models
         public int RoleId  { get; set; }
         public Role Role { get; set; }
 
-        public ICollection<HistoryRegistry> BooksOfCurrentUser { get; set; }
+        public ICollection<HistoryRegistry> HistoryRegistries { get; set; }
+        public ICollection<ReserveBook> ReservedBooks { get; set; } = new List<ReserveBook>();
     }
 }

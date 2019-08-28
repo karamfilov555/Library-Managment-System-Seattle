@@ -14,12 +14,10 @@ namespace LMS.Models
             this.User = user;
             this.Book = book;
         }
-        public int Id { get; set; }
-
-        [Required]
+        public int UserId { get; set; }
         public User User { get; set; }
 
-        [Required]
+        public int BookId { get; set; }
         public Book Book { get; set; }
     }
 }

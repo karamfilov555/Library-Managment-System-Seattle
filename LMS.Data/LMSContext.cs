@@ -33,6 +33,8 @@ namespace LMS.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new BookSubjectConfiguration());
+            modelBuilder.ApplyConfiguration(new ReserveBookConfiguration());
+            modelBuilder.ApplyConfiguration(new HistoryRegistryConfiguration());
             modelBuilder.ApplyConfiguration(new AuthorConfiguration());
 
 

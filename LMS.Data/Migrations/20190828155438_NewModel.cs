@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LMS.Data.Migrations
 {
-    public partial class NewInitial : Migration
+    public partial class NewModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -142,6 +143,31 @@ namespace LMS.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ReserveBook",
+                columns: table => new
+                {
+                    BookId = table.Column<int>(nullable: false),
+                    UserId = table.Column<int>(nullable: false),
+                    ReservationDate = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ReserveBook", x => new { x.BookId, x.UserId });
+                    table.ForeignKey(
+                        name: "FK_ReserveBook_Books_BookId",
+                        column: x => x.BookId,
+                        principalTable: "Books",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ReserveBook_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Books_AuthorId",
                 table: "Books",
@@ -163,6 +189,11 @@ namespace LMS.Data.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ReserveBook_UserId",
+                table: "ReserveBook",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_RoleId",
                 table: "Users",
                 column: "RoleId");
@@ -175,6 +206,9 @@ namespace LMS.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "HistoryRegistries");
+
+            migrationBuilder.DropTable(
+                name: "ReserveBook");
 
             migrationBuilder.DropTable(
                 name: "SubjectCategories");
