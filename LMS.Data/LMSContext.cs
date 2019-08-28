@@ -8,12 +8,10 @@ namespace LMS.Data
     {
         public LMSContext()
         {
-
         }
         public LMSContext(DbContextOptions options)
             :base(options)
         {
-
         }
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
@@ -25,10 +23,12 @@ namespace LMS.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            const string connectionString =
-                @"Server=.\SQLEXPRESS;Database=LMS_ToNik;Trusted_Connection=True;";
+            base.OnConfiguring(optionsBuilder);
 
-            optionsBuilder.UseSqlServer(connectionString);
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(Configuration.ConnectionString);
+            }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

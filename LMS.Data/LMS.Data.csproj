@@ -11,14 +11,23 @@
     <Compile Remove="Migrations\20190827125508_InitialModel.Designer.cs" />
     <Compile Remove="Migrations\20190827143657_Initial.cs" />
     <Compile Remove="Migrations\20190827143657_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20190827183504_Initial.cs" />
+    <Compile Remove="Migrations\20190827183504_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20190827195036_Todor.cs" />
+    <Compile Remove="Migrations\20190827195036_Todor.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\LMS.Models\LMS.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Json\" />
   </ItemGroup>
 
 </Project>

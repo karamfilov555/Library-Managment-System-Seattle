@@ -1,36 +1,34 @@
-﻿using LMS.Core.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
+﻿using System.Diagnostics;
+using LMS.Core.Contracts;
+using LMS.Services.Contracts;
 
 namespace LMS.Core
 {
     public class DecoratorEngine : IDecoratorEngine
     {
+        private readonly IDataBaseLoader _dataBaseLoader;
         private readonly IEngine _engine;
         private readonly IGlobalMessages _messages;
         private readonly ILogoPrinter _logoPrinter;
         private readonly IOutputWriter _writer;
-        //private readonly IDataBaseLoader _dataBaseLoader;
 
         public DecoratorEngine(IEngine engine,
+                               IDataBaseLoader dataBaseLoader,
                                IGlobalMessages messages,
                                IOutputWriter writer,
-                               //IDataBaseLoader dataBaseLoader,
                                ILogoPrinter logoPrinter)
         {
+            _dataBaseLoader = dataBaseLoader;
             _engine = engine;
             _messages = messages;
             _logoPrinter = logoPrinter;
             _writer = writer;
-            //_dataBaseLoader = dataBaseLoader;
         }
         public void Start()
         {
             var time = new Stopwatch();
             time.Start();
-            //_dataBaseLoader.FillDataBase();
+            _dataBaseLoader.SeedDataBase();
             _logoPrinter.PrintLogo();
             _writer.WriteLine(_messages.WelcomeMessage());
             _engine.Run();

@@ -20,24 +20,23 @@ namespace LMS.Services
             _context = context;
             _subjectFactory = subjectFactory;
         }
-        public void AddSubjectToDb(SubjectCategory subj)
+        public void AddSubjectsToDb(ICollection<BookSubject> subjects)
         {
-            if (!_context.SubjectCategories.Any(s => s.SubjectName == subj.SubjectName))
+            foreach (var subject in subjects)
             {
-                _context.SubjectCategories.Add(subj);
-                _context.SaveChanges();
+                if (!_context.SubjectCategories.
+                    Any(s => s.SubjectName == subject.SubjectCategory.SubjectName))
+                {
+                    _context.SubjectCategories.Add(subject.SubjectCategory);
+                }
             }
+            _context.SaveChanges();
         }
         public ICollection<BookSubject> ProvideSubject(string[] subjects)
         {
-            var bookSubject = new List<BookSubject>();
-
-               bookSubject = subjects.
-                    Select(subject => new BookSubject()
-                      { SubjectCategory = new SubjectCategory(subject) })
-                       .ToList();
-
-            return bookSubject;
+            var bookSubjects = _subjectFactory.CreateSubject(subjects);
+            AddSubjectsToDb(bookSubjects);
+            return bookSubjects;
         }
     }
 }

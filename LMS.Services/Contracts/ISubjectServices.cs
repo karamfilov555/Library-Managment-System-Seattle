@@ -7,7 +7,7 @@ namespace LMS.Services.Contracts
 {
     public interface ISubjectServices
     {
-        void AddSubjectToDb(SubjectCategory subj);
+        void AddSubjectsToDb(ICollection<BookSubject> subjects);
         ICollection<BookSubject> ProvideSubject(string[] subjects);
     }
 }

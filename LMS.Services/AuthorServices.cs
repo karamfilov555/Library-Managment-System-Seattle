@@ -39,6 +39,7 @@ namespace LMS.Services
             if (!CheckIfAuthorExist(name))
             {
                 var author = _authorFactory.CreateAuthor(name);
+                AddAuthorToDb(author);
                 return author;
             }
             else

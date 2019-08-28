@@ -40,6 +40,8 @@ namespace LMS.Data.Migrations
 
                     b.Property<int>("AuthorId");
 
+                    b.Property<int>("BookSubjectId");
+
                     b.Property<string>("Country")
                         .IsRequired();
 

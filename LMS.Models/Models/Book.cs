@@ -28,6 +28,7 @@ namespace LMS.Models
         [Required]
         public string Title { get; set; }
         [Required]
+        public int BookSubjectId { get; set; }
         public virtual ICollection<BookSubject> BookSubject { get; set; }
         public int AuthorId { get; set; }
         [Required]

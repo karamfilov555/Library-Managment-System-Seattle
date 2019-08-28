@@ -1,0 +1,53 @@
+[
+  {
+    "ID": 1,
+    "Username": "Todor",
+    "Password": "33",
+    "RoleId": 1
+
+  },
+  {
+    "ID": 2,
+    "Username": "Nikola",
+    "Password": "123",
+    "RoleId": 1
+
+  },
+  {
+    "ID": 3,
+    "Username": "Kiro",
+    "Password": "boK",
+    "RoleId": 1
+
+  },
+  {
+    "ID": 4,
+    "Username": "Edo",
+    "Password": "zavisi",
+    "RoleId": 1
+  },
+  {
+    "ID": 5,
+    "Username": "Ivan",
+    "Password": "test",
+    "RoleId": 1
+  },
+  {
+    "ID": 6,
+    "Username": "Toni",
+    "Password": "Storaro",
+    "RoleId": 1
+  },
+  {
+    "ID": 7,
+    "Username": "Doni",
+    "Password": "Brasko",
+    "RoleId": 1
+  },
+  {
+    "ID": 8,
+    "Username": "Gosho",
+    "Password": "123",
+    "RoleId": 1
+  }
+]
