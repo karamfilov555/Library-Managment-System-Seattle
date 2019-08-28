@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LMS.Data.Migrations
 {
-    public partial class OneToOne : Migration
+    public partial class RecordFines : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,6 +32,19 @@ namespace LMS.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Isbns", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RecordFines",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FineAmount = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RecordFines", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -99,11 +112,18 @@ namespace LMS.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Username = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: false),
-                    RoleId = table.Column<int>(nullable: false)
+                    RoleId = table.Column<int>(nullable: false),
+                    RecordFinesId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_RecordFines_RecordFinesId",
+                        column: x => x.RecordFinesId,
+                        principalTable: "RecordFines",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Users_Roles_RoleId",
                         column: x => x.RoleId,
@@ -212,6 +232,12 @@ namespace LMS.Data.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Users_RecordFinesId",
+                table: "Users",
+                column: "RecordFinesId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_RoleId",
                 table: "Users",
                 column: "RoleId");
@@ -242,6 +268,9 @@ namespace LMS.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Isbns");
+
+            migrationBuilder.DropTable(
+                name: "RecordFines");
 
             migrationBuilder.DropTable(
                 name: "Roles");

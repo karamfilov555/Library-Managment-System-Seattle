@@ -29,6 +29,8 @@ namespace LMS.Models
         public int RoleId  { get; set; }
         public Role Role { get; set; }
 
+        public int RecordFinesId { get; set; }
+        public RecordFines RecordFines { get; set; }
         public ICollection<HistoryRegistry> HistoryRegistries { get; set; }
         public ICollection<ReserveBook> ReservedBooks { get; set; } = new List<ReserveBook>();
     }

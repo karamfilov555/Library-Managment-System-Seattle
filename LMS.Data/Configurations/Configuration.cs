@@ -7,3 +7,5 @@ namespace LMS.Data.Configurations
                 @"Server=.\SQLEXPRESS;Database=LMS_ToNik;Trusted_Connection=True;";
     }
 }
+
+

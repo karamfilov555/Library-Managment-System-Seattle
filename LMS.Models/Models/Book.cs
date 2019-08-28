@@ -13,7 +13,8 @@ namespace LMS.Models
         {
 
         }
-        public Book(string title, Author author, int pages, int year, string country, string language, Isbn isbn)
+        public Book(string title, Author author, int pages, int year, string country, string language, 
+            Isbn isbn)
         {
             this.Title = title;
             this.Author = author;
@@ -29,7 +30,6 @@ namespace LMS.Models
 
         [Required]
         public string Title { get; set; }
-        
         public ICollection<BookSubject> BookSubject { get; set; }
         public ICollection<HistoryRegistry> HistoryRegistries { get; set; }
         public int AuthorId { get; set; }

@@ -20,6 +20,7 @@ namespace LMS.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Isbn> Isbns { get; set; }
+        public DbSet<RecordFines> RecordFines { get; set; }
         public DbSet<SubjectCategory> SubjectCategories { get; set; }
         public DbSet<BookSubject> BooksSubjects { get; set; }
 
@@ -39,15 +40,8 @@ namespace LMS.Data
             modelBuilder.ApplyConfiguration(new HistoryRegistryConfiguration());
             modelBuilder.ApplyConfiguration(new AuthorConfiguration());
             modelBuilder.ApplyConfiguration(new IsbnConfiguration());
-            //modelBuilder.ApplyConfiguration(new BookConfiguration());
-
-
-            //modelBuilder
-            //    .Entity<Book>()
-            //    .Property(t => t.Title)
-            //    .IsRequired()
-            //    .HasMaxLength(255);
-
+            modelBuilder.ApplyConfiguration(new FineConfiguration());
+           
             base.OnModelCreating(modelBuilder);
         }
     }

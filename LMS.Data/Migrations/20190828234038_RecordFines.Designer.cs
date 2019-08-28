@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMS.Data.Migrations
 {
     [DbContext(typeof(LMSContext))]
-    [Migration("20190828213803_OneToOne")]
-    partial class OneToOne
+    [Migration("20190828234038_RecordFines")]
+    partial class RecordFines
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -122,6 +122,19 @@ namespace LMS.Data.Migrations
                     b.ToTable("ReserveBook");
                 });
 
+            modelBuilder.Entity("LMS.Models.RecordFines", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("FineAmount");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RecordFines");
+                });
+
             modelBuilder.Entity("LMS.Models.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -157,12 +170,17 @@ namespace LMS.Data.Migrations
                     b.Property<string>("Password")
                         .IsRequired();
 
+                    b.Property<int>("RecordFinesId");
+
                     b.Property<int>("RoleId");
 
                     b.Property<string>("Username")
                         .IsRequired();
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RecordFinesId")
+                        .IsUnique();
 
                     b.HasIndex("RoleId");
 
@@ -223,6 +241,11 @@ namespace LMS.Data.Migrations
 
             modelBuilder.Entity("LMS.Models.User", b =>
                 {
+                    b.HasOne("LMS.Models.RecordFines", "RecordFines")
+                        .WithOne("User")
+                        .HasForeignKey("LMS.Models.User", "RecordFinesId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("LMS.Models.Role", "Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
