@@ -13,7 +13,7 @@ namespace LMS.Models
         {
 
         }
-        public Book(string title, Author author, int pages, int year, string country, string language, string isbn)
+        public Book(string title, Author author, int pages, int year, string country, string language, Isbn isbn)
         {
             this.Title = title;
             this.Author = author;
@@ -23,7 +23,7 @@ namespace LMS.Models
             this.Language = language;
             this.BookSubject = new List<BookSubject>();
             this.HistoryRegistries = new List<HistoryRegistry>();
-            this.ISBN = isbn;
+            this.Isbn = isbn;
         }
         public int Id { get; set; }
 
@@ -43,8 +43,10 @@ namespace LMS.Models
         public string Country { get; set; }
         [Required]
         public string Language { get; set; }
+
+        public int IsbnId { get; set; }
         [Required]
-        public string ISBN { get; set; }
+        public Isbn Isbn{ get; set; }
 
         public ICollection<ReserveBook> ReservedBooks { get; set; } = new List<ReserveBook>();
 

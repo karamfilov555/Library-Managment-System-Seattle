@@ -13,8 +13,10 @@ namespace LMS.Data.Configurations
                 .HasKey(key => new { key.BookId, key.SubjectCategoryId });
 
             builder
+                
                 .HasOne(b => b.Book)
                 .WithMany(bs => bs.BookSubject)
+                
                 .HasForeignKey(b => b.BookId);
 
             builder

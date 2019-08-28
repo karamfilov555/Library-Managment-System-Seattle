@@ -1,10 +1,8 @@
 ﻿using LMS.Core.Commands.Contracts;
 using LMS.Core.Contracts;
-using LMS.Generators.Contracts;
 using LMS.Services.Contracts;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using LMS.Services.ModelProviders.Contracts;
 
 namespace LMS.Core.Commands

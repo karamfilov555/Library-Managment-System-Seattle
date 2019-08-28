@@ -44,8 +44,7 @@ namespace LMS.Data.Migrations
                     b.Property<string>("Country")
                         .IsRequired();
 
-                    b.Property<string>("ISBN")
-                        .IsRequired();
+                    b.Property<int>("IsbnId");
 
                     b.Property<string>("Language")
                         .IsRequired();
@@ -53,14 +52,16 @@ namespace LMS.Data.Migrations
                     b.Property<int>("Pages");
 
                     b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(255);
+                        .IsRequired();
 
                     b.Property<int>("Year");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
+
+                    b.HasIndex("IsbnId")
+                        .IsUnique();
 
                     b.ToTable("Books");
                 });
@@ -89,6 +90,19 @@ namespace LMS.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("HistoryRegistries");
+                });
+
+            modelBuilder.Entity("LMS.Models.Models.Isbn", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ISBN");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Isbns");
                 });
 
             modelBuilder.Entity("LMS.Models.Models.ReserveBook", b =>
@@ -158,6 +172,11 @@ namespace LMS.Data.Migrations
                     b.HasOne("LMS.Models.Author", "Author")
                         .WithMany("Books")
                         .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("LMS.Models.Models.Isbn", "Isbn")
+                        .WithOne("Book")
+                        .HasForeignKey("LMS.Models.Book", "IsbnId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

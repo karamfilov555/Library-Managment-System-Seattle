@@ -4,7 +4,6 @@ using LMS.Core.Commands;
 using LMS.Core.Commands.Contracts;
 using LMS.Core.IO;
 using LMS.Data;
-using LMS.Generators;
 using LMS.Models;
 using LMS.Services;
 using LMS.Services.Contracts;
@@ -72,6 +71,7 @@ namespace LMS.Start
             builder.RegisterType<BookServices>()
               .As<IBookServices>().SingleInstance();
 
+           
             //  builder.RegisterType<OutputWriter>()
             //    .As<IOutputWriter>();
             //  builder.RegisterType<InputReader>()

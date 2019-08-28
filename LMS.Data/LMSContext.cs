@@ -1,5 +1,6 @@
 ﻿using LMS.Data.Configurations;
 using LMS.Models;
+using LMS.Models.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace LMS.Data
@@ -18,6 +19,7 @@ namespace LMS.Data
         public DbSet<HistoryRegistry> HistoryRegistries { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Isbn> Isbns { get; set; }
         public DbSet<SubjectCategory> SubjectCategories { get; set; }
         public DbSet<BookSubject> BooksSubjects { get; set; }
 
@@ -36,13 +38,15 @@ namespace LMS.Data
             modelBuilder.ApplyConfiguration(new ReserveBookConfiguration());
             modelBuilder.ApplyConfiguration(new HistoryRegistryConfiguration());
             modelBuilder.ApplyConfiguration(new AuthorConfiguration());
+            modelBuilder.ApplyConfiguration(new IsbnConfiguration());
+            //modelBuilder.ApplyConfiguration(new BookConfiguration());
 
 
-            modelBuilder
-                .Entity<Book>()
-                .Property(t => t.Title)
-                .IsRequired()
-                .HasMaxLength(255);
+            //modelBuilder
+            //    .Entity<Book>()
+            //    .Property(t => t.Title)
+            //    .IsRequired()
+            //    .HasMaxLength(255);
 
             base.OnModelCreating(modelBuilder);
         }

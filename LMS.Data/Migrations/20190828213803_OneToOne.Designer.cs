@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMS.Data.Migrations
 {
     [DbContext(typeof(LMSContext))]
-    [Migration("20190828155438_NewModel")]
-    partial class NewModel
+    [Migration("20190828213803_OneToOne")]
+    partial class OneToOne
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,8 +46,7 @@ namespace LMS.Data.Migrations
                     b.Property<string>("Country")
                         .IsRequired();
 
-                    b.Property<string>("ISBN")
-                        .IsRequired();
+                    b.Property<int>("IsbnId");
 
                     b.Property<string>("Language")
                         .IsRequired();
@@ -55,14 +54,16 @@ namespace LMS.Data.Migrations
                     b.Property<int>("Pages");
 
                     b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(255);
+                        .IsRequired();
 
                     b.Property<int>("Year");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
+
+                    b.HasIndex("IsbnId")
+                        .IsUnique();
 
                     b.ToTable("Books");
                 });
@@ -82,21 +83,28 @@ namespace LMS.Data.Migrations
 
             modelBuilder.Entity("LMS.Models.HistoryRegistry", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<int>("BookId");
 
                     b.Property<int>("UserId");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
+                    b.HasKey("BookId", "UserId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("HistoryRegistries");
+                });
+
+            modelBuilder.Entity("LMS.Models.Models.Isbn", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ISBN");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Isbns");
                 });
 
             modelBuilder.Entity("LMS.Models.Models.ReserveBook", b =>
@@ -167,6 +175,11 @@ namespace LMS.Data.Migrations
                         .WithMany("Books")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("LMS.Models.Models.Isbn", "Isbn")
+                        .WithOne("Book")
+                        .HasForeignKey("LMS.Models.Book", "IsbnId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("LMS.Models.BookSubject", b =>
@@ -185,12 +198,12 @@ namespace LMS.Data.Migrations
             modelBuilder.Entity("LMS.Models.HistoryRegistry", b =>
                 {
                     b.HasOne("LMS.Models.Book", "Book")
-                        .WithMany()
+                        .WithMany("HistoryRegistries")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("LMS.Models.User", "User")
-                        .WithMany("BooksOfCurrentUser")
+                        .WithMany("HistoryRegistries")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
