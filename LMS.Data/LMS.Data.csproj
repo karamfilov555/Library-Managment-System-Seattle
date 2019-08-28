@@ -15,6 +15,14 @@
     <Compile Remove="Migrations\20190827183504_Initial.Designer.cs" />
     <Compile Remove="Migrations\20190827195036_Todor.cs" />
     <Compile Remove="Migrations\20190827195036_Todor.Designer.cs" />
+    <Compile Remove="Migrations\20190828095611_nextInitial.cs" />
+    <Compile Remove="Migrations\20190828095611_nextInitial.Designer.cs" />
+    <Compile Remove="Migrations\20190828131933_Todor.cs" />
+    <Compile Remove="Migrations\20190828131933_Todor.Designer.cs" />
+    <Compile Remove="Migrations\20190828132413_InitialSeed.cs" />
+    <Compile Remove="Migrations\20190828132413_InitialSeed.Designer.cs" />
+    <Compile Remove="Migrations\20190828140652_newInitial.cs" />
+    <Compile Remove="Migrations\20190828140652_newInitial.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -11,7 +11,7 @@ namespace LMS.Models
         {
 
         }
-       
+      
         public int BookId { get; set; }
         [Required]
         public Book Book { get; set; }

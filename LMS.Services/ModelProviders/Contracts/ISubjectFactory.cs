@@ -7,6 +7,6 @@ namespace LMS.Services.ModelProviders.Contracts
 {
     public interface ISubjectFactory
     {
-        ICollection<BookSubject> CreateSubject(string[] subjects);
+        BookSubject CreateSubject(string subject);
     }
 }

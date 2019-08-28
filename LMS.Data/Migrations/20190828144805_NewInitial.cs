@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LMS.Data.Migrations
 {
-    public partial class nextInitial : Migration
+    public partial class NewInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -53,7 +53,6 @@ namespace LMS.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(maxLength: 255, nullable: false),
-                    BookSubjectId = table.Column<int>(nullable: false),
                     AuthorId = table.Column<int>(nullable: false),
                     Pages = table.Column<int>(nullable: false),
                     Year = table.Column<int>(nullable: false),

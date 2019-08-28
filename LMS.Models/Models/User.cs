@@ -15,6 +15,7 @@ namespace LMS.Models
             this.Username = username;
             this.Password = password;
             this.Role = role;
+            this.BooksOfCurrentUser = new List<HistoryRegistry>();
         }
         public int Id { get; set; }
 
@@ -26,6 +27,7 @@ namespace LMS.Models
 
         public int RoleId  { get; set; }
         public Role Role { get; set; }
+
         public ICollection<HistoryRegistry> BooksOfCurrentUser { get; set; }
     }
 }

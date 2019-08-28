@@ -9,5 +9,6 @@ namespace LMS.Services.Contracts
     {
         void AddSubjectsToDb(ICollection<BookSubject> subjects);
         ICollection<BookSubject> ProvideSubject(string[] subjects);
+        BookSubject FindSubjectByName(string name);
     }
 }

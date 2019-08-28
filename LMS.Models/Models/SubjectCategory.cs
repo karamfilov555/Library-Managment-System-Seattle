@@ -11,15 +11,12 @@ namespace LMS.Models
         {
 
         }
-        public SubjectCategory(string name)
-        {
-            this.SubjectName = name;
-        }
+        
         public int Id { get; set; }
 
         public string SubjectName { get; set; }
 
-        public virtual ICollection<BookSubject> BookSubject { get; set; }
+        public  ICollection<BookSubject> BookSubject { get; set; }
             = new List<BookSubject>();
     }
 }

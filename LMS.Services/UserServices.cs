@@ -38,5 +38,11 @@ namespace LMS.Services
             _context.Users.Remove(user);
             _context.SaveChanges();
         }
+        public bool CheckIfUserExist(string username)
+        {
+            if (_context.Users.Any(r => r.Username == username))
+                return true;
+            return false;
+        }
     }
 }

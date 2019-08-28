@@ -30,24 +30,24 @@
     "ID": 5,
     "Username": "Ivan",
     "Password": "test",
-    "RoleId": 1
+    "RoleId": 2
   },
   {
     "ID": 6,
     "Username": "Toni",
     "Password": "Storaro",
-    "RoleId": 1
+    "RoleId": 2
   },
   {
     "ID": 7,
     "Username": "Doni",
     "Password": "Brasko",
-    "RoleId": 1
+    "RoleId": 2
   },
   {
     "ID": 8,
     "Username": "Gosho",
     "Password": "123",
-    "RoleId": 1
+    "RoleId": 2
   }
 ]

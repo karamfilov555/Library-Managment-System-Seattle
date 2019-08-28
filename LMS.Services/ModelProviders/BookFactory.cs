@@ -29,7 +29,6 @@ namespace LMS.Services.ModelProviders
             var isbn = _isbnGenerator.GenerateISBN();
             var book = new Book(title, author, pages, year, country, language, isbn);
             book.BookSubject = subject;
-
             return book;
         }
     }

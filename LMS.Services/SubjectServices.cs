@@ -32,10 +32,37 @@ namespace LMS.Services
             }
             _context.SaveChanges();
         }
+        public bool CheckIfSubjectExist(string name)
+        {
+            if (!_context.SubjectCategories.Any(a => a.SubjectName == name))
+                return false;
+            return true;
+        }
+        public BookSubject FindSubjectByName(string name)
+        {
+            var subjectCategory = _context.BooksSubjects
+                                            .FirstOrDefault
+                                            (a => a.SubjectCategory.SubjectName == name);
+            return subjectCategory;
+        }
         public ICollection<BookSubject> ProvideSubject(string[] subjects)
         {
-            var bookSubjects = _subjectFactory.CreateSubject(subjects);
-            AddSubjectsToDb(bookSubjects);
+            var bookSubjects = new List<BookSubject>();
+
+            foreach (var subject in subjects)
+            {
+                //    if (!CheckIfSubjectExist(subject))
+                //    {
+                var subjectCategory = _subjectFactory.CreateSubject(subject);
+                    //AddAuthorToDb(author);
+                    bookSubjects.Add(subjectCategory);
+                //}
+                //else
+                //{
+                //    var subjectCategory = FindSubjectByName(subject);
+                //    bookSubjects.Add(subjectCategory);
+                //}
+            }
             return bookSubjects;
         }
     }

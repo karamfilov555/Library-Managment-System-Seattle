@@ -13,16 +13,15 @@ namespace LMS.Services.ModelProviders
         {
 
         }
-        public ICollection<BookSubject> CreateSubject(string[] subjects)
+        public BookSubject CreateSubject(string subject)
         {
-            var bookSubjects = new List<BookSubject>();
-
-            bookSubjects = subjects.
-                 Select(subject => new BookSubject()
-                 { SubjectCategory = new SubjectCategory(subject) })
-                    .ToList();
-
-            return bookSubjects;
+            return new BookSubject()
+            {
+                SubjectCategory = new SubjectCategory()
+                {
+                    SubjectName = subject
+                }
+            };
         }
     }
 }

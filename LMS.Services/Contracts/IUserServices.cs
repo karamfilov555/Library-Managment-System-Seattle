@@ -10,5 +10,6 @@ namespace LMS.Services.Contracts
         void AddUserToDb(User user);
         User CheckUserCredetials(string username, string password);
         void RemoveUserFromDb(User user);
+        bool CheckIfUserExist(string username);
     }
 }

@@ -11,9 +11,15 @@ namespace LMS.Services
     public class DataBaseLoader : IDataBaseLoader
     {
         private readonly LMSContext _context;
-        public DataBaseLoader(LMSContext context)
+        private readonly IUserServices _userServices;
+        private readonly IRoleServices _roleServices;
+        public DataBaseLoader(LMSContext context,
+                              IUserServices userServices,
+                              IRoleServices roleServices)
         {
             _context = context;
+            _userServices = userServices;
+            _roleServices = roleServices;
         }
         public void SeedDataBase()
         {
@@ -23,60 +29,49 @@ namespace LMS.Services
         public void LoadUsers()
         {
             var usersAsJson = File.ReadAllText(@"..\..\..\..\LMS.Data\Json\Users.json");
-
             var users = JsonConvert.DeserializeObject<User[]>(usersAsJson);
-
             var sqlCommand = new StringBuilder();
 
             foreach (var user in users)
             {
-                sqlCommand.AppendLine($@"
+                if (!_userServices.CheckIfUserExist(user.Username))
+                {
+                    sqlCommand.AppendLine($@"
                     
-                    IF NOT EXISTS 
-                            (SELECT *  FROM dbo.Users u
-                                WHERE u.Id = {user.Id})
+                    SELECT *  FROM dbo.Users u
+                                WHERE u.Id = {user.Id}
                         BEGIN
                         INSERT INTO dbo.Users
                              (Username, Password, RoleId) 
                         VALUES ('{user.Username}', '{user.Password}','{user.RoleId}')
-                    END 
-                    ELSE
-                        BEGIN
-                        UPDATE dbo.Users
-                        SET Username = '{user.Username}', Password = '{user.Password}',
-                            RoleId = '{user.RoleId}'
-                        WHERE dbo.Users.Id = {user.Id}
                     END");
+                }
             }
+            if (sqlCommand.Length!=0)
             _context.Database.ExecuteSqlCommand(sqlCommand.ToString());
         }
         public void LoadRoles()
         {
             var rolesAsJson = File.ReadAllText(@"..\..\..\..\LMS.Data\Json\Roles.json");
-
             var roles = JsonConvert.DeserializeObject<Role[]>(rolesAsJson);
-
             var sqlCommand = new StringBuilder();
 
             foreach (var role in roles)
             {
-                sqlCommand.AppendLine($@"
+                if (!_roleServices.CheckIfRoleExist(role.Name))
+                {
+                    sqlCommand.AppendLine($@"
                     
-                      IF NOT EXISTS 
-                            (SELECT * FROM dbo.Roles r
-                             WHERE r.Id = {role.Id})
+                      SELECT * FROM dbo.Roles r
+                             WHERE r.Id = {role.Id}
                         BEGIN
                         INSERT INTO dbo.Roles
                              (Name) 
                         VALUES ('{role.Name}')
-                      END
-                      ELSE
-                        BEGIN
-                        UPDATE dbo.Roles
-                        SET Name = '{role.Name}'
-                        WHERE dbo.Roles.Id = {role.Id}
-                      END");
+                      END ");
+                }
             }
+            if (sqlCommand.Length!=0)
             _context.Database.ExecuteSqlCommand(sqlCommand.ToString());
         }
     }
