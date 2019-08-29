@@ -11,11 +11,12 @@ namespace LMS.Models
         public User()
         {
         }
-        public User(string username, string password, Role role)
+        public User(string username, string password, Role role, RecordFines recordFines)
         {
             this.Username = username;
             this.Password = password;
             this.Role = role;
+            this.RecordFines = recordFines;
             this.HistoryRegistries = new List<HistoryRegistry>();
         }
         public int Id { get; set; }

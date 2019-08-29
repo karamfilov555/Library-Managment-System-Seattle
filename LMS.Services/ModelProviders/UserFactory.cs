@@ -7,14 +7,18 @@ namespace LMS.Services.ModelProviders
     public class UserFactory : IUserFactory
     {
         private readonly IRoleServices _roleServices;
-        public UserFactory(IRoleServices roleServices)
+        private readonly IRecordFinesServices _recordServices;
+        public UserFactory(IRoleServices roleServices,
+                           IRecordFinesServices recordServices)
         {
             _roleServices = roleServices;
+            _recordServices = recordServices;
         }
         public User CreateUser(string username, string password, string roleName)
         {
             var role = _roleServices.ProvideRole(roleName);
-            var user = new User(username, password, role);
+            var recordFines = _recordServices.ProvideRecord();
+            var user = new User(username, password, role, recordFines);
             return user;
         }
     }
