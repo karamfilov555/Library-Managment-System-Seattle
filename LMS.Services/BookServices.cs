@@ -2,6 +2,7 @@
 using LMS.Models;
 using LMS.Services.Contracts;
 using System;
+using System.Linq;
 
 namespace LMS.Services
 {
@@ -18,5 +19,18 @@ namespace LMS.Services
             _context.Books.Add(book);
             _context.SaveChanges();
         }
+
+        public Book FindBook(string title, string author)
+        {
+            if(!CheckIfBookExist(title,author))
+                throw new ArgumentException("The book does not exist!");
+            return _context.Books.First(t => t.Title == title && t.Author.Name == author);
+        }
+
+        public bool CheckIfBookExist(string title,string author)
+        {
+            return _context.Books.Any(b => b.Title == title && b.Author.Name == author);
+        }
+      
     }
 }

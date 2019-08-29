@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMS.Data.Migrations
 {
     [DbContext(typeof(LMSContext))]
-    [Migration("20190829013129_Seq")]
-    partial class Seq
+    [Migration("20190829130334_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -119,7 +119,7 @@ namespace LMS.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ReserveBook");
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("LMS.Models.RecordFines", b =>

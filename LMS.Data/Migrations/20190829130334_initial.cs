@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LMS.Data.Migrations
 {
-    public partial class Seq : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -181,7 +181,7 @@ namespace LMS.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ReserveBook",
+                name: "Reservations",
                 columns: table => new
                 {
                     BookId = table.Column<int>(nullable: false),
@@ -190,15 +190,15 @@ namespace LMS.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ReserveBook", x => new { x.BookId, x.UserId });
+                    table.PrimaryKey("PK_Reservations", x => new { x.BookId, x.UserId });
                     table.ForeignKey(
-                        name: "FK_ReserveBook_Books_BookId",
+                        name: "FK_Reservations_Books_BookId",
                         column: x => x.BookId,
                         principalTable: "Books",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ReserveBook_Users_UserId",
+                        name: "FK_Reservations_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -227,8 +227,8 @@ namespace LMS.Data.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ReserveBook_UserId",
-                table: "ReserveBook",
+                name: "IX_Reservations_UserId",
+                table: "Reservations",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -252,7 +252,7 @@ namespace LMS.Data.Migrations
                 name: "HistoryRegistries");
 
             migrationBuilder.DropTable(
-                name: "ReserveBook");
+                name: "Reservations");
 
             migrationBuilder.DropTable(
                 name: "SubjectCategories");

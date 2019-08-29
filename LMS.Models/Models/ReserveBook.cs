@@ -9,6 +9,11 @@ namespace LMS.Models.Models
 
         }
 
+        public ReserveBook(User user,Book book)
+        {
+            this.User = user;
+            this.Book = book;
+        }
         public int BookId { get; set; }
         public Book Book { get; set; }
         public int UserId { get; set; }

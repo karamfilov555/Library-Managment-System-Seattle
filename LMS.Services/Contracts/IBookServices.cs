@@ -8,5 +8,6 @@ namespace LMS.Services.Contracts
     public interface IBookServices
     {
         void AddBookToDb(Book book);
+        Book FindBook(string title, string author);
     }
 }

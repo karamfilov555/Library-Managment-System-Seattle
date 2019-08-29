@@ -15,5 +15,6 @@ namespace LMS.Core.Contracts
         void RegisterParametersCountValidation(IList<string> parameteres);
         void SearchByYearParametersCountValidation(IList<string> parameteres);
         void TryParseToInt(string year);
+        void CheckParametersCount(IList<string> parameters, int count);
     }
 }

@@ -117,7 +117,7 @@ namespace LMS.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ReserveBook");
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("LMS.Models.RecordFines", b =>

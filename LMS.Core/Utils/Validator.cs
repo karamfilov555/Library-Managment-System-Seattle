@@ -30,6 +30,12 @@ namespace LMS.Core.Utils
             if (parameteres.Count != 1)
                 throw new ArgumentException("Please, enter publication year of a book!");
         }
+
+        public void CheckParametersCount(IList<string> parameters, int count)
+        {
+            if(parameters.Count != count)
+                throw new ArgumentException("Invalid parameters count");
+        }
         public void TryParseToInt(string year)
         {
             try

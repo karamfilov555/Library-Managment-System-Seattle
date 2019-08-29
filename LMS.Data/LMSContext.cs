@@ -23,6 +23,7 @@ namespace LMS.Data
         public DbSet<RecordFines> RecordFines { get; set; }
         public DbSet<SubjectCategory> SubjectCategories { get; set; }
         public DbSet<BookSubject> BooksSubjects { get; set; }
+        public DbSet<ReserveBook> Reservations { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
