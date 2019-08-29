@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LMS.Data.Migrations
 {
-    public partial class RecordFines : Migration
+    public partial class Seq : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

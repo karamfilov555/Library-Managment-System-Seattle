@@ -10,22 +10,26 @@ namespace LMS.Services
 {
     public class DataBaseLoader : IDataBaseLoader
     {
-        private readonly LMSContext _context;
+        private readonly ISqlCommandExecutor _commandExecutor;
         private readonly IUserServices _userServices;
         private readonly IRoleServices _roleServices;
+        private readonly IRecordFinesServices _recordServices;
         private readonly IJsonServices _jsonServices;
         private const string usersDirectory = @"..\..\..\..\LMS.Data\Json\Users.json";
         private const string rolesDirectory = @"..\..\..\..\LMS.Data\Json\Roles.json";
         private const string finesDirectory = @"..\..\..\..\LMS.Data\Json\RecordFines.json";
-        public DataBaseLoader(LMSContext context,
-                              IUserServices userServices,
+        public DataBaseLoader(IUserServices userServices,
                               IRoleServices roleServices,
-                              IJsonServices jsonServices)
+                              IJsonServices jsonServices,
+                              IRecordFinesServices recordServices,
+                              ISqlCommandExecutor commandExecutor)
+
         {
-            _context = context;
+            _commandExecutor = commandExecutor;
             _userServices = userServices;
             _roleServices = roleServices;
             _jsonServices = jsonServices;
+            _recordServices = recordServices;
         }
         public void SeedDataBase()
         {
@@ -53,8 +57,7 @@ namespace LMS.Services
                     END");
                 }
             }
-            if (sqlCommand.Length != 0)
-                _context.Database.ExecuteSqlCommand(sqlCommand.ToString());
+            _commandExecutor.ExecuteCommand(sqlCommand);
         }
         public void LoadRoles()
         {
@@ -76,8 +79,7 @@ namespace LMS.Services
                       END ");
                 }
             }
-            if (sqlCommand.Length != 0)
-                _context.Database.ExecuteSqlCommand(sqlCommand.ToString());
+            _commandExecutor.ExecuteCommand(sqlCommand);
         }
         public void LoadRecordFines()
         {
@@ -86,7 +88,9 @@ namespace LMS.Services
 
             foreach (var record in records)
             {
-                sqlCommand.AppendLine($@"
+                if (!_recordServices.CheckRecordFines())
+                {
+                    sqlCommand.AppendLine($@"
                     
                       SELECT * FROM dbo.RecordFines r
                              WHERE r.Id = {record.Id}
@@ -95,9 +99,9 @@ namespace LMS.Services
                              (FineAmount) 
                         VALUES ('{record.FineAmount}')
                       END ");
+                }
             }
-            if (sqlCommand.Length != 0)
-                _context.Database.ExecuteSqlCommand(sqlCommand.ToString());
+            _commandExecutor.ExecuteCommand(sqlCommand);
         }
     }
 }

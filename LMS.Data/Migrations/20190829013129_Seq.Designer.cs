@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMS.Data.Migrations
 {
     [DbContext(typeof(LMSContext))]
-    [Migration("20190828234038_RecordFines")]
-    partial class RecordFines
+    [Migration("20190829013129_Seq")]
+    partial class Seq
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

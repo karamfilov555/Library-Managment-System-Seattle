@@ -8,5 +8,6 @@ namespace LMS.Services.Contracts
     public interface IRecordFinesServices
     {
         RecordFines ProvideRecord();
+        bool CheckRecordFines();
     }
 }
