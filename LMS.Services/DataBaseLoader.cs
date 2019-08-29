@@ -13,23 +13,29 @@ namespace LMS.Services
         private readonly LMSContext _context;
         private readonly IUserServices _userServices;
         private readonly IRoleServices _roleServices;
+        private readonly IJsonServices _jsonServices;
+        private const string usersDirectory = @"..\..\..\..\LMS.Data\Json\Users.json";
+        private const string rolesDirectory = @"..\..\..\..\LMS.Data\Json\Roles.json";
+        private const string finesDirectory = @"..\..\..\..\LMS.Data\Json\RecordFines.json";
         public DataBaseLoader(LMSContext context,
                               IUserServices userServices,
-                              IRoleServices roleServices)
+                              IRoleServices roleServices,
+                              IJsonServices jsonServices)
         {
             _context = context;
             _userServices = userServices;
             _roleServices = roleServices;
+            _jsonServices = jsonServices;
         }
         public void SeedDataBase()
         {
             LoadRoles();
+            LoadRecordFines();
             LoadUsers();
         }
         public void LoadUsers()
         {
-            var usersAsJson = File.ReadAllText(@"..\..\..\..\LMS.Data\Json\Users.json");
-            var users = JsonConvert.DeserializeObject<User[]>(usersAsJson);
+            var users = _jsonServices.ExtractTypesFromJson<User>(usersDirectory);
             var sqlCommand = new StringBuilder();
 
             foreach (var user in users)
@@ -42,18 +48,17 @@ namespace LMS.Services
                                 WHERE u.Id = {user.Id}
                         BEGIN
                         INSERT INTO dbo.Users
-                             (Username, Password, RoleId) 
-                        VALUES ('{user.Username}', '{user.Password}','{user.RoleId}')
+                             (Username, Password, RoleId, RecordFinesId) 
+                        VALUES ('{user.Username}', '{user.Password}','{user.RoleId}','{user.RecordFinesId}')
                     END");
                 }
             }
-            if (sqlCommand.Length!=0)
-            _context.Database.ExecuteSqlCommand(sqlCommand.ToString());
+            if (sqlCommand.Length != 0)
+                _context.Database.ExecuteSqlCommand(sqlCommand.ToString());
         }
         public void LoadRoles()
         {
-            var rolesAsJson = File.ReadAllText(@"..\..\..\..\LMS.Data\Json\Roles.json");
-            var roles = JsonConvert.DeserializeObject<Role[]>(rolesAsJson);
+            var roles = _jsonServices.ExtractTypesFromJson<Role>(rolesDirectory);
             var sqlCommand = new StringBuilder();
 
             foreach (var role in roles)
@@ -71,8 +76,28 @@ namespace LMS.Services
                       END ");
                 }
             }
-            if (sqlCommand.Length!=0)
-            _context.Database.ExecuteSqlCommand(sqlCommand.ToString());
+            if (sqlCommand.Length != 0)
+                _context.Database.ExecuteSqlCommand(sqlCommand.ToString());
+        }
+        public void LoadRecordFines()
+        {
+            var records = _jsonServices.ExtractTypesFromJson<RecordFines>(finesDirectory);
+            var sqlCommand = new StringBuilder();
+
+            foreach (var record in records)
+            {
+                sqlCommand.AppendLine($@"
+                    
+                      SELECT * FROM dbo.RecordFines r
+                             WHERE r.Id = {record.Id}
+                        BEGIN
+                        INSERT INTO dbo.RecordFines
+                             (FineAmount) 
+                        VALUES ('{record.FineAmount}')
+                      END ");
+            }
+            if (sqlCommand.Length != 0)
+                _context.Database.ExecuteSqlCommand(sqlCommand.ToString());
         }
     }
 }

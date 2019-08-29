@@ -8,7 +8,7 @@ namespace LMS.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<RecordFines> builder)
         {
-            //one-to-one fine-user
+            //one-to-one RecordFines-user
             builder
                 .HasOne(f => f.User)
                 .WithOne(u => u.RecordFines)

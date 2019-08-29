@@ -16,7 +16,6 @@ namespace LMS.Data.Configurations
                 
                 .HasOne(b => b.Book)
                 .WithMany(bs => bs.BookSubject)
-                
                 .HasForeignKey(b => b.BookId);
 
             builder

@@ -1,10 +1,7 @@
-﻿using LMS.Models;
-using LMS.Models.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using LMS.Models.Models;
+using LMS.Models;
 
 namespace LMS.Data.Configurations
 {
@@ -17,7 +14,6 @@ namespace LMS.Data.Configurations
                 .HasOne(b => b.Book)
                 .WithOne(i => i.Isbn)
                 .HasForeignKey<Book>(ii => ii.IsbnId);
-
         }
     }
 }

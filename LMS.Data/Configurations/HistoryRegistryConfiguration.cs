@@ -1,6 +1,6 @@
-﻿using LMS.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using LMS.Models;
 
 namespace LMS.Data.Configurations
 {
