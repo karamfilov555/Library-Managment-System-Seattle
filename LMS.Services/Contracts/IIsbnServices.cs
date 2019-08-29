@@ -8,5 +8,6 @@ namespace LMS.Services.Contracts
     public interface IIsbnServices
     {
         Isbn ProvideIsbn();
+        bool CheckIfIsbnExist(string isbn);
     }
 }

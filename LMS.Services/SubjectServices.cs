@@ -34,9 +34,7 @@ namespace LMS.Services
         }
         public bool CheckIfSubjectExist(string name)
         {
-            if (!_context.SubjectCategories.Any(a => a.SubjectName == name))
-                return false;
-            return true;
+            return _context.SubjectCategories.Any(a => a.SubjectName == name);
         }
         public BookSubject FindSubjectByName(string name)
         {

@@ -19,9 +19,7 @@ namespace LMS.Services
         }
         public bool CheckIfAuthorExist(string name)
         {
-            if (!_context.Authors.Any(a => a.Name == name))
-                return false;
-            return true;
+            return _context.Authors.Any(a => a.Name == name);
         }
         public Author AddAuthorToDb(Author author)
         {

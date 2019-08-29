@@ -13,12 +13,13 @@ namespace LMS.Models.Models
         {
             this.User = user;
             this.Book = book;
+            this.ReservationDate = DateTime.Now.ToShortDateString();
         }
         public int BookId { get; set; }
         public Book Book { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
 
-        public DateTime? ReservationDate { get; set; }
+        public string ReservationDate { get; set; }
     }
 }

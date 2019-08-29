@@ -26,11 +26,18 @@ namespace LMS.Services
                 throw new ArgumentException("The book does not exist!");
             return _context.Books.First(t => t.Title == title && t.Author.Name == author);
         }
+        public void SetReserveBookStatus(Book book)
+        {
+            book.IsReserved = true;
+        }
 
         public bool CheckIfBookExist(string title,string author)
         {
             return _context.Books.Any(b => b.Title == title && b.Author.Name == author);
         }
-      
+        public bool CheckIfBookExist(string title)
+        {
+            return _context.Books.Any(b => b.Title == title);
+        }
     }
 }

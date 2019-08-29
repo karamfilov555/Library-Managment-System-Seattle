@@ -25,6 +25,7 @@ namespace LMS.Models
             this.BookSubject = new List<BookSubject>();
             this.HistoryRegistries = new List<HistoryRegistry>();
             this.Isbn = isbn;
+            this.IsReserved = false;
         }
         public int Id { get; set; }
 
@@ -48,6 +49,7 @@ namespace LMS.Models
         [Required]
         public Isbn Isbn{ get; set; }
 
+        public bool IsReserved { get; set; }
         public ICollection<ReserveBook> ReservedBooks { get; set; } = new List<ReserveBook>();
 
         //public char Rack

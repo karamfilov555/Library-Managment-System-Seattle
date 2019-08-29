@@ -40,9 +40,7 @@ namespace LMS.Services
         }
         public bool CheckIfUserExist(string username)
         {
-            if (_context.Users.Any(r => r.Username == username))
-                return true;
-            return false;
+            return _context.Users.Any(r => r.Username == username);
         }
     }
 }

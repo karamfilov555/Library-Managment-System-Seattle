@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using LMS.Models;
 using LMS.Models.Models;
 using LMS.Services.Contracts;
 using LMS.Services.ModelProviders.Contracts;
@@ -23,7 +24,7 @@ namespace LMS.Services.ModelProviders
         {
             var user = _loginAuthenticator.LoggedUser();
             var book = _bookServices.FindBook(title, author);
-
+            _bookServices.SetReserveBookStatus(book);
             var reservation = new ReserveBook(user,book);
             return reservation;
         }

@@ -1,0 +1,68 @@
+[
+  {
+    "Id": 1,
+    "Title": "Under The Yuke",
+    "AuthorId": 1,
+    "Pages": 3503,
+    "Year": 1893,
+    "Country": "Bulgaria",
+    "Language": "Bulgarian",
+    "IsbnId": 1,
+    "IsReserved": 0
+  },
+  {
+    "Id": 2,
+    "Title": "Divine Comedy",
+    "AuthorId": 2,
+    "Pages": 1923,
+    "Year": 1320,
+    "Country": "Italy",
+    "Language": "Italian",
+    "IsbnId": 2,
+    "IsReserved": 0
+  },
+  {
+    "Id": 3,
+    "Title": "Don Quijote",
+    "AuthorId": 3,
+    "Pages": 2032,
+    "Year": 1612,
+    "Country": "Spain",
+    "Language": "Spanish",
+    "IsbnId": 3,
+    "IsReserved": 0
+  },
+  {
+    "Id": 4,
+    "Title": "War and Peace",
+    "AuthorId": 4,
+    "Pages": 1225,
+    "Year": 1865,
+    "Country": "Russia",
+    "Language": "Russian",
+    "IsbnId": 4,
+    "IsReserved": 0
+  },
+  {
+    "Id": 5,
+    "Title": "Harry Potter",
+    "AuthorId": 5,
+    "Pages": 503,
+    "Year": 1997,
+    "Country": "U.K.",
+    "Language": "English",
+    "IsbnId": 5,
+    "IsReserved": 0
+  },
+  {
+    "Id": 6,
+    "Title": "It",
+    "AuthorId": 6,
+    "Pages": 1138,
+    "Year": 1986,
+    "Country": "USA",
+    "Language": "English",
+    "IsbnId": 6,
+    "IsReserved": 0
+  }
+]

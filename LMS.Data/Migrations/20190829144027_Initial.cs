@@ -1,10 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LMS.Data.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -85,7 +84,8 @@ namespace LMS.Data.Migrations
                     Year = table.Column<int>(nullable: false),
                     Country = table.Column<string>(nullable: false),
                     Language = table.Column<string>(nullable: false),
-                    IsbnId = table.Column<int>(nullable: false)
+                    IsbnId = table.Column<int>(nullable: false),
+                    IsReserved = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -186,7 +186,7 @@ namespace LMS.Data.Migrations
                 {
                     BookId = table.Column<int>(nullable: false),
                     UserId = table.Column<int>(nullable: false),
-                    ReservationDate = table.Column<DateTime>(nullable: true)
+                    ReservationDate = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

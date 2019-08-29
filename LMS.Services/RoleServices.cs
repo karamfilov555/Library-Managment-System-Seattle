@@ -23,9 +23,7 @@ namespace LMS.Services
         }
         public bool CheckIfRoleExist(string roleName)
         {
-            if (_context.Roles.Any(r => r.Name == roleName))
-                return true;
-            return false;
+            return _context.Roles.Any(r => r.Name == roleName);
         }
         public void AddRoleToDb(Role role)
         {
