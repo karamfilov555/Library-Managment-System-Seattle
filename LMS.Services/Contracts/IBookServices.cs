@@ -16,5 +16,6 @@ namespace LMS.Services.Contracts
         void CheckIfBookExist(string title, string author);
         bool CheckIfBookExist(string title);
         Book FindAvailableBook(string title, string author);
+        string AllBooksToString();
     }
 }

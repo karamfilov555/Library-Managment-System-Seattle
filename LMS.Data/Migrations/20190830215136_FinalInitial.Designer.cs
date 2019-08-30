@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMS.Data.Migrations
 {
     [DbContext(typeof(LMSContext))]
-    [Migration("20190830115626_IsReturnedAdded")]
-    partial class IsReturnedAdded
+    [Migration("20190830215136_FinalInitial")]
+    partial class FinalInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
