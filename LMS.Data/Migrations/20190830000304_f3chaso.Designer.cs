@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMS.Data.Migrations
 {
     [DbContext(typeof(LMSContext))]
-    [Migration("20190829144027_Initial")]
-    partial class Initial
+    [Migration("20190830000304_f3chaso")]
+    partial class f3chaso
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,6 +44,8 @@ namespace LMS.Data.Migrations
 
                     b.Property<string>("Country")
                         .IsRequired();
+
+                    b.Property<bool>("IsCheckedOut");
 
                     b.Property<bool>("IsReserved");
 

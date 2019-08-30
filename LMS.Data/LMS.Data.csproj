@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Json\" />
+    <Folder Include="Jsons\" />
   </ItemGroup>
 
 </Project>

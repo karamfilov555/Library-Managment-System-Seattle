@@ -10,7 +10,9 @@ namespace LMS.Services.Contracts
         void AddBookToDb(Book book);
         Book FindBook(string title, string author);
         void SetReserveBookStatus(Book book);
-        bool CheckIfBookExist(string title, string author);
+        void SetCheckOutBookStatus(Book book);
+        void CheckIfBookExist(string title, string author);
         bool CheckIfBookExist(string title);
+        Book FindAvailableBook(string title, string author);
     }
 }

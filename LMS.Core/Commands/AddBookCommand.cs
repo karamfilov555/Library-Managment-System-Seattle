@@ -45,21 +45,21 @@ namespace LMS.Core.Commands
 
             try
             {
-                _outputWriter.WriteLine("Book Title :");
+                _outputWriter.WriteLine("Book's Title :");
                 title = _inputReader.ReadLine();
-                _outputWriter.WriteLine("Book Author :");
+                _outputWriter.WriteLine("Book's Author :");
                 author = _inputReader.ReadLine();
-                _outputWriter.WriteLine("Book Pages :");
+                _outputWriter.WriteLine("Book's Pages :");
                 pages = int.Parse(_inputReader.ReadLine());
-                _outputWriter.WriteLine("Book Year :");
+                _outputWriter.WriteLine("Book's Year :");
                 year = int.Parse(_inputReader.ReadLine());
-                _outputWriter.WriteLine("Book Country :");
+                _outputWriter.WriteLine("Book's Country :");
                 country = _inputReader.ReadLine();
-                _outputWriter.WriteLine("Book Language :");
+                _outputWriter.WriteLine("Book's Language :");
                 language = _inputReader.ReadLine();
-                _outputWriter.WriteLine("Book Subject :");
+                _outputWriter.WriteLine("Book's Subjects :");
                 subject = _inputReader.ReadLine();
-                _outputWriter.WriteLine("Book Copies :");
+                _outputWriter.WriteLine("Book's Copies :");
                 copies = int.Parse(_inputReader.ReadLine());
             }
             catch (Exception)

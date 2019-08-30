@@ -1,9 +1,7 @@
-﻿using LMS.Core.Commands.Contracts;
+﻿using System.Collections.Generic;
 using LMS.Core.Contracts;
+using LMS.Core.Commands.Contracts;
 using LMS.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LMS.Core.Commands
 {

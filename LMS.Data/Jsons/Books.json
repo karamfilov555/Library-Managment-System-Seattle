@@ -8,7 +8,8 @@
     "Country": "Bulgaria",
     "Language": "Bulgarian",
     "IsbnId": 1,
-    "IsReserved": 0
+    "IsReserved": 0,
+    "IsCheckedOut": 0
   },
   {
     "Id": 2,
@@ -19,7 +20,8 @@
     "Country": "Italy",
     "Language": "Italian",
     "IsbnId": 2,
-    "IsReserved": 0
+    "IsReserved": 0,
+    "IsCheckedOut": 0
   },
   {
     "Id": 3,
@@ -30,7 +32,8 @@
     "Country": "Spain",
     "Language": "Spanish",
     "IsbnId": 3,
-    "IsReserved": 0
+    "IsReserved": 0,
+    "IsCheckedOut": 0
   },
   {
     "Id": 4,
@@ -41,7 +44,8 @@
     "Country": "Russia",
     "Language": "Russian",
     "IsbnId": 4,
-    "IsReserved": 0
+    "IsReserved": 0,
+    "IsCheckedOut": 0
   },
   {
     "Id": 5,
@@ -52,7 +56,8 @@
     "Country": "U.K.",
     "Language": "English",
     "IsbnId": 5,
-    "IsReserved": 0
+    "IsReserved": 0,
+    "IsCheckedOut": 0
   },
   {
     "Id": 6,
@@ -63,6 +68,7 @@
     "Country": "USA",
     "Language": "English",
     "IsbnId": 6,
-    "IsReserved": 0
+    "IsReserved": 0,
+    "IsCheckedOut": 0
   }
 ]

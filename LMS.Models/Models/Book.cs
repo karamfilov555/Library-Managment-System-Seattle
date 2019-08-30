@@ -1,9 +1,6 @@
-﻿using LMS.Models.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
+using LMS.Models.Models;
 
 namespace LMS.Models
 {
@@ -22,17 +19,15 @@ namespace LMS.Models
             this.Year = year;
             this.Country = country;
             this.Language = language;
-            this.BookSubject = new List<BookSubject>();
-            this.HistoryRegistries = new List<HistoryRegistry>();
             this.Isbn = isbn;
-            this.IsReserved = false;
+            this.BookSubject = new List<BookSubject>();
+            this.ReservedBooks = new List<ReserveBook>();
+            this.HistoryRegistries = new List<HistoryRegistry>();
         }
         public int Id { get; set; }
 
         [Required]
         public string Title { get; set; }
-        public ICollection<BookSubject> BookSubject { get; set; }
-        public ICollection<HistoryRegistry> HistoryRegistries { get; set; }
         public int AuthorId { get; set; }
         [Required]
         public Author Author { get; set; }
@@ -44,18 +39,15 @@ namespace LMS.Models
         public string Country { get; set; }
         [Required]
         public string Language { get; set; }
-
         public int IsbnId { get; set; }
         [Required]
         public Isbn Isbn{ get; set; }
-
         public bool IsReserved { get; set; }
-        public ICollection<ReserveBook> ReservedBooks { get; set; } = new List<ReserveBook>();
+        public bool IsCheckedOut { get; set; }
+        public ICollection<BookSubject> BookSubject { get; set; }
+        public ICollection<ReserveBook> ReservedBooks { get; set; } 
+        public ICollection<HistoryRegistry> HistoryRegistries { get; set; }
 
         //public char Rack
-
-        //public int Copies
-
-        //public string Reservation
     }
 }

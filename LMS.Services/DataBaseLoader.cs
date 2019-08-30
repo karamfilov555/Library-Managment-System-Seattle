@@ -19,12 +19,12 @@ namespace LMS.Services
         private readonly IBookServices _bookServices;
         private readonly IJsonServices _jsonServices;
         private readonly IRecordFinesServices _recordServices;
-        private const string usersDirectory = @"..\..\..\..\LMS.Data\Json\Users.json";
-        private const string rolesDirectory = @"..\..\..\..\LMS.Data\Json\Roles.json";
-        private const string finesDirectory = @"..\..\..\..\LMS.Data\Json\RecordFines.json";
-        private const string authorsDirectory = @"..\..\..\..\LMS.Data\Json\Authors.json";
-        private const string isbnsDirectory = @"..\..\..\..\LMS.Data\Json\Isbns.json";
-        private const string booksDirectory = @"..\..\..\..\LMS.Data\Json\Books.json";
+        private const string usersDirectory = @"..\..\..\..\LMS.Data\Jsons\Users.json";
+        private const string rolesDirectory = @"..\..\..\..\LMS.Data\Jsons\Roles.json";
+        private const string finesDirectory = @"..\..\..\..\LMS.Data\Jsons\RecordFines.json";
+        private const string authorsDirectory = @"..\..\..\..\LMS.Data\Jsons\Authors.json";
+        private const string isbnsDirectory = @"..\..\..\..\LMS.Data\Jsons\Isbns.json";
+        private const string booksDirectory = @"..\..\..\..\LMS.Data\Jsons\Books.json";
         public DataBaseLoader(IUserServices userServices,
                               IRoleServices roleServices,
                               IJsonServices jsonServices,
@@ -177,8 +177,9 @@ namespace LMS.Services
                                 WHERE u.Id = {book.Id}
                         BEGIN
                         INSERT INTO dbo.Books
-                             (Title, AuthorId, Pages, Year, Country, Language, IsbnId, IsReserved) 
-                        VALUES ('{book.Title}','{book.AuthorId}','{book.Pages}','{book.Year}','{book.Country}','{book.Language}','{book.IsbnId}','{book.IsReserved}')
+                             (Title, AuthorId, Pages, Year, Country, Language, IsbnId, IsReserved, IsCheckedOut) 
+                        VALUES ('{book.Title}','{book.AuthorId}','{book.Pages}','{book.Year}','{book.Country}',
+                                '{book.Language}','{book.IsbnId}','{book.IsReserved}','{book.IsCheckedOut}')
                     END");
                 }
             }

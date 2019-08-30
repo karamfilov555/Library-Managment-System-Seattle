@@ -43,6 +43,8 @@ namespace LMS.Data.Migrations
                     b.Property<string>("Country")
                         .IsRequired();
 
+                    b.Property<bool>("IsCheckedOut");
+
                     b.Property<bool>("IsReserved");
 
                     b.Property<int>("IsbnId");

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LMS.Data.Migrations
 {
-    public partial class Initial : Migration
+    public partial class f3chaso : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -85,7 +85,8 @@ namespace LMS.Data.Migrations
                     Country = table.Column<string>(nullable: false),
                     Language = table.Column<string>(nullable: false),
                     IsbnId = table.Column<int>(nullable: false),
-                    IsReserved = table.Column<bool>(nullable: false)
+                    IsReserved = table.Column<bool>(nullable: false),
+                    IsCheckedOut = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -14,7 +14,6 @@ namespace LMS.Core
         private readonly ICommandProcessor _commandProcessor;
         public Engine(IOutputWriter outputWriter,
                       IInputReader inputReader,
-                      //IDataBaseLoader dataBaseLoader,
                       ILoginAuthenticator loginAuthenticator,
                       ICommandProcessor commandProcessor)
         {

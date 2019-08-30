@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace LMS.Models
 {
     public class Author
     {
-        public Author()// ot ver 2.1 na ef moje bez prazniq konstr !
+        public Author()
         {
 
         }
