@@ -9,5 +9,7 @@ namespace LMS.Services.Contracts
     {
         void AddHistoryToDb(HistoryRegistry history);
         void ReturnBook(string title);
+        string AllUserBooksToString();
+        void CheckForMaxCheckOutAmount();
     }
 }

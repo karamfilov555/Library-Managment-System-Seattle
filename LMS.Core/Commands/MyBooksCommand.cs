@@ -1,4 +1,5 @@
 ﻿using LMS.Core.Commands.Contracts;
+using LMS.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,10 +8,14 @@ namespace LMS.Core.Commands
 {
     public class MyBooksCommand : ICommand
     {
-        //TODO
+        private readonly IHistoryServices _historyServices;
+        public MyBooksCommand(IHistoryServices historyServices)
+        {
+            _historyServices = historyServices;
+        }
         public string Execute(IList<string> parameteres)
         {
-            throw new NotImplementedException();
+            return _historyServices.AllUserBooksToString();
         }
     }
 }

@@ -46,11 +46,20 @@ namespace LMS.Services
             if (!_context.Books
                       .Any(b => b.Title == title && b.Author.Name == author && b.IsCheckedOut == false))
                 throw new ArgumentException($"We are sorry at this moment all copies of a book \"{title}\" are issued. You can reserve a copy, if you want.");
+
+            if (_context.Books
+                     .Any(b => b.Title == title && b.Author.Name == author
+                     && b.IsCheckedOut == false && b.IsReserved == false))
+                return _context.Books
+                     .First(b => b.Title == title && b.Author.Name == author
+                     && b.IsCheckedOut == false && b.IsReserved == false);
+
             if (!_context.Books
                      .Any(b => b.Title == title && b.Author.Name == author
                      && b.IsCheckedOut == false && b.IsReserved == true
                      && _context.Reservations.Any(r => r.UserId == user.Id && r.BookId == b.Id)))
                 throw new ArgumentException($"We are sorry at this moment all copies of a book \"{title}\" are reserved!");
+
             return _context.Books
                      .First(b => b.Title == title && b.Author.Name == author
                      && b.IsCheckedOut == false && b.IsReserved == true

@@ -26,6 +26,8 @@ namespace LMS.Core.Commands
         }
         public string Execute(IList<string> parameteres)
         {
+            _historyServices.CheckForMaxCheckOutAmount();
+
             _writer.WriteLine("Book's Title :");
             var title = _reader.ReadLine();
             _writer.WriteLine("Book's Author:");
