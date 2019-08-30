@@ -67,8 +67,8 @@ namespace LMS.Core.Commands
                 throw new ArgumentException(_messages.InvalidParametersMessage());
             }
             var subjects = subject.Split();
-            var book = _modelsFactory.CreateBook(title,author,pages,year,country,language,subjects);
 
+            var book = _modelsFactory.CreateBook(title,author,pages,year,country,language,subjects);
             _bookServices.AddBookToDb(book);
 
             return $"Book with title \"{title}\" was added!";

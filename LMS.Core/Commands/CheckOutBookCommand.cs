@@ -30,6 +30,7 @@ namespace LMS.Core.Commands
             var title = _reader.ReadLine();
             _writer.WriteLine("Book's Author:");
             var author = _reader.ReadLine();
+
             var checkOut = _historyFactory.CreateHistoryRegistry(title, author);
             _historyServices.AddHistoryToDb(checkOut);
             return $"You successfully check-out a book with title \"{title}\"";
