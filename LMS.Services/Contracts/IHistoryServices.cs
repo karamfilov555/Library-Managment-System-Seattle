@@ -8,5 +8,6 @@ namespace LMS.Services.Contracts
     public interface IHistoryServices
     {
         void AddHistoryToDb(HistoryRegistry history);
+        void ReturnBook(string title);
     }
 }

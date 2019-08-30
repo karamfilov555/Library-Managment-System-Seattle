@@ -9,5 +9,6 @@ namespace LMS.Services.Contracts
     {
         RecordFines ProvideRecord();
         bool CheckRecordFines();
+        void AddFineToUser(User user);
     }
 }

@@ -18,10 +18,11 @@ namespace LMS.Models
         public User User { get; set; }
         public int BookId { get; set; }
         public Book Book { get; set; }
-
         [Required]
         public string CheckOutDate { get; set; }
         [Required]
         public DateTime ReturnDate { get; set; }
+        [Required]
+        public bool IsReturned { get; set; }
     }
 }

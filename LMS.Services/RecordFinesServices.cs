@@ -29,5 +29,13 @@ namespace LMS.Services
                 return true;
             return false;
         }
+        public void AddFineToUser(User user)
+        {
+            var fines = _context.RecordFines
+                 .Where(u => u.Id == user.RecordFinesId);
+            foreach (var fine in fines)
+                fine.FineAmount += 5.00M;
+            _context.SaveChanges();
+        }
     }
 }

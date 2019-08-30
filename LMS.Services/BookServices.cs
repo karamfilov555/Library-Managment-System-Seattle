@@ -19,9 +19,14 @@ namespace LMS.Services
             _context.Books.Add(book);
             _context.SaveChanges();
         }
-        public Book FindBook(string title, string author)
+        public Book FindBook(string title)
         {
-            CheckIfBookExist(title, author);
+            CheckIfBookExist(title);
+            return _context.Books.First(b => b.Title == title);
+        }
+        public Book FindBook(string title,string author)
+        {
+            CheckIfBookExist(title);
             return _context.Books.First(b => b.Title == title && b.Author.Name == author);
         }
         public Book FindAvailableBook(string title, string author)
@@ -43,6 +48,10 @@ namespace LMS.Services
         public void SetCheckOutBookStatus(Book book)
         {
             book.IsCheckedOut = true;
+        }
+        public void SetReturnBookStatus(Book book)
+        {
+            book.IsCheckedOut = false;
         }
         public void CheckIfBookExist(string title, string author)
         {
