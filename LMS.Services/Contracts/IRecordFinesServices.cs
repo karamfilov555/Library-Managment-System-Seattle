@@ -9,6 +9,7 @@ namespace LMS.Services.Contracts
     {
         RecordFines ProvideRecord();
         bool CheckRecordFines();
-        void AddFineToUser(User user);
+        void AddFineToUser(User user,int days);
+        string GetUserTotalFineAmount(User user);
     }
 }

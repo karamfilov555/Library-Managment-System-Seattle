@@ -42,5 +42,6 @@ namespace LMS.Services
         {
             return _context.Users.Any(r => r.Username == username);
         }
+     
     }
 }

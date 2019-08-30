@@ -70,8 +70,19 @@ namespace LMS.Services
             if (_context.HistoryRegistries
                 .Any
                 (u => u.UserId == user.Id && u.BookId == book.Id && u.ReturnDate < DateTime.Now))
-                    
-                _fineServices.AddFineToUser(user);
+            {
+                var dateNow = DateTime.Now;
+                int daysDelay;
+                var date = _context.HistoryRegistries
+                    .Where(u => u.UserId == user.Id && u.BookId == book.Id)
+                    .Select(u=> u.ReturnDate);
+
+                foreach (var item in date)
+                {
+                    daysDelay = dateNow.Subtract(item).Days;
+                    _fineServices.AddFineToUser(user, daysDelay);
+                }
+            }
         }
     }
 }
