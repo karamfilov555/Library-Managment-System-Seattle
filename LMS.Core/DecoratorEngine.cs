@@ -30,7 +30,6 @@ namespace LMS.Core
             time.Start();
             _dataBaseLoader.SeedDataBase();
             _logoPrinter.PrintLogo();
-            _writer.WriteLine(_messages.WelcomeMessage());
             _engine.Run();
             time.Stop();
             var seconds = time.Elapsed.TotalSeconds;
