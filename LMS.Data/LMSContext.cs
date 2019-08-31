@@ -1,5 +1,4 @@
 ﻿using LMS.Data.Configurations;
-using LMS.Data.Configurations.Contracts;
 using LMS.Models;
 using LMS.Models.Models;
 using Microsoft.EntityFrameworkCore;
@@ -8,10 +7,8 @@ namespace LMS.Data
 {
     public class LMSContext : DbContext
     {
-        private readonly IConfigurator _configurator;
-        public LMSContext(IConfigurator configurator)
+        public LMSContext()
         {
-            _configurator = configurator;
         }
         public LMSContext(DbContextOptions options)
             : base(options)
@@ -35,7 +32,7 @@ namespace LMS.Data
 
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(_configurator.ProvideConnectionString());
+                optionsBuilder.UseSqlServer(Configurator.ProvideConnectionString());
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

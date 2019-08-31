@@ -2,6 +2,8 @@
 using LMS.Models;
 using LMS.Services.Contracts;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -102,6 +104,24 @@ namespace LMS.Services
                 counter++;
             }
             return strBulider.ToString();
+        }
+        public string AllBooksToString(IList<Book> books)
+        {
+            var allBooks = books.ToList();
+            var strBulider = new StringBuilder();
+            int counter = 1;
+            foreach (var book in allBooks)
+            {
+                strBulider.AppendLine($"========Book #{counter}========{Environment.NewLine}Title : {book.Title}{Environment.NewLine}Author : {_context.Authors.First(a => a.Id == book.AuthorId).Name}{Environment.NewLine}Year : {book.Year}{Environment.NewLine}Pages : {book.Pages}{Environment.NewLine}Language : {book.Language}{Environment.NewLine}ISBN : {_context.Isbns.First(i => i.Id == book.IsbnId).ISBN}");
+                counter++;
+            }
+            return strBulider.ToString();
+        }
+
+        public IList<Book> SearchByAuthor(string authorName)
+        {
+            return _context.Books.Where(b => b.Author.Name == authorName).ToList();
+
         }
     }
 }

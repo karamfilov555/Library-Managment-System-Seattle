@@ -5,7 +5,6 @@ using LMS.Core.Commands.Contracts;
 using LMS.Core.IO;
 using LMS.Data;
 using LMS.Data.Configurations;
-using LMS.Data.Configurations.Contracts;
 using LMS.Models;
 using LMS.Services;
 using LMS.Services.Contracts;
@@ -87,8 +86,7 @@ namespace LMS.Start
 
             builder.RegisterType<LoginAuthenticator>()
               .As<ILoginAuthenticator>().SingleInstance();
-            builder.RegisterType<Configurator>()
-             .As<IConfigurator>().SingleInstance();
+         
 
             // builder.RegisterType<AdminServices>()
             //     .As<IAdminServices>().SingleInstance();

@@ -1,22 +1,19 @@
 ﻿
-using LMS.Data.Configurations.Contracts;
 using System.IO;
 
 namespace LMS.Data.Configurations
 {
-    public class Configurator : IConfigurator
+    public class Configurator 
     {
         private const string CsFileDirectory =
         @"..\..\..\..\LMS.Data\Configurations\ConnectionStringFile\ConnectionString.txt";
         public Configurator()
         {
-            ConnectionString = File.ReadAllText(CsFileDirectory);
         }
-        public string ProvideConnectionString()
+        public static string ProvideConnectionString()
         {
-            return ConnectionString;
+            return File.ReadAllText(CsFileDirectory); 
         }
-        private string ConnectionString { get; set; }
     }
 }
 
