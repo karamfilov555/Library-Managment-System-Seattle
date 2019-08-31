@@ -8,5 +8,6 @@ namespace LMS.Core.Contracts
     {
         void WriteLine(string lane);
         void WriteLine();
+        void Write(string lane);
     }
 }

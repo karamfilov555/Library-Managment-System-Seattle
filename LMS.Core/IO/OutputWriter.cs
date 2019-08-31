@@ -19,5 +19,9 @@ namespace LMS.Core.IO
         {
             Console.WriteLine();
         }
+        public void Write(string lane)
+        {
+            Console.Write(lane);
+        }
     }
 }

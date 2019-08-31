@@ -10,30 +10,39 @@ namespace LMS.Core.Commands
 {
     public class RegisterCommand : ICommand
     {
-        private readonly IValidator _validator;
         private readonly IGlobalMessages _messages;
         private readonly ILoginAuthenticator _loginAuthenticator;
         private readonly IUserFactory _usersFactory;
         private readonly IUserServices _usersServices;
+        private readonly IInputReader _reader;
+        private readonly IInputKeyReader _keyReader;
+        private readonly IOutputWriter _writer;
         private const string defaultRoleName = "member";
-        public RegisterCommand(IValidator validator,
+        public RegisterCommand(
             IGlobalMessages messages,
             ILoginAuthenticator loginAuthenticator,
             IUserFactory modelsFactory,
-            IUserServices usersServices)
+            IUserServices usersServices,
+            IInputReader reader,
+            IInputKeyReader keyReader,
+            IOutputWriter writer)
         {
-            _validator = validator;
             _messages = messages;
             _loginAuthenticator = loginAuthenticator;
             _usersFactory = modelsFactory;
             _usersServices = usersServices;
+            _reader = reader;
+            _keyReader = keyReader;
+            _writer = writer;
         }
         public string Execute(IList<string> parameteres)
         {
             _loginAuthenticator.IsAlreadyLoggedIn();
-            _validator.RegisterParametersCountValidation(parameteres);
-            var username = parameteres[0];
-            var password = parameteres[1];
+            _writer.Write("Username: ");
+            var username = _reader.ReadLine();
+            _writer.Write("Password/Input will be hidden/: ");
+            var password = _keyReader.ReadKeys();
+            _writer.WriteLine();
 
             var newUser = _usersFactory.CreateUser(username, password, defaultRoleName);
             _usersServices.AddUserToDb(newUser);
