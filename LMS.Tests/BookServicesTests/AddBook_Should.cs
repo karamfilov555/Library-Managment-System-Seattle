@@ -18,8 +18,26 @@ namespace LMS.Tests.BookServicesTests
         [TestMethod]
         public void Addbook()
         {
-            var testId = 5;
             var options = TestUtilities.GetOptions(nameof(Addbook));
+            var mockLoginAuthenticator = new Mock<ILoginAuthenticator>().Object;
+
+            using (var actContext = new LMSContext(options))
+            {
+                var sut = new BookServices(actContext, mockLoginAuthenticator);
+                sut.AddBookToDb(new Book());
+            }
+            using (var assertContext = new LMSContext(options))
+            {
+                var book = assertContext.Books
+                    .FirstOrDefault();
+                Assert.IsNotNull(book);
+            }
+        }
+        [TestMethod]
+        public void Addbook_WithCorrectValues()
+        {
+            var testId = 5;
+            var options = TestUtilities.GetOptions(nameof(Addbook_WithCorrectValues));
             var mockLoginAuthenticator = new Mock<ILoginAuthenticator>().Object;
 
             using (var actContext = new LMSContext(options))

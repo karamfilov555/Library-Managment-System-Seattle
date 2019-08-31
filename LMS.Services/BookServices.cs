@@ -32,7 +32,7 @@ namespace LMS.Services
         }
         public Book FindBook(string title, string author)
         {
-            CheckIfBookExist(title);
+            CheckIfBookExist(title,author);
             return _context.Books.First(b => b.Title == title && b.Author.Name == author);
         }
         public Book FindAvailableBook(string title, string author)
