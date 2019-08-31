@@ -121,7 +121,25 @@ namespace LMS.Services
         public IList<Book> SearchByAuthor(string authorName)
         {
             return _context.Books.Where(b => b.Author.Name == authorName).ToList();
-
         }
+        public IList<Book> SearchByTitle(string title)
+        {
+            return _context.Books.Where(b => b.Title == title).ToList();
+        }
+        public IList<Book> SearchByLanguage(string language)
+        {
+            return _context.Books.Where(b => b.Language == language).ToList();
+        }
+        //public IList<Book> SearchBySubject(string subject)
+        //{
+        //    _context.BooksSubjects.FirstOrDefault(bs => bs.BookId ==_context.Books.);
+        //    return _context.Books.Where(b => b.Id)).ToList();
+        //}
+
+    public IList<Book> SearchByYear(int year)
+    {
+    return _context.Books.Where(b => b.Year == year).ToList();
+    }
+
     }
 }

@@ -19,5 +19,8 @@ namespace LMS.Services.Contracts
         string AllBooksToString();
         string AllBooksToString(IList<Book> books);
         IList<Book> SearchByAuthor(string authorName);
+        IList<Book> SearchByTitle(string title);
+        IList<Book> SearchByLanguage(string language);
+        IList<Book> SearchByYear(int year);
     }
 }
