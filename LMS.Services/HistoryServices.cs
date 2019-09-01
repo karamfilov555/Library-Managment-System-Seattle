@@ -50,9 +50,15 @@ namespace LMS.Services
         }
         public Book FindBookInUserHistory(User user, string title)
         {
-            var historyRegistry = _context.HistoryRegistries
-                .FirstOrDefault
-                (hr => hr.UserId == user.Id && hr.Book.Title == title);
+            if (!_context.HistoryRegistries.Any(hr => hr.UserId == user.Id))
+                throw new ArgumentException("You have no books to return!");
+            if (!_context.HistoryRegistries.Any
+                (hr => hr.UserId == user.Id && hr.BookId == (_context.Books.FirstOrDefault(b => b.Title == title && b.IsCheckedOut == true)).Id))
+                throw new ArgumentException($"There are no book with title: \"{title}\" in your checkout history!");
+
+            var historyRegistry = _context.HistoryRegistries.First
+            (hr => hr.UserId == user.Id && hr.BookId == (_context.Books.First(b => b.Title == title && b.IsCheckedOut == true)).Id);
+
             var book = _context.Books.FirstOrDefault
                 (b => b.Id == historyRegistry.BookId);
             CheckIfBookExistInCurrentUserHistory(book, user);

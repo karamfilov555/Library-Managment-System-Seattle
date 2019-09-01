@@ -29,8 +29,9 @@ namespace LMS.Tests.HistoryServicesTests
                 arrangeContext.Books.Add(new Book
                 {
                     Id = 3,
-                    Title = "title"
-                });
+                    Title = "title",
+                    IsCheckedOut = true
+                }) ;
                 arrangeContext.SaveChanges();
                 arrangeContext.HistoryRegistries.Add(new HistoryRegistry
                 {
@@ -63,7 +64,9 @@ namespace LMS.Tests.HistoryServicesTests
                 arrangeContext.Books.Add(new Book
                 {
                     Id = 3,
-                    Title = "title"
+                    Title = "title",
+                    IsCheckedOut = true
+                    
                 });
                 arrangeContext.SaveChanges();
                 arrangeContext.HistoryRegistries.Add(new HistoryRegistry
@@ -97,7 +100,8 @@ namespace LMS.Tests.HistoryServicesTests
                 arrangeContext.Books.Add(new Book
                 {
                     Id = 3,
-                    Title = "title"
+                    Title = "title",
+                    IsCheckedOut = true
                 });
                 arrangeContext.SaveChanges();
                 arrangeContext.HistoryRegistries.Add(new HistoryRegistry
