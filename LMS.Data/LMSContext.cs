@@ -1,4 +1,5 @@
-﻿using LMS.Data.Configurations;
+﻿using System;
+using LMS.Data.Configurations;
 using LMS.Models;
 using LMS.Models.Models;
 using Microsoft.EntityFrameworkCore;
@@ -45,6 +46,11 @@ namespace LMS.Data
             modelBuilder.ApplyConfiguration(new FineConfiguration());
            
             base.OnModelCreating(modelBuilder);
+        }
+
+        public object First()
+        {
+            throw new NotImplementedException();
         }
     }
 }

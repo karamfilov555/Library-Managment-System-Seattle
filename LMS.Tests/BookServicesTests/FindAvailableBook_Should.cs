@@ -5,9 +5,7 @@ using LMS.Services.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace LMS.Tests.BookServicesTests
 {
@@ -113,5 +111,6 @@ namespace LMS.Tests.BookServicesTests
                 Assert.AreEqual($"We are sorry at this moment all copies of a book \"{title}\" are issued. You can reserve a copy, if you want.", exp.Message);
             }
         }
+        
     }
 }
