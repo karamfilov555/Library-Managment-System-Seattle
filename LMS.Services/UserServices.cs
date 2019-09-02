@@ -25,7 +25,7 @@ namespace LMS.Services
             _context.Users.Add(user);
             _context.SaveChanges();
         }
-        public User CheckUserCredetials(string username, string password)
+        public User CheckUserCredentials(string username, string password)
         {
             var user = _context.Users.FirstOrDefault(x => x.Username == username && x.Password == password);
             if (user == null)

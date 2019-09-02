@@ -34,7 +34,7 @@ namespace LMS.Services
         }
         public User CheckUserCredetials(string username, string password)
         {
-            var user = _usersServices.CheckUserCredetials(username, password);
+            var user = _usersServices.CheckUserCredentials(username, password);
             return user;
         }
         public void IsAlreadyLoggedIn()
