@@ -17,6 +17,7 @@ namespace LMS.Services
         private readonly IIsbnServices _isbnServices;
         private readonly IAuthorServices _authorServices;
         private readonly IBookServices _bookServices;
+        private readonly ISubjectServices _subjectServices;
         private readonly IJsonServices _jsonServices;
         private readonly IRecordFinesServices _recordServices;
         private const string usersDirectory = @"..\..\..\..\LMS.Data\Jsons\Users.json";
@@ -25,6 +26,8 @@ namespace LMS.Services
         private const string authorsDirectory = @"..\..\..\..\LMS.Data\Jsons\Authors.json";
         private const string isbnsDirectory = @"..\..\..\..\LMS.Data\Jsons\Isbns.json";
         private const string booksDirectory = @"..\..\..\..\LMS.Data\Jsons\Books.json";
+        private const string subjectCategoriesDirectory = @"..\..\..\..\LMS.Data\Jsons\SubjectCategories.json";
+        
         public DataBaseLoader(IUserServices userServices,
                               IRoleServices roleServices,
                               IJsonServices jsonServices,
@@ -32,7 +35,8 @@ namespace LMS.Services
                               ISqlCommandExecutor commandExecutor,
                               IAuthorServices authorServices,
                               IIsbnServices isbnServices,
-                              IBookServices bookServices)
+                              IBookServices bookServices,
+                              ISubjectServices subjectServices)
         {
             _commandExecutor = commandExecutor;
             _userServices = userServices;
@@ -42,6 +46,7 @@ namespace LMS.Services
             _recordServices = recordServices;
             _isbnServices = isbnServices;
             _bookServices = bookServices;
+            _subjectServices = subjectServices;
         }
         public void SeedDataBase()
         {
@@ -51,6 +56,7 @@ namespace LMS.Services
             LoadAuthors();
             LoadIsbns();
             LoadBooks();
+            LoadSubjectCategories();
         }
         public void LoadUsers()
         {
@@ -185,5 +191,28 @@ namespace LMS.Services
             }
             _commandExecutor.ExecuteCommand(sqlCommand);
         }
+        public void LoadSubjectCategories()
+        {
+            var subjects = _jsonServices.ExtractTypesFromJson<SubjectCategory>(subjectCategoriesDirectory);
+            var sqlCommand = new StringBuilder();
+
+            foreach (var subj in subjects)
+            {
+                if (!_subjectServices.CheckIfSubjectExist(subj.SubjectName))
+                {
+                    sqlCommand.AppendLine($@"
+                    
+                    SELECT *  FROM dbo.SubjectCategories u
+                                WHERE u.Id = {subj.Id}
+                        BEGIN
+                        INSERT INTO dbo.SubjectCategories
+                             (SubjectName) 
+                        VALUES ('{subj.SubjectName}')
+                    END");
+                }
+            }
+            _commandExecutor.ExecuteCommand(sqlCommand);
+        }
+        
     }
 }

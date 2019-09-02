@@ -12,12 +12,15 @@ namespace LMS.Services
     public class RecordFinesServices : IRecordFinesServices
     {
         private readonly IRecordFinesFactory _recordFactory;
+        private readonly IUserServices _userServices;
         private readonly LMSContext _context;
         public RecordFinesServices(IRecordFinesFactory recordFactory,
+                                   IUserServices userServices,
                                    LMSContext context)
         {
             _recordFactory = recordFactory;
             _context = context;
+            _userServices = userServices;
         }
         public RecordFines ProvideRecord()
         {
@@ -43,6 +46,14 @@ namespace LMS.Services
                 .Select(u => u.RecordFines.FineAmount);
 
             return $"Your fine balance: {total.First()}$!";
+        }
+        public string PayFineToUser(string username)
+        {
+            var user = _userServices.FindUserByUsername(username);
+            var usersRecordFine = _context.RecordFines.First(i => i.Id == user.RecordFinesId);
+            usersRecordFine.FineAmount = 0.00M;
+            _context.SaveChanges();
+            return $"You successfully clear fine record of \"{username}\"";
         }
     }
 }

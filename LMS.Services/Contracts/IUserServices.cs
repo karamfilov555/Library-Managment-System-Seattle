@@ -11,5 +11,6 @@ namespace LMS.Services.Contracts
         User CheckUserCredetials(string username, string password);
         void RemoveUserFromDb(User user);
         bool CheckIfUserExist(string username);
+        User FindUserByUsername(string username);
     }
 }

@@ -1,0 +1,70 @@
+[
+  {
+    "ID": 1,
+    "SubjectName": "Drama"
+  },
+  {
+    "ID": 2,
+    "SubjectName": "Historical"
+  },
+  {
+    "ID": 3,
+    "SubjectName": "Biographical"
+  },
+  {
+    "ID": 4,
+    "SubjectName": "Fantasy"
+  },
+  {
+    "ID": 5,
+    "SubjectName": "Action"
+  },
+  {
+    "ID": 6,
+    "SubjectName": "Horor"
+  },
+  {
+    "ID": 7,
+    "SubjectName": "Crime"
+  },
+  {
+    "ID": 8,
+    "SubjectName": "Romance"
+  },
+  {
+    "ID": 9,
+    "SubjectName": "Science"
+  },
+  {
+    "ID": 10,
+    "SubjectName": "Law"
+  },
+  {
+    "ID": 11,
+    "SubjectName": "Technical"
+  },
+  {
+    "ID": 12,
+    "SubjectName": "Roman"
+  },
+  {
+    "ID": 13,
+    "SubjectName": "Poetry"
+  },
+  {
+    "ID": 14,
+    "SubjectName": "Auto-Biographical"
+  },
+  {
+    "ID": 15,
+    "SubjectName": "Sci-Fi"
+  },
+  {
+    "ID": 16,
+    "SubjectName": "Political"
+  },
+  {
+    "ID": 17,
+    "SubjectName": "Children"
+  }
+]

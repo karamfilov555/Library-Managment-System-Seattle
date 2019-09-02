@@ -31,6 +31,8 @@ namespace LMS.Services
             {
                 var historyRegistry = _context.HistoryRegistries.First(hr => hr.UserId == history.User.Id && hr.BookId == history.Book.Id);
                 historyRegistry.IsReturned = false;
+                historyRegistry.CheckOutDate = DateTime.Now.ToShortDateString();
+                historyRegistry.ReturnDate = DateTime.Now.AddDays(5);
                 _context.SaveChanges();
             }
             else
@@ -118,7 +120,7 @@ namespace LMS.Services
             {
                 if (history.UserId != user.Id || history.IsReturned == true)
                     continue;
-                strBulider.AppendLine($"-------Book #{counter}------{Environment.NewLine}Title : {_context.Books.First(i => i.Id == history.BookId).Title}{Environment.NewLine}Author : {_context.Authors.First(a => a.Id == history.Book.AuthorId).Name}{Environment.NewLine}Return Date : {history.ReturnDate}");
+                strBulider.AppendLine($"-------Book #{counter++}------{Environment.NewLine}Title : {_context.Books.First(i => i.Id == history.BookId).Title}{Environment.NewLine}Author : {_context.Authors.First(a => a.Id == history.Book.AuthorId).Name}{Environment.NewLine}Return Date : {history.ReturnDate}");
 
             }
             return strBulider.ToString();

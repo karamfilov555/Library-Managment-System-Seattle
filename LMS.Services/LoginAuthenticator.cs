@@ -1,7 +1,5 @@
 ﻿using LMS.Services.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using LMS.Models;
 using LMS.Services.Validator;
 
@@ -39,14 +37,6 @@ namespace LMS.Services
             var user = _usersServices.CheckUserCredetials(username, password);
             return user;
         }
-        //public bool CheckUsernameInDb(string username)
-        //{
-        //    var user = _usersServices.CheckUsernameInDb(username);
-        //    if (user != null)
-        //        return true;
-        //    return false;
-        //}
-       
         public void IsAlreadyLoggedIn()
         {
             var currUsr = LoggedUser();
@@ -72,15 +62,6 @@ namespace LMS.Services
         {
             SetCurrentUser(null, null, null);
         }
-
-        //public void RemoveUserFromDb(string userName)
-        //{
-        //    if (CheckCurrentUserStatus())
-        //    {
-        //        _adminServices.RemoveAdminFromDb(userName);
-        //    }
-        //    _usersServices.RemoveUserFromDb(userName);
-        //}
         public void CheckAllowedCommands(string consoleInput)
         {
             var currentUser = LoggedUser();

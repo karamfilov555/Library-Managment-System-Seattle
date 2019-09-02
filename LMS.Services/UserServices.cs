@@ -13,7 +13,6 @@ namespace LMS.Services
     {
         private readonly LMSContext _context;
         private readonly IServicesValidator _validator;
-        // Validations TODO: ServiceValidator
         public UserServices(LMSContext context,
             IServicesValidator validator)
         {
@@ -41,6 +40,12 @@ namespace LMS.Services
         public bool CheckIfUserExist(string username)
         {
             return _context.Users.Any(r => r.Username == username);
+        }
+        public User FindUserByUsername(string username)
+        {
+            if (!CheckIfUserExist(username))
+                throw new ArgumentException($"User with username \"{username}\" does not exist");
+            return _context.Users.First(u => u.Username == username);
         }
      
     }

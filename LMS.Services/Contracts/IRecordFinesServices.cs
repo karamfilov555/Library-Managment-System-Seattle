@@ -11,5 +11,6 @@ namespace LMS.Services.Contracts
         bool CheckRecordFines();
         void AddFineToUser(User user,int days);
         string GetUserTotalFineAmount(User user);
+        string PayFineToUser(string username);
     }
 }

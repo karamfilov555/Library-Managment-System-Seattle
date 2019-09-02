@@ -43,11 +43,6 @@ namespace LMS.Core.Commands
                     var language = _reader.ReadLine();
                     result = _bookServices.AllBooksToString(_bookServices.SearchByLanguage(language));
                     break;
-                //case "subject":
-                //    _writer.WriteLine("Enter subject:");
-                //    var subject = _reader.ReadLine();
-                //    result = _bookServices.AllBooksToString(_bookServices.SearchByTitle(subject));
-                //    break;
                 case "year":
                     _writer.WriteLine("Enter year:");
                     var year = int.Parse(_reader.ReadLine());
