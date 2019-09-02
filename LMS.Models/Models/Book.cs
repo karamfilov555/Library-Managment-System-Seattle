@@ -48,6 +48,5 @@ namespace LMS.Models
         public ICollection<ReserveBook> ReservedBooks { get; set; } 
         public ICollection<HistoryRegistry> HistoryRegistries { get; set; }
 
-        //public char Rack
     }
 }

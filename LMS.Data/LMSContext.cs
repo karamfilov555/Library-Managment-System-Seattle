@@ -47,10 +47,5 @@ namespace LMS.Data
            
             base.OnModelCreating(modelBuilder);
         }
-
-        public object First()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

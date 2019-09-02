@@ -32,7 +32,7 @@ namespace LMS.Tests.UserServicesTests
             using (var assertContext = new LMSContext(options))
             {
                 var sut = new UserServices(assertContext, mockValidator.Object);
-                var result = sut.CheckUserCredetials("cool", "tool");
+                var result = sut.CheckUserCredentials("cool", "tool");
                 Assert.AreEqual(user.Username, result.Username);
                 Assert.AreEqual(user.Password, result.Password);
                 Assert.IsInstanceOfType(result,typeof(User));
@@ -58,7 +58,7 @@ namespace LMS.Tests.UserServicesTests
             {
                 var sut = new UserServices(assertContext, mockValidator.Object);
                 Assert.ThrowsException<ArgumentException>(
-                    () => sut.CheckUserCredetials("tool", "tool")); 
+                    () => sut.CheckUserCredentials("tool", "tool")); 
             }
         }
         [TestMethod]
@@ -81,7 +81,7 @@ namespace LMS.Tests.UserServicesTests
             {
                 var sut = new UserServices(assertContext, mockValidator.Object);
                 var ex = Assert.ThrowsException<ArgumentException>(
-                    () => sut.CheckUserCredetials("tool", "tool"));
+                    () => sut.CheckUserCredentials("tool", "tool"));
                 Assert.AreEqual("Wrong Credentials!", ex.Message);
             }
         }
