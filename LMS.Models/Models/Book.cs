@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using LMS.Models.Models;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using LMS.Models.Models;
 
 namespace LMS.Models
 {
@@ -24,11 +24,11 @@ namespace LMS.Models
             this.ReservedBooks = new List<ReserveBook>();
             this.HistoryRegistries = new List<HistoryRegistry>();
         }
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [Required]
         public string Title { get; set; }
-        public int AuthorId { get; set; }
+        public string AuthorId { get; set; }
         [Required]
         public Author Author { get; set; }
         [Required]
@@ -39,7 +39,7 @@ namespace LMS.Models
         public string Country { get; set; }
         [Required]
         public string Language { get; set; }
-        public int IsbnId { get; set; }
+        public string IsbnId { get; set; }
         [Required]
         public Isbn Isbn{ get; set; }
         public bool IsReserved { get; set; }
@@ -47,6 +47,8 @@ namespace LMS.Models
         public ICollection<BookSubject> BookSubject { get; set; }
         public ICollection<ReserveBook> ReservedBooks { get; set; } 
         public ICollection<HistoryRegistry> HistoryRegistries { get; set; }
+        public string BookRatingId { get; set; }
+        public BookRating BookRating { get; set; }
 
     }
 }

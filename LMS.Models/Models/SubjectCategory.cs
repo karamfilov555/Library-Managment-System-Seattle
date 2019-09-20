@@ -11,8 +11,8 @@ namespace LMS.Models
         {
 
         }
-        
-        public int Id { get; set; }
+
+        public string Id { get; set; }
 
         public string SubjectName { get; set; }
 

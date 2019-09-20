@@ -8,6 +8,7 @@ namespace LMS.Models
         {
 
         }
+        public string Id { get; set; }
         public int BookId { get; set; }
         [Required]
         public Book Book { get; set; }
