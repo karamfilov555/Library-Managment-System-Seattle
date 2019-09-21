@@ -8,16 +8,10 @@ namespace LMS.Models
     {
         public HistoryRegistry()
         { }
-        public HistoryRegistry(User user, Book book)
-        {
-            this.User = user;
-            this.Book = book;
-            this.CheckOutDate = DateTime.Now.ToShortDateString();
-            this.ReturnDate = DateTime.Now.AddDays(5);
-        }
-        public int UserId { get; set; }
+  
+        public string UserId { get; set; }
         public User User { get; set; }
-        public int BookId { get; set; }
+        public string BookId { get; set; }
         public Book Book { get; set; }
         [Required]
         public string CheckOutDate { get; set; }

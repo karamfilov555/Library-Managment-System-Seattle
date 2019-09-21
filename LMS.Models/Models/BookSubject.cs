@@ -9,10 +9,10 @@ namespace LMS.Models
 
         }
         public string Id { get; set; }
-        public int BookId { get; set; }
+        public string BookId { get; set; }
         [Required]
         public Book Book { get; set; }
-        public int SubjectCategoryId { get; set; }
+        public string SubjectCategoryId { get; set; }
         [Required]
         public SubjectCategory SubjectCategory { get; set; }
     }
