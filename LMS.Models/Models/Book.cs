@@ -11,7 +11,7 @@ namespace LMS.Models
 
         }
         public string Id { get; set; }
-
+        //validations!!!!!!!
         [Required]
         public string Title { get; set; }
 
@@ -27,7 +27,7 @@ namespace LMS.Models
         [Required]
         public string Language { get; set; }
         [Required]
-        public string Isbn { get; set; }
+        public int Copies { get; set; }
         public bool IsReserved { get; set; }
         public bool IsCheckedOut { get; set; }
         public ICollection<BookSubject> BookSubject { get; set; }
@@ -35,6 +35,6 @@ namespace LMS.Models
         public ICollection<HistoryRegistry> HistoryRegistries { get; set; }
         public string BookRatingId { get; set; }
         public BookRating BookRating { get; set; }
-
+        public string CoverImageUrl { get; set; }
     }
 }

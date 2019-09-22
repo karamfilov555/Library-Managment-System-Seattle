@@ -15,7 +15,8 @@ using Microsoft.Extensions.DependencyInjection;
 using LMS.Models;
 using LMS.Data;
 using LMS.Web.Extentions;
-
+using LMS.Services;
+using LMS.Services.Contracts;
 
 namespace LMS.Web
 {
@@ -54,7 +55,7 @@ namespace LMS.Web
                 .AddRoles<Role>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<LMSContext>();
-
+            services.AddScoped<IUserService, UserService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

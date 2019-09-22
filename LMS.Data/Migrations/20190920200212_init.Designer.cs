@@ -51,7 +51,7 @@ namespace LMS.Data.Migrations
 
                     b.Property<bool>("IsReserved");
 
-                    b.Property<string>("Isbn")
+                    b.Property<string>("Copies")
                         .IsRequired();
 
                     b.Property<string>("Language")

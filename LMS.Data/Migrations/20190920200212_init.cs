@@ -154,7 +154,7 @@ namespace LMS.Data.Migrations
                     Year = table.Column<int>(nullable: false),
                     Country = table.Column<string>(nullable: false),
                     Language = table.Column<string>(nullable: false),
-                    Isbn = table.Column<string>(nullable: false),
+                    Copies = table.Column<string>(nullable: false),
                     IsReserved = table.Column<bool>(nullable: false),
                     IsCheckedOut = table.Column<bool>(nullable: false),
                     BookRatingId = table.Column<string>(nullable: true)

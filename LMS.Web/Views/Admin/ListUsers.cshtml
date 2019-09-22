@@ -1,0 +1,41 @@
+﻿@model ListUsersViewModel
+@inject LMS.Services.Contracts.IUserService userServices
+@{
+    ViewData["Title"] = "ListUsers";
+    Layout = "~/Views/Shared/_LayoutCustom.cshtml";
+}
+@if (this.TempData["Success"] != null)
+{
+    <div style="color:green">@this.TempData["Success"]</div>
+}
+<section class="recomended-sec">
+    <div class="container">
+        <div class="title">
+            <h2 class="align-content-center">List of Users</h2>
+            <hr>
+        </div>
+    </div>
+</section>
+@foreach (var user in Model.Users)
+{
+    <section class="about-sec">
+        <div class="container">
+            <div class="title justify-content-center">
+                <h2 class="card-title">Username: @user.Username</h2>
+                <h2 class="card-title">Role: @userServices.GetUserRole(user.Id)</h2>
+            </div>
+            <row class="form-row">
+                <col-md class="col-3">
+                    <form method="post">
+                        <button class="btn btn-primary btn-lg" asp-controller="Admin" asp-action="CreateLibrarian" asp-route-userId="@user.Id">Create-Librarian</button>
+                    </form>
+                </col-md>
+                <col-md class="col-3">
+                    <form method="post">
+                        <button class="btn btn-primary btn-lg" asp-controller="Admin" asp-action="CreateMember" asp-route-userId="@user.Id">Create-Member</button>
+                    </form>
+                </col-md>
+            </row>
+        </div>
+    </section>
+}
