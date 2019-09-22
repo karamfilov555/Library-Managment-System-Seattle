@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using LMS.Data;
 using LMS.Models;
 using LMS.Models.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LMS.Web.Controllers
 {
@@ -46,7 +47,8 @@ namespace LMS.Web.Controllers
 
             return View(book);
         }
-
+        [Authorize(Roles = "Librarian , Admin")]
+        //[Route("Librarian")]
         // GET: Book/Create
         public IActionResult Create()
         {
@@ -58,6 +60,8 @@ namespace LMS.Web.Controllers
         // POST: Book/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Librarian, Admin")]
+        //[Route("Librarian")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,AuthorId,Pages,Year,Country,Language,Copies,IsReserved,IsCheckedOut,BookRatingId,CoverImageUrl")] Book book)

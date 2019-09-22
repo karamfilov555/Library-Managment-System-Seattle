@@ -1,10 +1,26 @@
 ﻿@page
 @model AccessDeniedModel
 @{
-    ViewData["Title"] = "Access denied";
+    ViewData["Title"] = "You are not authorize to perform this action!";
+    Layout = "_LayoutCustom";
 }
 
-<header>
+<body>
     <h1 class="text-danger">@ViewData["Title"]</h1>
+    <section class="slider">
+        <div class="container">
+            <div id="owl-demo" class="owl-carousel owl-theme">
+                <div class="item">
+                        <img src="~/images/Trespassers.gif" alt="Trespassers">
+                        <div class="content">
+                            <div class="title">
+                                <h3>You are not authorize to perform this action!</h3>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
     <p class="text-danger">You do not have access to this resource.</p>
-</header>
+</body>
