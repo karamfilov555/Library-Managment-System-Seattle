@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMS.Data.Migrations
 {
     [DbContext(typeof(LMSContext))]
-    [Migration("20190921184444_roleIdadded")]
-    partial class roleIdadded
+    [Migration("20190922190039_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,20 +44,23 @@ namespace LMS.Data.Migrations
 
                     b.Property<string>("BookRatingId");
 
+                    b.Property<int>("Copies");
+
                     b.Property<string>("Country")
                         .IsRequired();
+
+                    b.Property<string>("CoverImageUrl");
 
                     b.Property<bool>("IsCheckedOut");
 
                     b.Property<bool>("IsReserved");
 
-                    b.Property<string>("Copies")
-                        .IsRequired();
-
                     b.Property<string>("Language")
                         .IsRequired();
 
                     b.Property<int>("Pages");
+
+                    b.Property<string>("SubjectCategoryId");
 
                     b.Property<string>("Title")
                         .IsRequired();
@@ -72,27 +75,9 @@ namespace LMS.Data.Migrations
                         .IsUnique()
                         .HasFilter("[BookRatingId] IS NOT NULL");
 
-                    b.ToTable("Books");
-                });
-
-            modelBuilder.Entity("LMS.Models.BookSubject", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("BookId")
-                        .IsRequired();
-
-                    b.Property<string>("SubjectCategoryId")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
-
                     b.HasIndex("SubjectCategoryId");
 
-                    b.ToTable("Subjects");
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("LMS.Models.HistoryRegistry", b =>
@@ -237,11 +222,12 @@ namespace LMS.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("SubjectName");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("SubjectCategory");
                 });
 
             modelBuilder.Entity("LMS.Models.User", b =>
@@ -407,19 +393,10 @@ namespace LMS.Data.Migrations
                     b.HasOne("LMS.Models.Models.BookRating", "BookRating")
                         .WithOne("Book")
                         .HasForeignKey("LMS.Models.Book", "BookRatingId");
-                });
-
-            modelBuilder.Entity("LMS.Models.BookSubject", b =>
-                {
-                    b.HasOne("LMS.Models.Book", "Book")
-                        .WithMany("BookSubject")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("LMS.Models.SubjectCategory", "SubjectCategory")
                         .WithMany("BookSubject")
-                        .HasForeignKey("SubjectCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("SubjectCategoryId");
                 });
 
             modelBuilder.Entity("LMS.Models.HistoryRegistry", b =>

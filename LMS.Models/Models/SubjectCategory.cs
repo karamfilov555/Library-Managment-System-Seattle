@@ -11,12 +11,12 @@ namespace LMS.Models
         {
 
         }
-
+        [Required]
         public string Id { get; set; }
+        [Required]
+        [RegularExpression("A-Za-z")]
+        public string Name { get; set; }
 
-        public string SubjectName { get; set; }
-
-        public  ICollection<BookSubject> BookSubject { get; set; }
-            = new List<BookSubject>();
+        public  ICollection<Book> BookSubject { get; set; } = new List<Book>();
     }
 }

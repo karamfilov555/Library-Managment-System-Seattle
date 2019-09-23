@@ -17,6 +17,8 @@ using LMS.Data;
 using LMS.Web.Extentions;
 using LMS.Services;
 using LMS.Services.Contracts;
+using LMS.Web.Mappers.Contracts;
+using LMS.Web.Mappers;
 
 namespace LMS.Web
 {
@@ -56,6 +58,10 @@ namespace LMS.Web
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<LMSContext>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IBookService, BookService>();
+            services.AddScoped<IAuthorService, AuthorService>();
+            services.AddScoped<ISubjectCategoryService, SubjectCategoryService>();
+            services.AddScoped<IMapVmToDTO, MapVmToDTO>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

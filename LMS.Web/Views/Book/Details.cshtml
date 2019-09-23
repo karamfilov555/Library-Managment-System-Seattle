@@ -1,82 +1,75 @@
-﻿@model LMS.Models.Book
+﻿@model BookViewModel
 
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
+    ViewData["Image"] = @Html.DisplayFor(model => model.CoverImageUrl);
 }
 
-<h1>Details</h1>
+
 
 <div>
-    <h4>Book</h4>
+    
+<img src="http://static.dudeiwantthat.com/img/entertainment/books/the-subtle-art-of-not-giving-a-25127.jpg" alt="~images/library.jpg" height="420" width="420">
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Title)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Author)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AuthorName)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Author.Id)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AuthorName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SubjectCategoryName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SubjectCategoryName)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Pages)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Pages)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Year)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Year)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Country)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Country)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Language)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Language)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Copies)
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsAvailable)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Copies)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsAvailable)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsReserved)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsReserved)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsCheckedOut)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsCheckedOut)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BookRating)
+
+        @*<dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.BookRating.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CoverImageUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CoverImageUrl)
-        </dd>
+        </dd>*@
+
     </dl>
 </div>
 <div>

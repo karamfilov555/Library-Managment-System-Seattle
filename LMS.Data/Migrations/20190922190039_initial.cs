@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LMS.Data.Migrations
 {
-    public partial class init : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -72,15 +72,15 @@ namespace LMS.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Categories",
+                name: "SubjectCategory",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    SubjectName = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
+                    table.PrimaryKey("PK_SubjectCategory", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -124,6 +124,7 @@ namespace LMS.Data.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     BanRecordId = table.Column<string>(nullable: true),
+                    RoleId = table.Column<string>(nullable: true),
                     AccountTypeId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -141,6 +142,12 @@ namespace LMS.Data.Migrations
                         principalTable: "BanRecords",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -154,10 +161,12 @@ namespace LMS.Data.Migrations
                     Year = table.Column<int>(nullable: false),
                     Country = table.Column<string>(nullable: false),
                     Language = table.Column<string>(nullable: false),
-                    Copies = table.Column<string>(nullable: false),
+                    Copies = table.Column<int>(nullable: false),
                     IsReserved = table.Column<bool>(nullable: false),
                     IsCheckedOut = table.Column<bool>(nullable: false),
-                    BookRatingId = table.Column<string>(nullable: true)
+                    SubjectCategoryId = table.Column<string>(nullable: true),
+                    BookRatingId = table.Column<string>(nullable: true),
+                    CoverImageUrl = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -172,6 +181,12 @@ namespace LMS.Data.Migrations
                         name: "FK_Books_BookRating_BookRatingId",
                         column: x => x.BookRatingId,
                         principalTable: "BookRating",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Books_SubjectCategory_SubjectCategoryId",
+                        column: x => x.SubjectCategoryId,
+                        principalTable: "SubjectCategory",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -359,31 +374,6 @@ namespace LMS.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Subjects",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    BookId = table.Column<string>(nullable: false),
-                    SubjectCategoryId = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Subjects", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Subjects_Books_BookId",
-                        column: x => x.BookId,
-                        principalTable: "Books",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Subjects_Categories_SubjectCategoryId",
-                        column: x => x.SubjectCategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -434,6 +424,11 @@ namespace LMS.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_RoleId",
+                table: "AspNetUsers",
+                column: "RoleId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Books_AuthorId",
                 table: "Books",
                 column: "AuthorId");
@@ -444,6 +439,11 @@ namespace LMS.Data.Migrations
                 column: "BookRatingId",
                 unique: true,
                 filter: "[BookRatingId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Books_SubjectCategoryId",
+                table: "Books",
+                column: "SubjectCategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HistoryRegistries_UserId",
@@ -469,16 +469,6 @@ namespace LMS.Data.Migrations
                 name: "IX_Review_UserId",
                 table: "Review",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Subjects_BookId",
-                table: "Subjects",
-                column: "BookId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Subjects_SubjectCategoryId",
-                table: "Subjects",
-                column: "SubjectCategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -511,19 +501,19 @@ namespace LMS.Data.Migrations
                 name: "Review");
 
             migrationBuilder.DropTable(
-                name: "Subjects");
-
-            migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "Books");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Books");
+                name: "Authors");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "BookRating");
+
+            migrationBuilder.DropTable(
+                name: "SubjectCategory");
 
             migrationBuilder.DropTable(
                 name: "AccountTypes");
@@ -532,10 +522,7 @@ namespace LMS.Data.Migrations
                 name: "BanRecords");
 
             migrationBuilder.DropTable(
-                name: "Authors");
-
-            migrationBuilder.DropTable(
-                name: "BookRating");
+                name: "AspNetRoles");
         }
     }
 }

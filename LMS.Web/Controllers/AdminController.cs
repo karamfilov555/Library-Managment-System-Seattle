@@ -28,7 +28,7 @@ namespace LMS.Web.Controllers
         {
             var users = await _userService.GetUsersAsync();
             var listUsersVm = new ListUsersViewModel();
-            listUsersVm.Users = users.Select(user => user.MapToViewModel()).ToList();
+            listUsersVm.Users = users.Select(user => user.MapToUserViewModel()).ToList();
             return View(listUsersVm);
         }
         [HttpPost]

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,16 +7,25 @@ using LMS.Data;
 using LMS.Models;
 using LMS.Models.Models;
 using Microsoft.AspNetCore.Authorization;
+using LMS.Web.Models;
+using LMS.Services.Contracts;
+using LMS.Web.Mappers.Contracts;
+using LMS.Web.Mappers;
 
 namespace LMS.Web.Controllers
 {
     public class BookController : Controller
     {
-        private readonly LMSContext _context;
+        private readonly LMSContext _context; // DA RAZKARAM CONTEXTA ot tuk !
+        private readonly IBookService _bookService;
+        private readonly IMapVmToDTO _mapper;
+
         //Scaffolded ! ! ! ! warning
-        public BookController(LMSContext context)
+        public BookController(LMSContext context, IBookService book , IMapVmToDTO mapper)
         {
             _context = context;
+            _bookService = book;
+            _mapper = mapper;
         }
 
         // GET: Book
@@ -32,49 +39,35 @@ namespace LMS.Web.Controllers
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var book = await _context.Books
-                .Include(b => b.Author)
-                .Include(b => b.BookRating)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (book == null)
-            {
+            var book = await _bookService.FindByIdAsync(id);
+            var vm = book.MapToBookViewModel();
+            if (vm == null)
                 return NotFound();
-            }
 
-            return View(book);
+            return View(vm);
         }
+
         [Authorize(Roles = "Librarian , Admin")]
-        //[Route("Librarian")]
-        // GET: Book/Create
         public IActionResult Create()
         {
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id");
-            ViewData["BookRatingId"] = new SelectList(_context.Set<BookRating>(), "Id", "Id");
             return View();
         }
-
-        // POST: Book/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [Authorize(Roles = "Librarian, Admin")]
-        //[Route("Librarian")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,AuthorId,Pages,Year,Country,Language,Copies,IsReserved,IsCheckedOut,BookRatingId,CoverImageUrl")] Book book)
+        public async Task<IActionResult> Create(BookViewModel bookViewModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(book);
-                await _context.SaveChangesAsync();
+                var bookDto = await _mapper.MapBookVmToDTO(bookViewModel);
+                var book = await _bookService.ProvideBookAsync(bookDto);
+                
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id", book.AuthorId);
-            ViewData["BookRatingId"] = new SelectList(_context.Set<BookRating>(), "Id", "Id", book.BookRatingId);
-            return View(book);
+            return View();
         }
 
         // GET: Book/Edit/5
