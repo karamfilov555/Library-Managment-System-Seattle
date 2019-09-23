@@ -18,24 +18,42 @@
 </section>
 @foreach (var user in Model.Users)
 {
-    <section class="about-sec">
-        <div class="container">
-            <div class="title justify-content-center">
-                <h2 class="card-title">Username: @user.Username</h2>
-                <h2 class="card-title"></h2>
+    if (Model.Users.Count == 1)
+    {
+        <section class="about-sec">
+            <div class="container">
+                <div class="title justify-content-center">
+                    <h2 class="card-title bg-danger">There are no registered users yet. Contact Sales Department.</h2>
+                </div>
             </div>
-            <row class="form-row">
-                <col-md class="col-3">
-                    <form method="post">
-                        <button class="btn btn-primary btn-lg" asp-controller="Admin" asp-action="CreateLibrarian" asp-route-userId="@user.Id">Create-Librarian</button>
-                    </form>
-                </col-md>
-                <col-md class="col-3">
-                    <form method="post">
-                        <button class="btn btn-primary btn-lg" asp-controller="Admin" asp-action="CreateMember" asp-route-userId="@user.Id">Create-Member</button>
-                    </form>
-                </col-md>
-            </row>
-        </div>
-    </section>
+        </section>
+    }
+    if (user.Username != "admin")
+    {
+        <section class="about-sec">
+            <div class="container">
+                <div class="title justify-content-center">
+                    <h2 class="card-title">Username: @user.Username</h2>
+                    <h2 class="card-title"></h2>
+                </div>
+                <row class="form-row">
+                    <col-md class="col-3">
+                        <form method="post">
+                            <button class="btn btn-primary btn-lg" asp-controller="Admin" asp-action="CreateLibrarian" asp-route-userId="@user.Id">Create-Librarian</button>
+                        </form>
+                    </col-md>
+                    <col-md class="col-3">
+                        <form method="post">
+                            <button class="btn btn-primary btn-lg" asp-controller="Admin" asp-action="CreateMember" asp-route-userId="@user.Id">Create-Member</button>
+                        </form>
+                    </col-md>
+                    <col-md class="col-3">
+                        <form method="get">
+                            <button class="btn btn-primary btn-lg" asp-controller="Admin" asp-action="BanUser" asp-route-userId="@user.Id">Ban-User</button>
+                        </form>
+                    </col-md>
+                </row>
+            </div>
+        </section>
+    }
 }

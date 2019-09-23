@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMS.Data.Migrations
 {
     [DbContext(typeof(LMSContext))]
-    [Migration("20190922190039_initial")]
+    [Migration("20190923131522_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -278,7 +278,9 @@ namespace LMS.Data.Migrations
 
                     b.HasIndex("AccountTypeId");
 
-                    b.HasIndex("BanRecordId");
+                    b.HasIndex("BanRecordId")
+                        .IsUnique()
+                        .HasFilter("[BanRecordId] IS NOT NULL");
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -450,8 +452,8 @@ namespace LMS.Data.Migrations
                         .HasForeignKey("AccountTypeId");
 
                     b.HasOne("LMS.Models.Models.BanRecord", "BanRecord")
-                        .WithMany("Users")
-                        .HasForeignKey("BanRecordId");
+                        .WithOne("User")
+                        .HasForeignKey("LMS.Models.User", "BanRecordId");
 
                     b.HasOne("LMS.Models.Role", "Role")
                         .WithMany()

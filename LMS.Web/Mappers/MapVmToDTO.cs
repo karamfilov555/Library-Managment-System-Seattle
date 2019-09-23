@@ -10,8 +10,7 @@ namespace LMS.Web.Mappers
         // Тук можем да филтрираме още един път информацията от вю-то , преди да я подадем на бизнес лейъра
         // (ViewModel и DataTransferObject НЕ Е едно и също !) , btw пази ни и от депенденси проблеми
         public async Task<BookDTO> MapBookVmToDTO(BookViewModel bookVm)
-        {
-            return new BookDTO
+            => new BookDTO
             {
                 Title = bookVm.Title,
                 AuthorName = bookVm.AuthorName,
@@ -23,7 +22,13 @@ namespace LMS.Web.Mappers
                 Country = bookVm.Country,
                 CoverImageUrl = bookVm.CoverImageUrl,
             };
-        }
-
+        public async Task<BanDto> MapBanVmToDto(BanViewModel banVm)
+            => new BanDto
+            {
+                UserId = banVm.UserId,
+                Username = banVm.Username,
+                Description = banVm.Description,
+                ExpirationDate = banVm.ExpirationDate,
+            };
     }
 }

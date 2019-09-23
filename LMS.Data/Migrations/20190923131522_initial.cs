@@ -409,7 +409,9 @@ namespace LMS.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUsers_BanRecordId",
                 table: "AspNetUsers",
-                column: "BanRecordId");
+                column: "BanRecordId",
+                unique: true,
+                filter: "[BanRecordId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using LMS.Services.Contracts;
 
 namespace LMS.Web.Areas.Identity.Pages.Account
 {
@@ -18,11 +19,15 @@ namespace LMS.Web.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly IBanService _banServices;
 
-        public LoginModel(SignInManager<User> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<User> signInManager,
+                          ILogger<LoginModel> logger,
+                          IBanService banServices)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _banServices = banServices;
         }
 
         [BindProperty]
@@ -67,6 +72,19 @@ namespace LMS.Web.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            var ban = await _banServices.CheckIfUserIsBanned(Input.UserName);
+            if (ban != null)
+            {
+                var expDate = ban.ExpirationDate;
+                if (expDate != null)
+                {
+                    if (expDate > DateTime.UtcNow)
+                    {
+                        ModelState.AddModelError(string.Empty, $"Your account is banned till: {expDate}");
+                        return Page();
+                    }
+                }
+            }
             returnUrl = returnUrl ?? Url.Content("~/");
 
             if (ModelState.IsValid)
@@ -74,6 +92,7 @@ namespace LMS.Web.Areas.Identity.Pages.Account
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");

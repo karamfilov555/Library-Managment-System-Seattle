@@ -28,6 +28,7 @@ namespace LMS.Data
             builder.Entity<Role>().HasKey(r => r.Id);
     
             builder.Entity<BookRating>().HasOne(b => b.Book).WithOne(i => i.BookRating).HasForeignKey<Book>(ii => ii.BookRatingId);
+            builder.Entity<BanRecord>().HasOne(u => u.User).WithOne(b => b.BanRecord).HasForeignKey<User>(ii => ii.BanRecordId);
             base.OnModelCreating(builder);
         }
 

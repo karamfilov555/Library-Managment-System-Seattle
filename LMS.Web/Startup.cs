@@ -61,6 +61,7 @@ namespace LMS.Web
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IAuthorService, AuthorService>();
             services.AddScoped<ISubjectCategoryService, SubjectCategoryService>();
+            services.AddScoped<IBanService, BanService>();
             services.AddScoped<IMapVmToDTO, MapVmToDTO>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
