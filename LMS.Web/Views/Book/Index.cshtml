@@ -1,17 +1,17 @@
-﻿@model IEnumerable<LMS.Models.Book>
+﻿@model IEnumerable<BookListViewModel>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 }
-    <section class="recomended-sec">
-        <div class="container">
-            <div class="title">
-                <h2 class="align-content-center">Books List</h2>
-                <hr>
-            </div>
+<section class="recomended-sec">
+    <div class="container">
+        <div class="title">
+            <h2 class="align-content-center">Books List</h2>
+            <hr>
         </div>
-    </section>
+    </div>
+</section>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -20,16 +20,25 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayNameFor(model => model.CoverImageUrl)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Author)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortCriteria"]">@Html.DisplayNameFor(model => model.Title)</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Pages)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["AuthornameSortCriteria"]">
+                    @Html.DisplayNameFor(model => model.AuthorName)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Year)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["PagesSortCriteria"]">
+                    @Html.DisplayNameFor(model => model.Pages)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["YearSortCriteria"]">
+                    @Html.DisplayNameFor(model => model.Year)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Country)
@@ -40,63 +49,60 @@
             <th>
                 @Html.DisplayNameFor(model => model.Copies)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsReserved)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsCheckedOut)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BookRating)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CoverImageUrl)
-            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.IsReserved)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsCheckedOut)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookRating)
+                </th>*@
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pages)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Year)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Language)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Copies)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsReserved)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsCheckedOut)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookRating.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CoverImageUrl)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@item.CoverImageUrl" alt="Smiley face" height="250" width="250">
+                </td>
+                <td>
+                    <b>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </b>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pages)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Language)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Copies)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.IsReserved)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsCheckedOut)
+                    </td>*@
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

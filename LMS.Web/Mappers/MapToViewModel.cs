@@ -32,6 +32,22 @@ namespace LMS.Web.Mappers
             
             return viewModel;
         }
-      
+        public static BookListViewModel MapToListItemBookViewModel(this Book book)
+        {
+            var viewModel = new BookListViewModel();
+            viewModel.Id = book.Id;
+            viewModel.Title = book.Title;
+            viewModel.AuthorName = book.Author.Name;
+            viewModel.Country = book.Country;
+            viewModel.Pages = book.Pages;
+            viewModel.Year = book.Year;
+            viewModel.Language = book.Language;
+            viewModel.Copies = book.Copies;
+            viewModel.SubjectCategoryName = book.SubjectCategory.Name;
+            viewModel.CoverImageUrl = book.CoverImageUrl;
+
+            return viewModel;
+        }
+
     }
 }

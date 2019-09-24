@@ -3,6 +3,8 @@ using LMS.DTOs;
 using LMS.Models;
 using LMS.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LMS.Services
@@ -13,8 +15,8 @@ namespace LMS.Services
         private readonly IAuthorService _authorService;
         private readonly ISubjectCategoryService _subjectService;
 
-        public BookService(LMSContext context, 
-                           IAuthorService authorService, 
+        public BookService(LMSContext context,
+                           IAuthorService authorService,
                            ISubjectCategoryService subject)
         {
             _context = context;
@@ -55,9 +57,26 @@ namespace LMS.Services
             var book = await _context.Books
                .Include(b => b.Author)
                .Include(b => b.BookRating)
-               .Include(b=>b.SubjectCategory)
+               .Include(b => b.SubjectCategory)
                .FirstOrDefaultAsync(m => m.Id == id);
             return book;
+        }
+        public async Task<ICollection<Book>> GetAllBooksAsync()
+            => await _context.Books
+              .Include(b => b.Author)
+              .Include(b => b.BookRating)
+              .Include(b => b.SubjectCategory)
+              .ToListAsync();
+        public async Task<ICollection<Book>> GetAllBooksWithoutRepetitionsAsync()
+        {
+            var allBooks = await GetAllBooksAsync();
+            var uniqueBooks = new List<Book>();
+            foreach (var item in allBooks)
+            {
+                if (!uniqueBooks.Any(b => b.Title.Equals(item.Title) && b.Author.Equals(item.Author) && b.Language.Equals(item.Language)))
+                    uniqueBooks.Add(item);
+            }
+            return uniqueBooks;
         }
     }
 }

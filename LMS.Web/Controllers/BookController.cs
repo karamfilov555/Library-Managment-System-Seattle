@@ -11,6 +11,7 @@ using LMS.Web.Models;
 using LMS.Services.Contracts;
 using LMS.Web.Mappers.Contracts;
 using LMS.Web.Mappers;
+using System;
 
 namespace LMS.Web.Controllers
 {
@@ -29,12 +30,51 @@ namespace LMS.Web.Controllers
         }
 
         // GET: Book
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    return View(booksListVm);
+        //}
+        public async Task<IActionResult> Index(string sortOrder)
         {
-            var lMSContext = _context.Books.Include(b => b.Author).Include(b => b.BookRating);
-            return View(await lMSContext.ToListAsync());
-        }
+            ViewData["TitleSortCriteria"] = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ViewData["AuthornameSortCriteria"] = sortOrder == "authorname" ? "authorname_desc" : "authorname";
+            ViewData["PagesSortCriteria"] = sortOrder == "pages" ? "pages_desc" : "pages";
+            ViewData["YearSortCriteria"] = sortOrder == "year" ? "year_desc" : "year";
 
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+
+            var allBooks = await _bookService.GetAllBooksWithoutRepetitionsAsync();
+            var allBooksListVm = allBooks.Select(v => v.MapToListItemBookViewModel());
+            
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    allBooksListVm = allBooksListVm.OrderByDescending(b => b.Title);
+                    break;
+                case "authorname":
+                    allBooksListVm = allBooksListVm.OrderBy(b => b.AuthorName);
+                    break;
+                case "authorname_desc":
+                    allBooksListVm = allBooksListVm.OrderByDescending(s => s.AuthorName);
+                    break;
+                case "pages_desc":
+                    allBooksListVm = allBooksListVm.OrderByDescending(b => b.Pages);
+                    break;
+                case "pages":
+                    allBooksListVm = allBooksListVm.OrderBy(b => b.Pages);
+                    break;
+                case "year":
+                    allBooksListVm = allBooksListVm.OrderBy(b => b.Year);
+                    break;
+                case "year_desc":
+                    allBooksListVm = allBooksListVm.OrderByDescending(b => b.Year);
+                    break;
+                default:
+                    allBooksListVm = allBooksListVm.OrderBy(s => s.Title);
+                    break;
+            }
+            return View(allBooksListVm);
+        }
         // GET: Book/Details/5
         public async Task<IActionResult> Details(string id)
         {

@@ -1,5 +1,6 @@
 ﻿using LMS.DTOs;
 using LMS.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace LMS.Services.Contracts
@@ -8,5 +9,7 @@ namespace LMS.Services.Contracts
     {
         Task<Book> ProvideBookAsync(BookDTO bookDto);
         Task<Book> FindByIdAsync(string id);
+        Task<ICollection<Book>> GetAllBooksAsync();
+        Task<ICollection<Book>> GetAllBooksWithoutRepetitionsAsync();
     }
 }
