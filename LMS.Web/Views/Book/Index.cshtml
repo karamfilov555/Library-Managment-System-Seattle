@@ -35,37 +35,37 @@
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortCriteria"]"
-                   asp-route-currentFilter="@ViewData["CurrentFilter"]">Title</a>
+                   asp-route-currentFilter="@ViewData["CurrentFilter"]">&uarr;&darr;Title</a>
             </th>
             <th>
                 <a asp-action="Index"
                    asp-route-sortOrder="@ViewData["AuthornameSortCriteria"]"
                    asp-route-currentFilter="@ViewData["CurrentFilter"]">
-                    Author Name
+                    &uarr;&darr;Author
                 </a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["PagesSortCriteria"]"
                    asp-route-currentFilter="@ViewData["CurrentFilter"]">
-                    Pages
+                    &uarr;&darr;Pages
                 </a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["YearSortCriteria"]"
                    asp-route-currentFilter="@ViewData["CurrentFilter"]">
-                    Year
+                    &uarr;&darr;Year
                 </a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["CountrySortCriteria"]"
                    asp-route-currentFilter="@ViewData["CurrentFilter"]">
-                    Country
+                    &uarr;&darr;Country
                 </a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["LanguageSortCriteria"]"
                    asp-route-currentFilter="@ViewData["CurrentFilter"]">
-                    Language
+                    &uarr;&darr;Language
                 </a>
             </th>
             <th>
@@ -140,14 +140,14 @@
                asp-route-pageNumber="@(Model.PageIndex - 1)"
                asp-route-currentFilter="@ViewData["CurrentFilter"]"
                class="btn btn-default @prevDisabled">
-                Previous
+                &larr; Previous
             </a>
             <a asp-action="Index"
                asp-route-sortOrder="@ViewData["CurrentSort"]"
                asp-route-pageNumber="@(Model.PageIndex + 1)"
                asp-route-currentFilter="@ViewData["CurrentFilter"]"
                class="btn btn-default @nextDisabled">
-                Next
+                Next &rarr;
             </a>
             
         </div>
