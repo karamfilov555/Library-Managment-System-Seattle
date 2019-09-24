@@ -32,10 +32,15 @@ namespace LMS.Web.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var username = await _userService.FindUsernameByIdAsync(userId);
             await _membershipService.MakeMember(username);
+            
+            //this.TempData["Success"] = $"User: {username} you successfully pay your membership";
 
-            this.TempData["Success"] = $"User: {username} you successfully pay your membership";
-
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("LogOff", "Auth");
         }
+        public IActionResult PaymentSuccess()
+        {
+            return View();
+        }
+
     }
 }

@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "PaymentSuccess";
+    Layout = "~/Views/Shared/_LayoutCustom.cshtml";
+}
+
+<section class="about-sec">
+    <div class="container">
+        <div class="title justify-content-center">
+            <h2 class="card-title bg-success">
+                You successfully pay your membership!
+                Details: Date: @DateTime.Now Payment Amount : 20 lea
+
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Please Rejoin to the system</a>
+            </h2>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
