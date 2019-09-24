@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Linq;
 using LMS.Models.Models;
 using LMS.DTOs;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
 
 namespace LMS.Services
 {
@@ -14,17 +16,24 @@ namespace LMS.Services
     {
         private readonly LMSContext _context;
         private readonly IBanService _banService;
+        private readonly UserManager<User> _userManager;
+        private readonly HttpContext _httpContext;
 
-        public UserService(LMSContext context, IBanService banService)
+        public UserService(LMSContext context, IBanService banService, UserManager<User> userManager)
         {
             _context = context;
             _banService = banService;
+            _userManager = userManager;
         }
-
+        public async Task<User> GetCurrentUserAsync()
+        {
+            var user = await _userManager.GetUserAsync(_httpContext.User);
+            return user;
+        }
         public async Task<ICollection<User>> GetUsersAsync()
             => await _context.Users.ToListAsync();
 
-        public async Task<Role> GetUserRole(string userId)
+        public async Task<Role> GetUserRoleAsync(string userId)
         {
             var roleId = await _context.UserRoles.FindAsync(userId);
             var role = await _context.Roles.FindAsync(roleId);
@@ -41,18 +50,25 @@ namespace LMS.Services
                 .FirstOrDefaultAsync(m => m.Id == userId);
             return user;
         }
-        public async Task<string> FindUsernameById(string userId)
+        public async Task<string> FindUsernameByIdAsync(string userId)
         {
             var user = await _context.Users
                 .Include(u => u.BanRecord)
                 .FirstOrDefaultAsync(m => m.Id == userId);
             return user.UserName;
         }
-        public async Task<User> BanUser(BanDto banDto)
+        public async Task<User> BanUserAsync(BanDto banDto)
         {
             var user = await FindUserForBanAsync(banDto.UserId);
             var ban = await _banService.AddBan(banDto);
 
+            return user;
+        }
+        public async Task<User> FindUserByUsernameAsync(string username)
+        {
+            var user = await _context.Users
+                .Include(u => u.BanRecord)
+                .FirstOrDefaultAsync(m => m.UserName == username);
             return user;
         }
     }

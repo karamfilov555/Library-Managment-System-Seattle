@@ -2,20 +2,16 @@
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
 
-
-
     <ul class="navbar-nav">
-        @if (User.IsInRole("Librarian"))
+        @if (User.IsInRole("Librarian") || User.IsInRole("Admin"))
         {
             <li class="navbar-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Create">Create Book</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Books</a>
             </li>
-        }
-        @if (User.IsInRole("Admin"))
-        {
             <li class="navbar-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Create">Books</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Create">Create</a>
             </li>
         }
+
     </ul>
 

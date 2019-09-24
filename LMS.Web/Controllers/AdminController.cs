@@ -62,7 +62,7 @@ namespace LMS.Web.Controllers
         [Route(nameof(BanUser) + "/{userId}")]
         public async Task<IActionResult> BanUser(string userId)
         {
-            var username = await _userService.FindUsernameById(userId);
+            var username = await _userService.FindUsernameByIdAsync(userId);
             var vm = new BanViewModel
             {
                 UserId = userId ,
@@ -78,7 +78,7 @@ namespace LMS.Web.Controllers
         {
             var banDto = await _dtoMapper.MapBanVmToDto(vm);
             //var user = await _userManager.FindByIdAsync(userId);
-            var user = await _userService.BanUser(banDto);
+            var user = await _userService.BanUserAsync(banDto);
 
             this.TempData["Success"] = $"User: {user.UserName} successfully Banned";
 

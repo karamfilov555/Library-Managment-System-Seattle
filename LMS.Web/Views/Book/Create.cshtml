@@ -4,12 +4,17 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 }
+    <section class="recomended-sec">
+        <div class="container">
+            <div class="title">
+                <h2 class="align-content-center">Create Book</h2>
+                <hr>
+            </div>
+        </div>
+    </section>
 
-<h1>Create</h1>
-
-<h4>Book</h4>
 <hr />
-<div class="row">
+<div class="justify-content-xl-center">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -35,8 +40,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="Country" class="control-label"></label>
-                <input asp-for="Country" class="form-control" />
-                <span asp-validation-for="Country" class="text-danger" placeholder="Please, enter country..." ></span>
+                <input asp-for="Country" class="form-control" placeholder="Please, enter country..." />
+                <span asp-validation-for="Country" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Language" class="control-label"></label>
@@ -55,7 +60,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="CoverImageUrl" class="control-label"></label>
-                <input asp-for="CoverImageUrl" class="form-control" />
+                <input asp-for="CoverImageUrl" class="form-control" placeholder="Please,enter image address..." />
                 <span asp-validation-for="CoverImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">

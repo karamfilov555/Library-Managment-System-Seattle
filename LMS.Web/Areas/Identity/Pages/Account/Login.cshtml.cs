@@ -80,7 +80,7 @@ namespace LMS.Web.Areas.Identity.Pages.Account
                 {
                     if (expDate > DateTime.UtcNow)
                     {
-                        ModelState.AddModelError(string.Empty, $"Your account is banned till: {expDate}");
+                        ModelState.AddModelError(string.Empty, $" !!!Your account is banned till: {expDate}{Environment.NewLine} Ban description: \"{ban.Description}\"");
                         return Page();
                     }
                 }

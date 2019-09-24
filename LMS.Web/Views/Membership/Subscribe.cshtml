@@ -1,0 +1,10 @@
+﻿@model MembershipViewModel
+@{
+    ViewData["Title"] = "Subscribe";
+    Layout = "~/Views/Shared/_LayoutCustom.cshtml";
+}
+
+<h1>Subscribe Now</h1>
+<form asp-action="SubscribeConfirmation">
+    <button class="btn btn-primary btn-lg" asp-controller="Membership" asp-action="SubscribeConfirmation">Pay-Membership!</button>
+</form>

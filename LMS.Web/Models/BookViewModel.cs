@@ -40,6 +40,9 @@ namespace LMS.Web.Models
         [Display(Name = "Book's Subject")]
         [Required, RegularExpression("[A-Za-z]+", ErrorMessage = "Subject should only contain latin letters!")]
         public string SubjectCategoryName { get; set; }
+
+        [Display(Name = "Cover Image Url")]
+        [Required]
         public string CoverImageUrl { get; set; }
     }
 }

@@ -144,15 +144,21 @@ header .main-menu {
     font-weight: 300; }
   header .main-menu .form-inline {
     border: 1px solid #e7e7e7;
-    padding-right: 10px; }
+    padding-right: 10px;
+    
+  }
     header .main-menu .form-inline input {
       border: 0;
       font-size: 12px;
       height: 32px;
-      outline: 0; }
+      outline: 0; 
+      
+    }
       header .main-menu .form-inline input:focus {
         outline: 0;
-        box-shadow: none; }
+        box-shadow: none;
+       
+      }
     header .main-menu .form-inline .fa {
       color: #e7e7e7;
       font-size: 12px; }
