@@ -40,8 +40,8 @@ namespace LMS.Web.Controllers
             ViewData["AuthornameSortCriteria"] = sortOrder == "authorname" ? "authorname_desc" : "authorname";
             ViewData["PagesSortCriteria"] = sortOrder == "pages" ? "pages_desc" : "pages";
             ViewData["YearSortCriteria"] = sortOrder == "year" ? "year_desc" : "year";
-
-            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CountrySortCriteria"] = sortOrder == "country" ? "country_desc" : "country";
+            ViewData["LanguageSortCriteria"] = sortOrder == "language" ? "language_desc" : "language";
 
             var allBooks = await _bookService.GetAllBooksWithoutRepetitionsAsync();
             var allBooksListVm = allBooks.Select(v => v.MapToListItemBookViewModel());
@@ -69,6 +69,19 @@ namespace LMS.Web.Controllers
                 case "year_desc":
                     allBooksListVm = allBooksListVm.OrderByDescending(b => b.Year);
                     break;
+                case "country":
+                    allBooksListVm = allBooksListVm.OrderBy(b => b.Country);
+                    break;
+                case "country_desc":
+                    allBooksListVm = allBooksListVm.OrderByDescending(b => b.Country);
+                    break;
+                case "language":
+                    allBooksListVm = allBooksListVm.OrderBy(b => b.Country);
+                    break;
+                case "language_desc":
+                    allBooksListVm = allBooksListVm.OrderByDescending(b => b.Country);
+                    break;
+                
                 default:
                     allBooksListVm = allBooksListVm.OrderBy(s => s.Title);
                     break;

@@ -41,10 +41,14 @@
                 </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Country)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["CountrySortCriteria"]">
+                    @Html.DisplayNameFor(model => model.Country)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Language)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["LanguageSortCriteria"]">
+                    @Html.DisplayNameFor(model => model.Language)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Copies)
@@ -66,7 +70,7 @@
         {
             <tr>
                 <td>
-                    <img src="@item.CoverImageUrl" alt="Smiley face" height="250" width="250">
+                    <img src="@item.CoverImageUrl" onerror="srcset='images/no-image-available-icon.jpg'" height="250" width="250">
                 </td>
                 <td>
                     <b>
