@@ -12,6 +12,7 @@ using LMS.Services.Contracts;
 using LMS.Web.Mappers.Contracts;
 using LMS.Web.Mappers;
 using System;
+using System.Collections.Generic;
 
 namespace LMS.Web.Controllers
 {
@@ -34,7 +35,7 @@ namespace LMS.Web.Controllers
         //{
         //    return View(booksListVm);
         //}
-        public async Task<IActionResult> Index(string sortOrder)
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
             ViewData["TitleSortCriteria"] = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
             ViewData["AuthornameSortCriteria"] = sortOrder == "authorname" ? "authorname_desc" : "authorname";
@@ -42,10 +43,16 @@ namespace LMS.Web.Controllers
             ViewData["YearSortCriteria"] = sortOrder == "year" ? "year_desc" : "year";
             ViewData["CountrySortCriteria"] = sortOrder == "country" ? "country_desc" : "country";
             ViewData["LanguageSortCriteria"] = sortOrder == "language" ? "language_desc" : "language";
+            ViewData["CurrentFilter"] = searchString;
 
             var allBooks = await _bookService.GetAllBooksWithoutRepetitionsAsync();
             var allBooksListVm = allBooks.Select(v => v.MapToListItemBookViewModel());
-            
+            //var searchResults = new List<BookListViewModel>();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                allBooksListVm = allBooksListVm.Where(bookVm => bookVm.Title.ToLower().Contains(searchString.ToLower()) || bookVm.AuthorName.ToLower().Contains(searchString.ToLower())).ToList();
+            }
+
             switch (sortOrder)
             {
                 case "title_desc":
@@ -86,6 +93,10 @@ namespace LMS.Web.Controllers
                     allBooksListVm = allBooksListVm.OrderBy(s => s.Title);
                     break;
             }
+            //if (searchString != null)
+            //{
+            //    return View(searchResults);
+            //}
             return View(allBooksListVm);
         }
         // GET: Book/Details/5
