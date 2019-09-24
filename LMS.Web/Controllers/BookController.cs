@@ -13,6 +13,7 @@ using LMS.Web.Mappers.Contracts;
 using LMS.Web.Mappers;
 using System;
 using System.Collections.Generic;
+using LMS.Web.PaginationManager;
 
 namespace LMS.Web.Controllers
 {
@@ -35,8 +36,9 @@ namespace LMS.Web.Controllers
         //{
         //    return View(booksListVm);
         //}
-        public async Task<IActionResult> Index(string sortOrder, string searchString)
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter,int? pageNumber)
         {
+            ViewData["CurrentSort"] = sortOrder; //care
             ViewData["TitleSortCriteria"] = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
             ViewData["AuthornameSortCriteria"] = sortOrder == "authorname" ? "authorname_desc" : "authorname";
             ViewData["PagesSortCriteria"] = sortOrder == "pages" ? "pages_desc" : "pages";
@@ -45,9 +47,14 @@ namespace LMS.Web.Controllers
             ViewData["LanguageSortCriteria"] = sortOrder == "language" ? "language_desc" : "language";
             ViewData["CurrentFilter"] = searchString;
 
+            if (searchString != null)
+                pageNumber = 1;
+            else
+                searchString = currentFilter;
+
             var allBooks = await _bookService.GetAllBooksWithoutRepetitionsAsync();
             var allBooksListVm = allBooks.Select(v => v.MapToListItemBookViewModel());
-            //var searchResults = new List<BookListViewModel>();
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 allBooksListVm = allBooksListVm.Where(bookVm => bookVm.Title.ToLower().Contains(searchString.ToLower()) || bookVm.AuthorName.ToLower().Contains(searchString.ToLower())).ToList();
@@ -93,11 +100,9 @@ namespace LMS.Web.Controllers
                     allBooksListVm = allBooksListVm.OrderBy(s => s.Title);
                     break;
             }
-            //if (searchString != null)
-            //{
-            //    return View(searchResults);
-            //}
-            return View(allBooksListVm);
+            var booksQuery = allBooksListVm.AsQueryable();
+            int pageSize = 3;
+            return View(PaginatedList<BookListViewModel>.CreateAsync(booksQuery.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
         // GET: Book/Details/5
         public async Task<IActionResult> Details(string id)

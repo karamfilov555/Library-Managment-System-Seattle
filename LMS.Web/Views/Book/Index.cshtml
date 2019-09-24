@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BookListViewModel>
+﻿@model LMS.Web.PaginationManager.PaginatedList<BookListViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,58 +13,63 @@
     </div>
 </section>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <div class="justify-content-xl-center">
-   
-        <form asp-action="Index" method="get">
-            @*<div class="form-actions no-color">*@
-            <p>
-                <input type="text" class="col-md-8" name="SearchString" value="@ViewData["CurrentFilter"]" placeholder="Enter book title or author..." />
-                <input type="submit" value="Search" class="btn" /> |
-                <a asp-action="Index">Back to Full List</a>
-            </p>
-            @*</div>*@
-        </form>
-   
+
+    <form asp-action="Index" method="get">
+        @*<div class="form-actions no-color">*@
+        <p>
+            <input type="text" class="col-md-8" name="SearchString" value="@ViewData["CurrentFilter"]" placeholder="Enter book title or author..." />
+            <input type="submit" value="Search" class="btn" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+        @*</div>*@
+    </form>
+
 </div>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.CoverImageUrl)
+                Cover
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortCriteria"]">@Html.DisplayNameFor(model => model.Title)</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortCriteria"]"
+                   asp-route-currentFilter="@ViewData["CurrentFilter"]">Title</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["AuthornameSortCriteria"]">
-                    @Html.DisplayNameFor(model => model.AuthorName)
+                <a asp-action="Index"
+                   asp-route-sortOrder="@ViewData["AuthornameSortCriteria"]"
+                   asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                    Author Name
                 </a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["PagesSortCriteria"]">
-                    @Html.DisplayNameFor(model => model.Pages)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["PagesSortCriteria"]"
+                   asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                    Pages
                 </a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["YearSortCriteria"]">
-                    @Html.DisplayNameFor(model => model.Year)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["YearSortCriteria"]"
+                   asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                    Year
                 </a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["CountrySortCriteria"]">
-                    @Html.DisplayNameFor(model => model.Country)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["CountrySortCriteria"]"
+                   asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                    Country
                 </a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["LanguageSortCriteria"]">
-                    @Html.DisplayNameFor(model => model.Language)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["LanguageSortCriteria"]"
+                   asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                    Language
                 </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Copies)
+                Copies
             </th>
             @*<th>
                     @Html.DisplayNameFor(model => model.IsReserved)
@@ -123,3 +128,28 @@
         }
     </tbody>
 </table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+<section class="recomended-sec">
+    <div class="container">
+        <div class="title">
+            <a asp-action="Index"
+               asp-route-sortOrder="@ViewData["CurrentSort"]"
+               asp-route-pageNumber="@(Model.PageIndex - 1)"
+               asp-route-currentFilter="@ViewData["CurrentFilter"]"
+               class="btn btn-default @prevDisabled">
+                Previous
+            </a>
+            <a asp-action="Index"
+               asp-route-sortOrder="@ViewData["CurrentSort"]"
+               asp-route-pageNumber="@(Model.PageIndex + 1)"
+               asp-route-currentFilter="@ViewData["CurrentFilter"]"
+               class="btn btn-default @nextDisabled">
+                Next
+            </a>
+            
+        </div>
+    </div>
+</section>
