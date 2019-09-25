@@ -2,7 +2,9 @@
 using LMS.DTOs;
 using LMS.Models;
 using LMS.Services.Contracts;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,14 +16,17 @@ namespace LMS.Services
         private readonly LMSContext _context;
         private readonly IAuthorService _authorService;
         private readonly ISubjectCategoryService _subjectService;
+        private readonly IMembershipService _membershipService;
 
         public BookService(LMSContext context,
                            IAuthorService authorService,
-                           ISubjectCategoryService subject)
+                           ISubjectCategoryService subject,
+                           IMembershipService membershipService)
         {
             _context = context;
             _authorService = authorService;
             _subjectService = subject;
+            _membershipService = membershipService;
         }
         private async Task<Book> AddBook(Book book)
         {
@@ -77,6 +82,21 @@ namespace LMS.Services
                     uniqueBooks.Add(item);
             }
             return uniqueBooks;
+        }
+
+        public async Task<Book> CheckoutBookAsync(string bookId,string userId)
+        {
+            var book = await FindByIdAsync(bookId);
+            var historyRegistry = new HistoryRegistry()
+            {
+                BookId = bookId,
+                CheckOutDate = DateTime.Now.ToShortDateString(),
+                ReturnDate = DateTime.Now.AddDays(10),
+                IsReturned = false,
+                UserId = userId,
+            };
+            book.IsCheckedOut = true;
+            return book;
         }
       
     }
