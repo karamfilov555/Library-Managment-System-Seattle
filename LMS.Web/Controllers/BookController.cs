@@ -24,7 +24,7 @@ namespace LMS.Web.Controllers
         private readonly IMapVmToDTO _mapper;
 
         //Scaffolded ! ! ! ! warning
-        public BookController(LMSContext context, IBookService book , IMapVmToDTO mapper)
+        public BookController(LMSContext context, IBookService book, IMapVmToDTO mapper)
         {
             _context = context;
             _bookService = book;
@@ -36,6 +36,7 @@ namespace LMS.Web.Controllers
         //{
         //    return View(booksListVm);
         //}
+        //[Authorize(Roles = "Librarian, Admin, Member")]
         public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter,int? pageNumber)
         {
             ViewData["CurrentSort"] = sortOrder; //care
@@ -229,5 +230,7 @@ namespace LMS.Web.Controllers
         {
             return _context.Books.Any(e => e.Id == id);
         }
+
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿@model LMS.Web.PaginationManager.PaginatedList<BookListViewModel>
+@using Microsoft.AspNetCore.Identity
 
 @{
     ViewData["Title"] = "Index";
@@ -119,11 +120,38 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.IsCheckedOut)
                     </td>*@
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
+                @if (User.IsInRole("Admin") || User.IsInRole("Librarian"))
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                }
+                @if (User.IsInRole("Member"))
+                {
+            <td>
+
+                @* TUK TRQBVA DA SA BUTONITE ZA CHECKOUT I REZERVACII !!!!*@
+                @*<p class="col-md-4">*@
+                <form method="post">
+                    <p>
+                        <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="CheckoutBook" asp-route-id="@item.Id">Check - Out!!!</button>
+                    </p>
+                </form>
+
+                @*TUK DA SE SLOJI RESERVE*@
+                <form method="post">
+                    <p>
+                        <button type="submit" class="btn border-0" asp-controller="Member" asp-action="CheckoutBook" asp-route-id="@item.Id">Reserve Now</button>
+                </p>
+                </form>
+
+                    @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+            </td>
+                }
             </tr>
         }
     </tbody>
@@ -149,7 +177,7 @@
                class="btn btn-default @nextDisabled">
                 Next &rarr;
             </a>
-            
+
         </div>
     </div>
 </section>

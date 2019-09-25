@@ -6,19 +6,18 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <row>
-        <div class="col">
+    <div class="menu-holder-custom">
+        <div class="d-inline-block menu-div-class p-1">
             <a class="header-top" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello, @User.Identity.Name!</a>
         </div>
-        <div class="col">
+        <div class="d-inline-block menu-div-class p-1">
             <form class="form-inline justify-content-end" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button type="submit" class="btn">Logout</button>
             </form>
         </div>
-    </row>
+    </div>
 }
 else
 {
     <span class="ph-number">Call : 0877-353-688</span>
 }
-

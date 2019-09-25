@@ -22,19 +22,33 @@ namespace LMS.Web.Controllers
             return View();
         }
 
-        public async Task<IActionResult> CheckoutBook(string bookId)
+        //[Route(nameof(CheckoutBook) + "/{userId}")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CheckoutBook(string Id)//vm
         {
-            ClaimsPrincipal currUser = this.User;
-            var currUserId = currUser.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var book = await _bookService.CheckoutBookAsync(bookId, currUserId);
-            //var vm = new BookViewModel
-            //{
-            //    Year = book.Year,
-            //    Pages = book.Pages,
+            //ClaimsPrincipal currUser = this.User;
+            //var currUserId = currUser.FindFirst(ClaimTypes.NameIdentifie  r).Value;
+            //var book = await _bookService.CheckoutBookAsync(bookId, currUserId);
+            ////var vm = new BookViewModel
+            ////{
+            ////    Year = book.Year,
+            ////    Pages = book.Pages,
             //    AuthorName = book.Author.Name,
             //    Title = book.Title,
             //}
+            //return View(book);
+            //if (userId == null)
+            //    return NotFound();
+
+            var book = await _bookService.FindByIdAsync(Id);
+            //var vm = book.MapToBookViewModel();
+            //if (vm == null)
+            //    return NotFound();
+
             return View(book);
+            //var book = new BookViewModel();
+            //return View(book);
         }
     }
 }

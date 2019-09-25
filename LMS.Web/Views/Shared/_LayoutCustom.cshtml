@@ -28,7 +28,7 @@
         <div class="main-menu">
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="index.html"><img src="~/images/logo1.png" alt="logo1"></a>
+                    <a class="navbar-brand" href=""><img src="~/images/logo1.png" alt="logo1"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -46,24 +46,29 @@
 
                             <partial name="_LoginPartial" />
                             <partial name="_AdminListUsersPartial" />
-                            <partial name="_LibrarianNavBarPartial"/>
+                            <partial name="_LibrarianNavBarPartial" />
+                            <partial name="_MemberNavBar" />
                         </ul>
                         @*<div class="cart my-2 my-lg-0">
-                            <span>
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            </span>
-                            <span class="quntity">3</span>
-                        </div>*@
+                                <span>
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                </span>
+                                <span class="quntity">3</span>
+                            </div>*@
                         @*<form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search here..." aria-label="Search">
-                            <span class="fa fa-search"></span>
-                        </form>*@
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search here..." aria-label="Search">
+                                <span class="fa fa-search"></span>
+                            </form>*@
                     </div>
                 </nav>
             </div>
         </div>
     </header>
-    @RenderBody()
+    <section class="m-5">
+
+        @RenderBody()
+
+    </section>
     <footer>
         <div class="container">
             <div class="row">

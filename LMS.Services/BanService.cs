@@ -1,12 +1,8 @@
 ﻿using LMS.Data;
 using LMS.DTOs;
-using LMS.Models;
 using LMS.Models.Models;
 using LMS.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LMS.Services

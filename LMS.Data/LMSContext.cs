@@ -7,6 +7,10 @@ namespace LMS.Data
 {
     public class LMSContext : IdentityDbContext<User,Role,string>
     {
+        public LMSContext()
+        {
+
+        }
         public LMSContext(DbContextOptions options) : base(options)
         {
         }
