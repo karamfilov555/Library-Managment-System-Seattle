@@ -7,7 +7,7 @@ namespace LMS.Services.Contracts
 {
     public interface IUserService
     {
-        Task<User> GetCurrentUserAsync();
+        //Task<User> GetCurrentUserAsync();
         Task<ICollection<User>> GetUsersAsync();
         Task<Role> GetUserRoleAsync(string userId);
         Task<User> BanUserAsync(BanDto banDto);

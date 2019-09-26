@@ -63,6 +63,7 @@ namespace LMS.Web
             services.AddScoped<IMembershipService, MembershipService>();
             services.AddScoped<ISubjectCategoryService, SubjectCategoryService>();
             services.AddScoped<IBanService, BanService>();
+            services.AddScoped<IHistoryService, HistoryService>();
             services.AddScoped<IMapVmToDTO, MapVmToDTO>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

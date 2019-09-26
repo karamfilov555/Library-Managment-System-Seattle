@@ -1,0 +1,66 @@
+﻿@model CheckoutBookViewModel
+@{
+    ViewData["Title"] = "CheckoutBook";
+    Layout = "~/Views/Shared/_LayoutCustom.cshtml";
+}
+
+    <section class="about-sec">
+        <div class="container">
+            <div class="title justify-content-center">
+                <h2 class="card-title bg-success">
+                    You successfully check-out "@Model.Title"!
+                    Details: Return date: @Model.ReturnDate 
+                </h2>
+            </div>
+        </div>
+    </section>
+    <div>
+
+        <img src="@Model.CoverImageUrl" alt="~images/library.jpg" height="420" width="420">
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AuthorName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SubjectCategoryName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SubjectCategoryName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Pages)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Pages)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Year)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Year)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Country)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Country)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Language)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Language)
+            </dd>
+        </dl>
+    </div>
+

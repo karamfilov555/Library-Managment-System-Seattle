@@ -11,10 +11,12 @@ namespace LMS.Web.Controllers
 {
     public class MemberController : Controller
     {
+        private readonly IHistoryService _historyService;
         private readonly IBookService _bookService;
 
-        public MemberController(IBookService bookService)
+        public MemberController(IHistoryService historyService, IBookService bookService)
         {
+            _historyService = historyService;
             _bookService = bookService;
         }
         public IActionResult Index()
@@ -27,28 +29,27 @@ namespace LMS.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CheckoutBook(string Id)//vm
         {
-            //ClaimsPrincipal currUser = this.User;
-            //var currUserId = currUser.FindFirst(ClaimTypes.NameIdentifie  r).Value;
-            //var book = await _bookService.CheckoutBookAsync(bookId, currUserId);
-            ////var vm = new BookViewModel
-            ////{
-            ////    Year = book.Year,
-            ////    Pages = book.Pages,
-            //    AuthorName = book.Author.Name,
-            //    Title = book.Title,
-            //}
-            //return View(book);
-            //if (userId == null)
-            //    return NotFound();
-
+            if (Id == null)
+                return NotFound();
+            ClaimsPrincipal currUser = this.User;
+            var userId = currUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var hr = await _historyService.CheckoutBook(Id,userId);
             var book = await _bookService.FindByIdAsync(Id);
-            //var vm = book.MapToBookViewModel();
-            //if (vm == null)
-            //    return NotFound();
 
-            return View(book);
-            //var book = new BookViewModel();
-            //return View(book);
+            var chechoutBookVm = new CheckoutBookViewModel
+            {
+                Title = book.Title,
+                AuthorName = book.Author.Name,
+                Country = book.Country,
+                ReturnDate = hr.ReturnDate,
+                SubjectCategoryName = book.SubjectCategory.Name,
+                Pages = book.Pages,
+                Year = book.Year,
+                Language = book.Language,
+                CoverImageUrl = book.CoverImageUrl
+            };
+            
+            return View(chechoutBookVm);
         }
     }
 }

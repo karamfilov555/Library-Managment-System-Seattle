@@ -9,6 +9,7 @@ using LMS.Models.Models;
 using LMS.DTOs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace LMS.Services
 {
@@ -25,11 +26,12 @@ namespace LMS.Services
             _banService = banService;
             _userManager = userManager;
         }
-        public async Task<User> GetCurrentUserAsync()
-        {
-            var user = await _userManager.GetUserAsync(_httpContext.User);
-            return user;
-        }
+        //public async Task<User> GetCurrentUserAsync()
+        //{
+        //    //var user = await _userManager.GetUserAsync(_httpContext.User);
+            
+        //    //return user;
+        //}
         public async Task<ICollection<User>> GetUsersAsync()
             => await _context.Users.ToListAsync();
 
