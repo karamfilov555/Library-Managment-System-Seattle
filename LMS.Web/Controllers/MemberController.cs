@@ -33,8 +33,17 @@ namespace LMS.Web.Controllers
                 return NotFound();
             ClaimsPrincipal currUser = this.User;
             var userId = currUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+            //todo is book free
+            var book = await _bookService.FindFreeBookByIdAsync(Id);
+            if (book == null)
+                return NotFound();
+            if (book.Copies <= 0)
+            {
+                //To do .. da preprashta v reservaciqta za tazi kniga
+                return NotFound();
+            }
+            //listbookVm copies --;
             var hr = await _historyService.CheckoutBook(Id,userId);
-            var book = await _bookService.FindByIdAsync(Id);
 
             var chechoutBookVm = new CheckoutBookViewModel
             {

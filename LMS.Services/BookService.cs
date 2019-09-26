@@ -68,38 +68,55 @@ namespace LMS.Services
                .FirstOrDefaultAsync(m => m.Id == id);
             return book;
         }
+        public async Task<Book> FindFreeBookByIdAsync(string id)
+        {
+            var book = await _context.Books
+               .Include(b => b.Author)
+               .Include(b => b.BookRating)
+               .Include(b => b.SubjectCategory)
+               .Where(b => b.IsCheckedOut == false)
+               .FirstOrDefaultAsync(m => m.Id == id);
+            return book;
+        }
         public async Task<ICollection<Book>> GetAllBooksAsync()
             => await _context.Books
               .Include(b => b.Author)
               .Include(b => b.BookRating)
               .Include(b => b.SubjectCategory)
               .ToListAsync();
+        public async Task<ICollection<Book>> GetAllFreeBooksAsync()
+            => await _context.Books
+              .Include(b => b.Author)
+              .Include(b => b.BookRating)
+              .Include(b => b.SubjectCategory)
+              .Where(b=>b.IsCheckedOut == false)
+              .ToListAsync();
         public async Task<ICollection<Book>> GetAllBooksWithoutRepetitionsAsync()
         {
-            var allBooks = await GetAllBooksAsync();
+            var allBooksFreeBooks = await GetAllFreeBooksAsync();
             var uniqueBooks = new List<Book>();
-            foreach (var item in allBooks)
+            foreach (var item in allBooksFreeBooks)
             {
-                if (!uniqueBooks.Any(b => b.Title.Equals(item.Title) && b.Author.Equals(item.Author) && b.Language.Equals(item.Language)))
+                if (!uniqueBooks.Any(b => b.Title.Equals(item.Title) && b.Author.Equals(item.Author) && b.Language.Equals(item.Language) && b.IsCheckedOut == false))
                     uniqueBooks.Add(item);
             }
             return uniqueBooks;
         }
 
-        public async Task<Book> CheckoutBookAsync(string bookId,string userId)
-        {
-            var book = await FindByIdAsync(bookId);
-            var historyRegistry = new HistoryRegistry()
-            {
-                BookId = bookId,
-                CheckOutDate = DateTime.Now.ToShortDateString(),
-                ReturnDate = DateTime.Now.AddDays(10),
-                IsReturned = false,
-                UserId = userId,
-            };
-            book.IsCheckedOut = true;
-            return book;
-        }
+        //public async Task<Book> CheckoutBookAsync(string bookId,string userId)
+        //{
+        //    var book = await FindByIdAsync(bookId);
+        //    var historyRegistry = new HistoryRegistry()
+        //    {
+        //        BookId = bookId,
+        //        CheckOutDate = DateTime.Now.ToShortDateString(),
+        //        ReturnDate = DateTime.Now.AddDays(10),
+        //        IsReturned = false,
+        //        UserId = userId,
+        //    };
+        //    book.IsCheckedOut = true;
+        //    return book;
+        //}
       
     }
 }
