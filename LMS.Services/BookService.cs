@@ -3,10 +3,12 @@ using LMS.DTOs;
 using LMS.Models;
 using LMS.Services.Contracts;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,16 +20,19 @@ namespace LMS.Services
         private readonly IAuthorService _authorService;
         private readonly ISubjectCategoryService _subjectService;
         private readonly IMembershipService _membershipService;
+        private readonly UserManager<User> _userManager;
 
         public BookService(LMSContext context,
                            IAuthorService authorService,
                            ISubjectCategoryService subject,
-                           IMembershipService membershipService)
+                           IMembershipService membershipService,
+                           UserManager<User> userManager)
         {
             _context = context;
             _authorService = authorService;
             _subjectService = subject;
             _membershipService = membershipService;
+            _userManager = userManager;
         }     
 
         private async Task<Book> AddBook(Book book)
@@ -114,5 +119,18 @@ namespace LMS.Services
             return uniqueBooks;
         }
 
+        public async Task<ICollection<Book>> GetCurrentUserBooks(string userId)
+        {
+            var currentUserHistory = await _context.HistoryRegistries.Where(hr=>hr.UserId == userId && hr.IsReturned == false).ToListAsync();
+
+            var currentUserBooks = new List<Book>();
+
+            foreach (var item in currentUserHistory)
+            {
+                var book = await FindByIdAsync(item.BookId);
+                currentUserBooks.Add(book);
+            }
+            return currentUserBooks;
+        }
     }
 }

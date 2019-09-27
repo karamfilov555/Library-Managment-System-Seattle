@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using LMS.Models;
 using LMS.Services.Contracts;
+using LMS.Web.Mappers;
 using LMS.Web.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LMS.Web.Controllers
@@ -13,11 +16,15 @@ namespace LMS.Web.Controllers
     {
         private readonly IHistoryService _historyService;
         private readonly IBookService _bookService;
+        private readonly UserManager<User> _userManager;
 
-        public MemberController(IHistoryService historyService, IBookService bookService)
+        public MemberController(IHistoryService historyService,
+                                IBookService bookService,
+                                UserManager<User> userManager)
         {
             _historyService = historyService;
             _bookService = bookService;
+            _userManager = userManager;
         }
         public IActionResult Index()
         {
@@ -59,6 +66,16 @@ namespace LMS.Web.Controllers
             };
             
             return View(chechoutBookVm);
+        }
+        public async Task<IActionResult> MyBooks()
+        {
+
+            var user = await  _userManager.GetUserAsync(User);
+            var books = await _bookService.GetCurrentUserBooks(user.Id);
+
+            var booksVm = books.Select(v => v.MapToBookViewModel());
+
+            return View(booksVm);
         }
     }
 }
