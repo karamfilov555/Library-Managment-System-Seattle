@@ -9,9 +9,8 @@ namespace LMS.Services.Contracts
     {
         Task<Book> ProvideBookAsync(BookDTO bookDto);
         Task<Book> FindByIdAsync(string id);
-        Task<ICollection<Book>> GetAllBooksAsync();
         Task<ICollection<Book>> GetAllBooksWithoutRepetitionsAsync();
         Task<Book> FindFreeBookByIdAsync(string id);
-        //Task<Book> CheckoutBookAsync(string bookId, string userId);
+        Task<ICollection<Book>> GetAllBooksForAdminWithoutRepetitionsAsync();
     }
 }

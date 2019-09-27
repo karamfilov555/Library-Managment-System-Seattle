@@ -37,8 +37,9 @@ namespace LMS.Web.Controllers
         //    return View(booksListVm);
         //}
         //[Authorize(Roles = "Librarian, Admin, Member")]
-        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter,int? pageNumber)
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
+            ICollection<Book> allBooks;
             ViewData["CurrentSort"] = sortOrder; //care
             ViewData["TitleSortCriteria"] = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
             ViewData["AuthornameSortCriteria"] = sortOrder == "authorname" ? "authorname_desc" : "authorname";
@@ -53,7 +54,11 @@ namespace LMS.Web.Controllers
             else
                 searchString = currentFilter;
 
-            var allBooks = await _bookService.GetAllBooksWithoutRepetitionsAsync();
+            if (User.IsInRole("Admin"))
+                allBooks = await _bookService.GetAllBooksForAdminWithoutRepetitionsAsync();
+            else
+                allBooks = await _bookService.GetAllBooksWithoutRepetitionsAsync();
+
             var allBooksListVm = allBooks.Select(v => v.MapToListItemBookViewModel());
 
             if (!String.IsNullOrEmpty(searchString))
@@ -96,7 +101,7 @@ namespace LMS.Web.Controllers
                 case "language_desc":
                     allBooksListVm = allBooksListVm.OrderByDescending(b => b.Country);
                     break;
-                
+
                 default:
                     allBooksListVm = allBooksListVm.OrderBy(s => s.Title);
                     break;
@@ -124,7 +129,7 @@ namespace LMS.Web.Controllers
         {
             return View();
         }
-        
+
         [Authorize(Roles = "Librarian, Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -134,7 +139,7 @@ namespace LMS.Web.Controllers
             {
                 var bookDto = await _mapper.MapBookVmToDTO(bookViewModel);
                 var book = await _bookService.ProvideBookAsync(bookDto);
-                
+
                 return RedirectToAction(nameof(Index));
             }
             return View();

@@ -78,13 +78,13 @@ namespace LMS.Services
                .FirstOrDefaultAsync(m => m.Id == id);
             return book;
         }
-        public async Task<ICollection<Book>> GetAllBooksAsync()
+        private async Task<ICollection<Book>> GetAllBooksAsync()
             => await _context.Books
               .Include(b => b.Author)
               .Include(b => b.BookRating)
               .Include(b => b.SubjectCategory)
               .ToListAsync();
-        public async Task<ICollection<Book>> GetAllFreeBooksAsync()
+        private async Task<ICollection<Book>> GetAllFreeBooksAsync()
             => await _context.Books
               .Include(b => b.Author)
               .Include(b => b.BookRating)
@@ -102,21 +102,17 @@ namespace LMS.Services
             }
             return uniqueBooks;
         }
+        public async Task<ICollection<Book>> GetAllBooksForAdminWithoutRepetitionsAsync()
+        {
+            var allBooksBooks = await GetAllBooksAsync();
+            var uniqueBooks = new List<Book>();
+            foreach (var item in allBooksBooks)
+            {
+                if (!uniqueBooks.Any(b => b.Title.Equals(item.Title) && b.Author.Equals(item.Author) && b.Language.Equals(item.Language)))
+                    uniqueBooks.Add(item);
+            }
+            return uniqueBooks;
+        }
 
-        //public async Task<Book> CheckoutBookAsync(string bookId,string userId)
-        //{
-        //    var book = await FindByIdAsync(bookId);
-        //    var historyRegistry = new HistoryRegistry()
-        //    {
-        //        BookId = bookId,
-        //        CheckOutDate = DateTime.Now.ToShortDateString(),
-        //        ReturnDate = DateTime.Now.AddDays(10),
-        //        IsReturned = false,
-        //        UserId = userId,
-        //    };
-        //    book.IsCheckedOut = true;
-        //    return book;
-        //}
-      
     }
 }
