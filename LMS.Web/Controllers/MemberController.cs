@@ -97,5 +97,25 @@ namespace LMS.Web.Controllers
             TempData["ReturnMsg"] = ($"{username}, you successfully returned a book: \"{title}\"!");
             return RedirectToAction(nameof(MyBooks));
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Member")]
+        public async Task<IActionResult> RenewBookAsync(string Id)
+        {
+            if (Id == null)
+                return NotFound();
+
+            var user = await _userManager.GetUserAsync(User);
+            var hr = await _historyService.RenewBookAsync(Id, user.Id);
+
+            var title = await _bookService.GetBookTitleAsync(Id);
+            var username = user.UserName;
+
+            TempData["ReturnMsg"] = ($"{username}, you successfully renew return date of a book: \"{title}\" to {hr.ReturnDate} !");
+
+            return RedirectToAction(nameof(MyBooks));
+        }
+
+
     }
 }

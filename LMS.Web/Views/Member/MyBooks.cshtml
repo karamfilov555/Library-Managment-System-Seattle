@@ -108,7 +108,7 @@ else
                                 <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="ReturnBook" asp-route-id="@item.Id">Return Book</button>
                             </p>
                             <p>
-                                <button type="submit" class="btn" asp-controller="Member" asp-action="CheckoutBook" asp-route-id="@item.Id">Renew Book</button>
+                                <button type="submit" class="btn" asp-controller="Member" asp-action="RenewBookAsync" asp-route-id="@item.Id">Renew Book</button>
                             </p>
                         </form>
                         @*button*@

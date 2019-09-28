@@ -38,8 +38,6 @@ namespace LMS.Services
             if (historyRegistry == null)
                 throw new ArgumentException("Invalid operation: history registry cannot be null.");
             
-          
-
             _context.HistoryRegistries.Add(historyRegistry);
 
             var book = await _context.Books.FirstAsync(x => x.Id == bookId);
@@ -73,9 +71,6 @@ namespace LMS.Services
         => await _context.HistoryRegistries
                          .FirstAsync(hr => hr.BookId == bookId && hr.UserId == userId && hr.IsReturned == false);
 
-       
-
-
         public async Task ReturnBookAsync(string bookId, string userId)
         {
             if (bookId == null)
@@ -90,6 +85,17 @@ namespace LMS.Services
             await _context.Books.Where(b => b.Title == book.Title && b.Author.Name == book.Author.Name && b.Language == book.Language).ForEachAsync(bc => bc.Copies++);
 
             await _context.SaveChangesAsync();
+        }
+        public async Task<HistoryRegistry> RenewBookAsync(string bookId, string userId)
+        {
+            if (bookId == null)
+                throw new ArgumentException();
+
+            var hr = await GetHistoryRegistryAsync(bookId, userId);
+            hr.ReturnDate = DateTime.Now.AddDays(10);
+
+            await _context.SaveChangesAsync();
+            return hr;
         }
     }
 }
