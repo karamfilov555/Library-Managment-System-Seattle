@@ -29,8 +29,13 @@ $(document).ready(function() {
 
   });
 
+    //Return book
+    const ChangeColor = function () {
+        $("#returnBook")
+            .css('background-color', 'green');
+    }
 
-
+    setTimeout(ChangeColor, 1500);
 
  
 });

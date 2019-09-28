@@ -1,43 +1,122 @@
-﻿@model IEnumerable<BookViewModel>
+﻿@model IReadOnlyCollection<CheckoutBookViewModel>
+
 @{
     ViewData["Title"] = "MyBooks";
+    ViewBag.Title = "Msg";
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 }
-@if (Model.Count()==0)
+<section class="recomended-sec">
+    <div class="container">
+        <div class="title">
+            <h2 class="align-content-center">My Books</h2>
+            <hr>
+        </div>
+    </div>
+</section>
+@{
+    <h1 class="bg-success"id="returnMsg"> @ViewBag.Date </h1>
+}
+@if (Model.Count() == 0)
 {
     <h1>You have no books checked-out yet!</h1>
 }
-    <tbody>
-        @foreach (var item in Model)
-        {
+else
+{
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    <img src="@item.CoverImageUrl" onerror="srcset='images/no-image-available-icon.jpg'" height="250" width="250">
-                </td>
-                <td>
-                    <b>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </b>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AuthorName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pages)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Year)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Country)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Language)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Copies)
-                </td>
-            </tr>
-        }
-    </tbody>
+                <th class="">
+                    Cover
+                </th>
 
+                <th>
+                    Checkout Description
+                </th>
+                <th class="">
+
+                </th>
+                <th class="">
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@item.CoverImageUrl" onerror="srcset='images/no-image-available-icon.jpg'" height="250" width="250">
+                    </td>
+
+                    <td>
+                        <dl class="row">
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => item.Title)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => item.Title)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => item.AuthorName)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => item.AuthorName)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => item.SubjectCategoryName)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => item.SubjectCategoryName)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => item.Pages)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => item.Pages)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => item.Year)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => item.Year)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => item.Country)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => item.Country)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => item.Language)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => item.Language)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => item.ReturnDate)
+                            </dt>
+                            <dd class="col-sm-10 text-danger">
+                                <b>
+                                    @Html.DisplayFor(model => item.ReturnDate)
+                                </b>
+                            </dd>
+                        </dl>
+                    </td>
+                    <td>
+                        <form method="post">
+                            <p>
+                                <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="ReturnBook" asp-route-id="@item.Id">Return Book</button>
+                            </p>
+                            <p>
+                                <button type="submit" class="btn" asp-controller="Member" asp-action="CheckoutBook" asp-route-id="@item.Id">Renew Book</button>
+                            </p>
+                        </form>
+                        @*button*@
+                    </td>
+
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

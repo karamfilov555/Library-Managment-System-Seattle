@@ -29,8 +29,31 @@ namespace LMS.Web.Mappers
             viewModel.Copies = book.Copies;
             viewModel.SubjectCategoryName = book.SubjectCategory.Name;
             viewModel.CoverImageUrl = book.CoverImageUrl;
-            
+
             return viewModel;
+        }
+        public static IReadOnlyCollection<CheckoutBookViewModel> MapToCheckOutViewModel(this IDictionary<Book, DateTime> checkOuts)
+        {
+            var checkOutsOfUserVm = new List<CheckoutBookViewModel>();
+
+            foreach (var checkoutPair in checkOuts)
+            {
+                //всеки път new , защото е референтен тип и се променят старите иначе.. :)
+            var viewModel = new CheckoutBookViewModel();
+                viewModel.ReturnDate = checkoutPair.Value;
+                viewModel.Id = checkoutPair.Key.Id;
+                viewModel.Title = checkoutPair.Key.Title;
+                viewModel.AuthorName = checkoutPair.Key.Author.Name;
+                viewModel.Country = checkoutPair.Key.Country;
+                viewModel.Pages = checkoutPair.Key.Pages;
+                viewModel.Year = checkoutPair.Key.Year;
+                viewModel.Language = checkoutPair.Key.Language;
+                viewModel.Copies = checkoutPair.Key.Copies;
+                viewModel.SubjectCategoryName = checkoutPair.Key.SubjectCategory.Name;
+                viewModel.CoverImageUrl = checkoutPair.Key.CoverImageUrl;
+                checkOutsOfUserVm.Add(viewModel);
+            }
+            return checkOutsOfUserVm;
         }
         public static BookListViewModel MapToListItemBookViewModel(this Book book)
         {

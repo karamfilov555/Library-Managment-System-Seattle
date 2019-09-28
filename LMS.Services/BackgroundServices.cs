@@ -42,8 +42,6 @@
 
 using LMS.Data;
 using LMS.Models;
-using LMS.Services.Utils;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;

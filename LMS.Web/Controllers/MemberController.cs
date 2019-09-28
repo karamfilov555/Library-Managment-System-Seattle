@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using LMS.Models;
 using LMS.Services.Contracts;
 using LMS.Web.Mappers;
 using LMS.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LMS.Web.Controllers
 {
+    [Authorize(Roles = "Member")]
     public class MemberController : Controller
     {
         private readonly IHistoryService _historyService;
@@ -34,6 +33,7 @@ namespace LMS.Web.Controllers
         //[Route(nameof(CheckoutBook) + "/{userId}")]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Member")]
         public async Task<IActionResult> CheckoutBook(string Id)//vm
         {
             if (Id == null)
@@ -50,7 +50,7 @@ namespace LMS.Web.Controllers
                 return NotFound();
             }
             //listbookVm copies --;
-            var hr = await _historyService.CheckoutBook(Id,userId);
+            var hr = await _historyService.CheckoutBookAsync(Id,userId);
 
             var chechoutBookVm = new CheckoutBookViewModel
             {
@@ -67,15 +67,35 @@ namespace LMS.Web.Controllers
             
             return View(chechoutBookVm);
         }
+        [Authorize(Roles = "Member")]
         public async Task<IActionResult> MyBooks()
         {
 
             var user = await  _userManager.GetUserAsync(User);
-            var books = await _bookService.GetCurrentUserBooks(user.Id);
 
-            var booksVm = books.Select(v => v.MapToBookViewModel());
+            var checkouts = await _historyService.GetCheckOutsOfUserAsync(user.Id);
 
+            var booksVm = checkouts.MapToCheckOutViewModel();
+
+            var msg = (string)TempData["ReturnMsg"];
+            ViewBag.Date = msg;
             return View(booksVm);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Member")]
+        public async Task<IActionResult> ReturnBook(string Id)
+        {
+            if (Id == null)
+                return NotFound();
+
+            var user = await _userManager.GetUserAsync(User);
+            await _historyService.ReturnBookAsync(Id , user.Id);
+
+            var title = await _bookService.GetBookTitleAsync(Id);
+            var username = user.UserName;
+            TempData["ReturnMsg"] = ($"{username}, you successfully returned a book: \"{title}\"!");
+            return RedirectToAction(nameof(MyBooks));
         }
     }
 }

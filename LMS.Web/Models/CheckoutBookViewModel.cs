@@ -42,7 +42,7 @@ namespace LMS.Web.Models
         [Display(Name = "Cover Image Url")]
         [Required]
         public string CoverImageUrl { get; set; }
-        [Display(Name = "Your return date is: ")]
+        [Display(Name = "Your return date is ")]
         [Required]
         public DateTime ReturnDate { get; set; }
     }

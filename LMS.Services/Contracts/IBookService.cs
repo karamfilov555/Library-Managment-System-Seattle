@@ -12,7 +12,6 @@ namespace LMS.Services.Contracts
         Task<ICollection<Book>> GetAllBooksWithoutRepetitionsAsync();
         Task<Book> FindFreeBookByIdAsync(string id);
         Task<ICollection<Book>> GetAllBooksForAdminWithoutRepetitionsAsync();
-        Task<ICollection<Book>> GetCurrentUserBooks(string userId);
-        //Task<User> GetCurrentUserBooks();
+        Task<string> GetBookTitleAsync(string bookId);
     }
 }
