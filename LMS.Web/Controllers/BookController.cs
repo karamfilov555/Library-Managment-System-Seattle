@@ -31,12 +31,8 @@ namespace LMS.Web.Controllers
             _mapper = mapper;
         }
 
-        // GET: Book
-        //public async Task<IActionResult> Index()
-        //{
-        //    return View(booksListVm);
-        //}
         //[Authorize(Roles = "Librarian, Admin, Member")]
+        [Authorize]
         public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
             ICollection<Book> allBooks;

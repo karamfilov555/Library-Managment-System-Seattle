@@ -23,8 +23,15 @@
 }
 else
 {
+    if (!User.IsInRole("Admin") && !User.IsInRole("Librarian") && !User.IsInRole("Member"))
+    {
 
-
+        <div>
+            <h3>
+                To Check-out or Reserve book, <a href="/Membership/Subscribe">GET Premium Account NOW!</a> 
+            </h3>
+        </div>
+    }
     <div class="justify-content-xl-center">
 
         <form asp-action="Index" method="get">
@@ -162,33 +169,34 @@ else
                                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
                         </td>
                     }
+
                 </tr>
             }
         </tbody>
     </table>
 }
-    @{
-        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-    }
-    <section class="recomended-sec">
-        <div class="container">
-            <div class="title">
-                <a asp-action="Index"
-                   asp-route-sortOrder="@ViewData["CurrentSort"]"
-                   asp-route-pageNumber="@(Model.PageIndex - 1)"
-                   asp-route-currentFilter="@ViewData["CurrentFilter"]"
-                   class="btn btn-default @prevDisabled">
-                    &larr; Previous
-                </a>
-                <a asp-action="Index"
-                   asp-route-sortOrder="@ViewData["CurrentSort"]"
-                   asp-route-pageNumber="@(Model.PageIndex + 1)"
-                   asp-route-currentFilter="@ViewData["CurrentFilter"]"
-                   class="btn btn-default @nextDisabled">
-                    Next &rarr;
-                </a>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+<section class="recomended-sec">
+    <div class="container">
+        <div class="title">
+            <a asp-action="Index"
+               asp-route-sortOrder="@ViewData["CurrentSort"]"
+               asp-route-pageNumber="@(Model.PageIndex - 1)"
+               asp-route-currentFilter="@ViewData["CurrentFilter"]"
+               class="btn btn-default @prevDisabled">
+                &larr; Previous
+            </a>
+            <a asp-action="Index"
+               asp-route-sortOrder="@ViewData["CurrentSort"]"
+               asp-route-pageNumber="@(Model.PageIndex + 1)"
+               asp-route-currentFilter="@ViewData["CurrentFilter"]"
+               class="btn btn-default @nextDisabled">
+                Next &rarr;
+            </a>
 
-            </div>
         </div>
-    </section>
+    </div>
+</section>

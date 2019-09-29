@@ -18,7 +18,7 @@ namespace LMS.Web.Controllers
         private readonly INotificationService _notificationService;
 
         public NotificationController(UserManager<User> usermanager,
-                                     INotificationService notificationService)
+                                      INotificationService notificationService)
         {
             _usermanager = usermanager;
             _notificationService = notificationService;
@@ -28,7 +28,8 @@ namespace LMS.Web.Controllers
             var user = await _usermanager.GetUserAsync(User);
             var notifications = await _notificationService.GetNotificationsAsync(user.Id);
             var notificationsVm = notifications.Select(n => n.MapToNotificationViewModel());
-            return View(notificationsVm);
+            var notificationsVmSortedByDate = notificationsVm.OrderByDescending(n => n.EventDate);
+            return View(notificationsVmSortedByDate);
         }
     }
 }
