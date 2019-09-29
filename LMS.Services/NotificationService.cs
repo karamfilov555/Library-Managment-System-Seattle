@@ -14,18 +14,26 @@ namespace LMS.Services
     public class NotificationService : INotificationService
     {
         private readonly LMSContext _context;
+        private readonly IUserService _userService;
 
-        public NotificationService(LMSContext context)
+        public NotificationService(LMSContext context,
+                                   IUserService userService)
         {
             _context = context;
+            _userService = userService;
         }
-        public async Task<Notification> CreateNotificationAsync(string userId,string description)
+        public async Task<Notification> CreateNotificationAsync(string description,string username)
         {
+            var admin = await _userService.GetAdmin();
+
             var notification = new Notification
             {
-                UserId = userId,
+                UserId = admin.Id,
                 Description = description,
+                EventDate = DateTime.Now,
+                Username = username,
             };
+
             _context.Notifications.Add(notification);
             await _context.SaveChangesAsync();
             return notification;

@@ -15,5 +15,6 @@ namespace LMS.Models
         public User User { get; set; }
         public string Description { get; set; }
         public DateTime EventDate { get; set; }
+        public string Username { get; set; }
     }
 }

@@ -19,6 +19,7 @@ using LMS.Services;
 using LMS.Services.Contracts;
 using LMS.Web.Mappers.Contracts;
 using LMS.Web.Mappers;
+using LMS.Services.Utils;
 
 namespace LMS.Web
 {
@@ -65,6 +66,7 @@ namespace LMS.Web
             services.AddScoped<IBanService, BanService>();
             services.AddScoped<IHistoryService, HistoryService>();
             services.AddScoped<INotificationService, NotificationService>();
+            services.AddScoped<INotificationManager, NotificationManager>();
             services.AddScoped<IMapVmToDTO, MapVmToDTO>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

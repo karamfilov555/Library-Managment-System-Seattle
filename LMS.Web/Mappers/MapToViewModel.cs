@@ -78,7 +78,7 @@ namespace LMS.Web.Mappers
             viewModel.UserId = notification.UserId;
             viewModel.EventDate = notification.EventDate;
             viewModel.Description = notification.Description;
-            viewModel.Username = notification.User.UserName;
+            viewModel.Username = notification.Username;
             return viewModel;
         }
     }

@@ -73,5 +73,12 @@ namespace LMS.Services
                 .FirstOrDefaultAsync(m => m.UserName == username);
             return user;
         }
+        public async Task<User> GetAdmin()
+        {
+            var adminRole = await _context.Roles.FirstAsync(role => role.Name.ToLower() == "admin");
+            var adminId = await _context.UserRoles.FirstAsync(roleId => roleId.RoleId == adminRole.Id);
+            var admin = await FindUserByIdAsync(adminId.UserId);
+            return admin;
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace LMS.Services.Contracts
 {
     public interface INotificationService
     {
-        Task<Notification> CreateNotificationAsync(string userId, string description);
+        Task<Notification> CreateNotificationAsync(string description, string username);
         Task<ICollection<Notification>> GetNotificationsAsync(string userId);
     }
 }

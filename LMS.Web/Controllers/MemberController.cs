@@ -16,16 +16,19 @@ namespace LMS.Web.Controllers
         private readonly IHistoryService _historyService;
         private readonly IBookService _bookService;
         private readonly INotificationService _notificationService;
+        private readonly INotificationManager _notificationManager;
         private readonly UserManager<User> _userManager;
 
         public MemberController(IHistoryService historyService,
                                 IBookService bookService,
                                 INotificationService notificationService,
+                                INotificationManager notificationManager,
                                 UserManager<User> userManager)
         {
             _historyService = historyService;
             _bookService = bookService;
             _notificationService = notificationService;
+            _notificationManager = notificationManager;
             _userManager = userManager;
         }
         public IActionResult Index()
@@ -113,8 +116,9 @@ namespace LMS.Web.Controllers
 
             var title = await _bookService.GetBookTitleAsync(Id);
             var username = user.UserName;
-            var description = $"User: {username}, renew return date to {hr.ReturnDate} of a book \"{title}\"!";
-            var notification = _notificationService.CreateNotificationAsync(user.Id,description);
+            var description = _notificationManager.RenewBookDescription(username, hr.ReturnDate, title);
+
+            var notification = await _notificationService.CreateNotificationAsync(description,username);
             // tuk trqbva da podavam Id-to na User-a polu4atel, a ne na segashniq
             TempData["ReturnMsg"] = ($"{username}, you successfully renew return date of a book: \"{title}\" to {hr.ReturnDate} !");
 

@@ -25,7 +25,7 @@ namespace LMS.Web.Models
         [Display(Name = "Year of writing")]
         [Required, Range(-500, 2019, ErrorMessage = "Year must be value between -500 and 2019")]
         public int Year { get; set; }
-        [Required, RegularExpression("[A-Za-z]+", ErrorMessage = "Country should only contain latin letters!")]
+        [Required, RegularExpression("[A-Za-z ]+", ErrorMessage = "Country should only contain latin letters!")]
         public string Country { get; set; }
         [Required, RegularExpression("[A-Za-z]+", ErrorMessage = "Language should only contain latin letters!")]
         public string Language { get; set; }
