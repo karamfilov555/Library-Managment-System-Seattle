@@ -70,14 +70,20 @@ namespace LMS.Web.Controllers
                 Language = book.Language,
                 CoverImageUrl = book.CoverImageUrl
             };
-            
+
+            var user = await _userManager.GetUserAsync(User);
+            var username = user.UserName;
+
+            var notificationDescription = _notificationManager.CheckOutBookDescription(username, book.Title);
+            var notification = await _notificationService.CreateNotificationAsync(notificationDescription, username);
+
             return View(checkoutBookVm);
         }
         [Authorize(Roles = "Member")]
         public async Task<IActionResult> MyBooks()
         {
 
-            var user = await  _userManager.GetUserAsync(User);
+            var user = await _userManager.GetUserAsync(User);
 
             var checkouts = await _historyService.GetCheckOutsOfUserAsync(user.Id);
 
@@ -100,6 +106,10 @@ namespace LMS.Web.Controllers
 
             var title = await _bookService.GetBookTitleAsync(Id);
             var username = user.UserName;
+
+            var notificationDescription = _notificationManager.ReturnBookDescription(username, title);
+            var notification = await _notificationService.CreateNotificationAsync(notificationDescription, username);
+
             TempData["ReturnMsg"] = ($"{username}, you successfully returned a book: \"{title}\"!");
             return RedirectToAction(nameof(MyBooks));
         }
@@ -116,9 +126,10 @@ namespace LMS.Web.Controllers
 
             var title = await _bookService.GetBookTitleAsync(Id);
             var username = user.UserName;
-            var description = _notificationManager.RenewBookDescription(username, hr.ReturnDate, title);
 
-            var notification = await _notificationService.CreateNotificationAsync(description,username);
+            var notificationDescription = _notificationManager.RenewBookDescription(username, hr.ReturnDate, title);
+
+            var notification = await _notificationService.CreateNotificationAsync(notificationDescription, username);
             // tuk trqbva da podavam Id-to na User-a polu4atel, a ne na segashniq
             TempData["ReturnMsg"] = ($"{username}, you successfully renew return date of a book: \"{title}\" to {hr.ReturnDate} !");
 
