@@ -165,7 +165,7 @@ header .main-menu {
 header .cart {
   padding: 0 10px;
   margin-right: 10px;
-  position: relative;
+  position:  relative;
   margin-top: 2px !important; }
   header .cart .quntity {
     font-size: 9px;

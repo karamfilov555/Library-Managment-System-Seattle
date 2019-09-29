@@ -45,5 +45,13 @@ namespace LMS.Services
                                              .ToListAsync();
             return notification;
         }
+
+        public async Task<int> GetNotificationsCountAsync()
+        {
+            var notificationsCount = await _context.Notifications
+                                             .CountAsync();
+            return notificationsCount;
+            //latter it will be for unread notifications (have to add boolean isRead in DB)
+        }
     }
 }
