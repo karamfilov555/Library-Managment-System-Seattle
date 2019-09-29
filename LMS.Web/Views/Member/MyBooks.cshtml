@@ -105,7 +105,7 @@ else
                     <td>
                         <form method="post">
                             <p>
-                                <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="ReturnBook" asp-route-id="@item.Id">Return Book</button>
+                                <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="ReturnBookAsync" asp-route-id="@item.Id">Return Book</button>
                             </p>
                             <p>
                                 <button type="submit" class="btn" asp-controller="Member" asp-action="RenewBookAsync" asp-route-id="@item.Id">Renew Book</button>

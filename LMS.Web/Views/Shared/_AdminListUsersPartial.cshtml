@@ -1,10 +1,22 @@
 ﻿@using Microsoft.AspNetCore.Identity
 
 <ul class="navbar-nav">
-    @if (User.IsInRole("Admin"))
+    @if (User.IsInRole("Librarian") || User.IsInRole("Admin"))
     {
-    <li class="navbar-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ListUsers">Users</a>
-    </li>
+        if (User.IsInRole("Admin"))
+        {
+            <li class="navbar-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ListUsers">Users</a>
+            </li>
+        }
+        <li class="navbar-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Books</a>
+        </li>
+        <li class="navbar-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Create">Create</a>
+        </li>
+        <li class="navbar-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Notification" asp-action="Index">Notifications</a>
+        </li>
     }
 </ul>

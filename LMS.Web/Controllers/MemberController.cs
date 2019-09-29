@@ -15,14 +15,17 @@ namespace LMS.Web.Controllers
     {
         private readonly IHistoryService _historyService;
         private readonly IBookService _bookService;
+        private readonly INotificationService _notificationService;
         private readonly UserManager<User> _userManager;
 
         public MemberController(IHistoryService historyService,
                                 IBookService bookService,
+                                INotificationService notificationService,
                                 UserManager<User> userManager)
         {
             _historyService = historyService;
             _bookService = bookService;
+            _notificationService = notificationService;
             _userManager = userManager;
         }
         public IActionResult Index()
@@ -52,7 +55,7 @@ namespace LMS.Web.Controllers
             //listbookVm copies --;
             var hr = await _historyService.CheckoutBookAsync(Id,userId);
 
-            var chechoutBookVm = new CheckoutBookViewModel
+            var checkoutBookVm = new CheckoutBookViewModel
             {
                 Title = book.Title,
                 AuthorName = book.Author.Name,
@@ -65,7 +68,7 @@ namespace LMS.Web.Controllers
                 CoverImageUrl = book.CoverImageUrl
             };
             
-            return View(chechoutBookVm);
+            return View(checkoutBookVm);
         }
         [Authorize(Roles = "Member")]
         public async Task<IActionResult> MyBooks()
@@ -84,7 +87,7 @@ namespace LMS.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Member")]
-        public async Task<IActionResult> ReturnBook(string Id)
+        public async Task<IActionResult> ReturnBookAsync(string Id)
         {
             if (Id == null)
                 return NotFound();
@@ -110,7 +113,9 @@ namespace LMS.Web.Controllers
 
             var title = await _bookService.GetBookTitleAsync(Id);
             var username = user.UserName;
-
+            var description = $"User: {username}, renew return date to {hr.ReturnDate} of a book \"{title}\"!";
+            var notification = _notificationService.CreateNotificationAsync(user.Id,description);
+            // tuk trqbva da podavam Id-to na User-a polu4atel, a ne na segashniq
             TempData["ReturnMsg"] = ($"{username}, you successfully renew return date of a book: \"{title}\" to {hr.ReturnDate} !");
 
             return RedirectToAction(nameof(MyBooks));

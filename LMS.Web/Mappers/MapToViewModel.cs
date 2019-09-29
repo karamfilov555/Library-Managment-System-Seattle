@@ -71,6 +71,15 @@ namespace LMS.Web.Mappers
 
             return viewModel;
         }
-
+        public static NotificationViewModel MapToNotificationViewModel(this Notification notification)
+        {
+            var viewModel = new NotificationViewModel();
+            viewModel.Id = notification.Id;
+            viewModel.UserId = notification.UserId;
+            viewModel.EventDate = notification.EventDate;
+            viewModel.Description = notification.Description;
+            viewModel.Username = notification.User.UserName;
+            return viewModel;
+        }
     }
 }

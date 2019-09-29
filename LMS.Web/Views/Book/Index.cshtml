@@ -13,171 +13,182 @@
         </div>
     </div>
 </section>
-
-
-<div class="justify-content-xl-center">
-
-    <form asp-action="Index" method="get">
-        @*<div class="form-actions no-color">*@
-        <p>
-            <input type="text" class="col-md-8" name="SearchString" value="@ViewData["CurrentFilter"]" placeholder="Enter book title or author..." />
-            <input type="submit" value="Search" class="btn" /> |
-            <a asp-action="Index">Back to Full List</a>
-        </p>
-        @*</div>*@
-    </form>
-
-</div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Cover
-            </th>
-            <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortCriteria"]"
-                   asp-route-currentFilter="@ViewData["CurrentFilter"]">&uarr;&darr;Title</a>
-            </th>
-            <th>
-                <a asp-action="Index"
-                   asp-route-sortOrder="@ViewData["AuthornameSortCriteria"]"
-                   asp-route-currentFilter="@ViewData["CurrentFilter"]">
-                    &uarr;&darr;Author
-                </a>
-            </th>
-            <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["PagesSortCriteria"]"
-                   asp-route-currentFilter="@ViewData["CurrentFilter"]">
-                    &uarr;&darr;Pages
-                </a>
-            </th>
-            <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["YearSortCriteria"]"
-                   asp-route-currentFilter="@ViewData["CurrentFilter"]">
-                    &uarr;&darr;Year
-                </a>
-            </th>
-            <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["CountrySortCriteria"]"
-                   asp-route-currentFilter="@ViewData["CurrentFilter"]">
-                    &uarr;&darr;Country
-                </a>
-            </th>
-            <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["LanguageSortCriteria"]"
-                   asp-route-currentFilter="@ViewData["CurrentFilter"]">
-                    &uarr;&darr;Language
-                </a>
-            </th>
-            <th>
-                Copies avbl.
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.IsReserved)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsCheckedOut)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BookRating)
-                </th>*@
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <img src="@item.CoverImageUrl" onerror="srcset='images/no-image-available-icon.jpg'" height="250" width="250">
-                </td>
-                <td>
-                    <b>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </b>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AuthorName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pages)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Year)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Country)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Language)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Copies)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.IsReserved)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsCheckedOut)
-                    </td>*@
-                @if (User.IsInRole("Admin") || User.IsInRole("Librarian"))
-                {
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                }
-                @if (User.IsInRole("Member"))
-                {
-            <td>
-
-                @* TUK TRQBVA DA SA BUTONITE ZA CHECKOUT I REZERVACII !!!!*@
-                @*<p class="col-md-4">*@
-                <form method="post">
-                    <p>
-                        <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="CheckoutBook" asp-route-id="@item.Id">Check - Out!!!</button>
-                    </p>
-                </form>
-
-                @*TUK DA SE SLOJI RESERVE*@
-                <form method="post">
-                    <p>
-                        <button type="submit" class="btn border-0" asp-controller="Member" asp-action="CheckoutBook" asp-route-id="@item.Id">Reserve Now</button>
-                </p>
-                </form>
-
-                    @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-            </td>
-                }
-            </tr>
-        }
-    </tbody>
-</table>
-@{
-    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+@if (Model.Count() == 0)
+{
+    <h1>
+        There are no books in the Library yet, maybe you want to
+        <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Create">Create Book</a>
+        now...
+    </h1>
 }
-<section class="recomended-sec">
-    <div class="container">
-        <div class="title">
-            <a asp-action="Index"
-               asp-route-sortOrder="@ViewData["CurrentSort"]"
-               asp-route-pageNumber="@(Model.PageIndex - 1)"
-               asp-route-currentFilter="@ViewData["CurrentFilter"]"
-               class="btn btn-default @prevDisabled">
-                &larr; Previous
-            </a>
-            <a asp-action="Index"
-               asp-route-sortOrder="@ViewData["CurrentSort"]"
-               asp-route-pageNumber="@(Model.PageIndex + 1)"
-               asp-route-currentFilter="@ViewData["CurrentFilter"]"
-               class="btn btn-default @nextDisabled">
-                Next &rarr;
-            </a>
+else
+{
 
-        </div>
+
+    <div class="justify-content-xl-center">
+
+        <form asp-action="Index" method="get">
+            @*<div class="form-actions no-color">*@
+            <p>
+                <input type="text" class="col-md-8" name="SearchString" value="@ViewData["CurrentFilter"]" placeholder="Enter book title or author..." />
+                <input type="submit" value="Search" class="btn" /> |
+                <a asp-action="Index">Back to Full List</a>
+            </p>
+            @*</div>*@
+        </form>
+
     </div>
-</section>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Cover
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortCriteria"]"
+                       asp-route-currentFilter="@ViewData["CurrentFilter"]">&uarr;&darr;Title</a>
+                </th>
+                <th>
+                    <a asp-action="Index"
+                       asp-route-sortOrder="@ViewData["AuthornameSortCriteria"]"
+                       asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                        &uarr;&darr;Author
+                    </a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["PagesSortCriteria"]"
+                       asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                        &uarr;&darr;Pages
+                    </a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["YearSortCriteria"]"
+                       asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                        &uarr;&darr;Year
+                    </a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["CountrySortCriteria"]"
+                       asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                        &uarr;&darr;Country
+                    </a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["LanguageSortCriteria"]"
+                       asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                        &uarr;&darr;Language
+                    </a>
+                </th>
+                <th>
+                    Copies avbl.
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.IsReserved)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsCheckedOut)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BookRating)
+                    </th>*@
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@item.CoverImageUrl" onerror="srcset='images/no-image-available-icon.jpg'" height="250" width="250">
+                    </td>
+                    <td>
+                        <b>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AuthorName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pages)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Year)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Language)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Copies)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.IsReserved)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsCheckedOut)
+                        </td>*@
+                    @if (User.IsInRole("Admin") || User.IsInRole("Librarian"))
+                    {
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    }
+                    @if (User.IsInRole("Member"))
+                    {
+                        <td>
+
+                            @* TUK TRQBVA DA SA BUTONITE ZA CHECKOUT I REZERVACII !!!!*@
+                            @*<p class="col-md-4">*@
+                            <form method="post">
+                                <p>
+                                    <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="CheckoutBook" asp-route-id="@item.Id">Check - Out!!!</button>
+                                </p>
+                            </form>
+
+                            @*TUK DA SE SLOJI RESERVE*@
+                            <form method="post">
+                                <p>
+                                    <button type="submit" class="btn border-0" asp-controller="Member" asp-action="CheckoutBook" asp-route-id="@item.Id">Reserve Now</button>
+                                </p>
+                            </form>
+
+                            @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+    <section class="recomended-sec">
+        <div class="container">
+            <div class="title">
+                <a asp-action="Index"
+                   asp-route-sortOrder="@ViewData["CurrentSort"]"
+                   asp-route-pageNumber="@(Model.PageIndex - 1)"
+                   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                   class="btn btn-default @prevDisabled">
+                    &larr; Previous
+                </a>
+                <a asp-action="Index"
+                   asp-route-sortOrder="@ViewData["CurrentSort"]"
+                   asp-route-pageNumber="@(Model.PageIndex + 1)"
+                   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                   class="btn btn-default @nextDisabled">
+                    Next &rarr;
+                </a>
+
+            </div>
+        </div>
+    </section>
