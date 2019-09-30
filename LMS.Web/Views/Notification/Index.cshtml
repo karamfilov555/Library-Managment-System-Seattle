@@ -36,29 +36,69 @@ else
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        <dl class="row">
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => item.Username)
-                            </dd>
-                        </dl>
-                    </td>
-                    <td>
-                        <dl class="row">
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => item.Description)
-                            </dd>
-                        </dl>
-                    </td>
-                    <td>
-                        <dl class="row">
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => item.EventDate)
-                            </dd>
-                        </dl>
-                    </td>
-                </tr>
+                if (item.IsSeen == true)
+                {
+                    <tr>
+                        <td>
+                            <dl class="row">
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => item.Username)
+                                </dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl class="row">
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => item.Description)
+                                </dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl class="row">
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => item.EventDate)
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>
+                            <dl class="row">
+                                <dd class="col-sm-10">
+                                    <b>
+                                        @Html.DisplayFor(model => item.Username)
+                                    </b>
+                                </dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl class="row">
+                                <dd class="col-sm-10">
+                                    <b>
+                                        @Html.DisplayFor(model => item.Description)
+                                    </b>
+                                </dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <dl class="row">
+                                <dd class="col-sm-10">
+                                    <b>
+                                        @Html.DisplayFor(model => item.EventDate)
+                                    </b>
+                                </dd>
+                            </dl>
+                        </td>
+                        <td>
+                            <form method="post">
+                                <button type="submit" class="btn border-0" asp-controller="Notification" asp-action="MarkAsSeen" asp-route-id="@item.Id">Mark as seen</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
             }
         </tbody>
     </table>

@@ -49,8 +49,17 @@ namespace LMS.Services
         public async Task<int> GetNotificationsCountAsync()
         {
             var notificationsCount = await _context.Notifications
-                                             .CountAsync();
+                                                   .Where(n=>n.IsSeen == false)
+                                                   .CountAsync();
             return notificationsCount;
+            //latter it will be for unread notifications (have to add boolean isRead in DB)
+        }
+        public async Task MarkAsSeenAsync(string notificationId)
+        {
+            var notificationToSee = await _context.Notifications
+                                                   .FirstAsync(n => n.Id == notificationId);
+            notificationToSee.IsSeen = true;
+            await _context.SaveChangesAsync();
             //latter it will be for unread notifications (have to add boolean isRead in DB)
         }
     }

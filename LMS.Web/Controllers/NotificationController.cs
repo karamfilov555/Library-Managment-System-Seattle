@@ -31,5 +31,12 @@ namespace LMS.Web.Controllers
             var notificationsVmSortedByDate = notificationsVm.OrderByDescending(n => n.EventDate);
             return View(notificationsVmSortedByDate);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> MarkAsSeen(string Id)
+        {
+            await _notificationService.MarkAsSeenAsync(Id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

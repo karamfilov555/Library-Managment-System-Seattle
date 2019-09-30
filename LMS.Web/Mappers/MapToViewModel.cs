@@ -79,6 +79,7 @@ namespace LMS.Web.Mappers
             viewModel.EventDate = notification.EventDate;
             viewModel.Description = notification.Description;
             viewModel.Username = notification.Username;
+            viewModel.IsSeen = notification.IsSeen;
             return viewModel;
         }
     }
