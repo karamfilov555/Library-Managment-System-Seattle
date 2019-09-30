@@ -97,13 +97,26 @@ else
                             </dl>
                         </td>
                         <td>
-                            <form method="post">
-                                <button type="submit" class="btn border-0" asp-controller="Notification" asp-action="MarkAsSeen" asp-route-id="@item.Id">Mark as seen</button>
+                            <form asp-action="MarkAsSeen" asp-route-id="@item.Id" method="post">
+                                <button type="submit" class="btn border-0">Mark as seen</button>
                             </form>
+                            
                         </td>
                     </tr>
                 }
             }
         </tbody>
     </table>
+}
+
+@section  Scripts {
+    <script>
+        $('form').on('submit', function (e) {
+            e.preventDefault();
+
+            const thisForm = $(this);
+
+            $.post(thisForm.attr('action'), {}, response => thisForm.closest('tr').replaceWith(response));
+        });
+    </script>
 }

@@ -54,12 +54,14 @@ namespace LMS.Services
             return notificationsCount;
             //latter it will be for unread notifications (have to add boolean isRead in DB)
         }
-        public async Task MarkAsSeenAsync(string notificationId)
+        public async Task<Notification> MarkAsSeenAsync(string notificationId)
         {
             var notificationToSee = await _context.Notifications
                                                    .FirstAsync(n => n.Id == notificationId);
             notificationToSee.IsSeen = true;
             await _context.SaveChangesAsync();
+
+            return notificationToSee;
             //latter it will be for unread notifications (have to add boolean isRead in DB)
         }
     }

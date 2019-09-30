@@ -140,7 +140,7 @@ namespace LMS.Web.Controllers
             if (ModelState.IsValid)
             {
                 var bookDto = await _mapper.MapBookVmToDTO(bookViewModel);
-                var book = await _bookService.ProvideBookAsync(bookDto);
+                 await _bookService.ProvideBookAsync(bookDto);
 
                 return RedirectToAction(nameof(Index));
             }

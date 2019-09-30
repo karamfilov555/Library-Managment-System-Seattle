@@ -74,7 +74,7 @@ namespace LMS.Web.Controllers
                 Language = book.Language,
                 CoverImageUrl = book.CoverImageUrl
             };
-
+            //TODO: try-catch!!!!! ( catch exeption (return BadRequest(ex msg)) !!!
             var user = await _userManager.GetUserAsync(User);
             var username = user.UserName;
 
@@ -83,10 +83,10 @@ namespace LMS.Web.Controllers
             _toast.AddSuccessToastMessage("You checked out book successfully!");
             return View(checkoutBookVm);
         }
+
         [Authorize(Roles = "Member")]
         public async Task<IActionResult> MyBooks()
         {
-
             var user = await _userManager.GetUserAsync(User);
 
             var checkouts = await _historyService.GetCheckOutsOfUserAsync(user.Id);
@@ -97,6 +97,7 @@ namespace LMS.Web.Controllers
             ViewBag.Date = msg;
             return View(booksVm);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Member")]
@@ -117,6 +118,7 @@ namespace LMS.Web.Controllers
             TempData["ReturnMsg"] = ($"{username}, you successfully returned a book: \"{title}\"!");
             return RedirectToAction(nameof(MyBooks));
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Member")]
@@ -140,6 +142,27 @@ namespace LMS.Web.Controllers
             return RedirectToAction(nameof(MyBooks));
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Member")]
+        public async Task<IActionResult> ReserveBook(string Id)
+        {
+            if (Id == null)
+                return NotFound();
 
+            var user = await _userManager.GetUserAsync(User);
+            var hr = await _historyService.RenewBookAsync(Id, user.Id);
+
+            var title = await _bookService.GetBookTitleAsync(Id);
+            var username = user.UserName;
+
+            var notificationDescription = _notificationManager.RenewBookDescription(username, hr.ReturnDate, title);
+
+            var notification = await _notificationService.CreateNotificationAsync(notificationDescription, username);
+            // tuk trqbva da podavam Id-to na User-a polu4atel, a ne na segashniq
+            TempData["ReturnMsg"] = ($"{username}, you successfully renew return date of a book: \"{title}\" to {hr.ReturnDate} !");
+
+            return RedirectToAction(nameof(MyBooks));
+        }
     }
 }

@@ -37,9 +37,11 @@ namespace LMS.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> MarkAsSeen(string Id)
         {
-            await _notificationService.MarkAsSeenAsync(Id);
+            var notification = await _notificationService.MarkAsSeenAsync(Id);
             _toast.AddInfoToastMessage("Message marked as seen.");
-            return RedirectToAction(nameof(Index));
+
+            return PartialView("_NotificationSeenPartial", notification.MapToNotificationViewModel());
+            //return ok
         }
     }
 }
