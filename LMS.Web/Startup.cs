@@ -35,6 +35,12 @@ namespace LMS.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var lockoutOptions = new LockoutOptions()
+            {
+                AllowedForNewUsers = true,
+                DefaultLockoutTimeSpan = TimeSpan.FromSeconds(30),
+                MaxFailedAccessAttempts = 3
+            };
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -42,14 +48,15 @@ namespace LMS.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.Configure<IdentityOptions>( options=>
-            {
-                options.Password.RequireDigit = false;
-                options.Password.RequiredLength = 5;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;
-            });            
+            services.Configure<IdentityOptions>(options =>
+           {
+               options.Password.RequireDigit = false;
+               options.Password.RequiredLength = 5;
+               options.Password.RequireLowercase = false;
+               options.Password.RequireNonAlphanumeric = false;
+               options.Password.RequireUppercase = false;
+               options.Lockout = lockoutOptions;
+           });
 
             services.AddDbContext<LMSContext>(options =>
                 options.UseSqlServer(
