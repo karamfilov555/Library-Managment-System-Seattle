@@ -7,6 +7,7 @@ using LMS.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 
 namespace LMS.Web.Controllers
 {
@@ -18,18 +19,21 @@ namespace LMS.Web.Controllers
         private readonly INotificationService _notificationService;
         private readonly INotificationManager _notificationManager;
         private readonly UserManager<User> _userManager;
+        private readonly IToastNotification _toast;
 
         public MemberController(IHistoryService historyService,
                                 IBookService bookService,
                                 INotificationService notificationService,
                                 INotificationManager notificationManager,
-                                UserManager<User> userManager)
+                                UserManager<User> userManager,
+                                IToastNotification toast)
         {
             _historyService = historyService;
             _bookService = bookService;
             _notificationService = notificationService;
             _notificationManager = notificationManager;
             _userManager = userManager;
+            _toast = toast;
         }
         public IActionResult Index()
         {
@@ -76,7 +80,7 @@ namespace LMS.Web.Controllers
 
             var notificationDescription = _notificationManager.CheckOutBookDescription(username, book.Title);
             var notification = await _notificationService.CreateNotificationAsync(notificationDescription, username);
-
+            _toast.AddSuccessToastMessage("You checked out book successfully!");
             return View(checkoutBookVm);
         }
         [Authorize(Roles = "Member")]

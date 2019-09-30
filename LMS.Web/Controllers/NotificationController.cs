@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using LMS.Models;
 using LMS.Services.Contracts;
 using LMS.Web.Mappers;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 
 namespace LMS.Web.Controllers
 {
@@ -16,12 +15,15 @@ namespace LMS.Web.Controllers
     {
         private readonly UserManager<User> _usermanager;
         private readonly INotificationService _notificationService;
+        private readonly IToastNotification _toast;
 
         public NotificationController(UserManager<User> usermanager,
-                                      INotificationService notificationService)
+                                      INotificationService notificationService,
+                                      IToastNotification toast)
         {
             _usermanager = usermanager;
             _notificationService = notificationService;
+            _toast = toast;
         }
         public async Task<IActionResult> Index()
         {
@@ -36,6 +38,7 @@ namespace LMS.Web.Controllers
         public async Task<IActionResult> MarkAsSeen(string Id)
         {
             await _notificationService.MarkAsSeenAsync(Id);
+            _toast.AddInfoToastMessage("Message marked as seen.");
             return RedirectToAction(nameof(Index));
         }
     }

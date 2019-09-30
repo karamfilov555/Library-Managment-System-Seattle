@@ -28,6 +28,19 @@ $(document).ready(function() {
        loop: true,
 
   });
+    //za tursachka
+
+    //!!! ZA FLASH MSG!! --> Toastr --> trqbva ni css na CDNJS.com , kopira se css-a v nashiq layout se paste-va. Posle se slaga kopiraniq JS (stava duma samo za link)
+    $("#search-button").click(function () {
+        const searchText = $('#search-text').val();
+        console.log(searchText);
+        $.get('/home/team?name=' + searchText)
+    //shte mi trqbva moi action sus parameter [FromQuery]string name 
+        //i da vrushta Json (sus filtriranite danni , koito puk gi filtriram v services)
+    })
+    $('#search-text').on('keyup', function () {
+        console.log
+    })
 
     //Return book
     const ChangeColor = function () {

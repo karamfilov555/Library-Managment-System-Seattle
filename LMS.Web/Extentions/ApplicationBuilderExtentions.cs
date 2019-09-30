@@ -1,10 +1,10 @@
-﻿using LMS.Data;
-using LMS.Models;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System.Threading.Tasks;
+using LMS.Data;
+using LMS.Models;
 
 namespace LMS.Web.Extentions
 {

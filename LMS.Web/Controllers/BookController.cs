@@ -14,6 +14,7 @@ using LMS.Web.Mappers;
 using System;
 using System.Collections.Generic;
 using LMS.Web.PaginationManager;
+using NToastNotify;
 
 namespace LMS.Web.Controllers
 {
@@ -22,13 +23,18 @@ namespace LMS.Web.Controllers
         private readonly LMSContext _context; // DA RAZKARAM CONTEXTA ot tuk !
         private readonly IBookService _bookService;
         private readonly IMapVmToDTO _mapper;
+        private readonly IToastNotification _toast;
 
         //Scaffolded ! ! ! ! warning
-        public BookController(LMSContext context, IBookService book, IMapVmToDTO mapper)
+        public BookController(LMSContext context,
+                              IBookService book, 
+                              IMapVmToDTO mapper,
+                              IToastNotification toast)
         {
             _context = context;
             _bookService = book;
             _mapper = mapper;
+            _toast = toast;
         }
 
         //[Authorize(Roles = "Librarian, Admin, Member")]
