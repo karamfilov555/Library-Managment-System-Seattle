@@ -20,13 +20,15 @@ namespace LMS.Web.Controllers
         private readonly INotificationManager _notificationManager;
         private readonly UserManager<User> _userManager;
         private readonly IToastNotification _toast;
+        private readonly IReviewService _reviewService;
 
         public MemberController(IHistoryService historyService,
                                 IBookService bookService,
                                 INotificationService notificationService,
                                 INotificationManager notificationManager,
                                 UserManager<User> userManager,
-                                IToastNotification toast)
+                                IToastNotification toast,
+                                IReviewService reviewService)
         {
             _historyService = historyService;
             _bookService = bookService;
@@ -34,10 +36,28 @@ namespace LMS.Web.Controllers
             _notificationManager = notificationManager;
             _userManager = userManager;
             _toast = toast;
+            _reviewService = reviewService;
         }
         public IActionResult Index()
         {
             return View();
+        }
+        [HttpGet] // gets are by default
+        public IActionResult Review(string Id)
+        {
+            var vm = new ReviewViewModel
+            {
+                BookId = Id
+            };
+            return View(vm);
+        }
+        [HttpPost]
+        [Route("Review/{Id}")]
+        public async Task<IActionResult> Review(ReviewViewModel reviewViewModel,string Id)
+        {
+            string userid = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var review = await _reviewService.CreateReviewAsync(userid, reviewViewModel.Grade, reviewViewModel.Description, Id);
+            return View(reviewViewModel);
         }
 
         //[Route(nameof(CheckoutBook) + "/{userId}")]

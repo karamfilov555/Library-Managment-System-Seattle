@@ -27,5 +27,6 @@ namespace LMS.DTOs
         public string SubjectCategoryName { get; set; }
 
         public string CoverImageUrl { get; set; }
+        public decimal? Rating { get; set; }
     }
 }

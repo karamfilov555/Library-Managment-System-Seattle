@@ -104,73 +104,77 @@ else
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        <img src="@item.CoverImageUrl" onerror="srcset='images/no-image-available-icon.jpg'" height="250" width="250">
-                    </td>
-                    <td>
-                        <b>
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </b>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AuthorName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Pages)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Year)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Country)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Language)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Copies)
-                    </td>
-                    @*<td>
-                            @Html.DisplayFor(modelItem => item.IsReserved)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.IsCheckedOut)
-                        </td>*@
-                    @if (User.IsInRole("Admin") || User.IsInRole("Librarian"))
-                    {
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                        </td>
-                    }
-                    @if (User.IsInRole("Member"))
-                    {
-                        <td>
+            <tr>
+                <td>
+                    <img src="@item.CoverImageUrl" onerror="srcset='images/no-image-available-icon.jpg'" height="250" width="250">
+                </td>
+                <td>
+                    <b>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </b>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pages)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Language)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Copies)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
 
-                            @* TUK TRQBVA DA SA BUTONITE ZA CHECKOUT I REZERVACII !!!!*@
-                            @*<p class="col-md-4">*@
-                            <form method="post">
-                                <p>
-                                    <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="CheckoutBook" asp-route-id="@item.Id">Check - Out!!!</button>
-                                </p>
-                            </form>
+                @*<td>
+            @Html.DisplayFor(modelItem => item.IsReserved)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsCheckedOut)
+        </td>*@
+                @if (User.IsInRole("Admin") || User.IsInRole("Librarian"))
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                }
+                @if (User.IsInRole("Member"))
+                {
+                    <td>
 
-                            @*TUK DA SE SLOJI RESERVE*@
-                            <form method="post">
-                                <p>
-                                    <button type="submit" class="btn border-0" asp-controller="Member" asp-action="ReserveBook" asp-route-id="@item.Id">Reserve Now</button>
-                                </p>
-                            </form>
+                        @* TUK TRQBVA DA SA BUTONITE ZA CHECKOUT I REZERVACII !!!!*@
+                        @*<p class="col-md-4">*@
+                        <form method="post">
+                            <p>
+                                <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="CheckoutBook" asp-route-id="@item.Id">Check - Out!!!</button>
+                            </p>
+                        </form>
 
-                            @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-                        </td>
-                    }
+                        @*TUK DA SE SLOJI RESERVE*@
+                        <form method="post">
+                            <p>
+                                <button type="submit" class="btn border-0" asp-controller="Member" asp-action="ReserveBook" asp-route-id="@item.Id">Reserve Now</button>
+                            </p>
+                        </form>
 
-                </tr>
+                        @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                    </td>
+                }
+
+            </tr>
             }
         </tbody>
     </table>

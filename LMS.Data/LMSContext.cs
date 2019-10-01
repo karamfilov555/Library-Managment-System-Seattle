@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LMS.Data
 {
-    public class LMSContext : IdentityDbContext<User,Role,string>
+    public class LMSContext : IdentityDbContext<User, Role, string>
     {
         public LMSContext()
         {
@@ -24,6 +24,8 @@ namespace LMS.Data
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<AccountType> AccountTypes { get; set; }
         public DbSet<BanRecord> BanRecords { get; set; }
+        public DbSet<Review> Review { get; set; }
+        public DbSet<BookRating> BookRating { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -27,7 +27,7 @@ namespace LMS.Services
             _context = context;
             _authorService = authorService;
             _subjectService = subject;
-        }     
+        }
 
         private async Task<Book> AddBook(Book book)
         {
@@ -63,6 +63,7 @@ namespace LMS.Services
             var book = await _context.Books
                .Include(b => b.Author)
                .Include(b => b.BookRating)
+               .ThenInclude(br => br.Reviews)
                .Include(b => b.SubjectCategory)
                .FirstOrDefaultAsync(m => m.Id == id);
             return book;
@@ -72,6 +73,7 @@ namespace LMS.Services
             var book = await _context.Books
                .Include(b => b.Author)
                .Include(b => b.BookRating)
+               .ThenInclude(br => br.Reviews)
                .Include(b => b.SubjectCategory)
                .Where(b => b.IsCheckedOut == false)
                .FirstOrDefaultAsync(m => m.Id == id);
@@ -81,14 +83,16 @@ namespace LMS.Services
             => await _context.Books
               .Include(b => b.Author)
               .Include(b => b.BookRating)
+              .ThenInclude(br => br.Reviews)
               .Include(b => b.SubjectCategory)
               .ToListAsync();
         private async Task<ICollection<Book>> GetAllFreeBooksAsync()
             => await _context.Books
               .Include(b => b.Author)
               .Include(b => b.BookRating)
+              .ThenInclude(br => br.Reviews)
               .Include(b => b.SubjectCategory)
-              .Where(b=>b.IsCheckedOut == false)
+              .Where(b => b.IsCheckedOut == false)
               .ToListAsync();
         public async Task<ICollection<Book>> GetAllBooksWithoutRepetitionsAsync()
         {
@@ -114,7 +118,7 @@ namespace LMS.Services
         }
         public async Task<string> GetBookTitleAsync(string bookId)
         {
-            var book =await FindByIdAsync(bookId);
+            var book = await FindByIdAsync(bookId);
             return book.Title;
         }
     }

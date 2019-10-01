@@ -44,5 +44,7 @@ namespace LMS.Web.Models
         [Display(Name = "Cover Image Url")]
         [Required]
         public string CoverImageUrl { get; set; }
+        public decimal Rating { get; set; }
+        public BookRating BookRating { get; set; }
     }
 }

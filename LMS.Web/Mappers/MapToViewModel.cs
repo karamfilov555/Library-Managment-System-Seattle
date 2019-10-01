@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using LMS.Models;
 using LMS.Web.Models;
 
@@ -66,6 +67,9 @@ namespace LMS.Web.Mappers
             viewModel.Copies = book.Copies;
             viewModel.SubjectCategoryName = book.SubjectCategory.Name;
             viewModel.CoverImageUrl = book.CoverImageUrl;
+            viewModel.Rating = book.BookRating?.Reviews?.Where(r => r.Id == book.BookRating.Id)?.Sum(r => r.Grade) /
+                book.BookRating?.Reviews?.Where(r => r.Id == book.BookRating.Id)?.Count() ?? 0;
+            //viewModel.Rating = book.BookRating?.Reviews?.Average(r => r.Grade) ?? 0;
 
             return viewModel;
         }

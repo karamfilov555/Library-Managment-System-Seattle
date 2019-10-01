@@ -74,6 +74,7 @@ namespace LMS.Web
             services.AddScoped<IHistoryService, HistoryService>();
             services.AddScoped<INotificationService, NotificationService>();
             services.AddScoped<INotificationManager, NotificationManager>();
+            services.AddScoped<IReviewService, ReviewService>();
             services.AddScoped<IMapVmToDTO, MapVmToDTO>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
