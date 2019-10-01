@@ -25,7 +25,7 @@ namespace LMS.Services
                            ISubjectCategoryService subject)
         {
             _context = context;
-            _authorService = authorService;
+            _authorService = authorService; 
             _subjectService = subject;
         }
 
