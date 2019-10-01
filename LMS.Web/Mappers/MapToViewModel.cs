@@ -88,7 +88,16 @@ namespace LMS.Web.Mappers
         {
             var viewModel = new ReviewViewModel();
             viewModel.BookId = book.Id;
+            viewModel.CoverImageUrl = book.CoverImageUrl;
             viewModel.UserId = userId;
+            viewModel.Title = book.Title;
+            viewModel.AuthorName = book.Author.Name;
+            viewModel.Pages = book.Pages;
+            viewModel.Country = book.Country;
+            viewModel.Language = book.Language;
+            viewModel.SubjectCategoryName = book.SubjectCategory.Name;
+            viewModel.Copies = book.Copies;
+            viewModel.Year = book.Year;
             return viewModel;
         }
     }
