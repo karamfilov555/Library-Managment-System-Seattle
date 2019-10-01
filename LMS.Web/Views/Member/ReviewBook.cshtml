@@ -1,11 +1,17 @@
-﻿@model ReviewViewModel
+﻿@model ICollection<ReviewViewModel>
 
 @{
     ViewData["Title"] = "Review";
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 }
 
-<h1>Review</h1>
+@foreach (var item in Model)
+{
+    <h1>@item.BookId</h1>
+}
+
+
+@*<h1>@Model.BookId</h1>
 
 <div class="justify-content-xl-center">
     <div class="col-md-4">
@@ -26,4 +32,4 @@
             </div>
         </form>
     </div>
-</div>
+</div>*@

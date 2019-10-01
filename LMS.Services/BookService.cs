@@ -121,5 +121,10 @@ namespace LMS.Services
             var book = await FindByIdAsync(bookId);
             return book.Title;
         }
+        public async Task<ICollection<Book>> GetAllSameBooks(string Id)
+        {
+            var book = await FindByIdAsync(Id);
+            return await _context.Books.Where(b => b.Title == book.Title && b.Author == book.Author && b.Language == book.Language).ToListAsync();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using LMS.Models;
 using LMS.Services.Contracts;
@@ -52,12 +53,15 @@ namespace LMS.Web.Controllers
             return View(vm);
         }
         [HttpPost]
-        [Route("Review/{Id}")]
-        public async Task<IActionResult> Review(ReviewViewModel reviewViewModel,string Id)
+        public async Task<IActionResult> ReviewBook(string Id)
         {
-            string userid = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var review = await _reviewService.CreateReviewAsync(userid, reviewViewModel.Grade, reviewViewModel.Description, Id);
-            return View(reviewViewModel);
+            var user = await _userManager.GetUserAsync(User);
+
+            var sameBooks = await _bookService.GetAllSameBooks(Id);
+
+            var sameBooksVm = sameBooks.Select(b => b.MapToReviewViewModel(user.Id)).ToList();
+        
+            return View(sameBooksVm);
         }
 
         //[Route(nameof(CheckoutBook) + "/{userId}")]
@@ -184,5 +188,6 @@ namespace LMS.Web.Controllers
 
             return RedirectToAction(nameof(MyBooks));
         }
+
     }
 }

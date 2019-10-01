@@ -84,5 +84,12 @@ namespace LMS.Web.Mappers
             viewModel.IsSeen = notification.IsSeen;
             return viewModel;
         }
+        public static ReviewViewModel MapToReviewViewModel(this Book book , string userId)
+        {
+            var viewModel = new ReviewViewModel();
+            viewModel.BookId = book.Id;
+            viewModel.UserId = userId;
+            return viewModel;
+        }
     }
 }

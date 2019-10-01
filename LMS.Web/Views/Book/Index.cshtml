@@ -151,27 +151,32 @@ else
                 }
                 @if (User.IsInRole("Member"))
                 {
-                    <td>
+            <td>
 
-                        @* TUK TRQBVA DA SA BUTONITE ZA CHECKOUT I REZERVACII !!!!*@
-                        @*<p class="col-md-4">*@
-                        <form method="post">
-                            <p>
-                                <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="CheckoutBook" asp-route-id="@item.Id">Check - Out!!!</button>
-                            </p>
-                        </form>
+                @* TUK TRQBVA DA SA BUTONITE ZA CHECKOUT I REZERVACII !!!!*@
+                @*<p class="col-md-4">*@
+                <form method="post">
+                    <p>
+                        <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="CheckoutBook" asp-route-id="@item.Id">Check - Out!!!</button>
+                    </p>
+                </form>
 
-                        @*TUK DA SE SLOJI RESERVE*@
-                        <form method="post">
-                            <p>
-                                <button type="submit" class="btn border-0" asp-controller="Member" asp-action="ReserveBook" asp-route-id="@item.Id">Reserve Now</button>
-                            </p>
-                        </form>
+                @*TUK DA SE SLOJI RESERVE*@
+                <form method="post">
+                    <p>
+                        <button type="submit" class="btn border-0" asp-controller="Member" asp-action="ReserveBook" asp-route-id="@item.Id">Reserve Now</button>
+                    </p>
+                </form>
+                <form method="post">
+                    <p>
+                        <button type="submit" class="btn border-0" asp-controller="Member" asp-action="ReviewBook" asp-route-id="@item.Id">Review Now</button>
+                    </p>
+                </form>
 
-                        @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-                    </td>
+                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+            </td>
                 }
 
             </tr>
