@@ -87,7 +87,7 @@ namespace LMS.Web.Mappers
         public static ReviewViewModel MapToReviewViewModel(this Book book , string userId)
         {
             var viewModel = new ReviewViewModel();
-            viewModel.BookId = book.Id;
+            viewModel.Id = book.Id;
             viewModel.CoverImageUrl = book.CoverImageUrl;
             viewModel.UserId = userId;
             viewModel.Title = book.Title;

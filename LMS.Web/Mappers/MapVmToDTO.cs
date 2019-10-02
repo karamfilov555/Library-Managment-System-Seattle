@@ -22,8 +22,7 @@ namespace LMS.Web.Mappers
                 Language = bookVm.Language,
                 Country = bookVm.Country,
                 CoverImageUrl = bookVm.CoverImageUrl,
-                Rating = bookVm.BookRating?.Reviews?.Where(r => r.Id == bookVm.BookRating.Id)?.Sum(r => r.Grade) /
-                bookVm.BookRating?.Reviews?.Where(r => r.Id == bookVm.BookRating.Id)?.Count(),
+                Rating = bookVm.BookRating?.Reviews?.Where(r => r.BookRatingId == bookVm.BookRating.Id)?.Average(r => r.Grade)
             };
         public async Task<BanDto> MapBanVmToDto(BanViewModel banVm)
             => new BanDto

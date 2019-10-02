@@ -44,24 +44,29 @@ namespace LMS.Web.Controllers
             return View();
         }
         [HttpGet] // gets are by default
-        public IActionResult Review(string Id)
-        {
-            var vm = new ReviewViewModel
-            {
-                BookId = Id
-            };
-            return View(vm);
-        }
-        [HttpPost]
         public async Task<IActionResult> ReviewBook(string Id)
         {
-            var user = await _userManager.GetUserAsync(User);
+            var book = await _bookService.GetAllSameBooks(Id);
+            var user = this.User.FindFirst(ClaimTypes.NameIdentifier).Value; 
+            //var vm = new ReviewViewModel
+            //{
+            //    Id = Id
+            //};
+            var vm = Mappers.MapToViewModel.MapToReviewViewModel(book.First(), user);
+            vm.Id = Id;
+            vm.UserId = user;
+            return View("ReviewBook",vm);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ReviewBook(ReviewViewModel vm)
+        {
+            //var user = await _userManager.GetUserAsync(User);
 
-            var sameBooks = await _bookService.GetAllSameBooks(Id);
+            //var sameBooks = await _bookService.GetAllSameBooks(reviewViewModel.Id);
 
-            var sameBooksVm = sameBooks.Select(b => b.MapToReviewViewModel(user.Id)).ToList();
-        
-            return View(sameBooksVm);
+            //var sameBooksVm = sameBooks.Select(b => b.MapToReviewViewModel(user.Id)).ToList();
+            var review = await _reviewService.CreateReviewAsync(vm.UserId, vm.Grade, "stringche", vm.Id);
+            return RedirectToAction("Index","Book");
         }
 
         //[Route(nameof(CheckoutBook) + "/{userId}")]

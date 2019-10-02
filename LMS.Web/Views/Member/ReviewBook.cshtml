@@ -1,4 +1,4 @@
-﻿@model ICollection<ReviewViewModel>
+﻿@model ReviewViewModel
 
 @{
     ViewData["Title"] = "Review";
@@ -36,60 +36,69 @@
             {*@
         <tr>
             <td>
-                <img src="@Model.First().CoverImageUrl" onerror="srcset='images/no-image-available-icon.jpg'" height="250" width="250">
+                <img src="@Model.CoverImageUrl" onerror="srcset='images/no-image-available-icon.jpg'" height="250" width="250">
             </td>
 
             <td>
                 <dl class="row">
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => Model.First().Title)
+                        @Html.DisplayNameFor(model => Model.Title)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => Model.First().Title)
+                        @Html.DisplayFor(model => Model.Title)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => Model.First().AuthorName)
+                        @Html.DisplayNameFor(model => Model.AuthorName)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => Model.First().AuthorName)
+                        @Html.DisplayFor(model => Model.AuthorName)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => Model.First().SubjectCategoryName)
+                        @Html.DisplayNameFor(model => Model.SubjectCategoryName)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => Model.First().SubjectCategoryName)
+                        @Html.DisplayFor(model => Model.SubjectCategoryName)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => Model.First().Pages)
+                        @Html.DisplayNameFor(model => Model.Pages)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => Model.First().Pages)
+                        @Html.DisplayFor(model => Model.Pages)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => Model.First().Year)
+                        @Html.DisplayNameFor(model => Model.Year)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => Model.First().Year)
+                        @Html.DisplayFor(model => Model.Year)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => Model.First().Country)
+                        @Html.DisplayNameFor(model => Model.Country)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => Model.First().Country)
+                        @Html.DisplayFor(model => Model.Country)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => Model.First().Language)
+                        @Html.DisplayNameFor(model => Model.Language)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => Model.First().Language)
+                        @Html.DisplayFor(model => Model.Language)
                     </dd>
                     <dt class="col-sm-2">
                         Your grade
                     </dt>
                     <dd class="col-sm-10 text-danger">
-                        <b>
-                            <select></select>
-                        </b>
+                        <div class="form-group">
+                            <label asp-for="Grade" class="custom-control-label"></label>
+                            <b>
+                                <select asp-for="Grade">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </b>
+                        </div>
                     </dd>
                 </dl>
             </td>
@@ -99,9 +108,9 @@
     </tbody>
 </table>
 <div>
-<form method="post">
-    <p>
-        <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="ReturnBookAsync" asp-route-id="">Rate Now</button>
-    </p>
-</form>
+    <form method="post">
+        <p>
+            <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="ReviewBook">Rate Now</button>
+        </p>
+    </form>
 </div>
