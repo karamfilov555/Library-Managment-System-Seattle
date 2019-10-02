@@ -23,6 +23,7 @@ namespace LMS.Web.Controllers
         private readonly IToastNotification _toast;
         private readonly IReviewService _reviewService;
         private readonly IReservationService _reservationService;
+        private readonly IUserService _userService;
 
         public MemberController(IHistoryService historyService,
                                 IBookService bookService,
@@ -31,7 +32,8 @@ namespace LMS.Web.Controllers
                                 UserManager<User> userManager,
                                 IToastNotification toast,
                                 IReviewService reviewService,
-                                IReservationService reservationService)
+                                IReservationService reservationService,
+                                IUserService userService)
         {
             _historyService = historyService;
             _bookService = bookService;
@@ -41,6 +43,7 @@ namespace LMS.Web.Controllers
             _toast = toast;
             _reviewService = reviewService;
             _reservationService = reservationService;
+            _userService = userService;
         }
         public IActionResult Index()
         {
@@ -150,8 +153,9 @@ namespace LMS.Web.Controllers
             if (checkForReservations != null)
             {
                 var userToNotify = checkForReservations.UserId;
-                var description = _notificationManager.AvailableBookDescription(username, title);
-                var notify = await _notificationService.SendNotificationToUserAsync(description, username);
+                var usernameToNotify = await _userService.FindUsernameByIdAsync(userToNotify);
+                var description = _notificationManager.BookWasGivenToUser(username, title);
+                var notify = await _notificationService.SendNotificationToUserAsync(description, usernameToNotify);
             }
 
             var notificationDescription = _notificationManager.ReturnBookDescription(username, title);

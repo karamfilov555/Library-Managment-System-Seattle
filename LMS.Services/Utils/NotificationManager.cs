@@ -13,6 +13,7 @@ namespace LMS.Services.Utils
         private const string checkOutBookMsg = "Check-Out book notification: User: {0}, just check-out a book \"{1}\"!";
         private const string reserveBookMsg = "Reserve book notification: User: {0}, just reserve a book \"{1}\"!";
         private const string availableBookMsg = "{0}, book \"{1}\" that you reserved is now available!!!";
+        private const string bookWasGivenMsg = "{0}, book \"{1}\" that you reserved is already given to you!!!";
 
         public string RenewBookDescription(string username, DateTime newDateTime, string title)
         => string.Format(renewBookMsg, username, newDateTime, title);
@@ -26,5 +27,8 @@ namespace LMS.Services.Utils
        => string.Format(reserveBookMsg, username, title);
         public string AvailableBookDescription(string username, string title)
             => string.Format(availableBookMsg, username, title);
+        public string BookWasGivenToUser(string username, string title)
+           => string.Format(bookWasGivenMsg, username, title);
+        
     }
 }
