@@ -139,12 +139,20 @@ namespace LMS.Web.Controllers
         {
             if (Id == null)
                 return NotFound();
+            var checkForReservations = await _reservationService.CheckIfBookExistInReservations(Id);
 
             var user = await _userManager.GetUserAsync(User);
             await _historyService.ReturnBookAsync(Id , user.Id);
 
             var title = await _bookService.GetBookTitleAsync(Id);
             var username = user.UserName;
+
+            if (checkForReservations != null)
+            {
+                var userToNotify = checkForReservations.UserId;
+                var description = _notificationManager.AvailableBookDescription(username, title);
+                var notify = await _notificationService.SendNotificationToUserAsync(description, username);
+            }
 
             var notificationDescription = _notificationManager.ReturnBookDescription(username, title);
             var notification = await _notificationService.CreateNotificationAsync(notificationDescription, username);

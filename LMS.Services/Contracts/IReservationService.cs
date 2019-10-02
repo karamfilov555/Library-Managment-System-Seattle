@@ -9,5 +9,6 @@ namespace LMS.Services.Contracts
     public interface IReservationService
     {
         Task<ReserveBook> ReserveBookAsync(string bookId, string userId);
+        Task<ReserveBook> CheckIfBookExistInReservations(string bookId);
     }
 }

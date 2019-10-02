@@ -1,13 +1,23 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@inject LMS.Services.Contracts.INotificationService notificationService
 
-    <ul class="navbar-nav">
-        @if (User.IsInRole("Member"))
-        {
-            <li class="navbar-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Books</a>
-            </li>
-            <li class="navbar-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="MyBooks">MyBooks</a>
-            </li>
-        }
-    </ul>
+<ul class="navbar-nav">
+    @if (User.IsInRole("Member"))
+    {
+        <li class="navbar-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Books</a>
+        </li>
+        <li class="navbar-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="MyBooks">MyBooks</a>
+        </li>
+        <li class="cart my-2 my-lg-0">
+            <span>
+                <a class="fa fa-twitter " aria-hidden="true" asp-area="" asp-controller="Notification" asp-action="Index">Notifications</a>
+            </span>
+            @if (await notificationService.GetNotificationsCountAsync() > 0)
+            {
+                <span class="quntity">@await notificationService.GetNotificationsCountAsync()</span>
+            }
+        </li>
+    }
+</ul>

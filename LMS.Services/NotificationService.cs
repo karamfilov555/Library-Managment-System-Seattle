@@ -38,6 +38,21 @@ namespace LMS.Services
             await _context.SaveChangesAsync();
             return notification;
         }
+        public async Task<Notification> SendNotificationToUserAsync(string description, string username)
+        {
+            var user = await _userService.FindUserByUsernameAsync(username);
+            var notification = new Notification
+            {
+                UserId = user.Id,
+                Description = description,
+                EventDate = DateTime.Now,
+                Username = "System",
+            };
+
+            _context.Notifications.Add(notification);
+            await _context.SaveChangesAsync();
+            return notification;
+        }
         public async Task<ICollection<Notification>> GetNotificationsAsync(string userId)
         {
             var notification = await _context.Notifications

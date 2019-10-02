@@ -12,5 +12,6 @@ namespace LMS.Services.Contracts
         Task<ICollection<Notification>> GetNotificationsAsync(string userId);
         Task<int> GetNotificationsCountAsync();
         Task<Notification> MarkAsSeenAsync(string notificationId);
+        Task<Notification> SendNotificationToUserAsync(string description, string userId);
     }
 }

@@ -140,7 +140,7 @@ namespace LMS.Services
             var uniqueBooksUnavailable = new List<Book>();
             foreach (var item in allUnavailableBooks)
             {
-                if (!uniqueBooksUnavailable.Any(b => b.Title.Equals(item.Title) && b.Author.Equals(item.Author) && b.Language.Equals(item.Language) && b.IsCheckedOut == false))
+                if (!uniqueBooksUnavailable.Any(b => b.Title.Equals(item.Title) && b.Author.Equals(item.Author) && b.Language.Equals(item.Language)))
                     uniqueBooksUnavailable.Add(item);
             }
             return uniqueBooksUnavailable;

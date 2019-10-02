@@ -10,7 +10,7 @@ using NToastNotify;
 
 namespace LMS.Web.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class NotificationController : Controller
     {
         private readonly UserManager<User> _usermanager;

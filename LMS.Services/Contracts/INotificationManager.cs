@@ -10,5 +10,6 @@ namespace LMS.Services.Contracts
         string ReturnBookDescription(string username, string title);
         string CheckOutBookDescription(string username, string title);
         string ReserveBookDescription(string username, string title);
+        string AvailableBookDescription(string username, string title);
     }
 }
