@@ -7,6 +7,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace LMS.Services
 {
@@ -48,22 +49,22 @@ namespace LMS.Services
         private async Task<bool> CheckIfBookWithThisTitleExist(string title)
         => await _context.ReservedBooks.AnyAsync(b => b.BookTitle == title);
 
-
         public async Task<ReserveBook> CheckIfBookExistInReservations(string bookId)
-        {
+        {           
             var book = await _context.Books.FindAsync(bookId);
 
+            ReserveBook reservation = null;
+
             if (await CheckIfBookWithThisTitleExist(book.Title))
-            {
-                var bookInReservations = _context.ReservedBooks.Where(b => b.BookTitle == book.Title);
-                var dateOfFirstReservation = await bookInReservations.MinAsync(d => d.ReservationDate);
-                var reservation = await _context.ReservedBooks.FirstAsync(d => d.ReservationDate == dateOfFirstReservation);
-                await GiveBookToFirstReservation(reservation.BookId, reservation.UserId);
-                _context.ReservedBooks.Remove(reservation);
-                await _context.SaveChangesAsync();
-                return reservation;
+            {              
+                    var bookInReservations = _context.ReservedBooks.Where(b => b.BookTitle == book.Title);
+                    var dateOfFirstReservation = await bookInReservations.MinAsync(d => d.ReservationDate);
+                    reservation = await _context.ReservedBooks.FirstAsync(d => d.ReservationDate == dateOfFirstReservation);
+                    await GiveBookToFirstReservation(reservation.BookId, reservation.UserId);
+                    _context.ReservedBooks.Remove(reservation);
+                    await _context.SaveChangesAsync();
             }
-            return null;
+            return reservation;
         }
         private async Task GiveBookToFirstReservation(string bookId, string userId)
         {
@@ -86,6 +87,5 @@ namespace LMS.Services
             _context.HistoryRegistries.Add(historyRegistry);
             await _context.SaveChangesAsync();
         }
-
     }
 }

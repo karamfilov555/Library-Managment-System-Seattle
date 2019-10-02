@@ -53,7 +53,7 @@ namespace LMS.Web.Controllers
         public async Task<IActionResult> ReviewBook(string Id)
         {
             var book = await _bookService.GetAllSameBooks(Id);
-            var user = this.User.FindFirst(ClaimTypes.NameIdentifier).Value; 
+            var user = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             //var vm = new ReviewViewModel
             //{
             //    Id = Id
@@ -61,10 +61,10 @@ namespace LMS.Web.Controllers
             var vm = Mappers.MapToViewModel.MapToReviewViewModel(book.First(), user);
             vm.Id = Id;
             vm.UserId = user;
-            return View("ReviewBook",vm);
+            return View("ReviewBook", vm);
         }
         [HttpPost]
-        public async Task<IActionResult> ReviewBook(ReviewViewModel vm)     
+        public async Task<IActionResult> ReviewBook(ReviewViewModel vm)
         {
             //var user = await _userManager.GetUserAsync(User);
 
@@ -72,7 +72,7 @@ namespace LMS.Web.Controllers
 
             //var sameBooksVm = sameBooks.Select(b => b.MapToReviewViewModel(user.Id)).ToList();
             var review = await _reviewService.CreateReviewAsync(vm.UserId, vm.Grade, "stringche", vm.Id);
-            return RedirectToAction("Index","Book");
+            return RedirectToAction("Index", "Book");
         }
 
         //[Route(nameof(CheckoutBook) + "/{userId}")]
@@ -97,7 +97,7 @@ namespace LMS.Web.Controllers
                 return NotFound();
             }
             //listbookVm copies --;
-            var hr = await _historyService.CheckoutBookAsync(Id,userId);
+            var hr = await _historyService.CheckoutBookAsync(Id, userId);
 
             var checkoutBookVm = new CheckoutBookViewModel
             {
@@ -142,26 +142,29 @@ namespace LMS.Web.Controllers
         {
             if (Id == null)
                 return NotFound();
-            var checkForReservations = await _reservationService.CheckIfBookExistInReservations(Id);
 
+            var checkForReservations = await _reservationService.CheckIfBookExistInReservations(Id);
             var user = await _userManager.GetUserAsync(User);
-            await _historyService.ReturnBookAsync(Id , user.Id);
+
+            if (checkForReservations == null)
+                await _historyService.ReturnBookAsync(Id, user.Id);
 
             var title = await _bookService.GetBookTitleAsync(Id);
             var username = user.UserName;
 
             if (checkForReservations != null)
             {
+                //notification for user , who is first from reservations! ( if there is one...)
                 var userToNotify = checkForReservations.UserId;
                 var usernameToNotify = await _userService.FindUsernameByIdAsync(userToNotify);
-                var description = _notificationManager.BookWasGivenToUser(username, title);
+                var description = _notificationManager.BookWasGivenToUser(usernameToNotify, title);
                 var notify = await _notificationService.SendNotificationToUserAsync(description, usernameToNotify);
             }
-
+            //notification for admin
             var notificationDescription = _notificationManager.ReturnBookDescription(username, title);
             var notification = await _notificationService.CreateNotificationAsync(notificationDescription, username);
 
-            TempData["ReturnMsg"] = ($"{username}, you successfully returned a book: \"{title}\"!");
+            _toast.AddSuccessToastMessage($"{username}, you successfully returned a book: \"{title}\"!");
             return RedirectToAction(nameof(MyBooks));
         }
 
