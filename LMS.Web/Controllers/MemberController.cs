@@ -53,26 +53,33 @@ namespace LMS.Web.Controllers
         public async Task<IActionResult> ReviewBook(string Id)
         {
             var book = await _bookService.GetAllSameBooks(Id);
-            var user = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var user = await _userManager.GetUserAsync(User);
+            var canUserReview = _reviewService.CheckIfUserCanReview(user.Id, Id);
             //var vm = new ReviewViewModel
             //{
             //    Id = Id
             //};
-            var vm = Mappers.MapToViewModel.MapToReviewViewModel(book.First(), user);
+            var vm = Mappers.MapToViewModel.MapToReviewViewModel(book.First(), user.Id);
             vm.Id = Id;
-            vm.UserId = user;
-            return View("ReviewBook", vm);
+            vm.UserId = user.Id;
+            vm.CanReview = !canUserReview;
+            return View("ReviewBook",vm);
         }
         [HttpPost]
         public async Task<IActionResult> ReviewBook(ReviewViewModel vm)
         {
-            //var user = await _userManager.GetUserAsync(User);
+            var user = await _userManager.GetUserAsync(User);
 
             //var sameBooks = await _bookService.GetAllSameBooks(reviewViewModel.Id);
 
-            //var sameBooksVm = sameBooks.Select(b => b.MapToReviewViewModel(user.Id)).ToList();
-            var review = await _reviewService.CreateReviewAsync(vm.UserId, vm.Grade, "stringche", vm.Id);
-            return RedirectToAction("Index", "Book");
+            if (!_reviewService.CheckIfUserCanReview(user.Id, vm.Title))
+            {
+                //var sameBooksVm = sameBooks.Select(b => b.MapToReviewViewModel(user.Id)).ToList();
+                var review = await _reviewService.CreateReviewAsync(user.Id, vm.Grade, vm.Description, vm.Title);
+                return RedirectToAction("Index", "Book");
+            }
+
+            return BadRequest("You cannot review book you have already reviewed!");           
         }
 
         //[Route(nameof(CheckoutBook) + "/{userId}")]

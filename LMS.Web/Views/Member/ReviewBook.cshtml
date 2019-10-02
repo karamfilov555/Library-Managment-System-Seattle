@@ -5,112 +5,125 @@
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 }
 
-<section class="recomended-sec">
-    <div class="container">
-        <div class="title">
-            <h2 class="align-content-center">Review Book</h2>
-            <hr>
+@if (Model.CanReview)
+{
+    <form asp-controller="Member" asp-action="ReviewBook" method="post">
+        <section class="recomended-sec">
+            <div class="container">
+                <div class="title">
+                    <h2 class="align-content-center">Review Book</h2>
+                    <hr>
+                </div>
+            </div>
+        </section>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="">
+                        Cover
+                    </th>
+
+                    <th>
+                        Book Description
+                    </th>
+                    <th class="">
+
+                    </th>
+                    <th class="">
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @*@foreach (var item in Model)
+                    {*@
+                <tr>
+                    <td>
+                        <img src="@Model.CoverImageUrl" onerror="srcset='images/no-image-available-icon.jpg'" height="250" width="250">
+                    </td>
+
+                    <td>
+                        <dl class="row">
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => Model.Title)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => Model.Title)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => Model.AuthorName)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => Model.AuthorName)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => Model.SubjectCategoryName)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => Model.SubjectCategoryName)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => Model.Pages)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => Model.Pages)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => Model.Year)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => Model.Year)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => Model.Country)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => Model.Country)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => Model.Language)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => Model.Language)
+                            </dd>
+                            <dt class="col-sm-2">
+                                Your grade
+                            </dt>
+                            <dd class="col-sm-10 text-danger">
+                                <div class="form-group">
+                                    <label asp-for="@Model.Grade" class="text-primary"> </label>
+                                    <b>
+                                        <select asp-for="@Model.Grade">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </b>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <textarea asp-for="Description" rows="5" cols="50" placeholder="Write your review here..."> </textarea>
+                                    </div>
+
+                                </div>
+                            </dd>
+                        </dl>
+                    </td>
+
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <p>
+                <button type="submit" class="btn bg-success border-0">Rate Now</button>
+            </p>
         </div>
-    </div>
-</section>
-<table class="table">
-    <thead>
-        <tr>
-            <th class="">
-                Cover
-            </th>
-
-            <th>
-                Book Description
-            </th>
-            <th class="">
-
-            </th>
-            <th class="">
-
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @*@foreach (var item in Model)
-            {*@
-        <tr>
-            <td>
-                <img src="@Model.CoverImageUrl" onerror="srcset='images/no-image-available-icon.jpg'" height="250" width="250">
-            </td>
-
-            <td>
-                <dl class="row">
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => Model.Title)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => Model.Title)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => Model.AuthorName)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => Model.AuthorName)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => Model.SubjectCategoryName)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => Model.SubjectCategoryName)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => Model.Pages)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => Model.Pages)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => Model.Year)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => Model.Year)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => Model.Country)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => Model.Country)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => Model.Language)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => Model.Language)
-                    </dd>
-                    <dt class="col-sm-2">
-                        Your grade
-                    </dt>
-                    <dd class="col-sm-10 text-danger">
-                        <div class="form-group">
-                            <label asp-for="Grade" class="custom-control-label"></label>
-                            <b>
-                                <select asp-for="Grade">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </b>
-                        </div>
-                    </dd>
-                </dl>
-            </td>
-
-            <td></td>
-        </tr>
-    </tbody>
-</table>
-<div>
-    <form method="post">
-        <p>
-            <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="ReviewBook">Rate Now</button>
-        </p>
     </form>
-</div>
+}
+else
+{
+    <div>You have already reviewed this book!</div>
+}

@@ -17,6 +17,12 @@ namespace LMS.Services
         {
             _context = context;
         }
+
+        public bool CheckIfUserCanReview(string userId, string bookId)
+        {
+            var result = _context.Review.Any(r => r.UserId == userId && r.BookRatingId == bookId);
+            return result;
+        }
         public async Task<Review> CreateReviewAsync(string userId, decimal grade, string description, string bookId)
         {
             BookRating bookRating = _context.BookRating.FirstOrDefault(br => br.BookId == bookId);

@@ -8,11 +8,27 @@ namespace LMS.Web.Models
 {
     public class ReviewViewModel
     {
+        //private int myVar;
+
+        //[Required]
+        //[Range(1,5)]
+        //public int Grade
+        //{
+        //    get
+        //    {
+        //        return myVar;
+        //    }
+        //    set
+        //    {
+        //        myVar = value;
+        //    }
+        //}
+
         public string Description { get; set; }
         public decimal Grade { get; set; }
         public string Id { get; set; }
         public string UserId { get; set; }
-        //validations!!!!!!!
+        //validations!!!!!!!    
         [Display(Name = "Book's Title")]
         [Required]
         public string Title { get; set; }
@@ -34,7 +50,7 @@ namespace LMS.Web.Models
         [Display(Name = "How many copies do you want to add in the Library?")]
         [Required, Range(1, 100, ErrorMessage = "Copies must be value between 1 and 100")]
         public int Copies { get; set; }
-       
+
         [Display(Name = "Book's Subject")]
         [Required, RegularExpression("[A-Za-z]+", ErrorMessage = "Subject should only contain latin letters!")]
         public string SubjectCategoryName { get; set; }
@@ -42,6 +58,8 @@ namespace LMS.Web.Models
         [Display(Name = "Cover Image Url")]
         [Required]
         public string CoverImageUrl { get; set; }
-        
+
+        public bool CanReview { get; set; }
+
     }
 }
