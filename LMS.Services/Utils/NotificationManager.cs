@@ -11,6 +11,7 @@ namespace LMS.Services.Utils
         private const string renewBookMsg = "Renew book notification: User: {0}, renew return date to {1} of a book \"{2}\"!";
         private const string returnBookMsg = "Return book notification: User: {0}, just return a book \"{1}\"!";
         private const string checkOutBookMsg = "Check-Out book notification: User: {0}, just check-out a book \"{1}\"!";
+        private const string reserveBookMsg = "Reserve book notification: User: {0}, just reserve a book \"{1}\"!";
 
         public string RenewBookDescription(string username, DateTime newDateTime, string title)
         => string.Format(renewBookMsg, username, newDateTime, title);
@@ -20,5 +21,7 @@ namespace LMS.Services.Utils
 
         public string CheckOutBookDescription(string username, string title)
         => string.Format(checkOutBookMsg, username, title);
+        public string ReserveBookDescription(string username, string title)
+       => string.Format(reserveBookMsg, username, title);
     }
 }

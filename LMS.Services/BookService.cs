@@ -94,6 +94,14 @@ namespace LMS.Services
               .Include(b => b.SubjectCategory)
               .Where(b => b.IsCheckedOut == false)
               .ToListAsync();
+        private async Task<ICollection<Book>> GetAllUnavailableBooksAsync()
+            => await _context.Books
+              .Include(b => b.Author)
+              .Include(b => b.BookRating)
+              .ThenInclude(br => br.Reviews)
+              .Include(b => b.SubjectCategory)
+              .Where(b => b.Copies == 0)
+              .ToListAsync();
         public async Task<ICollection<Book>> GetAllBooksWithoutRepetitionsAsync()
         {
             var allBooksFreeBooks = await GetAllFreeBooksAsync();
@@ -125,6 +133,17 @@ namespace LMS.Services
         {
             var book = await FindByIdAsync(Id);
             return await _context.Books.Where(b => b.Title == book.Title && b.Author == book.Author && b.Language == book.Language).ToListAsync();
+        }
+        public async Task<ICollection<Book>> GetUnavailableBooksWithoutRepetitions()
+        {
+            var allUnavailableBooks = await GetAllUnavailableBooksAsync();
+            var uniqueBooksUnavailable = new List<Book>();
+            foreach (var item in allUnavailableBooks)
+            {
+                if (!uniqueBooksUnavailable.Any(b => b.Title.Equals(item.Title) && b.Author.Equals(item.Author) && b.Language.Equals(item.Language) && b.IsCheckedOut == false))
+                    uniqueBooksUnavailable.Add(item);
+            }
+            return uniqueBooksUnavailable;
         }
     }
 }

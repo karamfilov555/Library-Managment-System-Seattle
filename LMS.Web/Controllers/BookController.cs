@@ -108,8 +108,13 @@ namespace LMS.Web.Controllers
                     allBooksListVm = allBooksListVm.OrderBy(s => s.Title);
                     break;
             }
-            var booksQuery = allBooksListVm.AsQueryable();
+            var listVm = allBooksListVm.ToList();
+            var unavailableBooks = await _bookService.GetUnavailableBooksWithoutRepetitions();
+            var unavailableBooksVm = unavailableBooks.Select(b => b.MapToListItemBookViewModel());
+            listVm.AddRange(unavailableBooksVm);
+            var booksQuery = listVm.AsQueryable();
             int pageSize = 3;
+
             return View(PaginatedList<BookListViewModel>.CreateAsync(booksQuery.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
         // GET: Book/Details/5

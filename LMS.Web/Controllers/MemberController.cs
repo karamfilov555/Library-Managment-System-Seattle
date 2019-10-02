@@ -22,6 +22,7 @@ namespace LMS.Web.Controllers
         private readonly UserManager<User> _userManager;
         private readonly IToastNotification _toast;
         private readonly IReviewService _reviewService;
+        private readonly IReservationService _reservationService;
 
         public MemberController(IHistoryService historyService,
                                 IBookService bookService,
@@ -29,7 +30,8 @@ namespace LMS.Web.Controllers
                                 INotificationManager notificationManager,
                                 UserManager<User> userManager,
                                 IToastNotification toast,
-                                IReviewService reviewService)
+                                IReviewService reviewService,
+                                IReservationService reservationService)
         {
             _historyService = historyService;
             _bookService = bookService;
@@ -38,6 +40,7 @@ namespace LMS.Web.Controllers
             _userManager = userManager;
             _toast = toast;
             _reviewService = reviewService;
+            _reservationService = reservationService;
         }
         public IActionResult Index()
         {
@@ -58,7 +61,7 @@ namespace LMS.Web.Controllers
             return View("ReviewBook",vm);
         }
         [HttpPost]
-        public async Task<IActionResult> ReviewBook(ReviewViewModel vm)
+        public async Task<IActionResult> ReviewBook(ReviewViewModel vm)     
         {
             //var user = await _userManager.GetUserAsync(User);
 
@@ -79,12 +82,14 @@ namespace LMS.Web.Controllers
                 return NotFound();
             ClaimsPrincipal currUser = this.User;
             var userId = currUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+
             //todo is book free
             var book = await _bookService.FindFreeBookByIdAsync(Id);
             if (book == null)
                 return NotFound();
             if (book.Copies <= 0)
             {
+                //!!!!! CHECK IF BOOK IS RESERVED !
                 //To do .. da preprashta v reservaciqta za tazi kniga
                 return NotFound();
             }
@@ -180,17 +185,17 @@ namespace LMS.Web.Controllers
                 return NotFound();
 
             var user = await _userManager.GetUserAsync(User);
-            var hr = await _historyService.RenewBookAsync(Id, user.Id);
+
+            var notification = await _reservationService.ReserveBookAsync(Id, user.Id);
 
             var title = await _bookService.GetBookTitleAsync(Id);
             var username = user.UserName;
 
-            var notificationDescription = _notificationManager.RenewBookDescription(username, hr.ReturnDate, title);
+            var notificationDescription = _notificationManager.ReserveBookDescription(username, title);
 
-            var notification = await _notificationService.CreateNotificationAsync(notificationDescription, username);
-            // tuk trqbva da podavam Id-to na User-a polu4atel, a ne na segashniq
-            TempData["ReturnMsg"] = ($"{username}, you successfully renew return date of a book: \"{title}\" to {hr.ReturnDate} !");
+            await _notificationService.CreateNotificationAsync(notificationDescription, username);
 
+            _toast.AddSuccessToastMessage($"{username}, you successfully reserve a book \"{title}\"!");
             return RedirectToAction(nameof(MyBooks));
         }
 
