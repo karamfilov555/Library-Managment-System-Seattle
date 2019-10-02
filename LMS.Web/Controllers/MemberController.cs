@@ -142,6 +142,19 @@ namespace LMS.Web.Controllers
             return View(booksVm);
         }
 
+        [Authorize(Roles = "Member")]
+        public async Task<IActionResult> MyReservations()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            var reservations = await _reservationService.GetReservationsOfUser(user.Id);
+            var reservedBooks = await _reservationService.ExtractBooksFromReservation(reservations);
+
+            var reservationsVm = reservedBooks.Select(r=>r.MapToBookViewModel());
+
+            return View(reservationsVm);
+        }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Member")]
@@ -158,6 +171,9 @@ namespace LMS.Web.Controllers
 
             var title = await _bookService.GetBookTitleAsync(Id);
             var username = user.UserName;
+            //notification for admin
+            var returnNotificaitonMsg = _notificationManager.ReturnBookDescription(username, title);
+            var notification = await _notificationService.CreateNotificationAsync(returnNotificaitonMsg, username);
 
             if (checkForReservations != null)
             {
@@ -166,10 +182,11 @@ namespace LMS.Web.Controllers
                 var usernameToNotify = await _userService.FindUsernameByIdAsync(userToNotify);
                 var description = _notificationManager.BookWasGivenToUser(usernameToNotify, title);
                 var notify = await _notificationService.SendNotificationToUserAsync(description, usernameToNotify);
+                //notification for admin, that the book is transferd to another user
+                var adminNotificationTransferMsg = _notificationManager.TransferBookDescription(username, usernameToNotify, title);
+               await _notificationService.CreateNotificationAsync(adminNotificationTransferMsg, username);
             }
-            //notification for admin
-            var notificationDescription = _notificationManager.ReturnBookDescription(username, title);
-            var notification = await _notificationService.CreateNotificationAsync(notificationDescription, username);
+
 
             _toast.AddSuccessToastMessage($"{username}, you successfully returned a book: \"{title}\"!");
             return RedirectToAction(nameof(MyBooks));

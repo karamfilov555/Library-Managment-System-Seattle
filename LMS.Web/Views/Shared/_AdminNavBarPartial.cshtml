@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<User> UserManager
 @inject LMS.Services.Contracts.INotificationService notificationService
 
 <ul class="navbar-nav">
@@ -21,11 +22,13 @@
             </li>*@
         <li class="cart my-2 my-lg-0">
             <span>
-                <a class="fa fa-twitter " aria-hidden="true" asp-area="" asp-controller="Notification" asp-action="Index">Notifications</a>
+                <a class="fa fa-bell " aria-hidden="true" asp-area="" asp-controller="Notification" asp-action="Index">Notifications</a>
             </span>
-            @if (await notificationService.GetNotificationsCountAsync() > 0)
+            @{ var loggedUser = await UserManager.GetUserAsync(User);
+                var id = loggedUser.Id;}
+            @if (await notificationService.GetNotificationsCountAsync(id) > 0)
             {
-                <span class="quntity">@await notificationService.GetNotificationsCountAsync()</span>
+                <span class="quntity">@await notificationService.GetNotificationsCountAsync(id)</span>
             }
         </li>
     }

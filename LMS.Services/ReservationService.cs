@@ -14,10 +14,12 @@ namespace LMS.Services
     public class ReservationService : IReservationService
     {
         private readonly LMSContext _context;
+        private readonly IBookService _bookService;
 
-        public ReservationService(LMSContext context)
+        public ReservationService(LMSContext context, IBookService bookService)
         {
             _context = context;
+            _bookService = bookService;
         }
         public async Task<ReserveBook> ReserveBookAsync(string bookId, string userId)
         {
@@ -50,19 +52,19 @@ namespace LMS.Services
         => await _context.ReservedBooks.AnyAsync(b => b.BookTitle == title);
 
         public async Task<ReserveBook> CheckIfBookExistInReservations(string bookId)
-        {           
+        {
             var book = await _context.Books.FindAsync(bookId);
 
             ReserveBook reservation = null;
 
             if (await CheckIfBookWithThisTitleExist(book.Title))
-            {              
-                    var bookInReservations = _context.ReservedBooks.Where(b => b.BookTitle == book.Title);
-                    var dateOfFirstReservation = await bookInReservations.MinAsync(d => d.ReservationDate);
-                    reservation = await _context.ReservedBooks.FirstAsync(d => d.ReservationDate == dateOfFirstReservation);
-                    await GiveBookToFirstReservation(reservation.BookId, reservation.UserId);
-                    _context.ReservedBooks.Remove(reservation);
-                    await _context.SaveChangesAsync();
+            {
+                var bookInReservations = _context.ReservedBooks.Where(b => b.BookTitle == book.Title);
+                var dateOfFirstReservation = await bookInReservations.MinAsync(d => d.ReservationDate);
+                reservation = await _context.ReservedBooks.FirstAsync(d => d.ReservationDate == dateOfFirstReservation);
+                await GiveBookToFirstReservation(reservation.BookId, reservation.UserId);
+                _context.ReservedBooks.Remove(reservation);
+                await _context.SaveChangesAsync();
             }
             return reservation;
         }
@@ -72,6 +74,10 @@ namespace LMS.Services
                 throw new ArgumentException("Invalid parameters: book id cannot be null.");
             if (userId == null)
                 throw new ArgumentException("Invalid parameters: user id cannot be null.");
+            //remove old history registry
+            var oldHistoryRegistry = await _context.HistoryRegistries.FirstAsync(hr => hr.BookId == bookId);
+            _context.HistoryRegistries.Remove(oldHistoryRegistry);
+            await _context.SaveChangesAsync();
 
             var historyRegistry = new HistoryRegistry()
             {
@@ -87,5 +93,27 @@ namespace LMS.Services
             _context.HistoryRegistries.Add(historyRegistry);
             await _context.SaveChangesAsync();
         }
+
+
+        public async Task<IQueryable<ReserveBook>> GetReservationsOfUser(string userId)
+        {
+            if (userId == null)
+                throw new ArgumentException("User id cannot be null");
+
+            var reservations = _context.ReservedBooks.Where(r => r.UserId == userId);
+            return reservations;
+        }
+        public async Task<ICollection<Book>> ExtractBooksFromReservation(IQueryable<ReserveBook> reserves)
+        {
+            var booksFromReservations = new List<Book>();
+            foreach (var item in reserves)
+            {
+                var book = await _bookService.FindByIdAsync(item.BookId);
+                booksFromReservations.Add(book);
+            }
+
+            return booksFromReservations;
+        }
+        
     }
 }
