@@ -42,7 +42,7 @@ namespace LMS.Services
         }
         private bool CheckIfSubjectExist(string name)
         {
-            return _context.Authors.Any(a => a.Name == name);
+            return _context.SubjectCategories.Any(a => a.Name.ToLower() == name.ToLower());
         }
     }
 }

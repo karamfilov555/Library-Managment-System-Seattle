@@ -63,9 +63,9 @@ else
                     </a>
                 </th>
                 <th>
-                    <a asp-action="Index" asp-route-sortOrder="@ViewData["PagesSortCriteria"]"
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["RatingSortCriteria"]"
                        asp-route-currentFilter="@ViewData["CurrentFilter"]">
-                        &uarr;&darr;Pages
+                        &uarr;&darr;Rating
                     </a>
                 </th>
                 <th>
@@ -87,6 +87,12 @@ else
                     </a>
                 </th>
                 <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["PagesSortCriteria"]"
+                       asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                        &uarr;&darr;Pages
+                    </a>
+                </th>
+                <th>
                     Copies avbl.
                 </th>
                 @*<th>
@@ -98,7 +104,6 @@ else
                     <th>
                         @Html.DisplayNameFor(model => model.BookRating)
                     </th>*@
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -117,7 +122,40 @@ else
                         @Html.DisplayFor(modelItem => item.AuthorName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Pages)
+                        @if (item.Rating == null)
+                        {
+                            <i>Not rated yet!</i>
+                        }
+                        else
+                        {
+                            if (item.Rating * 10 % 10 == 0)
+                            {
+                                for (int i = 0; i < item.Rating-1; i++)
+                                {
+                                    <font color="gold">
+                                        <i class="fa fa-star"></i>
+                                    </font>
+                                }
+                                <font color="gold">
+                                    <i class="fa fa-star"> @Html.DisplayFor(modelItem => item.Rating)</i>
+                                </font>
+                            }
+                            else
+                            {
+
+                                for (int i = 0; i < item.Rating - 1; i++)
+                                {
+                                    <font color="gold">
+                                        <i class="fa fa-star"></i>
+                                    </font>
+                                }
+                                <font color="gold">
+                                    <i class="fa fa-star-half"> @Html.DisplayFor(modelItem => item.Rating)</i>
+                                </font>
+                                @*<span class="quntity">
+                @Html.DisplayFor(modelItem => item.Rating)</span>*@
+                            }
+                        }
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Year)
@@ -129,10 +167,10 @@ else
                         @Html.DisplayFor(modelItem => item.Language)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Copies)
+                        @Html.DisplayFor(modelItem => item.Pages)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Rating)
+                        @Html.DisplayFor(modelItem => item.Copies)
                     </td>
 
                     @*<td>

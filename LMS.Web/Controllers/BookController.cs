@@ -46,6 +46,7 @@ namespace LMS.Web.Controllers
             ViewData["YearSortCriteria"] = sortOrder == "year" ? "year_desc" : "year";
             ViewData["CountrySortCriteria"] = sortOrder == "country" ? "country_desc" : "country";
             ViewData["LanguageSortCriteria"] = sortOrder == "language" ? "language_desc" : "language";
+            ViewData["RatingSortCriteria"] = sortOrder == "rating" ? "rating_desc" : "rating";
             ViewData["CurrentFilter"] = searchString;
 
             if (searchString != null)
@@ -99,6 +100,12 @@ namespace LMS.Web.Controllers
                     break;
                 case "language_desc":
                     allBooksListVm = allBooksListVm.OrderByDescending(b => b.Country);
+                    break;
+                case "rating":
+                    allBooksListVm = allBooksListVm.OrderBy(b => b.Rating);
+                    break;
+                case "rating_desc":
+                    allBooksListVm = allBooksListVm.OrderByDescending(b => b.Rating);
                     break;
 
                 default:
