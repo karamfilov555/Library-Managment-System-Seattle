@@ -112,7 +112,7 @@ namespace LMS.Services
             => await _context.Books
               .Include(b => b.Author)
               .Include(b => b.BookRating)
-              .ThenInclude(br => br.Reviews)
+                .ThenInclude(br => br.Reviews)
               .Include(b => b.SubjectCategory)
               .Where(b => b.IsCheckedOut == false)
               .ToListAsync();

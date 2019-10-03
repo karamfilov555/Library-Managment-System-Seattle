@@ -12,42 +12,62 @@ namespace LMS.Services
     public class ReviewService : IReviewService
     {
         private readonly LMSContext _context;
+        private readonly IBookService bookService;
 
-        public ReviewService(LMSContext context)
+        public ReviewService(LMSContext context, IBookService bookService)
         {
             _context = context;
+            this.bookService = bookService;
         }
 
         public bool CheckIfUserCanReview(string userId, string bookId)
         {
+            //var res = _context.Books.Where(r => r.Title == title);
+            //foreach (var item in res)
+            //{
+            //    item.BookRating =
+            //}
             var result = _context.Review.Any(r => r.UserId == userId && r.BookRatingId == bookId);
             return result;
         }
-        public async Task<Review> CreateReviewAsync(string userId, decimal grade, string description, string bookId)
+        public async Task CreateReviewAsync(string userId, decimal grade, string description, string bookId)
         {
-            BookRating bookRating = _context.BookRating.FirstOrDefault(br => br.BookId == bookId);
-            if (bookRating!=null)
+            var book = bookService.GetBookTitleAsync(bookId);
+            var allBooksWithSameTitle = await bookService.GetAllSameBooks(bookId);
+            //BookRating item.BookRating = _context.BookRating.Where(br => br.BookId == bookId);
+            foreach (var item in allBooksWithSameTitle)
             {
-                bookRating.Rating = grade;
-            }
-            else {
-                bookRating = new BookRating
-                {
-                    BookId = bookId,
-                    Rating= grade
-                };
-                _context.BookRating.Add(bookRating);
-            }
 
-            var review = new Review
-            {
-                Description = description,
-                Grade = grade,
-                UserId = userId,
-            };
-            await _context.Review.AddAsync(review);
-            await _context.SaveChangesAsync();
-            return review;
+                if (item.BookRating != null)
+                {
+                    item.BookRating.Rating = grade;
+                    _context.Update(item);
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    var bookRating = new BookRating
+                    {
+                        BookId = bookId,
+                        Rating = grade
+                    };
+                    _context.BookRating.Add(bookRating);
+                    _context.SaveChanges();
+                    item.BookRatingId = bookRating.Id;
+                    _context.Update(item);
+                    _context.SaveChanges();
+                }
+
+                var review = new Review
+                {
+                    BookRatingId = item.BookRating.Id,
+                    Description = description,
+                    Grade = grade,
+                    UserId = userId,
+                };
+                await _context.Review.AddAsync(review);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
