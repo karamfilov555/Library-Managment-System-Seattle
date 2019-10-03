@@ -27,7 +27,7 @@ namespace LMS.Services
             //{
             //    item.BookRating =
             //}
-            var result = _context.Review.Any(r => r.UserId == userId && r.BookRatingId == bookId);
+            var result = _context.Review.Any(r => r.UserId == userId && r.BookRating.BookId == bookId);
             return result;
         }
         public async Task CreateReviewAsync(string userId, decimal grade, string description, string bookId)

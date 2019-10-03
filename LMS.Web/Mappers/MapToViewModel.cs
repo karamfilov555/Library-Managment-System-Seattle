@@ -83,10 +83,6 @@ namespace LMS.Web.Mappers
             viewModel.SubjectCategoryName = book.SubjectCategory.Name;
             viewModel.CoverImageUrl = book.CoverImageUrl;
             viewModel.IsLocked = book.IsLocked;
-            viewModel.Rating = book.BookRating?.Reviews?.Where(r => r.Id == book.BookRating.Id)?.Sum(r => r.Grade) /
-                book.BookRating?.Reviews?.Where(r => r.Id == book.BookRating.Id)?.Count() ?? 0;
-            //viewModel.Rating = book.BookRating?.Reviews?.Average(r => r.Grade) ?? 0;
-
             var a = book.BookRating?.Reviews?.Where(x=>x.BookRatingId == book.BookRatingId)?.Select(x => x.Grade)?.Average();
             viewModel.Rating = a;
             return viewModel;
