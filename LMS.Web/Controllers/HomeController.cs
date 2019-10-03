@@ -22,9 +22,11 @@ namespace LMS.Web.Controllers
         {
             //za sega edna , da dobavq i drugite korici ( suobrazeni sus seedvaneto na bazata)
             var booksForhomePage = await _bookService.GetBooksForHomePage();
-            var bookVm = booksForhomePage.MapToBookViewModel();
+            var bookVm = booksForhomePage.Select(b=>b.MapToBookViewModel()).ToList();
             return View(bookVm);
         }
+        
+        
 
         public IActionResult Privacy()
         {

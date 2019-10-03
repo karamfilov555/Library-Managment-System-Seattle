@@ -169,16 +169,17 @@ namespace LMS.Services
             return uniqueBooksUnavailable;
         }
         //da vrushta kolekciq ot vsi4ki knigi na HPage!!!
-        public async Task<Book> GetBooksForHomePage()
+        public async Task<ICollection<Book>> GetBooksForHomePage()
         {
             // list .... posle
-            var book = await _context.Books
-               .Include(b => b.Author)
+            var books = await _context.Books
+              .Include(b => b.Author)
               .Include(b => b.BookRating)
               .ThenInclude(br => br.Reviews)
               .Include(b => b.SubjectCategory)
-              .FirstAsync(b => b.Title == "Under The Yuke");
-            return book;
+              //Da se napravi knigite s nai golqm RAITING !!! (KOGATO ... imame rating ... )
+              .Where(b => b.Id == "1" || b.Id =="2" || b.Id == "3" || b. Id == "4").ToListAsync();
+            return books;
         }
         public async Task DeleteBook(string bookId)
         {
