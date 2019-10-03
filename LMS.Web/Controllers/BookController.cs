@@ -20,18 +20,15 @@ namespace LMS.Web.Controllers
 {
     public class BookController : Controller
     {
-        private readonly LMSContext _context; // DA RAZKARAM CONTEXTA ot tuk !
         private readonly IBookService _bookService;
         private readonly IMapVmToDTO _mapper;
         private readonly IToastNotification _toast;
 
         //Scaffolded ! ! ! ! warning
-        public BookController(LMSContext context,
-                              IBookService book,
+        public BookController(IBookService book,
                               IMapVmToDTO mapper,
                               IToastNotification toast)
         {
-            _context = context;
             _bookService = book;
             _mapper = mapper;
             _toast = toast;
@@ -241,17 +238,14 @@ namespace LMS.Web.Controllers
             {
                 return NotFound();
             }
-
-            var book = await _context.Books
-                .Include(b => b.Author)
-                .Include(b => b.BookRating)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var book = await _bookService.FindByIdAsync(id);
+            var bookVm = book.MapToBookViewModel();
             if (book == null)
             {
                 return NotFound();
             }
 
-            return View(book);
+            return View(bookVm);
         }
 
         // POST: Book/Delete/5
@@ -259,17 +253,9 @@ namespace LMS.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var book = await _context.Books.FindAsync(id);
-            _context.Books.Remove(book);
-            await _context.SaveChangesAsync();
+            await _bookService.DeleteBook(id);
+            
             return RedirectToAction(nameof(Index));
         }
-
-        private bool BookExists(string id)
-        {
-            return _context.Books.Any(e => e.Id == id);
-        }
-
-
     }
 }

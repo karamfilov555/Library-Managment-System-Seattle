@@ -150,11 +150,15 @@ else
                             }
                             else
                             {
-                                <a asp-action="LockBook" asp-route-id="@item.Id">Lock</a>  
+                                <a asp-action="LockBook" asp-route-id="@item.Id">Lock</a>
                             }
                             |
                             <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            @if (item.Copies > 0)
+                            {
+
+                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            }
                         </td>
                     }
                     @if (User.IsInRole("Member"))

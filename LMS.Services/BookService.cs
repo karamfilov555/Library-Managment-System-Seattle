@@ -156,7 +156,7 @@ namespace LMS.Services
             var book = await FindByIdAsync(Id);
             return await _context.Books.Where(b => b.Title == book.Title && b.Author == book.Author && b.Language == book.Language).ToListAsync();
         }
-        
+
         public async Task<ICollection<Book>> GetUnavailableBooksWithoutRepetitions()
         {
             var allUnavailableBooks = await GetAllUnavailableBooksAsync();
@@ -179,6 +179,14 @@ namespace LMS.Services
               .Include(b => b.SubjectCategory)
               .FirstAsync(b => b.Title == "Under The Yuke");
             return book;
+        }
+        public async Task DeleteBook(string bookId)
+        {
+            var book = await _context.Books.FindAsync(bookId);
+            _context.Books.Remove(book);
+            var sameBooksLikeDeleted = _context.Books.Where(b=>b.Title == book.Title && b.Language == book.Language && b.Year == book.Year && b.Copies > 0);
+            await sameBooksLikeDeleted.ForEachAsync(b => b.Copies--);
+            await _context.SaveChangesAsync();
         }
         //public async Task UpdateBook(BookDTO bookDto)
         //{

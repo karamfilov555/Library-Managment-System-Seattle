@@ -18,5 +18,6 @@ namespace LMS.Services.Contracts
         Task<Book> GetBooksForHomePage();
         Task LockBook(string Id);
         Task UnlockBook(string Id);
+        Task DeleteBook(string bookId);
     }
 }
