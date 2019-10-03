@@ -20,6 +20,8 @@ using LMS.Services.Contracts;
 using LMS.Web.Mappers.Contracts;
 using LMS.Web.Mappers;
 using LMS.Services.Utils;
+using LMS.Data.JsonManager;
+using LMS.Data.DatabaseSeeder;
 
 namespace LMS.Web
 {
@@ -78,6 +80,7 @@ namespace LMS.Web
             services.AddScoped<INotificationManager, NotificationManager>();
             services.AddScoped<IReviewService, ReviewService>();
             services.AddScoped<IReservationService, ReservationService>();
+            services.AddScoped<IJsonManager, JsonManager>();
             services.AddScoped<IMapVmToDTO, MapVmToDTO>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -89,7 +92,7 @@ namespace LMS.Web
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.SeedDatabaseRole();
-
+            app.SeedDatabaseBooks();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
