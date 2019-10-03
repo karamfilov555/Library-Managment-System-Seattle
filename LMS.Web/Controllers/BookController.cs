@@ -160,6 +160,18 @@ namespace LMS.Web.Controllers
             }
             await _bookService.LockBook(Id);
 
+            _toast.AddSuccessToastMessage("You successfully lock a book!");
+            return RedirectToAction(nameof(Index));
+        }
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> UnlockBook(string Id)
+        {
+            if (Id == null)
+            {
+                return NotFound();
+            }
+            await _bookService.UnlockBook(Id);
+            _toast.AddSuccessToastMessage("You successfully unlock a book!");
             return RedirectToAction(nameof(Index));
         }
         // GET: Book/Edit/5
@@ -202,7 +214,7 @@ namespace LMS.Web.Controllers
         //            var bookDto = await _mapper.MapEditVmToBookDTO(editVm);
 
         //            await _bookService.UpdateBook(bookDto);
-                   
+
         //        }
         //        catch (DbUpdateConcurrencyException)
         //        {

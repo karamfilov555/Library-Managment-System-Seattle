@@ -79,6 +79,17 @@ namespace LMS.Services
 
             await _context.SaveChangesAsync();
         }
+        public async Task UnlockBook(string Id)
+        {
+            var sameBooks = await GetAllSameBooks(Id);
+
+            foreach (var item in sameBooks)
+            {
+                item.IsLocked = false;
+            }
+
+            await _context.SaveChangesAsync();
+        }
         public async Task<Book> FindFreeBookByIdAsync(string id)
         {
             var book = await _context.Books

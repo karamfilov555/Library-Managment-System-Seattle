@@ -17,5 +17,6 @@ namespace LMS.Services.Contracts
         Task<ICollection<Book>> GetUnavailableBooksWithoutRepetitions();
         Task<Book> GetBooksForHomePage();
         Task LockBook(string Id);
+        Task UnlockBook(string Id);
     }
 }
