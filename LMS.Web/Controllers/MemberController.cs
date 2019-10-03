@@ -70,12 +70,14 @@ namespace LMS.Web.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
 
-            //var sameBooks = await _bookService.GetAllSameBooks(reviewViewModel.Id);
+            var sameBooks = await _bookService.GetAllSameBooks(vm.Id);
 
-            if (!_reviewService.CheckIfUserCanReview(user.Id, vm.Title))
+
+
+            if (!_reviewService.CheckIfUserCanReview(user.Id, vm.Id))
             {
                 //var sameBooksVm = sameBooks.Select(b => b.MapToReviewViewModel(user.Id)).ToList();
-                var review = await _reviewService.CreateReviewAsync(user.Id, vm.Grade, vm.Description, vm.Title);
+                await _reviewService.CreateReviewAsync(user.Id, (decimal)vm.Grade, vm.Description,vm.Id);
                 return RedirectToAction("Index", "Book");
             }
 

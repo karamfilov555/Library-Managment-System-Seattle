@@ -58,9 +58,11 @@ namespace LMS.Web
                options.Lockout = lockoutOptions;
            });
 
-            services.AddDbContext<LMSContext>(options =>
+            services.AddDbContext<LMSContext>(options => {
+                options.EnableSensitiveDataLogging();
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("DefaultConnection"));
+            }) ;
             services.AddDefaultIdentity<User>()
                 .AddRoles<Role>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
