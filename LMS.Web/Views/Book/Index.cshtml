@@ -144,45 +144,64 @@ else
                     @if (User.IsInRole("Admin") || User.IsInRole("Librarian"))
                     {
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="LockBook" asp-route-id="@item.Id">Lock</a> |
                             <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                             <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                         </td>
                     }
                     @if (User.IsInRole("Member"))
                     {
-                        <td>
+                <td>
 
-                            @* TUK TRQBVA DA SA BUTONITE ZA CHECKOUT I REZERVACII !!!!*@
-                            @*<p class="col-md-4">*@
-                            @if (item.Copies > 0)
-                            {
-
-                                <form method="post">
-                                    <p>
-                                        <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="CheckoutBook" asp-route-id="@item.Id">Check - Out!!!</button>
-                                    </p>
-                                </form>
-                            }
-
-                            @if (item.Copies == 0)
-                            {
-                                <form method="post">
-                                    <p>
-                                        <button type="submit" class="btn border-0" asp-controller="Member" asp-action="ReserveBook" asp-route-id="@item.Id">Reserve Now</button>
-                                    </p>
-                                </form>
-                            }
-                            <form method="get">
+                    @* TUK TRQBVA DA SA BUTONITE ZA CHECKOUT I REZERVACII !!!!*@
+                    @*<p class="col-md-4">*@
+                    @if (item.Copies > 0)
+                    {
+                        if (item.IsLocked == false)
+                        {
+                            <form method="post">
                                 <p>
-                                    <button type="submit" class="btn border-0" asp-controller="Member" asp-action="ReviewBook" asp-route-id="@item.Id">Review Now</button>
+                                    <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="CheckoutBook" asp-route-id="@item.Id">Check - Out!!!</button>
                                 </p>
                             </form>
+                        }
+                        else
+                        {
+                            <p><font color="red">Book is currently locked!</font></p>
+                        }
+                    }
 
-                            @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-                        </td>
+                    @if (item.Copies == 0)
+                    {
+                        if (item.IsLocked == false)
+                        {
+
+                            <form method="post">
+                                <p>
+                                    <button type="submit" class="btn border-0" asp-controller="Member" asp-action="ReserveBook" asp-route-id="@item.Id">Reserve Now</button>
+                                </p>
+                            </form>
+                        }
+                        else
+                        {
+                            <p><font color="red">Book is currently locked!</font></p>
+                        }
+                    }
+                    @if (item.IsLocked == false)
+                    {
+
+                        <form method="get">
+                            <p>
+                                <button type="submit" class="btn border-0" asp-controller="Member" asp-action="ReviewBook" asp-route-id="@item.Id">Review Now</button>
+                            </p>
+                        </form>
+
+                    }
+
+                    @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
                     }
 
                 </tr>

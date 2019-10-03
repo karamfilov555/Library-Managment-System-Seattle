@@ -25,7 +25,7 @@ namespace LMS.Services
                            ISubjectCategoryService subject)
         {
             _context = context;
-            _authorService = authorService; 
+            _authorService = authorService;
             _subjectService = subject;
         }
 
@@ -67,6 +67,17 @@ namespace LMS.Services
                .Include(b => b.SubjectCategory)
                .FirstOrDefaultAsync(m => m.Id == id);
             return book;
+        }
+        public async Task LockBook(string Id)
+        {
+            var sameBooks = await GetAllSameBooks(Id);
+
+            foreach (var item in sameBooks)
+            {
+                item.IsLocked = true;
+            }
+
+            await _context.SaveChangesAsync();
         }
         public async Task<Book> FindFreeBookByIdAsync(string id)
         {
@@ -134,6 +145,7 @@ namespace LMS.Services
             var book = await FindByIdAsync(Id);
             return await _context.Books.Where(b => b.Title == book.Title && b.Author == book.Author && b.Language == book.Language).ToListAsync();
         }
+        
         public async Task<ICollection<Book>> GetUnavailableBooksWithoutRepetitions()
         {
             var allUnavailableBooks = await GetAllUnavailableBooksAsync();
@@ -145,5 +157,35 @@ namespace LMS.Services
             }
             return uniqueBooksUnavailable;
         }
+        //da vrushta kolekciq ot vsi4ki knigi na HPage!!!
+        public async Task<Book> GetBooksForHomePage()
+        {
+            // list .... posle
+            var book = await _context.Books
+               .Include(b => b.Author)
+              .Include(b => b.BookRating)
+              .ThenInclude(br => br.Reviews)
+              .Include(b => b.SubjectCategory)
+              .FirstAsync(b => b.Title == "Under The Yuke");
+            return book;
+        }
+        //public async Task UpdateBook(BookDTO bookDto)
+        //{
+        //    try
+        //    {
+        //        var books = await GetSameBooks(bookDto.Id);
+        //        foreach (var item in books)
+        //        {
+        //            _context.Update(item);
+        //        }
+        //        await _context.SaveChangesAsync();
+
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+
+        //        throw;
+        //    }
+        //}
     }
 }

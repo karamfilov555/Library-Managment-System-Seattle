@@ -6,11 +6,9 @@
     ViewData["Image"] = @Html.DisplayFor(model => model.CoverImageUrl);
 }
 
-
-
 <div>
     
-<img src="http://static.dudeiwantthat.com/img/entertainment/books/the-subtle-art-of-not-giving-a-25127.jpg" alt="~images/library.jpg" height="420" width="420">
+<img src=@Model.CoverImageUrl alt="~images/library.jpg" height="420" width="420">
     <hr />
     <dl class="row">
         <dt class="col-sm-2">

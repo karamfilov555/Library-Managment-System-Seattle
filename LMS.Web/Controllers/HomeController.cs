@@ -5,14 +5,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LMS.Web.Models;
+using LMS.Services.Contracts;
+using LMS.Web.Mappers;
 
 namespace LMS.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IBookService _bookService;
+
+        public HomeController(IBookService bookService)
         {
-            return View();
+            _bookService = bookService;
+        }
+        public async Task<IActionResult> Index()
+        {
+            //za sega edna , da dobavq i drugite korici ( suobrazeni sus seedvaneto na bazata)
+            var booksForhomePage = await _bookService.GetBooksForHomePage();
+            var bookVm = booksForhomePage.MapToBookViewModel();
+            return View(bookVm);
         }
 
         public IActionResult Privacy()

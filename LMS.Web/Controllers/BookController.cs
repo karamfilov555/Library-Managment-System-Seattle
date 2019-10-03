@@ -27,7 +27,7 @@ namespace LMS.Web.Controllers
 
         //Scaffolded ! ! ! ! warning
         public BookController(LMSContext context,
-                              IBookService book, 
+                              IBookService book,
                               IMapVmToDTO mapper,
                               IToastNotification toast)
         {
@@ -145,67 +145,82 @@ namespace LMS.Web.Controllers
             if (ModelState.IsValid)
             {
                 var bookDto = await _mapper.MapBookVmToDTO(bookViewModel);
-                 await _bookService.ProvideBookAsync(bookDto);
+                await _bookService.ProvideBookAsync(bookDto);
 
                 return RedirectToAction(nameof(Index));
             }
             return View();
         }
-
-        // GET: Book/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        [Authorize(Roles="Admin")]
+        public async Task<IActionResult> LockBook(string Id)
         {
-            if (id == null)
+            if (Id == null)
             {
                 return NotFound();
             }
+            await _bookService.LockBook(Id);
 
-            var book = await _context.Books.FindAsync(id);
-            if (book == null)
-            {
-                return NotFound();
-            }
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id", book.AuthorId);
-            ViewData["BookRatingId"] = new SelectList(_context.Set<BookRating>(), "Id", "Id", book.BookRatingId);
-            return View(book);
+            return RedirectToAction(nameof(Index));
         }
+        // GET: Book/Edit/5
+        //public async Task<IActionResult> Edit(string id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var book = await _bookService.FindByIdAsync(id);
+
+        //    if (book == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var editVm = book.MapToEditViewModel();
+
+        //    //ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id", book.AuthorId);
+        //    //ViewData["BookRatingId"] = new SelectList(_context.Set<BookRating>(), "Id", "Id", book.BookRatingId);
+        //    return View(editVm);
+        //}
 
         // POST: Book/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Title,AuthorId,Pages,Year,Country,Language,Copies,IsReserved,IsCheckedOut,BookRatingId,CoverImageUrl")] Book book)
-        {
-            if (id != book.Id)
-            {
-                return NotFound();
-            }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Edit(EditViewModel editVm)
+        //{
+        //    if (editVm.Id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(book);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!BookExists(book.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id", book.AuthorId);
-            ViewData["BookRatingId"] = new SelectList(_context.Set<BookRating>(), "Id", "Id", book.BookRatingId);
-            return View(book);
-        }
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            var bookDto = await _mapper.MapEditVmToBookDTO(editVm);
+
+        //            await _bookService.UpdateBook(bookDto);
+                   
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!BookExists(editVm.Id))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    //ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id", book.AuthorId);
+        //    //ViewData["BookRatingId"] = new SelectList(_context.Set<BookRating>(), "Id", "Id", book.BookRatingId);
+        //    return RedirectToAction(nameof(Index));
+        //}
 
         // GET: Book/Delete/5
         public async Task<IActionResult> Delete(string id)

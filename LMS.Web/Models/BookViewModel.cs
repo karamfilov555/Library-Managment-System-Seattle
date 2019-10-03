@@ -33,7 +33,7 @@ namespace LMS.Web.Models
         [Display(Name = "How many copies do you want to add in the Library?")]
         [Required, Range(1, 100, ErrorMessage = "Copies must be value between 1 and 100")]
         public int Copies { get; set; }
-        public bool IsReserved { get; set; }
+        public bool IsLocked { get; set; }
         public bool IsCheckedOut { get; set; }
         public bool IsAvailable { get; set; } = true;
         public string SubjectCategoryId { get; set; }

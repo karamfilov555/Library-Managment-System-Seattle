@@ -8,5 +8,6 @@ namespace LMS.Web.Mappers.Contracts
     {
         Task<BookDTO> MapBookVmToDTO(BookViewModel bookVm);
         Task<BanDto> MapBanVmToDto(BanViewModel banVm);
+        Task<BookDTO> MapEditVmToBookDTO(EditViewModel editVm);
     }
 }

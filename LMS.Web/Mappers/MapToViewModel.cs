@@ -28,6 +28,21 @@ namespace LMS.Web.Mappers
             viewModel.Copies = book.Copies;
             viewModel.SubjectCategoryName = book.SubjectCategory.Name;
             viewModel.CoverImageUrl = book.CoverImageUrl;
+            viewModel.IsLocked = book.IsLocked;
+
+            return viewModel;
+        }
+        public static EditViewModel MapToEditViewModel(this Book book)
+        {
+            var viewModel = new EditViewModel();
+            viewModel.Id = book.Id;
+            viewModel.Title = book.Title;
+            viewModel.AuthorName = book.Author.Name;
+            viewModel.Country = book.Country;
+            viewModel.Pages = book.Pages;
+            viewModel.Year = book.Year;
+            viewModel.Language = book.Language;
+            viewModel.CoverImageUrl = book.CoverImageUrl;
 
             return viewModel;
         }
@@ -67,6 +82,7 @@ namespace LMS.Web.Mappers
             viewModel.Copies = book.Copies;
             viewModel.SubjectCategoryName = book.SubjectCategory.Name;
             viewModel.CoverImageUrl = book.CoverImageUrl;
+            viewModel.IsLocked = book.IsLocked;
             viewModel.Rating = book.BookRating?.Reviews?.Where(r => r.Id == book.BookRating.Id)?.Sum(r => r.Grade) /
                 book.BookRating?.Reviews?.Where(r => r.Id == book.BookRating.Id)?.Count() ?? 0;
             //viewModel.Rating = book.BookRating?.Reviews?.Average(r => r.Grade) ?? 0;

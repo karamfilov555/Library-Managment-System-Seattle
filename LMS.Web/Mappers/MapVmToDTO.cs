@@ -24,6 +24,19 @@ namespace LMS.Web.Mappers
                 CoverImageUrl = bookVm.CoverImageUrl,
                 Rating = bookVm.BookRating?.Reviews?.Where(r => r.BookRatingId == bookVm.BookRating.Id)?.Average(r => r.Grade)
             };
+        public async Task<BookDTO> MapEditVmToBookDTO(EditViewModel editVm)
+           => new BookDTO
+           {
+               Title = editVm.Title,
+               AuthorName = editVm.AuthorName,
+               Year = editVm.Year,
+               Pages = editVm.Pages,
+               
+               Language = editVm.Language,
+               Country = editVm.Country,
+               CoverImageUrl = editVm.CoverImageUrl,
+               
+           };
         public async Task<BanDto> MapBanVmToDto(BanViewModel banVm)
             => new BanDto
             {

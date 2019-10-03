@@ -29,7 +29,7 @@ namespace LMS.Models
         public string Language { get; set; }
         [Required]
         public int Copies { get; set; }
-        public bool IsReserved { get; set; }
+        public bool IsLocked { get; set; }
         public bool IsCheckedOut { get; set; }
         public string SubjectCategoryId { get; set; }
         public SubjectCategory SubjectCategory { get; set; }
