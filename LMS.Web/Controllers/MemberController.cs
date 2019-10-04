@@ -234,7 +234,7 @@ namespace LMS.Web.Controllers
             await _notificationService.CreateNotificationAsync(notificationDescription, username);
 
             _toast.AddSuccessToastMessage($"{username}, you successfully reserve a book \"{title}\"!");
-            return RedirectToAction(nameof(MyBooks));
+            return RedirectToAction(nameof(MyReservations));
         }
 
     }

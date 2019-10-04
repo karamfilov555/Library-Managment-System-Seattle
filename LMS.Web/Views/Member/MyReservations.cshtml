@@ -16,7 +16,8 @@
 
 @if (Model.Count() == 0)
 {
-    <h1>You have no reservations yet!</h1>
+    <div style="padding-bottom:100px">
+    <h3 style="padding-left:400px">You have no reserved <a asp-controller="Book" asp-action="Index">books</a> yet...</h3></div>
 }
 else
 {
@@ -92,9 +93,7 @@ else
                             </dd>
                         </dl>
                     </td>
-                    <td>
-                       
-                    </td>
+                    <td></td>
 
                     <td></td>
                 </tr>

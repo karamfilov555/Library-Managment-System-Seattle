@@ -61,10 +61,6 @@ namespace LMS.Web.Controllers
 
             var allBooksListVm = allBooks.Select(v => v.MapToListItemBookViewModel());
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                allBooksListVm = allBooksListVm.Where(bookVm => bookVm.Title.ToLower().Contains(searchString.ToLower()) || bookVm.AuthorName.ToLower().Contains(searchString.ToLower())).ToList();
-            }
 
             switch (sortOrder)
             {
@@ -116,8 +112,15 @@ namespace LMS.Web.Controllers
             var unavailableBooks = await _bookService.GetUnavailableBooksWithoutRepetitions();
             var unavailableBooksVm = unavailableBooks.Select(b => b.MapToListItemBookViewModel());
             listVm.AddRange(unavailableBooksVm);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                listVm = listVm.Where(bookVm => bookVm.Title.ToLower().Contains(searchString.ToLower()) || bookVm.AuthorName.ToLower().Contains(searchString.ToLower())).ToList();
+            }
+
             var booksQuery = listVm.AsQueryable();
-            int pageSize = 3;
+
+            int pageSize = 5;
 
             return View(PaginatedList<BookListViewModel>.CreateAsync(booksQuery.AsNoTracking(), pageNumber ?? 1, pageSize));
         }

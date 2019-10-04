@@ -38,10 +38,13 @@ namespace LMS.Web.Controllers
             _toast.AddSuccessToastMessage("You succesfully pay your membership!");
             return RedirectToAction("LogOff", "Auth");
         }
-        public IActionResult PaymentSuccess()
+        public async Task<IActionResult> PaymentSuccess()
         {
             return View();
         }
-
+        public async Task<IActionResult> CancelMembership(string Id)
+        {
+            return View();
+        }
     }
 }

@@ -118,6 +118,18 @@
     "Copies": 1,
     "SubjectCategoryId": 18,
     "CoverImageUrl": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1522157426l/19063._SY475_.jpg"
+  },
+  {
+    "Id": "11",
+    "Title": "The Subtle Art of not giving a fuck",
+    "AuthorId": 12,
+    "Pages": 306,
+    "Year": 2017,
+    "Country": "United States",
+    "Language": "English",
+    "Copies": 1,
+    "SubjectCategoryId": 19,
+    "CoverImageUrl": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1465761302l/28257707.jpg"
   }
   //{
   //  "Id": 5,
