@@ -177,7 +177,8 @@ namespace LMS.Services
               .Include(b => b.BookRating)
               .ThenInclude(br => br.Reviews)
               .Include(b => b.SubjectCategory)
-              .Where(b => b.Id == "1" || b.Id == "2" || b.Id == "3" || b.Id == "4").ToListAsync();
+              .Where(b => b.Id == "2" || b.Id == "5" || b.Id == "3" || b.Id == "4" || b.Id == "6" ||
+              b.Id == "9" || b.Id == "7" || b.Id == "10").ToListAsync();
             return books;
         }
         public async Task DeleteBook(string bookId)

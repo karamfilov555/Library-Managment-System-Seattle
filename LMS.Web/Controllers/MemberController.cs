@@ -54,7 +54,7 @@ namespace LMS.Web.Controllers
         {
             var book = await _bookService.GetAllSameBooks(Id);
             var user = await _userManager.GetUserAsync(User);
-            var canUserReview = _reviewService.CheckIfUserCanReview(user.Id, Id);
+            var canUserReview = await _reviewService.CheckIfUserCanReview(user.Id, Id);
             //var vm = new ReviewViewModel
             //{
             //    Id = Id
@@ -62,7 +62,7 @@ namespace LMS.Web.Controllers
             var vm = MapToViewModel.MapToReviewViewModel(book.First(), user.Id);
             vm.Id = Id;
             vm.UserId = user.Id;
-            vm.CanReview = !canUserReview;
+            vm.CanReview = canUserReview;
             return View("ReviewBook",vm);
         }
         [HttpPost]
@@ -72,7 +72,7 @@ namespace LMS.Web.Controllers
 
             var sameBooks = await _bookService.GetAllSameBooks(vm.Id);
 
-            if (!_reviewService.CheckIfUserCanReview(user.Id, vm.Id))
+            if (await _reviewService.CheckIfUserCanReview(user.Id, vm.Id))
             {
                 //var sameBooksVm = sameBooks.Select(b => b.MapToReviewViewModel(user.Id)).ToList();
                 await _reviewService.CreateReviewAsync(user.Id, (decimal)vm.Grade, vm.Description,vm.Id);
@@ -92,6 +92,7 @@ namespace LMS.Web.Controllers
                 return NotFound();
             ClaimsPrincipal currUser = this.User;
             var userId = currUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+            //var user = await  _userManager.GetUserAsync(User);
 
             var book = await _bookService.FindFreeBookByIdAsync(Id);
             if (book == null)

@@ -20,15 +20,23 @@ namespace LMS.Services
             this.bookService = bookService;
         }
 
-        public bool CheckIfUserCanReview(string userId, string bookId)
+        public async Task<bool> CheckIfUserCanReview(string userId, string bookId)
         {
-            //var res = _context.Books.Where(r => r.Title == title);
-            //foreach (var item in res)
-            //{
-            //    item.BookRating =
-            //}
-            var result = _context.Review.Any(r => r.UserId == userId && r.BookRating.BookId == bookId);
-            return result;
+            //var sameBooks = await bookService.GetAllSameBooks(bookId);
+            var bookTitle = await bookService.GetBookTitleAsync(bookId);
+            
+            var reviewsOfThisUser = _context.Review.Where(r => r.UserId == userId);
+            foreach (var item in reviewsOfThisUser)
+            {
+                var bookRating = await _context.BookRating.FindAsync(item.BookRatingId);
+                var bookTitlesRated =  _context.Books.Where(b => b.Id == bookRating.BookId);
+                if (bookTitlesRated.Any(b=>b.Title == bookTitle))
+                {
+                    return false;
+                }
+            }
+            
+            return true;
         }
         public async Task CreateReviewAsync(string userId, decimal grade, string description, string bookId)
         {

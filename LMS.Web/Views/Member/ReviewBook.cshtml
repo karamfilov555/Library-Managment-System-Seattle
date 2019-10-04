@@ -7,6 +7,7 @@
 
 @if (Model.CanReview)
 {
+   
     <form asp-controller="Member" asp-action="ReviewBook" method="post">
         <section class="recomended-sec">
             <div class="container">
@@ -35,8 +36,6 @@
                 </tr>
             </thead>
             <tbody>
-                @*@foreach (var item in Model)
-                    {*@
                 <tr>
                     <td height="180" width="180">
                         <img src="@Model.CoverImageUrl" onerror="srcset='images/no-image-available-icon.jpg'" height="250" width="250">
@@ -91,9 +90,8 @@
                             </dt>
                             <dd class="col-sm-10 text-danger">
                                 <div class="form-group">
-                                    <label asp-for="@Model.Grade" class="text-primary"> </label>
                                     <b>
-                                        <select asp-for="@Model.Grade">
+                                        <select asp-for="@Model.Grade" class=" alert-success form-check">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -109,7 +107,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <textarea asp-for="Description" rows="5" cols="50" placeholder="Write your review here..."> </textarea>
+                                        <textarea asp-for="Description" class="alert-success" rows="5" cols="50" placeholder="Write your review here..."> </textarea>
                                     </div>
 
                                 </div>
@@ -130,5 +128,6 @@
 }
 else
 {
-    <div>You have already reviewed this book!</div>
+    <div>You have already reviewed this book! МОже да четеш коментари ... на др юзери тук</div>
+   
 }
