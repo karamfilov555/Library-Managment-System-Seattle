@@ -1,4 +1,5 @@
 ﻿@model BookViewModel
+@inject SignInManager<User> SignInManager
 
 @{
     ViewData["Title"] = "Details";
@@ -7,8 +8,8 @@
 }
 
 <div>
-    
-<img src=@Model.CoverImageUrl alt="~images/library.jpg" height="420" width="420">
+
+    <img src=@Model.CoverImageUrl alt="~images/library.jpg" height="420" width="420">
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -53,24 +54,73 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Language)
         </dd>
-
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Rating)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IsAvailable)
+                @if (Model.Rating == null)
+                {
+                    <i>Not rated yet!</i>
+                }
+                else
+                {
+                    if (Model.Rating * 10 % 10 == 0)
+                    {
+                        for (int i = 0; i < Model.Rating - 1; i++)
+                        {
+                            <font color="gold">
+                                <i class="fa fa-star"></i>
+                            </font>
+                        }
+                        <font color="gold">
+                            <i class="fa fa-star"> @Html.DisplayFor(modelItem => Model.Rating)</i>
+                        </font>
+                    }
+                    else
+                    {
+
+                        for (int i = 0; i < Model.Rating - 1; i++)
+                        {
+                            <font color="gold">
+                                <i class="fa fa-star"></i>
+                            </font>
+                        }
+                        <font color="gold">
+                            <i class="fa fa-star-half"> @Html.DisplayFor(modelItem => Model.Rating)</i>
+                        </font>
+                    }
+                }
         </dd>
-
-        @*<dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BookRating.Id)
-        </dd>*@
-
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+@if (SignInManager.IsSignedIn(User))
+{
+    if (Model.IsLocked == false)
+    {
+        if (Model.Copies > 0)
+        {
+            <form method="post">
+                <p>
+                    <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="CheckoutBook" asp-route-id="@Model.Id">Check - Out!!!</button>
+                </p>
+            </form>
+        }
+        else
+        {
+            <form method="post">
+                <p>
+                    <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="ReserveBook" asp-route-id="@Model.Id">Reserve Book</button>
+                </p>
+            </form>
+        }
+    }
+}
+else
+{
+    <p>
+    <div><h6>To check-out or reserve this book, please <a class="" asp-area="Identity" asp-page="/Account/Login">Login</a> or <a class="" asp-area="Identity" asp-page="/Account/Register">Register</a>  </h6></div>
+        </p>
+}
+<form method="post">
+    <button type="submit" class="btn bg-dark border-0" asp-controller="Home" asp-action="Index">&larr; Back</button>
+</form>

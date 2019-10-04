@@ -59,7 +59,7 @@ namespace LMS.Web.Controllers
             //{
             //    Id = Id
             //};
-            var vm = Mappers.MapToViewModel.MapToReviewViewModel(book.First(), user.Id);
+            var vm = MapToViewModel.MapToReviewViewModel(book.First(), user.Id);
             vm.Id = Id;
             vm.UserId = user.Id;
             vm.CanReview = !canUserReview;
@@ -71,8 +71,6 @@ namespace LMS.Web.Controllers
             var user = await _userManager.GetUserAsync(User);
 
             var sameBooks = await _bookService.GetAllSameBooks(vm.Id);
-
-
 
             if (!_reviewService.CheckIfUserCanReview(user.Id, vm.Id))
             {
@@ -95,17 +93,13 @@ namespace LMS.Web.Controllers
             ClaimsPrincipal currUser = this.User;
             var userId = currUser.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            //todo is book free
             var book = await _bookService.FindFreeBookByIdAsync(Id);
             if (book == null)
                 return NotFound();
             if (book.Copies <= 0)
             {
-                //!!!!! CHECK IF BOOK IS RESERVED !
-                //To do .. da preprashta v reservaciqta za tazi kniga
                 return NotFound();
             }
-            //listbookVm copies --;
             var hr = await _historyService.CheckoutBookAsync(Id, userId);
 
             var checkoutBookVm = new CheckoutBookViewModel

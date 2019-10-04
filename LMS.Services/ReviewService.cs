@@ -42,7 +42,7 @@ namespace LMS.Services
                 {
                     item.BookRating.Rating = grade;
                     _context.Update(item);
-                    _context.SaveChanges();
+                   await _context.SaveChangesAsync();
                 }
                 else
                 {
@@ -52,10 +52,10 @@ namespace LMS.Services
                         Rating = grade
                     };
                     _context.BookRating.Add(bookRating);
-                    _context.SaveChanges();
+                    await _context.SaveChangesAsync();
                     item.BookRatingId = bookRating.Id;
                     _context.Update(item);
-                    _context.SaveChanges();
+                    await _context.SaveChangesAsync();
                 }
 
                 var review = new Review

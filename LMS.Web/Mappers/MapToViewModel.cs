@@ -29,7 +29,8 @@ namespace LMS.Web.Mappers
             viewModel.SubjectCategoryName = book.SubjectCategory.Name;
             viewModel.CoverImageUrl = book.CoverImageUrl;
             viewModel.IsLocked = book.IsLocked;
-
+            var a = book.BookRating?.Reviews?.Where(x => x.BookRatingId == book.BookRatingId)?.Select(x => x.Grade)?.Average();
+            viewModel.Rating = a;
             return viewModel;
         }
         public static EditViewModel MapToEditViewModel(this Book book)
