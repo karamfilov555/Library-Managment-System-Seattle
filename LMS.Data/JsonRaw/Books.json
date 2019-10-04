@@ -46,6 +46,78 @@
     "Copies": 1,
     "SubjectCategoryId": 2,
     "CoverImageUrl": "https://www.gutenberg.org/files/2600/2600-h/images/cover.jpg"
+  },
+  {
+    "Id": "5",
+    "Title": "The Hunger Games",
+    "AuthorId": 7,
+    "Pages": 1225,
+    "Year": 2008,
+    "Country": "United States",
+    "Language": "English",
+    "Copies": 1,
+    "SubjectCategoryId": 1,
+    "CoverImageUrl": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1447303603l/2767052.jpg"
+  },
+  {
+    "Id": "6",
+    "Title": "Harry Potter and the Order of the Phoenix",
+    "AuthorId": 5,
+    "Pages": 870,
+    "Year": 2004,
+    "Country": "UK",
+    "Language": "English",
+    "Copies": 1,
+    "SubjectCategoryId": 18,
+    "CoverImageUrl": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546910265l/2.jpg"
+  },
+  {
+    "Id": "7",
+    "Title": "To Kill a Mockingbird",
+    "AuthorId": 8,
+    "Pages": 324,
+    "Year": 1960,
+    "Country": "United States",
+    "Language": "English",
+    "Copies": 1,
+    "SubjectCategoryId": 18,
+    "CoverImageUrl": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1553383690l/2657.jpg"
+  },
+  {
+    "Id": "8",
+    "Title": "Pride and Prejudice",
+    "AuthorId": 9,
+    "Pages": 324,
+    "Year": 2000,
+    "Country": "United States",
+    "Language": "English",
+    "Copies": 1,
+    "SubjectCategoryId": 18,
+    "CoverImageUrl": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1320399351l/1885.jpg"
+  },
+  {
+    "Id": "9",
+    "Title": "Twilight",
+    "AuthorId": 10,
+    "Pages": 5001,
+    "Year": 2005,
+    "Country": "United States",
+    "Language": "English",
+    "Copies": 1,
+    "SubjectCategoryId": 18,
+    "CoverImageUrl": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1361039443l/41865.jpg"
+  },
+  {
+    "Id": "10",
+    "Title": "The Book Thief",
+    "AuthorId": 11,
+    "Pages": 552,
+    "Year": 2006,
+    "Country": "United States",
+    "Language": "English",
+    "Copies": 1,
+    "SubjectCategoryId": 18,
+    "CoverImageUrl": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1522157426l/19063._SY475_.jpg"
   }
   //{
   //  "Id": 5,

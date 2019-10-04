@@ -22,5 +22,25 @@
   {
     "ID": "6",
     "Name": "Stephen King"
+  },
+  {
+    "ID": "7",
+    "Name": "Suzanne Collins"
+  },
+  {
+    "ID": "8",
+    "Name": "Harper Lee"
+  },
+  {
+    "ID": "9",
+    "Name": "Jane Austen"
+  },
+  {
+    "ID": "10",
+    "Name": "Stephenie Meyer"
+  },
+  {
+    "ID": "11",
+    "Name": "Markus Zusak"
   }
 ]
