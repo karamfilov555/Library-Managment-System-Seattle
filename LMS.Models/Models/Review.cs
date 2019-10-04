@@ -20,5 +20,6 @@ namespace LMS.Models.Models
         public User User { get; set; }
         public string BookRatingId { get; set; }
         public BookRating BookRating { get; set; }
+        public string BookTitle { get; set; }
     }
 }

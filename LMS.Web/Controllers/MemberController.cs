@@ -62,7 +62,9 @@ namespace LMS.Web.Controllers
             var vm = MapToViewModel.MapToReviewViewModel(book.First(), user.Id);
             vm.Id = Id;
             vm.UserId = user.Id;
+                
             vm.CanReview = canUserReview;
+            vm.Comments = await _reviewService.GetAllCommentsForBook(vm.Title);
             return View("ReviewBook",vm);
         }
         [HttpPost]

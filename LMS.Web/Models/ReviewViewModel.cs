@@ -8,22 +8,6 @@ namespace LMS.Web.Models
 {
     public class ReviewViewModel
     {
-        //private int myVar;
-
-        //[Required]
-        //[Range(1,5)]
-        //public int Grade
-        //{
-        //    get
-        //    {
-        //        return myVar;
-        //    }
-        //    set
-        //    {
-        //        myVar = value;
-        //    }
-        //}
-
         public string Description { get; set; }
         public decimal? Grade { get; set; }
         public string Id { get; set; }
@@ -60,6 +44,7 @@ namespace LMS.Web.Models
         public string CoverImageUrl { get; set; }
 
         public bool CanReview { get; set; }
+        public IDictionary<string,string> Comments { get; set; }
 
     }
 }

@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using LMS.Models;
+using LMS.Services.Contracts;
 using LMS.Web.Models;
 
 namespace LMS.Web.Mappers
 {
     public static class MapToViewModel
     {
+
+        static MapToViewModel()
+        {
+        }
         public static UserViewModel MapToUserViewModel(this User user)
         {
             var viewModel = new UserViewModel();

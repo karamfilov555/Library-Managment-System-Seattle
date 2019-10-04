@@ -12,18 +12,20 @@ namespace LMS.Services
     public class ReviewService : IReviewService
     {
         private readonly LMSContext _context;
-        private readonly IBookService bookService;
+        private readonly IBookService _bookService;
+        private readonly IUserService _userService;
 
-        public ReviewService(LMSContext context, IBookService bookService)
+        public ReviewService(LMSContext context, IBookService bookService, IUserService userService)
         {
             _context = context;
-            this.bookService = bookService;
+            _bookService = bookService;
+            _userService = userService;
         }
 
         public async Task<bool> CheckIfUserCanReview(string userId, string bookId)
         {
             //var sameBooks = await bookService.GetAllSameBooks(bookId);
-            var bookTitle = await bookService.GetBookTitleAsync(bookId);
+            var bookTitle = await _bookService.GetBookTitleAsync(bookId);
             
             var reviewsOfThisUser = _context.Review.Where(r => r.UserId == userId);
             foreach (var item in reviewsOfThisUser)
@@ -35,13 +37,12 @@ namespace LMS.Services
                     return false;
                 }
             }
-            
             return true;
         }
         public async Task CreateReviewAsync(string userId, decimal grade, string description, string bookId)
         {
-            var book = bookService.GetBookTitleAsync(bookId);
-            var allBooksWithSameTitle = await bookService.GetAllSameBooks(bookId);
+            var bookTitle = await _bookService.GetBookTitleAsync(bookId);
+            var allBooksWithSameTitle = await _bookService.GetAllSameBooks(bookId);
             //BookRating item.BookRating = _context.BookRating.Where(br => br.BookId == bookId);
             foreach (var item in allBooksWithSameTitle)
             {
@@ -72,10 +73,22 @@ namespace LMS.Services
                     Description = description,
                     Grade = grade,
                     UserId = userId,
+                    BookTitle = bookTitle
                 };
-                await _context.Review.AddAsync(review);
+                 _context.Review.Add(review);
                 await _context.SaveChangesAsync();
             }
+        }
+        public async Task<IDictionary<string,string>> GetAllCommentsForBook(string title)
+        {
+            var reviews = _context.Review.Where(b => b.BookTitle == title);
+            var comments = new Dictionary<string,string>();
+            foreach (var item in reviews)
+            {
+                var username = await _userService.FindUsernameByIdAsync(item.UserId);
+                comments.Add(username, item.Description);
+            }
+            return comments;
         }
     }
 }
