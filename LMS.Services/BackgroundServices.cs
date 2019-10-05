@@ -1,46 +1,4 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Text;
-//using System.Threading;
-//using System.Threading.Tasks;
-
-//namespace LMS.Services
-//{
-//    public class BackgroundServices
-//    {
-//        public BackgroundServices()
-//        {
-
-//        }
-
-//        public async static Task ReturnBooks()
-//        {
-//            const int dayInMilisec = 86400000;
-
-//            //TO DO
-//            var midnight = DateTime.Now - DateTime.Today.AddDays(1);
-//            //var differnce = (midnight - DateTime.Now)
-
-//            var startTime = 0;
-//            var dateForCheck = DateTime.Now;
-
-//            var timer = new Timer(ReturnExpiredBooksInDb, dateForCheck, startTime, dayInMilisec);
-//        }
-
-//        private static void ReturnExpiredBooksInDb(object stateInfo)
-//        {
-//            var expiredBooks = _context.HistoryRegistries
-//                            .Where(b => b.ReturnDate >= (DateTime)stateInfo)
-//                            .Select(x => x.IsReturned == true);
-
-//            _context.SaveChanges();
-//        }
-//    }
-//}
-
-
-
-using LMS.Data;
+﻿using LMS.Data;
 using LMS.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

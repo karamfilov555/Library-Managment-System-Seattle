@@ -49,7 +49,7 @@ else
             <p>
                 <input type="text" class="col-md-8" name="SearchString" value="@ViewData["CurrentFilter"]" placeholder="Enter book title or author..." />
                 <input type="submit" value="Search" class="btn" /> |
-                <a asp-action="Index">Back to Full List</a>
+                <a asp-action="Index">Back to Full List</a> | <a asp-action="Index">Advanced search</a>
             </p>
             @*</div>*@
         </form>
@@ -105,15 +105,6 @@ else
                 <th>
                     Copies avbl.
                 </th>
-                @*<th>
-                        @Html.DisplayNameFor(model => model.IsReserved)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.IsCheckedOut)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.BookRating)
-                    </th>*@
             </tr>
         </thead>
         <tbody>
@@ -194,18 +185,22 @@ else
                         <td>
                             @if (item.IsLocked == true)
                             {
-                                <a asp-action="UnlockBook" asp-route-id="@item.Id">Unlock</a>
+                                <p>
+                                <a class="btn bg-success border-0" asp-action="UnlockBook" asp-route-id="@item.Id">Unlock</a>
+                                    </p>
                             }
                             else
                             {
-                                <a asp-action="LockBook" asp-route-id="@item.Id">Lock</a>
+                                <p>
+                                <a class="btn bg-info border-0" asp-action="LockBook" asp-route-id="@item.Id">Lock</a>
+                                    </p>
                             }
-                            |
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <p>
+                            <a class="btn bg-info border-0" asp-action="Details" asp-route-id="@item.Id">Details</a> </p>
                             @if (item.Copies > 0)
                             {
 
-                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                <a class="btn bg-danger border-0" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                             }
                         </td>
                     }

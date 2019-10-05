@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-md-3"><a href="https://www.spl.org/" class="web-url">www.Seattle-Public-Library.com</a></div>
                     <div class="col-md-6">
-                        <h5>When you care enough to read the very best - read ToNik™</h5>
+                        <h5><font color="white"><i>When you care enough to read the very best - read ToNik™</i></font></h5>
                     </div>
                     <partial name="_LoginHeaderPartial" />
                 </div>
@@ -28,39 +28,40 @@
         <div class="main-menu">
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" asp-page="/Home/Index"><img src="~/images/logo1.png" alt="logo1"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="navbar-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="navbar-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
-                            </li>
-                            <li class="navbar-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
+                    <a href="https://localhost:44355" class="web-url">
+                        <img src="~/images/logo1.png" alt="logo1"></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="navbar-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                </li>
+                                <li class="navbar-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                                </li>
+                                <li class="navbar-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                </li>
 
-                            <partial name="_LoginPartial" />
-                            <partial name="_AdminNavBarPartial" />
-                            <partial name="_FreeAccNavBarPartial" />
-                            <partial name="_MemberNavBarPartial" />
-                        </ul>
-                        @*<div class="cart my-2 my-lg-0">
-                                <span>
-                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                </span>
-                                <span class="quntity">3</span>
-                            </div>*@
+                                <partial name="_LoginPartial" />
+                                <partial name="_AdminNavBarPartial" />
+                                <partial name="_FreeAccNavBarPartial" />
+                                <partial name="_MemberNavBarPartial" />
+                            </ul>
+                            @*<div class="cart my-2 my-lg-0">
+                    <span>
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </span>
+                    <span class="quntity">3</span>
+                </div>*@
 
-                        @*<form class="form-inline my-2 my-lg-0">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search here..." aria-label="Search">
-                                <span class="fa fa-search"></span>
-                            </form>*@
-                    </div>
+                            @*<form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search here..." aria-label="Search">
+                    <span class="fa fa-search"></span>
+                </form>*@
+                        </div>
                 </nav>
             </div>
         </div>
@@ -148,16 +149,24 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h5>(C) 2017. All Rights Reserved. Seattle Public Library</h5>
-                    </div>
+                        <h5>
+                            <a href="https://forum.telerikacademy.com" class="web-url">Telerik Academy</a> Alpha-13 ©
+                            Seattle Public Library 2019. All Rights Reserved.
+                        </h5>
+                </div>
                     <div class="col-md-6">
                         <div class="share align-middle">
-                            <span class="fb"><i class="fa fa-facebook-official"></i></span>
-                            <span class="instagram"><i class="fa fa-instagram"></i></span>
-                            <span class="twitter"><i class="fa fa-twitter"></i></span>
-                            <span class="pinterest"><i class="fa fa-pinterest"></i></span>
-                            <span class="google"><i class="fa fa-google-plus"></i></span>
-                        </div>
+                            <a href="https://facebook.com" class="web-url">
+                                <i class="fa fa-facebook-official"></i></a>
+                            <a href="https://instagram.com" class="web-url">
+                                <i class="fa fa-instagram"></i></a>
+                                <a href="https://twitter.com" class="web-url">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a href="https://pinterest.com" class="web-url">
+                                    <i class="fa fa-pinterest"></i></a>
+                                    <a href="https://google.com" class="web-url"><i class="fa fa-google-plus"></i></a>
+</div>
                     </div>
                 </div>
             </div>
