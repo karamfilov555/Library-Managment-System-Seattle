@@ -101,7 +101,7 @@
                             <li> <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Books</a></li>
                             <li> <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="MyBooks">My Books</a></li>
                             <li> <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="MyReservations">My Reservations</a></li>
-                            <li> <a class="nav-link text-dark" asp-area="" asp-controller="Notification" asp-action="Index">Notifications</a></li>
+                            
                         </ul>
                     </div>
                     <div class="navigation">
@@ -118,22 +118,25 @@
                     <div class="form">
                         <h3>Quick Contact us</h3>
                         <h6>
-                            We are now offering some good discount
-                            on selected books go and shop them
+                            Contact our consultants and they will reply you as soon as possible
                         </h6>
-                        <form>
+                        
+                        <form method="get"> 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input placeholder="Name" required>
+                                    <input type="text" name="Name" placeholder="Name" value="@ViewData["Name"]" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="email" placeholder="Email" required>
+                                    <input type="email" name="Email" placeholder="Email" value="@ViewData["Email"]" required>
                                 </div>
                                 <div class="col-md-12">
-                                    <textarea placeholder="Messege"></textarea>
+                                    <textarea placeholder="Message" name="Message" value="@ViewData["Message"]"></textarea>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="btn black">Alright, Submit</button>
+                                    <button class="btn bg-info border-0" asp-controller="Contact"
+                                            asp-action="SendQuickMessage">
+                                        Alright, Submit
+                                    </button>
                                 </div>
                             </div>
                         </form>

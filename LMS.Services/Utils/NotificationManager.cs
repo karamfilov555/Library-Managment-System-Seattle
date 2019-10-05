@@ -15,13 +15,12 @@ namespace LMS.Services.Utils
         private const string availableBookMsg = "{0}, book \"{1}\" that you reserved is now available!!!";
         private const string bookWasGivenMsg = "{0}, book \"{1}\" that you reserved is already given to you!!!";
         private const string transferBookMsg = "Transfer book notification: User \"{0}\" has returned a book \"{1}\", and user with username: \"{2}\" recive it, because he/she was first on reservation queque!";
-
+        private const string quickMassageFormMsg = "From Quick message form: \"{0}\" --> Email to reply: {1}";
+    
         public string RenewBookDescription(string username, DateTime newDateTime, string title)
         => string.Format(renewBookMsg, username, newDateTime, title);
-
         public string ReturnBookDescription(string username, string title)
         => string.Format(returnBookMsg, username, title);
-
         public string CheckOutBookDescription(string username, string title)
         => string.Format(checkOutBookMsg, username, title);
         public string ReserveBookDescription(string username, string title)
@@ -32,6 +31,7 @@ namespace LMS.Services.Utils
            => string.Format(bookWasGivenMsg, username, title);
         public string TransferBookDescription(string userWhoReturnBook,string userWhoReciveBook, string title)
          => string.Format(transferBookMsg, userWhoReturnBook,title, userWhoReciveBook);
-        
+        public string QuickMessageDescription(string message, string email)
+          => string.Format(quickMassageFormMsg, message, email);
     }
 }

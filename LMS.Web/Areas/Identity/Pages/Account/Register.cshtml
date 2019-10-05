@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 style="padding-left:40px">@ViewData["Title"]</h1>
 
-<div class="row">
-    <div class="col-md-4">
+<div class="row" style="padding-bottom:50px">
+    <div class="col-md-4" style="padding-left:50px">
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <h4>Create a new account.</h4>
             <hr />
