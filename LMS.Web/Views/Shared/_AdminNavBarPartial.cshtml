@@ -24,12 +24,14 @@
             <span>
                 <a class="fa fa-bell " aria-hidden="true" asp-area="" asp-controller="Notification" asp-action="Index">Notifications</a>
             </span>
-            @{ var loggedUser = await UserManager.GetUserAsync(User);
-                var id = loggedUser.Id;}
-            @if (await notificationService.GetNotificationsCountAsync(id) > 0)
-            {
-                <span class="quntity">@await notificationService.GetNotificationsCountAsync(id)</span>
+
+            @{var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (await notificationService.GetNotificationsCountAsync(id) > 0)
+                {
+                    <span class="quntity">@await notificationService.GetNotificationsCountAsync(id)</span>
+                }
             }
+
         </li>
     }
 </ul>
