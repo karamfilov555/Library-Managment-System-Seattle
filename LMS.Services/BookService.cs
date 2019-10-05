@@ -189,23 +189,5 @@ namespace LMS.Services
             await sameBooksLikeDeleted.ForEachAsync(b => b.Copies--);
             await _context.SaveChangesAsync();
         }
-        //public async Task UpdateBook(BookDTO bookDto)
-        //{
-        //    try
-        //    {
-        //        var books = await GetSameBooks(bookDto.Id);
-        //        foreach (var item in books)
-        //        {
-        //            _context.Update(item);
-        //        }
-        //        await _context.SaveChangesAsync();
-
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-
-        //        throw;
-        //    }
-        //}
     }
 }

@@ -70,7 +70,14 @@ namespace LMS.Services
         private async Task<HistoryRegistry> GetHistoryRegistryAsync(string bookId, string userId)
         => await _context.HistoryRegistries
                          .FirstAsync(hr => hr.BookId == bookId && hr.UserId == userId && hr.IsReturned == false);
-
+        public async Task AutoReturnAllBooksOfUser(string userId)
+        {
+            var hrOfUser = await GetUserHistoryOfNotReturnedBooksAsync(userId);
+            foreach (var history in hrOfUser)
+            {
+                await ReturnBookAsync(history.BookId, history.UserId);
+            }
+        }
         public async Task ReturnBookAsync(string bookId, string userId)
         {
             if (bookId == null)

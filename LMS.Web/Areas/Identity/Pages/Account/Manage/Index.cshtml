@@ -38,9 +38,12 @@
             </div>
             <button id="update-profile-button" type="submit" class="btn border-0">Save</button>
         </form>
-        <button type="submit" class="btn bg-danger border-0">Cancel Membership</button>
+           <div style="padding-top:20px">
+       <p>
+    <a class="btn bg-danger border-0" asp-controller="Membership" asp-action="CancelMembership">Cancel Membership</a>
+           </p>
+               <div>
     </div>
-        <button asp-controller="Membership" asp-action="CancelMembership">Cancel</button>
 </div>
 
 @section Scripts {

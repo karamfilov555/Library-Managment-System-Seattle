@@ -11,5 +11,6 @@ namespace LMS.Services.Contracts
         Task<IDictionary<Book, DateTime>> GetCheckOutsOfUserAsync(string userId);
         Task ReturnBookAsync(string bookId, string userId);
         Task<HistoryRegistry> RenewBookAsync(string bookId, string userId);
+        Task AutoReturnAllBooksOfUser(string userId);
     }
 }

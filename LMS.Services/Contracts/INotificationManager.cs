@@ -14,5 +14,6 @@ namespace LMS.Services.Contracts
         string BookWasGivenToUser(string username, string title);
         string TransferBookDescription(string userWhoReturnBook, string userWhoReciveBook, string title);
         string QuickMessageDescription(string message, string name);
+        string CancelMembershipDescription(string username, string userId);
     }
 }

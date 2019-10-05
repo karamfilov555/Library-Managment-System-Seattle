@@ -1,8 +1,39 @@
-﻿
+﻿@model UserViewModel
 @{
     ViewData["Title"] = "CancelMembership";
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 }
 
-<h1>CancelMembership</h1>
-
+<section class="recomended-sec">
+    <div class="container">
+        <div class="title">
+            <h2 class="align-content-center">Cancel Membershp Confirmation</h2>
+            <hr>
+        </div>
+    </div>
+</section>
+<div style="padding-left:50px">
+    <p>
+    <h2>Hey <font color="red">@Model.Username,</font></h2>
+    </p>
+        <div>
+            <p>
+        <h2>Аre you sure you want to <font color="red">delete your account permanently?</font> </h2>
+                </p>
+    </div>
+</div>
+<div style="padding-left:50px">
+    <div >
+        <p>
+        <a class="btn bg-success border-0" asp-controller="Home" asp-action="Index">&larr; Back to Home page</a>
+            </p>
+    </div>
+    <div style="padding-bottom:50px">
+        <p>
+            <a class="btn bg-danger border-0" asp-action="CancelMembershipConfirmation">
+                Yes! Delete my Account
+            </a>
+        </p>
+        
+    </div>
+    </div>

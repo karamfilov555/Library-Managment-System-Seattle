@@ -17,14 +17,11 @@ namespace LMS.Services
     {
         private readonly LMSContext _context;
         private readonly IBanService _banService;
-        private readonly UserManager<User> _userManager;
-        private readonly HttpContext _httpContext;
 
-        public UserService(LMSContext context, IBanService banService, UserManager<User> userManager)
+        public UserService(LMSContext context, IBanService banService)
         {
             _context = context;
             _banService = banService;
-            _userManager = userManager;
         }
         //public async Task<User> GetCurrentUserAsync()
         //{
@@ -79,6 +76,12 @@ namespace LMS.Services
             var adminId = await _context.UserRoles.FirstAsync(roleId => roleId.RoleId == adminRole.Id);
             var admin = await FindUserByIdAsync(adminId.UserId);
             return admin;
+        }
+        public async Task DeleteUserAsync(string id)
+        {
+            var user = await FindUserByIdAsync(id);
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
         }
     }
 }

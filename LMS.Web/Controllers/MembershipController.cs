@@ -3,6 +3,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LMS.Services.Contracts;
 using NToastNotify;
+using Microsoft.AspNetCore.Identity;
+using LMS.Models;
+using LMS.Web.Mappers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LMS.Web.Controllers
 {
@@ -10,18 +14,33 @@ namespace LMS.Web.Controllers
     {
         private readonly IUserService _userService;
         private readonly IMembershipService _membershipService;
+        private readonly IHistoryService _historyService;
         private readonly IToastNotification _toast;
+        private readonly INotificationManager _notificationManager;
+        private readonly INotificationService _notificationService;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
 
-        public MembershipController(IUserService userService, 
+        public MembershipController(IUserService userService,
                                     IMembershipService membershipService,
-                                    IToastNotification toast)
+                                    IHistoryService historyService,
+                                    INotificationManager notificationManager,
+                                    INotificationService notificationService,
+                                    IToastNotification toast,
+                                    SignInManager<User> signInManager,
+                                    UserManager<User> userManager)
         {
             _userService = userService;
             _membershipService = membershipService;
+            _notificationManager = notificationManager;
+            _historyService = historyService;
+            _notificationService = notificationService;
             _toast = toast;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
         [HttpGet]
-     
+
         public IActionResult Subscribe()
         {
             return View();
@@ -42,9 +61,31 @@ namespace LMS.Web.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> CancelMembership(string Id)
+        public async Task<IActionResult> CancelMembership()
         {
-            return View();
+            var user = await _userManager.GetUserAsync(User);
+            var userVm = user.MapToUserViewModel();
+            return View(userVm);
+        }
+        
+        public async Task<IActionResult> CancelMembershipConfirmation()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            // return all books of a user
+            await _historyService.AutoReturnAllBooksOfUser(user.Id);
+            //cancel all reservations of a user
+
+            //signOut and remove from Db
+            await _signInManager.SignOutAsync();
+            await _userService.DeleteUserAsync(user.Id);
+
+            //notification to admin
+            var description = _notificationManager.CancelMembershipDescription(user.UserName,user.Id);
+            var notification = await _notificationService.CreateNotificationAsync(description, user.UserName);
+
+
+            _toast.AddInfoToastMessage("Your membership was canceled successfully");
+            return RedirectToAction("Index","Home");
         }
     }
 }
