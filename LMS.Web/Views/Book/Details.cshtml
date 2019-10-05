@@ -7,7 +7,7 @@
     ViewData["Image"] = @Html.DisplayFor(model => model.CoverImageUrl);
 }
 
-<div>
+<div style="padding-left:50px">
 
     <img src=@Model.CoverImageUrl alt="~images/library.jpg" height="420" width="420">
     <hr />
@@ -58,69 +58,85 @@
             @Html.DisplayNameFor(model => model.Rating)
         </dt>
         <dd class="col-sm-10">
-                @if (Model.Rating == null)
+            @if (Model.Rating == null)
+            {
+                <i>Not rated yet!</i>
+            }
+            else
+            {
+                if (Model.Rating * 10 % 10 == 0)
                 {
-                    <i>Not rated yet!</i>
+                    for (int i = 0; i < Model.Rating - 1; i++)
+                    {
+                        <font color="gold">
+                            <i class="fa fa-star"></i>
+                        </font>
+                    }
+                    <font color="gold">
+                        <i class="fa fa-star"> @Html.DisplayFor(modelItem => Model.Rating)</i>
+                    </font>
                 }
                 else
                 {
-                    if (Model.Rating * 10 % 10 == 0)
-                    {
-                        for (int i = 0; i < Model.Rating - 1; i++)
-                        {
-                            <font color="gold">
-                                <i class="fa fa-star"></i>
-                            </font>
-                        }
-                        <font color="gold">
-                            <i class="fa fa-star"> @Html.DisplayFor(modelItem => Model.Rating)</i>
-                        </font>
-                    }
-                    else
-                    {
 
-                        for (int i = 0; i < Model.Rating - 1; i++)
-                        {
-                            <font color="gold">
-                                <i class="fa fa-star"></i>
-                            </font>
-                        }
+                    for (int i = 0; i < Model.Rating - 1; i++)
+                    {
                         <font color="gold">
-                            <i class="fa fa-star-half"> @Html.DisplayFor(modelItem => Model.Rating)</i>
+                            <i class="fa fa-star"></i>
                         </font>
                     }
+                    <font color="gold">
+                        <i class="fa fa-star-half"> @Html.DisplayFor(modelItem => Model.Rating)</i>
+                    </font>
                 }
+            }
         </dd>
     </dl>
 </div>
 @if (SignInManager.IsSignedIn(User))
 {
-    if (Model.IsLocked == false)
+    if (User.IsInRole("Member"))
     {
-        if (Model.Copies > 0)
+        if (Model.IsLocked == false)
         {
-            <form method="post">
-                <p>
-                    <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="CheckoutBook" asp-route-id="@Model.Id">Check - Out!!!</button>
-                </p>
-            </form>
+            if (Model.Copies > 0)
+            {
+                <form method="post">
+                    <p>
+                        <div style="padding-left:50px">
+                            <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="CheckoutBook" asp-route-id="@Model.Id">Check - Out!!!</button>
+                        </div>
+                    </p>
+                </form>
+            }
+            else
+            {
+                <form method="post">
+                    <p>
+                        <div style="padding-left:50px">
+                            <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="ReserveBook" asp-route-id="@Model.Id">Reserve Book</button>
+                        </div>
+                    </p>
+                </form>
+            }
         }
-        else
-        {
-            <form method="post">
-                <p>
-                    <button type="submit" class="btn bg-success border-0" asp-controller="Member" asp-action="ReserveBook" asp-route-id="@Model.Id">Reserve Book</button>
-                </p>
-            </form>
-        }
+    }
+    else if (!User.IsInRole("Admin") && !User.IsInRole("Librarian"))
+    {
+        <p>
+            <div style="padding-left:50px"><h6>To check-out or reserve this book, <a class="" asp-controller="Membership" asp-action="Subscribe">Get Premium Account Now!</a></h6></div>
+        </p>
+
     }
 }
 else
 {
     <p>
-    <div><h6>To check-out or reserve this book, please <a class="" asp-area="Identity" asp-page="/Account/Login">Login</a> or <a class="" asp-area="Identity" asp-page="/Account/Register">Register</a>  </h6></div>
-        </p>
+        <div style="padding-left:50px"><h6>To check-out or reserve this book, please <a class="" asp-area="Identity" asp-page="/Account/Login">Login</a> or <a class="" asp-area="Identity" asp-page="/Account/Register">Register</a>  </h6></div>
+    </p>
 }
-<form method="post">
-    <button type="submit" class="btn bg-dark border-0" asp-controller="Home" asp-action="Index">&larr; Back</button>
+<form method="post" style="padding-left:50px">
+    <div style="padding-bottom:50px">
+        <button type="submit" class="btn bg-dark border-0" asp-controller="Home" asp-action="Index">&larr; Back</button>
+    </div>
 </form>
