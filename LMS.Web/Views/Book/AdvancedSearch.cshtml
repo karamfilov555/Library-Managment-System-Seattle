@@ -1,4 +1,4 @@
-﻿@model  AdvancedSearchViewModel
+﻿@model AdvancedSearchViewModel
 @{
     ViewData["Title"] = "AdvancedSearch";
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
@@ -17,20 +17,24 @@
     <form asp-action="SearchResults" method="get" style="padding-left:50px">
         @*<div class="form-actions no-color">*@
         <p>
-            <input asp-for="Title" type="text" class="col-md-6" name="Title"  placeholder="Enter book title..." />
+            <input asp-for="Title" type="text" class="col-md-6" name="Title" placeholder="Enter book title..." />
+            <span asp-validation-for="Title" class="text-danger"></span>
         </p>
         <p>
             <input asp-for="Author" type="text" class="col-md-6" name="Author" placeholder="Enter book author..." />
+            <span asp-validation-for="Author" class="text-danger"></span>
         </p>
         <p>
             <input asp-for="Subject" type="text" class="col-md-6" name="Subject" placeholder="Enter book subject..." />
+            <span asp-validation-for="Subject" class="text-danger"></span>
         </p>
         <p>
-            <input asp-for="Year" type="text" class="col-md-6" name="Year"  placeholder="Enter book publication year..." />
+            <input asp-for="Year" type="text" class="col-md-6" name="Year" placeholder="Enter book publication year..." />
+            <span asp-validation-for="Year" class="text-danger"></span>
         </p>
         <p>
             <input asp-for="Inclusive" type="checkbox" name="Inclusive" /> <font color="blue"><b>Inclusive</b></font>
-            </p>
+        </p>
         <p>
             <input type="submit" value="Search" class="btn" /> |
             <a asp-action="Index">Back to Full List</a>
@@ -39,3 +43,6 @@
     </form>
 
 </div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

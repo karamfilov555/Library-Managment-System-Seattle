@@ -144,8 +144,13 @@ namespace LMS.Web.Controllers
         }
         public async Task<IActionResult> SearchResults(AdvancedSearchViewModel searchVm)
         {
+            var results = await _bookService.GetFilteredResults(searchVm.Title, searchVm.Author, searchVm.Subject, searchVm.Year, searchVm.Inclusive);
+            var booksVm = results.Select(b => b.MapToListItemBookViewModel());
+            var booksQuery = booksVm.AsQueryable();
 
-            return View();
+            int pageSize = 5;
+
+            return View(PaginatedList<BookListViewModel>.CreateAsync(booksQuery.AsNoTracking(), 1 , pageSize));
         }
         
         [Authorize(Roles = "Librarian , Admin")]

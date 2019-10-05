@@ -19,5 +19,6 @@ namespace LMS.Services.Contracts
         Task LockBook(string Id);
         Task UnlockBook(string Id);
         Task DeleteBook(string bookId);
+        Task<ICollection<Book>> GetFilteredResults(string title, string author, string subject, int year, bool inclusive);
     }
 }

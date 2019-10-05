@@ -14,7 +14,7 @@ namespace LMS.Web.Models
         public string Author { get; set; }
         [RegularExpression("[A-Za-z ]+", ErrorMessage = "Title should only contain latin letters!")]
         public string Subject { get; set; }
-        [Range(-500,2022,ErrorMessage ="Must be a value between -500 and 2022")]
+        [Range(1,2022,ErrorMessage ="Must be a value between 1 and 2022")]
         public int Year { get; set; }
         public bool Inclusive { get; set; }
     }

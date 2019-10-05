@@ -185,9 +185,153 @@ namespace LMS.Services
         {
             var book = await _context.Books.FindAsync(bookId);
             _context.Books.Remove(book);
-            var sameBooksLikeDeleted = _context.Books.Where(b=>b.Title == book.Title && b.Language == book.Language && b.Year == book.Year && b.Copies > 0);
+            var sameBooksLikeDeleted = _context.Books.Where(b => b.Title == book.Title && b.Language == book.Language && b.Year == book.Year && b.Copies > 0);
             await sameBooksLikeDeleted.ForEachAsync(b => b.Copies--);
             await _context.SaveChangesAsync();
+        }
+        public async Task<ICollection<Book>> GetFilteredResults(string title, string author, string subject, int year, bool inclusive)
+        {
+            var results = new List<Book>();
+            //ako edin parametur e null
+            if (subject == null && title != null && author != null && year != 0)
+            {
+                if (inclusive == true)
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Title.ToLower().Contains(title.ToLower()) && b.Author.Name.ToLower().Contains(author.ToLower()) && b.Year == year).ToListAsync();
+                }
+                else
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Title.ToLower().Contains(title.ToLower()) || b.Author.Name.ToLower().Contains(author.ToLower()) || b.Year == year).ToListAsync();
+                }
+            }
+            else if (subject != null && title == null && author != null && year != 0)
+            {
+                if (inclusive == true)
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.SubjectCategory.Name.ToLower().Contains(subject.ToLower()) && b.Author.Name.ToLower().Contains(author.ToLower()) && b.Year == year).ToListAsync();
+                }
+                else
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.SubjectCategory.Name.ToLower().Contains(subject.ToLower()) || b.Author.Name.ToLower().Contains(author.ToLower()) || b.Year == year).ToListAsync();
+                }
+            }
+            else if (subject != null && title != null && author == null && year != 0)
+            {
+                if (inclusive == true)
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Title.ToLower().Contains(title.ToLower()) && b.SubjectCategory.Name.ToLower().Contains(subject.ToLower()) && b.Year == year).ToListAsync();
+                }
+                else
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Title.ToLower().Contains(title.ToLower()) || b.SubjectCategory.Name.ToLower().Contains(subject.ToLower()) || b.Year == year).ToListAsync();
+                }
+            }
+            else if (subject != null && title != null && author != null && year == 0)
+            {
+                if (inclusive == true)
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Title.ToLower().Contains(title.ToLower()) && b.Author.Name.ToLower().Contains(author.ToLower()) && b.SubjectCategory.Name.ToLower().Contains(subject.ToLower())).ToListAsync();
+                }
+                else
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Title.ToLower().Contains(title.ToLower()) || b.Author.Name.ToLower().Contains(author.ToLower()) || b.SubjectCategory.Name.ToLower().Contains(subject.ToLower())).ToListAsync();
+                }
+            }
+            //ako 2 parametura sa null
+            else if (subject == null && title == null && author != null && year != 0)
+            {
+                if (inclusive == true)
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Author.Name.ToLower().Contains(author.ToLower()) && b.Year == year).ToListAsync();
+                }
+                else
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Author.Name.ToLower().Contains(author.ToLower()) || b.Year == year).ToListAsync();
+                }
+            }
+            else if (subject == null && title != null && author == null && year != 0)
+            {
+                if (inclusive == true)
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Title.ToLower().Contains(title.ToLower()) && b.Year == year).ToListAsync();
+                }
+                else
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Title.ToLower().Contains(title.ToLower()) || b.Year == year).ToListAsync();
+                }
+            }
+            else if (subject == null && title != null && author != null && year == 0)
+            {
+                if (inclusive == true)
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Title.ToLower().Contains(title.ToLower()) && b.Author.Name.ToLower().Contains(author.ToLower())).ToListAsync();
+                }
+                else
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Title.ToLower().Contains(title.ToLower()) || b.Author.Name.ToLower().Contains(author.ToLower())).ToListAsync();
+                }
+            }
+            else if (subject != null && title == null && author == null && year != 0)
+            {
+                if (inclusive == true)
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.SubjectCategory.Name.ToLower().Contains(subject.ToLower()) && b.Year == year).ToListAsync();
+                }
+                else
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.SubjectCategory.Name.ToLower().Contains(subject.ToLower()) || b.Year == year).ToListAsync();
+                }
+            }
+            else if (subject != null && title == null && author != null && year == 0)
+            {
+                if (inclusive == true)
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Author.Name.ToLower().Contains(author.ToLower()) && b.SubjectCategory.Name.ToLower().Contains(subject.ToLower())).ToListAsync();
+                }
+                else
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Author.Name.ToLower().Contains(author.ToLower()) || b.SubjectCategory.Name.ToLower().Contains(subject.ToLower())).ToListAsync();
+                }
+            }
+            else if (subject != null && title != null && author == null && year == 0)
+            {
+                if (inclusive == true)
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.SubjectCategory.Name.ToLower().Contains(subject.ToLower()) && b.Title.ToLower().Contains(title.ToLower())).ToListAsync();
+                }
+                else
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.SubjectCategory.Name.ToLower().Contains(subject.ToLower()) || b.Title.ToLower().Contains(title.ToLower())).ToListAsync();
+                }
+            }
+            //----------------//-----------------//----------------------//-----------------//
+            else if (subject != null && title == null && author == null && year == 0)
+            {
+                results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.SubjectCategory.Name.ToLower().Contains(subject.ToLower())).ToListAsync();
+            }
+            else if (subject == null && title != null && author == null && year == 0)
+            {
+                results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory)
+                    .Where(b => b.Title.ToLower()
+                    .Contains(title.ToLower()))
+                    .ToListAsync();
+            }
+            else if (subject == null && title == null && author != null && year == 0)
+            {
+                results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory)
+                    .Where(b => b.Author.Name.ToLower()
+                    .Contains(author.ToLower()))
+                    .ToListAsync();
+            }
+            else if (subject == null && title == null && author == null && year != 0)
+            {
+                results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory)
+                    .Where(b => b.Year == year)
+                    .ToListAsync();
+            }
+
+
+            return results;
         }
     }
 }
