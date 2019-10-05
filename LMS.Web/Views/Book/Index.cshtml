@@ -23,7 +23,7 @@
             @*<div class="form-actions no-color">*@
             <p>
                 <input type="text" class="col-md-8" name="SearchString" value="@ViewData["CurrentFilter"]" placeholder="Enter book title or author..." />
-                <input type="submit" value="Search" class="btn" /> |
+                <input type="submit" value="Search" class="btn bg-info border-0" /> |
                 <a asp-action="Index">Back to Full List</a>
             </p>
             @*</div>*@
@@ -48,8 +48,8 @@ else
             @*<div class="form-actions no-color">*@
             <p>
                 <input type="text" class="col-md-8" name="SearchString" value="@ViewData["CurrentFilter"]" placeholder="Enter book title or author..." />
-                <input type="submit" value="Search" class="btn" /> |
-                <a asp-action="Index">Back to Full List</a> | <a asp-action="AdvancedSearch">Advanced search</a>
+                <input type="submit" value="Search" class="btn bg-info border-0" /> 
+                <a asp-action="AdvancedSearch" class=" btn bg-dark border-0">Advanced search</a> <a asp-action="Index"><b>Full List</b></a> 
             </p>
             @*</div>*@
         </form>
@@ -247,7 +247,7 @@ else
 
                                 <form method="get">
                                     <p>
-                                        <button type="submit" class="btn border-0" asp-controller="Member" asp-action="ReviewBook" asp-route-id="@item.Id">Review Now</button>
+                                        <button type="submit" class="btn bg-info border-0" asp-controller="Member" asp-action="ReviewBook" asp-route-id="@item.Id">Review Now</button>
                                     </p>
                                 </form>
 

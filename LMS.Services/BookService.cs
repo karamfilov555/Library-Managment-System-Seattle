@@ -192,6 +192,17 @@ namespace LMS.Services
         public async Task<ICollection<Book>> GetFilteredResults(string title, string author, string subject, int year, bool inclusive)
         {
             var results = new List<Book>();
+            if (subject != null && title != null && author != null && year != 0)
+            {
+                if (inclusive == true)
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Title.ToLower().Contains(title.ToLower()) && b.SubjectCategory.Name.ToLower().Contains(subject) && b.Author.Name.ToLower().Contains(author.ToLower()) && b.Year == year).ToListAsync();
+                }
+                else
+                {
+                    results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Title.ToLower().Contains(title.ToLower()) || b.SubjectCategory.Name.ToLower().Contains(subject) || b.Author.Name.ToLower().Contains(author.ToLower()) || b.Year == year).ToListAsync();
+                }
+            }
             //ako edin parametur e null
             if (subject == null && title != null && author != null && year != 0)
             {
