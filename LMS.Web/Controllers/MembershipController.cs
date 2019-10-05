@@ -71,17 +71,16 @@ namespace LMS.Web.Controllers
         public async Task<IActionResult> CancelMembershipConfirmation()
         {
             var user = await _userManager.GetUserAsync(User);
-            // return all books of a user
+            // return all books of a user && cancel all reservations 
             await _historyService.AutoReturnAllBooksOfUser(user.Id);
-            //cancel all reservations of a user
-
-            //signOut and remove from Db
-            await _signInManager.SignOutAsync();
-            await _userService.DeleteUserAsync(user.Id);
 
             //notification to admin
             var description = _notificationManager.CancelMembershipDescription(user.UserName,user.Id);
             var notification = await _notificationService.CreateNotificationAsync(description, user.UserName);
+
+            //signOut and remove from Db
+            await _signInManager.SignOutAsync();
+            await _userService.DeleteUserAsync(user.Id);
 
 
             _toast.AddInfoToastMessage("Your membership was canceled successfully");

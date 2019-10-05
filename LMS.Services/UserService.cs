@@ -18,10 +18,13 @@ namespace LMS.Services
         private readonly LMSContext _context;
         private readonly IBanService _banService;
 
-        public UserService(LMSContext context, IBanService banService)
+        public UserService(LMSContext context, 
+                           IBanService banService
+                           )
         {
             _context = context;
             _banService = banService;
+            
         }
         //public async Task<User> GetCurrentUserAsync()
         //{
@@ -80,8 +83,14 @@ namespace LMS.Services
         public async Task DeleteUserAsync(string id)
         {
             var user = await FindUserByIdAsync(id);
+            await DeleteAllNotificationsOfUser(id);
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
+        }
+        private async Task DeleteAllNotificationsOfUser(string userId)
+        {
+            var notifications = _context.Notifications.Where(n => n.UserId == userId);
+            _context.Notifications.RemoveRange(notifications);
         }
     }
 }

@@ -1,0 +1,41 @@
+﻿@model  AdvancedSearchViewModel
+@{
+    ViewData["Title"] = "AdvancedSearch";
+    Layout = "~/Views/Shared/_LayoutCustom.cshtml";
+}
+
+<section class="recomended-sec">
+    <div class="container">
+        <div class="title">
+            <h2 class="align-content-center">Advanced Search</h2>
+            <hr>
+        </div>
+    </div>
+</section>
+<div class="justify-content-xl-center">
+
+    <form asp-action="SearchResults" method="get" style="padding-left:50px">
+        @*<div class="form-actions no-color">*@
+        <p>
+            <input asp-for="Title" type="text" class="col-md-6" name="Title"  placeholder="Enter book title..." />
+        </p>
+        <p>
+            <input asp-for="Author" type="text" class="col-md-6" name="Author" placeholder="Enter book author..." />
+        </p>
+        <p>
+            <input asp-for="Subject" type="text" class="col-md-6" name="Subject" placeholder="Enter book subject..." />
+        </p>
+        <p>
+            <input asp-for="Year" type="text" class="col-md-6" name="Year"  placeholder="Enter book publication year..." />
+        </p>
+        <p>
+            <input asp-for="Inclusive" type="checkbox" name="Inclusive" /> <font color="blue"><b>Inclusive</b></font>
+            </p>
+        <p>
+            <input type="submit" value="Search" class="btn" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+        @*</div>*@
+    </form>
+
+</div>

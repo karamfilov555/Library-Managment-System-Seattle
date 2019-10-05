@@ -137,7 +137,17 @@ namespace LMS.Web.Controllers
 
             return View(vm);
         }
+        public async Task<IActionResult> AdvancedSearch()
+        {
+            var searchVm = new AdvancedSearchViewModel();
+            return View(searchVm);
+        }
+        public async Task<IActionResult> SearchResults(AdvancedSearchViewModel searchVm)
+        {
 
+            return View();
+        }
+        
         [Authorize(Roles = "Librarian , Admin")]
         public IActionResult Create()
         {
