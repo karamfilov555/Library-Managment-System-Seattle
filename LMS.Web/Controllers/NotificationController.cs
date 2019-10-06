@@ -37,6 +37,11 @@ namespace LMS.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> MarkAsSeen(string Id)
         {
+            if (Id == null)
+            {
+                ViewBag.ErrorTitle = $"You are tring to see a notification with invalid model state!";
+                return View("Error");
+            }
             var notification = await _notificationService.MarkAsSeenAsync(Id);
             _toast.AddInfoToastMessage("Message marked as seen.");
 
