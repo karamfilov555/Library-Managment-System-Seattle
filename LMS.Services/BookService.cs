@@ -192,6 +192,7 @@ namespace LMS.Services
         public async Task<ICollection<Book>> GetFilteredResults(string title, string author, string subject, int year, bool inclusive)
         {
             var results = new List<Book>();
+            //no null params
             if (subject != null && title != null && author != null && year != 0)
             {
                 if (inclusive == true)
@@ -203,7 +204,7 @@ namespace LMS.Services
                     results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Title.ToLower().Contains(title.ToLower()) || b.SubjectCategory.Name.ToLower().Contains(subject) || b.Author.Name.ToLower().Contains(author.ToLower()) || b.Year == year).ToListAsync();
                 }
             }
-            //ako edin parametur e null
+            //one null param
             if (subject == null && title != null && author != null && year != 0)
             {
                 if (inclusive == true)
@@ -248,7 +249,7 @@ namespace LMS.Services
                     results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.Title.ToLower().Contains(title.ToLower()) || b.Author.Name.ToLower().Contains(author.ToLower()) || b.SubjectCategory.Name.ToLower().Contains(subject.ToLower())).ToListAsync();
                 }
             }
-            //ako 2 parametura sa null
+            //2 null params
             else if (subject == null && title == null && author != null && year != 0)
             {
                 if (inclusive == true)
@@ -315,7 +316,7 @@ namespace LMS.Services
                     results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.SubjectCategory.Name.ToLower().Contains(subject.ToLower()) || b.Title.ToLower().Contains(title.ToLower())).ToListAsync();
                 }
             }
-            //----------------//-----------------//----------------------//-----------------//
+            //--3--------------//-----------------//----------------------//-----------------//
             else if (subject != null && title == null && author == null && year == 0)
             {
                 results = await _context.Books.Include(b => b.Author).Include(b => b.SubjectCategory).Where(b => b.SubjectCategory.Name.ToLower().Contains(subject.ToLower())).ToListAsync();
