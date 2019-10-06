@@ -25,12 +25,12 @@ namespace LMS.Services
         public async Task<bool> CheckIfUserCanReview(string userId, string bookId)
         {
             //var sameBooks = await bookService.GetAllSameBooks(bookId);
-            var bookTitle = await _bookService.GetBookTitleAsync(bookId);
+            var bookTitle = await _bookService.GetBookTitleAsync(bookId).ConfigureAwait(false);
             
             var reviewsOfThisUser = _context.Review.Where(r => r.UserId == userId);
             foreach (var item in reviewsOfThisUser)
             {
-                var bookRating = await _context.BookRating.FindAsync(item.BookRatingId);
+                var bookRating = await _context.BookRating.FindAsync(item.BookRatingId).ConfigureAwait(false);
                 var bookTitlesRated =  _context.Books.Where(b => b.Id == bookRating.BookId);
                 if (bookTitlesRated.Any(b=>b.Title == bookTitle))
                 {
@@ -41,8 +41,8 @@ namespace LMS.Services
         }
         public async Task CreateReviewAsync(string userId, decimal grade, string description, string bookId)
         {
-            var bookTitle = await _bookService.GetBookTitleAsync(bookId);
-            var allBooksWithSameTitle = await _bookService.GetAllSameBooks(bookId);
+            var bookTitle = await _bookService.GetBookTitleAsync(bookId).ConfigureAwait(false);
+            var allBooksWithSameTitle = await _bookService.GetAllSameBooks(bookId).ConfigureAwait(false);
             //BookRating item.BookRating = _context.BookRating.Where(br => br.BookId == bookId);
             foreach (var item in allBooksWithSameTitle)
             {
@@ -51,7 +51,7 @@ namespace LMS.Services
                 {
                     item.BookRating.Rating = grade;
                     _context.Update(item);
-                   await _context.SaveChangesAsync();
+                   await _context.SaveChangesAsync().ConfigureAwait(false);
                 }
                 else
                 {
@@ -61,10 +61,10 @@ namespace LMS.Services
                         Rating = grade
                     };
                     _context.BookRating.Add(bookRating);
-                    await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync().ConfigureAwait(false);
                     item.BookRatingId = bookRating.Id;
                     _context.Update(item);
-                    await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync().ConfigureAwait(false);
                 }
 
                 var review = new Review
@@ -76,7 +76,7 @@ namespace LMS.Services
                     BookTitle = bookTitle
                 };
                  _context.Review.Add(review);
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync().ConfigureAwait(false);
             }
         }
         public async Task<IDictionary<string,string>> GetAllCommentsForBook(string title)
@@ -85,7 +85,7 @@ namespace LMS.Services
             var comments = new Dictionary<string,string>();
             foreach (var item in reviews)
             {
-                var username = await _userService.FindUsernameByIdAsync(item.UserId);
+                var username = await _userService.FindUsernameByIdAsync(item.UserId).ConfigureAwait(false);
                 comments.Add(username, item.Description);
             }
             return comments;
