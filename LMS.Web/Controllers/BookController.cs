@@ -128,7 +128,11 @@ namespace LMS.Web.Controllers
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
-                return NotFound();
+            {
+                ViewBag.ErrorTitle = $"You are tring to see Details of a book with Id = null";
+                ViewBag.ErrorMessage = $"Book's Id cannot be null!";
+                return View("Error");
+            }
 
             var book = await _bookService.FindByIdAsync(id);
             var vm = book.MapToBookViewModel();
@@ -171,14 +175,16 @@ namespace LMS.Web.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            return View();
+            ViewBag.ErrorTitle = $"You are tring to Create a book with invalid state!";
+            return View("Error");
         }
         [Authorize(Roles="Admin")]
         public async Task<IActionResult> LockBook(string Id)
         {
             if (Id == null)
             {
-                return NotFound();
+                ViewBag.ErrorTitle = $"You are tring to Lock a book with invalid state!";
+                return View("Error");
             }
             await _bookService.LockBook(Id);
 
@@ -190,84 +196,27 @@ namespace LMS.Web.Controllers
         {
             if (Id == null)
             {
-                return NotFound();
+                ViewBag.ErrorTitle = $"You are tring to Unlock a book with invalid state!";
+                return View("Error");
             }
             await _bookService.UnlockBook(Id);
             _toast.AddSuccessToastMessage("You successfully unlock a book!");
             return RedirectToAction(nameof(Index));
         }
-        // GET: Book/Edit/5
-        //public async Task<IActionResult> Edit(string id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var book = await _bookService.FindByIdAsync(id);
-
-        //    if (book == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    var editVm = book.MapToEditViewModel();
-
-        //    //ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id", book.AuthorId);
-        //    //ViewData["BookRatingId"] = new SelectList(_context.Set<BookRating>(), "Id", "Id", book.BookRatingId);
-        //    return View(editVm);
-        //}
-
-        // POST: Book/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(EditViewModel editVm)
-        //{
-        //    if (editVm.Id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            var bookDto = await _mapper.MapEditVmToBookDTO(editVm);
-
-        //            await _bookService.UpdateBook(bookDto);
-
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!BookExists(editVm.Id))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    //ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id", book.AuthorId);
-        //    //ViewData["BookRatingId"] = new SelectList(_context.Set<BookRating>(), "Id", "Id", book.BookRatingId);
-        //    return RedirectToAction(nameof(Index));
-        //}
-
-        // GET: Book/Delete/5
+       
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
-                return NotFound();
+                ViewBag.ErrorTitle = $"You are tring to Delete a book with invalid state!";
+                return View("Error");
             }
             var book = await _bookService.FindByIdAsync(id);
             var bookVm = book.MapToBookViewModel();
             if (book == null)
             {
-                return NotFound();
+                ViewBag.ErrorTitle = $"You are tring to Delete a book with invalid state!";
+                return View("Error");
             }
 
             return View(bookVm);
@@ -278,6 +227,11 @@ namespace LMS.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
+            if (id == null)
+            {
+                ViewBag.ErrorTitle = $"You are tring to Delete a book with invalid state!";
+                return View("Error");
+            }
             await _bookService.DeleteBook(id);
             
             return RedirectToAction(nameof(Index));
