@@ -10,14 +10,19 @@ namespace LMS.Web.Mappers
     public static class MapToViewModel
     {
 
-        static MapToViewModel()
-        {
-        }
         public static UserViewModel MapToUserViewModel(this User user)
         {
             var viewModel = new UserViewModel();
             viewModel.Id = user.Id;
             viewModel.Username = user.UserName;
+            return viewModel;
+        }
+        public static UserViewModel MapToUserViewModel(this User user, string roleName)
+        {
+            var viewModel = new UserViewModel();
+            viewModel.Id = user.Id;
+            viewModel.Username = user.UserName;
+            viewModel.Role = roleName;
             return viewModel;
         }
         public static BookViewModel MapToBookViewModel(this Book book)

@@ -22,6 +22,7 @@ using LMS.Web.Mappers;
 using LMS.Services.Utils;
 using LMS.Data.JsonManager;
 using LMS.Data.DatabaseSeeder;
+using Microsoft.AspNet.Identity;
 
 namespace LMS.Web
 {
@@ -80,6 +81,7 @@ namespace LMS.Web
             services.AddScoped<INotificationManager, NotificationManager>();
             services.AddScoped<IReviewService, ReviewService>();
             services.AddScoped<IReservationService, ReservationService>();
+            services.AddScoped<IRoleManagerService, RoleManagerService>();
             services.AddScoped<IJsonManager, JsonManager>();
             services.AddScoped<IMapVmToDTO, MapVmToDTO>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -118,6 +120,7 @@ namespace LMS.Web
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                
             });
         }
     }

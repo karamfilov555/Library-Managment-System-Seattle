@@ -12,9 +12,8 @@ namespace LMS.Web.Models
      //some validations
         public string Username { get; set; }
 
-
         public string RoleId { get; set; }
+        public string Role { get; set; }
 
-       
     }
 }
