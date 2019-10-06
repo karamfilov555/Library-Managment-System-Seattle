@@ -119,9 +119,11 @@
                 </tr>
             </tbody>
         </table>
-        <div>
+        <div style="padding-left:380px">
             <p>
-                <button type="submit" class="btn bg-success border-0">Rate Now</button>
+                <div style="padding-bottom:100px">
+                <button type="submit" class="btn bg-success border-0">Rate This Book Now</button>
+                </div>
             </p>
         </div>
         <section class="recomended-sec">
@@ -134,11 +136,13 @@
         </section>
         @if (Model.Comments.Count() == 0)
         {
-            <h3>
+            <center>
+            <h3 style="padding-bottom:50px">
                 <i>
-                    There are no reviews for this book yet. Your review can be the first one!
+                    Your review can be the first one! There are no reviews for this book yet.
                 </i>
             </h3>
+                </center>
         }
         else
         {

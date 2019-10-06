@@ -186,7 +186,7 @@ namespace LMS.Web.Controllers
             ViewBag.ErrorTitle = $"You are tring to Create a book with invalid state!";
             return View("Error");
         }
-        [Authorize(Roles="Admin")]
+        [Authorize(Roles="Admin,Librarian")]
         public async Task<IActionResult> LockBook(string Id)
         {
             if (Id == null)
@@ -205,7 +205,7 @@ namespace LMS.Web.Controllers
             _toast.AddSuccessToastMessage("You successfully lock a book!");
             return RedirectToAction(nameof(Index));
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Librarian")]
         public async Task<IActionResult> UnlockBook(string Id)
         {
             if (Id == null)
@@ -223,7 +223,7 @@ namespace LMS.Web.Controllers
             _toast.AddSuccessToastMessage("You successfully unlock a book!");
             return RedirectToAction(nameof(Index));
         }
-       
+        [Authorize(Roles = "Admin,Librarian")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -250,6 +250,7 @@ namespace LMS.Web.Controllers
         // POST: Book/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Librarian")]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             if (id == null)

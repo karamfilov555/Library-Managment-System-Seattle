@@ -36,11 +36,11 @@ else
     if (!User.IsInRole("Admin") && !User.IsInRole("Librarian") && !User.IsInRole("Member"))
     {
 
-        <div style="padding-left:100px">
+        <center>
             <h3 style="padding-bottom:50px">
-                <i>To Check-out or Reserve book, <a href="/Membership/Subscribe">GET Premium Account NOW!</a></i>   
+                <i>To Check-out or Reserve books, <a href="/Membership/Subscribe">GET Premium Account NOW!</a></i>
             </h3>
-        </div>
+        </center>
     }
     <div class="justify-content-xl-center">
 
@@ -48,8 +48,8 @@ else
             @*<div class="form-actions no-color">*@
             <p>
                 <input type="text" class="col-md-8" name="SearchString" value="@ViewData["CurrentFilter"]" placeholder="Enter book title or author..." />
-                <input type="submit" value="Search" class="btn bg-info border-0" /> 
-                <a asp-action="AdvancedSearch" class=" btn bg-dark border-0">Advanced search</a> <a asp-action="Index"><b>Full List</b></a> 
+                <input type="submit" value="Search" class="btn bg-info border-0" />
+                <a asp-action="AdvancedSearch" class=" btn bg-dark border-0">Advanced search</a> <a asp-action="Index"><b>Full List</b></a>
             </p>
             @*</div>*@
         </form>
@@ -186,17 +186,18 @@ else
                             @if (item.IsLocked == true)
                             {
                                 <p>
-                                <a class="btn bg-success border-0" asp-action="UnlockBook" asp-route-id="@item.Id">Unlock</a>
-                                    </p>
+                                    <a class="btn bg-success border-0" asp-action="UnlockBook" asp-route-id="@item.Id">Unlock</a>
+                                </p>
                             }
                             else
                             {
                                 <p>
-                                <a class="btn bg-info border-0" asp-action="LockBook" asp-route-id="@item.Id">Lock</a>
-                                    </p>
+                                    <a class="btn bg-info border-0" asp-action="LockBook" asp-route-id="@item.Id">Lock</a>
+                                </p>
                             }
                             <p>
-                            <a class="btn bg-info border-0" asp-action="Details" asp-route-id="@item.Id">Details</a> </p>
+                                <a class="btn bg-info border-0" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            </p>
                             @if (item.Copies > 0)
                             {
 
@@ -264,10 +265,10 @@ else
         </tbody>
     </table>
 
-    
-        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-    
+
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+
     <section class="recomended-sec">
         <div class="container">
             <div class="title">

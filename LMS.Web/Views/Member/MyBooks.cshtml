@@ -14,12 +14,17 @@
     </div>
 </section>
 @{
-    <h1 class="bg-success"id="returnMsg"> @ViewBag.Date </h1>
+    <h1 class="bg-success" id="returnMsg"> @ViewBag.Date </h1>
 }
 @if (Model.Count() == 0)
 {
+<center>
     <div style="padding-bottom:100px">
-<h3 style="padding-left:400px">You have no checked out <a asp-controller="Book" asp-action="Index">books</a> yet...</h3></div>
+        <h3>
+            You have no checked out <a asp-controller="Book" asp-action="Index">books</a> yet...
+        </h3>
+    </div>
+</center>
 }
 else
 {

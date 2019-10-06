@@ -16,7 +16,7 @@
             </div>
         </div>
     </section>
-    <div>
+    <div style="padding-left:50px">
 
         <img src="@Model.CoverImageUrl" alt="~images/library.jpg" height="420" width="420">
         <hr />
@@ -65,6 +65,8 @@
             </dd>
         </dl>
     </div>
-    <form asp-action="SubscribeConfirmation">
-        <button class="btn btn-primary btn-lg" asp-controller="Book" asp-action="Index">Back to book's List</button>
+    <form asp-action="SubscribeConfirmation" style="padding-left:50px">
+        <p>
+        <button class="btn bg-info border-0" asp-controller="Book" asp-action="Index">Back to book's List</button>
+            </p>
     </form>
