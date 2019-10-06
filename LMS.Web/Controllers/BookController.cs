@@ -24,7 +24,6 @@ namespace LMS.Web.Controllers
         private readonly IMapVmToDTO _mapper;
         private readonly IToastNotification _toast;
 
-        //Scaffolded ! ! ! ! warning
         public BookController(IBookService book,
                               IMapVmToDTO mapper,
                               IToastNotification toast)
@@ -135,9 +134,18 @@ namespace LMS.Web.Controllers
             }
 
             var book = await _bookService.FindByIdAsync(id);
+            if (book == null)
+            {
+                ViewBag.ErrorTitle = $"You are tring to see Details of a book with invalid model state";
+                return View("Error");
+            }
+
             var vm = book.MapToBookViewModel();
             if (vm == null)
-                return NotFound();
+            {
+                ViewBag.ErrorTitle = $"You are tring to see Details of a book with invalid model state";
+                return View("Error");
+            }
 
             return View(vm);
         }
@@ -186,6 +194,12 @@ namespace LMS.Web.Controllers
                 ViewBag.ErrorTitle = $"You are tring to Lock a book with invalid state!";
                 return View("Error");
             }
+            var book = await _bookService.FindByIdAsync(Id);
+            if (book == null)
+            {
+                ViewBag.ErrorTitle = $"You are tring to see Lock of a book with invalid model state";
+                return View("Error");
+            }
             await _bookService.LockBook(Id);
 
             _toast.AddSuccessToastMessage("You successfully lock a book!");
@@ -197,6 +211,12 @@ namespace LMS.Web.Controllers
             if (Id == null)
             {
                 ViewBag.ErrorTitle = $"You are tring to Unlock a book with invalid state!";
+                return View("Error");
+            }
+            var book = await _bookService.FindByIdAsync(Id);
+            if (book == null)
+            {
+                ViewBag.ErrorTitle = $"You are tring to see Unlock of a book with invalid model state";
                 return View("Error");
             }
             await _bookService.UnlockBook(Id);
@@ -212,6 +232,11 @@ namespace LMS.Web.Controllers
                 return View("Error");
             }
             var book = await _bookService.FindByIdAsync(id);
+            if (book == null)
+            {
+                ViewBag.ErrorTitle = $"You are tring to see Delete of a book with invalid model state";
+                return View("Error");
+            }
             var bookVm = book.MapToBookViewModel();
             if (book == null)
             {
