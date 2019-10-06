@@ -12,37 +12,40 @@
         </div>
     </div>
 </section>
-<div class="justify-content-xl-center">
+<center>
+    <div class="justify-content-xl-center">
 
-    <form asp-action="SearchResults" method="get" style="padding-left:50px">
-        @*<div class="form-actions no-color">*@
-        <p>
-            <input asp-for="Title" type="text" class="col-md-6" name="Title" placeholder="Enter book title..." />
-            <span asp-validation-for="Title" class="text-danger"></span>
-        </p>
-        <p>
-            <input asp-for="Author" type="text" class="col-md-6" name="Author" placeholder="Enter book author..." />
-            <span asp-validation-for="Author" class="text-danger"></span>
-        </p>
-        <p>
-            <input asp-for="Subject" type="text" class="col-md-6" name="Subject" placeholder="Enter book subject..." />
-            <span asp-validation-for="Subject" class="text-danger"></span>
-        </p>
-        <p>
-            <input asp-for="Year" type="text" class="col-md-6" name="Year" placeholder="Enter book publication year..." />
-            <span asp-validation-for="Year" class="text-danger"></span>
-        </p>
-        <p>
-            <input asp-for="Inclusive" type="checkbox" name="Inclusive" /> <font color="blue"><b>Inclusive</b></font>
-        </p>
-        <p>
-            <input type="submit" value="Search" class="btn bg-dark border-0" /> 
-            <a asp-action="Index" class="btn bg-info border-0">Back to Full List</a>
-        </p>
-        @*</div>*@
-    </form>
+        <form asp-action="SearchResults" method="get" style="padding-left:50px">
+            @*<div class="form-actions no-color">*@
+            <p>
+                
+                <input asp-for="Title" type="text" class="col-md-6" name="Title" placeholder="Enter book title..." />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </p>
+            <p>
+                <input asp-for="Author" type="text" class="col-md-6" name="Author" placeholder="Enter book author..." />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </p>
+            <p>
+                <input asp-for="Subject" type="text" class="col-md-6" name="Subject" placeholder="Enter book subject..." />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </p>
+            <p>
+                <input asp-for="Year" type="text" class="col-md-6" name="Year" placeholder="Enter book publication year..." />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </p>
+            <p>
+                <input asp-for="Inclusive" type="checkbox" name="Inclusive" /> <font color="blue"><b>Inclusive</b></font>
+            </p>
+            <p>
+                <input type="submit" value="Search" class="btn bg-dark border-0" />
+                <a asp-action="Index" class="btn bg-info border-0">Back to Full List</a>
+            </p>
+            @*</div>*@
+        </form>
 
-</div>
+    </div>
+</center>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

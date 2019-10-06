@@ -37,12 +37,20 @@ namespace LMS.Web.Controllers
             var users = await _userService.GetUsersAsync();
             var listUsersVm = new ListUsersViewModel();
             var usersVm = new List<UserViewModel>();
+            string roleName;
             foreach (var user in users)
             {
                 var role = await _roleManager.GetUserRole(user.Id);
-                var roleName = role.Name;
-                var userVm = user.MapToUserViewModel(roleName);
-                usersVm.Add(userVm);
+                if (role == null)
+                {
+                    roleName = "FreeAccount";
+                }
+                else
+                {
+                    roleName = role.Name;
+                }
+                    var userVm = user.MapToUserViewModel(roleName);
+                    usersVm.Add(userVm);
             }
             listUsersVm.Users = usersVm;
             return View(listUsersVm);

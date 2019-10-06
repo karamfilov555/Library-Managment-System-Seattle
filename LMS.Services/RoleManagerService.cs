@@ -19,8 +19,12 @@ namespace LMS.Services
         }
         public async Task<Role> GetUserRole(string userId)
         {
+            Role role = null;
             var roleId = await _context.UserRoles.FirstOrDefaultAsync(r => r.UserId == userId);
-            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Id == roleId.RoleId);
+            if (roleId != null)
+            {
+                role = await _context.Roles.FirstOrDefaultAsync(r => r.Id == roleId.RoleId);
+            }
             return role;
         }
     }
