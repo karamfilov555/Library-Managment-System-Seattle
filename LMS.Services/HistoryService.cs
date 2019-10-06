@@ -40,23 +40,23 @@ namespace LMS.Services
             
             _context.HistoryRegistries.Add(historyRegistry);
 
-            var book = await _context.Books.FirstAsync(x => x.Id == bookId);
+            var book = await _context.Books.FirstAsync(x => x.Id == bookId).ConfigureAwait(false);
             book.IsCheckedOut = true;
             //avlb. copies prop. of this book decr. with 1 in each book 
-            await _context.Books.Where(b => b.Title == book.Title && b.Author.Name == book.Author.Name && b.Language == book.Language).ForEachAsync(bc => bc.Copies--);
+            await _context.Books.Where(b => b.Title == book.Title && b.Author.Name == book.Author.Name && b.Language == book.Language).ForEachAsync(bc => bc.Copies--).ConfigureAwait(false);
 
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(false);
             return historyRegistry;
         }
         public async Task<IDictionary<Book, DateTime>> GetCheckOutsOfUserAsync(string userId)
         {
-            var hrOfNotReturnedBooks = await GetUserHistoryOfNotReturnedBooksAsync(userId);
+            var hrOfNotReturnedBooks = await GetUserHistoryOfNotReturnedBooksAsync(userId).ConfigureAwait(false);
 
             var currentUserBooksAndReturnDates = new Dictionary<Book, DateTime>();
 
             foreach (var item in hrOfNotReturnedBooks)
             {
-                var book = await _bookService.FindByIdAsync(item.BookId);
+                var book = await _bookService.FindByIdAsync(item.BookId).ConfigureAwait(false);
                 var returnDate = item.ReturnDate;
                 currentUserBooksAndReturnDates.Add(book, returnDate);
             }
@@ -66,16 +66,16 @@ namespace LMS.Services
         private async Task<IList<HistoryRegistry>> GetUserHistoryOfNotReturnedBooksAsync(string userId)
         => await _context.HistoryRegistries
                             .Where(hr => hr.UserId == userId && hr.IsReturned == false)
-                            .ToListAsync();
+                            .ToListAsync().ConfigureAwait(false);
         private async Task<HistoryRegistry> GetHistoryRegistryAsync(string bookId, string userId)
         => await _context.HistoryRegistries
-                         .FirstAsync(hr => hr.BookId == bookId && hr.UserId == userId && hr.IsReturned == false);
+                         .FirstAsync(hr => hr.BookId == bookId && hr.UserId == userId && hr.IsReturned == false).ConfigureAwait(false);
         public async Task AutoReturnAllBooksOfUser(string userId)
         {
-            var hrOfUser = await GetUserHistoryOfNotReturnedBooksAsync(userId);
+            var hrOfUser = await GetUserHistoryOfNotReturnedBooksAsync(userId).ConfigureAwait(false);
             foreach (var history in hrOfUser)
             {
-                await ReturnBookAsync(history.BookId, history.UserId);
+                await ReturnBookAsync(history.BookId, history.UserId).ConfigureAwait(false);
             }
         }
         public async Task ReturnBookAsync(string bookId, string userId)
@@ -83,25 +83,25 @@ namespace LMS.Services
             if (bookId == null)
                 throw new ArgumentException();
 
-            var hr = await GetHistoryRegistryAsync(bookId, userId);
+            var hr = await GetHistoryRegistryAsync(bookId, userId).ConfigureAwait(false);
             _context.HistoryRegistries.Remove(hr);
 
-            var book = await _bookService.FindByIdAsync(bookId);
+            var book = await _bookService.FindByIdAsync(bookId).ConfigureAwait(false);
             book.IsCheckedOut = false;
 
-            await _context.Books.Where(b => b.Title == book.Title && b.Author.Name == book.Author.Name && b.Language == book.Language).ForEachAsync(bc => bc.Copies++);
+            await _context.Books.Where(b => b.Title == book.Title && b.Author.Name == book.Author.Name && b.Language == book.Language).ForEachAsync(bc => bc.Copies++).ConfigureAwait(false);
 
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(false);
         }
         public async Task<HistoryRegistry> RenewBookAsync(string bookId, string userId)
         {
             if (bookId == null)
                 throw new ArgumentException();
 
-            var hr = await GetHistoryRegistryAsync(bookId, userId);
+            var hr = await GetHistoryRegistryAsync(bookId, userId).ConfigureAwait(false);
             hr.ReturnDate = DateTime.Now.AddDays(10);
 
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(false);
             return hr;
         }
     }

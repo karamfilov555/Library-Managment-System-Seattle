@@ -17,13 +17,13 @@ namespace LMS.Services
         }
         private async Task<Author> AddAuthorAsync(Author author)
         {
-            await _context.Authors.AddAsync(author);
-            await _context.SaveChangesAsync();
+            await _context.Authors.AddAsync(author).ConfigureAwait(false);
+            await _context.SaveChangesAsync().ConfigureAwait(false);
             return author;
         }
         private async Task<Author> FindAuthorByNameAsync(string name)
         {
-            var authorToFind = await _context.Authors.FirstOrDefaultAsync(a => a.Name == name);
+            var authorToFind = await _context.Authors.FirstOrDefaultAsync(a => a.Name == name).ConfigureAwait(false);
             return authorToFind;
         }
         public async Task<Author> ProvideAuthorAsync(string name)
@@ -31,12 +31,12 @@ namespace LMS.Services
             if (!CheckIfAuthorExist(name))
             {
                 var author = new Author { Name = name };
-                await AddAuthorAsync(author);
+                await AddAuthorAsync(author).ConfigureAwait(false);
                 return author;
             }
             else
             {
-                var author = await FindAuthorByNameAsync(name);
+                var author = await FindAuthorByNameAsync(name).ConfigureAwait(false);
                 return author;
             }
         }
