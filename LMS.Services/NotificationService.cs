@@ -24,7 +24,7 @@ namespace LMS.Services
         }
         public async Task<Notification> CreateNotificationAsync(string description,string username)
         {
-            var admin = await _userService.GetAdmin();
+            var admin = await _userService.GetAdmin().ConfigureAwait(false);
 
             var notification = new Notification
             {
@@ -35,12 +35,12 @@ namespace LMS.Services
             };
 
             _context.Notifications.Add(notification);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(false);
             return notification;
         }
         public async Task<Notification> SendNotificationToUserAsync(string description, string username)
         {
-            var user = await _userService.FindUserByUsernameAsync(username);
+            var user = await _userService.FindUserByUsernameAsync(username).ConfigureAwait(false);
             var notification = new Notification
             {
                 UserId = user.Id,
@@ -50,14 +50,14 @@ namespace LMS.Services
             };
 
             _context.Notifications.Add(notification);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(false);
             return notification;
         }
         public async Task<ICollection<Notification>> GetNotificationsAsync(string userId)
         {
             var notification = await _context.Notifications
                                              .Where(n => n.UserId == userId)
-                                             .ToListAsync();
+                                             .ToListAsync().ConfigureAwait(false);
             return notification;
         }
 
@@ -65,16 +65,16 @@ namespace LMS.Services
         {
             var notificationsCount = await _context.Notifications
                                                    .Where(n=>n.IsSeen == false && n.UserId == userId)
-                                                   .CountAsync();
+                                                   .CountAsync().ConfigureAwait(false);
             return notificationsCount;
             //latter it will be for unread notifications (have to add boolean isRead in DB)
         }
         public async Task<Notification> MarkAsSeenAsync(string notificationId)
         {
             var notificationToSee = await _context.Notifications
-                                                   .FirstAsync(n => n.Id == notificationId);
+                                                   .FirstAsync(n => n.Id == notificationId).ConfigureAwait(false);
             notificationToSee.IsSeen = true;
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(false);
 
             return notificationToSee;
             //latter it will be for unread notifications (have to add boolean isRead in DB)

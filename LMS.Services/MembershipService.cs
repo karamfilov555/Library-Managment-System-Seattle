@@ -25,9 +25,9 @@ namespace LMS.Services
         }
         public async Task<User> MakeMember(string username)
         {
-            var user = await _userservice.FindUserByUsernameAsync(username);
-            await _userMng.AddToRoleAsync(user, "Member");
-            await _context.SaveChangesAsync();
+            var user = await _userservice.FindUserByUsernameAsync(username).ConfigureAwait(false);
+            await _userMng.AddToRoleAsync(user, "Member").ConfigureAwait(false);
+            await _context.SaveChangesAsync().ConfigureAwait(false);
             return user;
         }
     }
