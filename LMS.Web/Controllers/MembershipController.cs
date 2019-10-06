@@ -81,7 +81,7 @@ namespace LMS.Web.Controllers
 
             //signOut and remove from Db
             await _signInManager.SignOutAsync();
-            await _userService.DeleteUserAsync(user.Id);
+            await _userService.SetUserCancelationStatusAsync(user.Id);
 
 
             _toast.AddInfoToastMessage("Your membership was canceled successfully");

@@ -18,18 +18,18 @@ namespace LMS.Services
         private readonly LMSContext _context;
         private readonly IBanService _banService;
 
-        public UserService(LMSContext context, 
+        public UserService(LMSContext context,
                            IBanService banService
                            )
         {
             _context = context;
             _banService = banService;
-            
+
         }
         //public async Task<User> GetCurrentUserAsync()
         //{
         //    //var user = await _userManager.GetUserAsync(_httpContext.User);
-            
+
         //    //return user;
         //}
         public async Task<ICollection<User>> GetUsersAsync()
@@ -80,11 +80,11 @@ namespace LMS.Services
             var admin = await FindUserByIdAsync(adminId.UserId).ConfigureAwait(false);
             return admin;
         }
-        public async Task DeleteUserAsync(string id)
+        public async Task SetUserCancelationStatusAsync(string id)
         {
             var user = await FindUserByIdAsync(id).ConfigureAwait(false);
-            await DeleteAllNotificationsOfUser(id).ConfigureAwait(false);
-
+            //await DeleteAllNotificationsOfUser(id).ConfigureAwait(false);
+            await DeleteAllReservationsOfUser(id).ConfigureAwait(false);
             user.IsCancelled = true;
             await _context.SaveChangesAsync().ConfigureAwait(false);
         }
@@ -93,10 +93,19 @@ namespace LMS.Services
             var notifications = _context.Notifications.Where(n => n.UserId == userId);
             _context.Notifications.RemoveRange(notifications);
         }
-        public async Task<bool> CheckIfUserIsCanceled(string username)
+        private async Task DeleteAllReservationsOfUser(string userId)
         {
-            var result = await _context.Users.FirstOrDefaultAsync(u => u.UserName == username).ConfigureAwait(false);
-            return result.IsCancelled;
+            var reservations = _context.ReservedBooks.Where(n => n.UserId == userId);
+            _context.ReservedBooks.RemoveRange(reservations);
+        }
+        public async Task<User> CheckIfUserIsCanceled(string username)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == username).ConfigureAwait(false);
+            if (user != null)
+            {
+                return user;
+            }
+            return null;
         }
     }
 }

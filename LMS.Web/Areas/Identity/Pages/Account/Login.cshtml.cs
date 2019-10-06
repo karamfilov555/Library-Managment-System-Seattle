@@ -89,10 +89,13 @@ namespace LMS.Web.Areas.Identity.Pages.Account
                 }
             }
             var cancelation = await _userServices.CheckIfUserIsCanceled(Input.UserName);
-            if (cancelation == true)
-            {   
-                ModelState.AddModelError(string.Empty, $"Your account was cancelated.. ");
-                return Page();
+            if (cancelation != null)
+            {
+                if (cancelation.IsCancelled == true)
+                {
+                    ModelState.AddModelError(string.Empty, $"Your account was canceled... ");
+                    return Page();
+                }
             }
             returnUrl = returnUrl ?? Url.Content("~/");
 
