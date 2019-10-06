@@ -6,6 +6,9 @@ $(document).ready(function() {
 //    });
 
 
+ // za abauta
+
+
  
   $("#owl-demo").owlCarousel({
  	  navigation : true, // Show next and prev buttons

@@ -3,20 +3,22 @@
     ViewData["Title"] = "About";
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 }
-    <section class="recomended-sec">
-        <div class="container">
-            <div class="title">
-                <h2 class="align-content-center">About</h2>
-                <hr>
-            </div>
+<section class="recomended-sec">
+    <div class="container">
+        <div class="title">
+            <h2 class="align-content-center">About</h2>
+            <hr>
         </div>
-    </section>
-    
-<section class="about-sec">
-    <div class="about-img">
-        <figure style="background:url(./images/about-img.jpg)no-repeat;"></figure>
     </div>
-    <div class="about-content">
+</section>
+
+<section class="about-sec"  style="background:#eeeeee">
+    <div class="about-img">
+        <div style="padding-top:130px">
+        <div style="padding-left:0px">
+        <figure style="background:#ffffff"><img src="~/images/libraryWhite.jpg" height="660" width="700">@*<img src="~/images/slide2.jpg" height="600" width="700">*@ </figure></div></div>
+    </div>
+    <div class="about-content" style="background:#eeeeee">
         <h2><i>Seattle Public Library...</i></h2>
         <p>
             The Seattle Public Library's Central Library is the flagship library of The Seattle Public Library system.
@@ -38,5 +40,13 @@
         <div class="btn-sec">
             <a class="btn bg-success border-0" asp-controller="Book" asp-action="Index">Read Now</a>
         </div>
+        @*<button onclick="myFunction()">Set background</button>*@
     </div>
 </section>
+
+
+<script>
+    function myFunction() {
+        document.body.style.background = "#000 url('about-img.jpg')";
+    }
+</script>

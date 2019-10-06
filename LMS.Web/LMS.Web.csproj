@@ -13,6 +13,16 @@
     <None Remove="Data\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Views\Home\about-img.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Views\Home\about-img.jpg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.2" />
