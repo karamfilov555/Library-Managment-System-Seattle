@@ -84,13 +84,19 @@ namespace LMS.Services
         {
             var user = await FindUserByIdAsync(id).ConfigureAwait(false);
             await DeleteAllNotificationsOfUser(id).ConfigureAwait(false);
-            _context.Users.Remove(user);
+
+            user.IsCancelled = true;
             await _context.SaveChangesAsync().ConfigureAwait(false);
         }
         private async Task DeleteAllNotificationsOfUser(string userId)
         {
             var notifications = _context.Notifications.Where(n => n.UserId == userId);
             _context.Notifications.RemoveRange(notifications);
+        }
+        public async Task<bool> CheckIfUserIsCanceled(string username)
+        {
+            var result = await _context.Users.FirstOrDefaultAsync(u => u.UserName == username).ConfigureAwait(false);
+            return result.IsCancelled;
         }
     }
 }

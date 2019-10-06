@@ -74,6 +74,7 @@ namespace LMS.Web.Controllers
             // return all books of a user && cancel all reservations 
             await _historyService.AutoReturnAllBooksOfUser(user.Id);
 
+
             //notification to admin
             var description = _notificationManager.CancelMembershipDescription(user.UserName,user.Id);
             var notification = await _notificationService.CreateNotificationAsync(description, user.UserName);

@@ -20,14 +20,17 @@ namespace LMS.Web.Areas.Identity.Pages.Account
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger<LoginModel> _logger;
         private readonly IBanService _banServices;
+        private readonly IUserService _userServices;
 
         public LoginModel(SignInManager<User> signInManager,
                           ILogger<LoginModel> logger,
+                          IUserService userService,
                           IBanService banServices)
         {
             _signInManager = signInManager;
             _logger = logger;
             _banServices = banServices;
+            _userServices = userService;
         }
 
         [BindProperty]
@@ -84,6 +87,12 @@ namespace LMS.Web.Areas.Identity.Pages.Account
                         return Page();
                     }
                 }
+            }
+            var cancelation = await _userServices.CheckIfUserIsCanceled(Input.UserName);
+            if (cancelation == true)
+            {   
+                ModelState.AddModelError(string.Empty, $"Your account was cancelated.. ");
+                return Page();
             }
             returnUrl = returnUrl ?? Url.Content("~/");
 

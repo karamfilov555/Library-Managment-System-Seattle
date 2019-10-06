@@ -16,5 +16,6 @@ namespace LMS.Services.Contracts
          Task<User> FindUserByIdAsync(string userId);
         Task<User> GetAdmin();
         Task DeleteUserAsync(string id);
+        Task<bool> CheckIfUserIsCanceled(string username);
     }
 }
