@@ -17,13 +17,13 @@ namespace LMS.Services
         }
         private async Task<SubjectCategory> AddSubjectAsync(SubjectCategory subject)
         {
-            await _context.SubjectCategories.AddAsync(subject);
-            await _context.SaveChangesAsync();
+            await _context.SubjectCategories.AddAsync(subject).ConfigureAwait(false);
+            await _context.SaveChangesAsync().ConfigureAwait(false);
             return subject;
         }
         private async Task<SubjectCategory> FindSubjectByNameAsync(string name)
         {
-            var subjectToFind = await _context.SubjectCategories.FirstOrDefaultAsync(a => a.Name == name);
+            var subjectToFind = await _context.SubjectCategories.FirstOrDefaultAsync(a => a.Name == name).ConfigureAwait(false);
             return subjectToFind;
         }
         public async Task<SubjectCategory> ProvideSubjectAsync(string name)
@@ -31,12 +31,12 @@ namespace LMS.Services
             if (!CheckIfSubjectExist(name))
             {
                 var subject = new SubjectCategory { Name = name };
-                await AddSubjectAsync(subject);
+                await AddSubjectAsync(subject).ConfigureAwait(false);
                 return subject;
             }
             else
             {
-                var author = await FindSubjectByNameAsync(name);
+                var author = await FindSubjectByNameAsync(name).ConfigureAwait(false);
                 return author;
             }
         }
