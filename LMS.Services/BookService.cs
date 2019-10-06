@@ -24,9 +24,9 @@ namespace LMS.Services
                            IAuthorService authorService,
                            ISubjectCategoryService subject)
         {
-            _context = context;
-            _authorService = authorService;
-            _subjectService = subject;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _authorService = authorService ?? throw new ArgumentNullException(nameof(authorService));
+            _subjectService = subject ?? throw new ArgumentNullException(nameof(subject));
         }
 
         private async Task<Book> AddBook(Book book)

@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.Data", "LMS.Data\LMS.Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.Services", "LMS.Services\LMS.Services.csproj", "{BD69708C-B60B-453D-96FA-972E38F6888D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.DTOs", "LMS.DTOs\LMS.DTOs.csproj", "{75CCF719-4E23-4DD2-AF25-AF824D3AFBAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.DTOs", "LMS.DTOs\LMS.DTOs.csproj", "{75CCF719-4E23-4DD2-AF25-AF824D3AFBAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Services.Tests", "LMS.Services.Tests\LMS.Services.Tests.csproj", "{0A312682-2B98-4E1A-9E05-A0FB26A06FF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{75CCF719-4E23-4DD2-AF25-AF824D3AFBAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75CCF719-4E23-4DD2-AF25-AF824D3AFBAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75CCF719-4E23-4DD2-AF25-AF824D3AFBAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A312682-2B98-4E1A-9E05-A0FB26A06FF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A312682-2B98-4E1A-9E05-A0FB26A06FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A312682-2B98-4E1A-9E05-A0FB26A06FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A312682-2B98-4E1A-9E05-A0FB26A06FF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

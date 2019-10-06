@@ -11,7 +11,7 @@ namespace LMS.Data
         {
 
         }
-        public LMSContext(DbContextOptions options) : base(options)
+        public LMSContext(DbContextOptions<LMSContext> options) : base(options)
         {
         }
 

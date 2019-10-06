@@ -2,6 +2,7 @@
 using LMS.Models;
 using LMS.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,7 +14,7 @@ namespace LMS.Services
 
         public AuthorService(LMSContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
         private async Task<Author> AddAuthorAsync(Author author)
         {
