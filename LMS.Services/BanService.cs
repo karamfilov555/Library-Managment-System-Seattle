@@ -16,30 +16,30 @@ namespace LMS.Services
         }
         public async Task<BanRecord> CheckIfUserIsBanned(string inputUsername)
         {
-            var userBanned = await _context.Users.FirstOrDefaultAsync(u => u.UserName == inputUsername && u.BanRecordId != null);
+            var userBanned = await _context.Users.FirstOrDefaultAsync(u => u.UserName == inputUsername && u.BanRecordId != null).ConfigureAwait(false);
             if (userBanned != null)
-                return await FindBanRecordByID(userBanned.Id);
+                return await FindBanRecordByID(userBanned.Id).ConfigureAwait(false);
 
             return null;
         }
 
 
         public async Task<BanRecord> FindBanRecordByID(string userId)
-            => await _context.BanRecords.FirstOrDefaultAsync(i => i.UserId == userId);
+            => await _context.BanRecords.FirstOrDefaultAsync(i => i.UserId == userId).ConfigureAwait(false);
 
         public async Task<BanRecord> AddBan(BanDto banDto)
         {
             var ban = new BanRecord
             {
-                UserId = banDto.UserId,
+                UserId = banDto?.UserId,
                 Description = banDto.Description,
                 ExpirationDate = banDto.ExpirationDate,
             };
-            await _context.BanRecords.AddAsync(ban);
-            await _context.SaveChangesAsync();
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == ban.UserId);
+            await _context.BanRecords.AddAsync(ban).ConfigureAwait(false);
+            await _context.SaveChangesAsync().ConfigureAwait(false);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == ban.UserId).ConfigureAwait(false);
             user.BanRecordId = ban.Id;
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ConfigureAwait(false);
             return ban;
         }
     }
