@@ -24,7 +24,6 @@ namespace LMS.Web.Controllers
         private readonly IMapVmToDTO _mapper;
         private readonly IToastNotification _toast;
 
-        //Scaffolded ! ! ! ! warning
         public BookController(IBookService book,
                               IMapVmToDTO mapper,
                               IToastNotification toast)
