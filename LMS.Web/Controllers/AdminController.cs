@@ -40,17 +40,9 @@ namespace LMS.Web.Controllers
             string roleName;
             foreach (var user in users)
             {
-                var role = await _roleManager.GetUserRole(user.Id);
-                if (role == null)
-                {
-                    roleName = "FreeAccount";
-                }
-                else
-                {
-                    roleName = role.Name;
-                }
-                    var userVm = user.MapToUserViewModel(roleName);
-                    usersVm.Add(userVm);
+                roleName = await _roleManager.GetUserRoleName(user.Id);
+                var userVm = user.MapToUserViewModel(roleName);
+                usersVm.Add(userVm);
             }
             listUsersVm.Users = usersVm;
             return View(listUsersVm);
@@ -59,8 +51,16 @@ namespace LMS.Web.Controllers
         [Route(nameof(CreateLibrarian) + "/{userId}")]
         public async Task<IActionResult> CreateLibrarian(string userId)
         {
-            var role = await _roleManager.GetUserRole(userId);
-            var roleName = role.Name;
+            var userExists = await _userService.FindUserByIdAsync(userId);
+
+            if (userExists == null)
+            {
+                ViewBag.ErrorTitle = $"You are tring to oparate with user that does not exist!";
+                return View("Error");
+            }
+
+            string roleName = await _roleManager.GetUserRoleName(userId);
+
             if (roleName.ToLower() == "member" || roleName.ToLower() == "admin")
             {
                 ViewBag.ErrorTitle = $"You are tring to set user in role {roleName} to librarian";
@@ -78,8 +78,13 @@ namespace LMS.Web.Controllers
         [Route(nameof(CreateMember) + "/{userId}")]
         public async Task<IActionResult> CreateMember(string userId)
         {
-            var role = await _roleManager.GetUserRole(userId);
-            var roleName = role.Name;
+            var userExists = await _userService.FindUserByIdAsync(userId);
+            if (userExists == null)
+            {
+                ViewBag.ErrorTitle = $"You are tring to oparate with user that does not exist!";
+                return View("Error");
+            }
+            string roleName = await _roleManager.GetUserRoleName(userId);
             if (roleName.ToLower() == "admin" || roleName.ToLower() == "librarian")
             {
                 ViewBag.ErrorTitle = $"You are tring to demote user in role {roleName}";
@@ -98,9 +103,16 @@ namespace LMS.Web.Controllers
         [Route(nameof(BanUser) + "/{userId}")]
         public async Task<IActionResult> BanUser(string userId)
         {
-            var role = await _roleManager.GetUserRole(userId);
-            var roleName = role.Name;
-
+            //check if user exist at all
+            var userExists = await _userService.FindUserByIdAsync(userId);
+            if (userExists == null)
+            {
+                ViewBag.ErrorTitle = $"You are tring to ban user that does not exist!";
+                return View("Error");
+            }
+            //check the role of user (if user does not have a role,but exist - return FreeUser)
+            string roleName = await _roleManager.GetUserRoleName(userId);
+            //check if u try to ban admin
             if (roleName.ToLower() == "admin")
             {
                 ViewBag.ErrorTitle = $"You are tring to ban user in role administrator";
@@ -124,8 +136,14 @@ namespace LMS.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> BanUserConfirmation(BanViewModel vm)
         {
-            var role = await _roleManager.GetUserRole(vm.UserId);
-            var roleName = role.Name;
+            //check if user exist at all
+            var userExists = await _userService.FindUserByIdAsync(vm.UserId);
+            if (userExists == null)
+            {
+                ViewBag.ErrorTitle = $"You are tring to ban user that does not exist!";
+                return View("Error");
+            }
+            string roleName = await _roleManager.GetUserRoleName(vm.UserId);
             if (roleName.ToLower() == "admin")
             {
                 ViewBag.ErrorTitle = $"You are tring to ban user in role administrator";

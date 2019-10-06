@@ -13,6 +13,7 @@ namespace LMS.Services.Contracts
         Task<User> BanUserAsync(BanDto banDto);
         Task<string> FindUsernameByIdAsync(string userId);
         Task<User> FindUserByUsernameAsync(string username);
+         Task<User> FindUserByIdAsync(string userId);
         Task<User> GetAdmin();
         Task DeleteUserAsync(string id);
     }

@@ -3,6 +3,8 @@ using LMS.DTOs;
 using LMS.Models.Models;
 using LMS.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LMS.Services
@@ -18,7 +20,12 @@ namespace LMS.Services
         {
             var userBanned = await _context.Users.FirstOrDefaultAsync(u => u.UserName == inputUsername && u.BanRecordId != null).ConfigureAwait(false);
             if (userBanned != null)
-                return await FindBanRecordByID(userBanned.Id).ConfigureAwait(false);
+            {
+                var banRecordsOfUser = _context.BanRecords.Where(br => br.UserId == userBanned.Id);
+                var longestDate = banRecordsOfUser.Max(b => b.ExpirationDate);
+                var ban = banRecordsOfUser.FirstOrDefault(b => b.ExpirationDate == longestDate);
+                return ban;
+            }
 
             return null;
         }
