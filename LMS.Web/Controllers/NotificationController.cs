@@ -43,6 +43,11 @@ namespace LMS.Web.Controllers
                 return View("Error");
             }
             var notification = await _notificationService.MarkAsSeenAsync(Id);
+            if (notification == null)
+            {
+                ViewBag.ErrorTitle = $"You are tring to see a notification with invalid model state!";
+                return View("Error");
+            }
             _toast.AddInfoToastMessage("Message marked as seen.");
 
             return PartialView("_NotificationSeenPartial", notification.MapToNotificationViewModel());

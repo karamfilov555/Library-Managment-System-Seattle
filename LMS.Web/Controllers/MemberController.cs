@@ -58,7 +58,13 @@ namespace LMS.Web.Controllers
                 ViewBag.ErrorMessage = "Book Id cannot be null!";
                 return View("Error");
             }
-            var book = await _bookService.GetAllSameBooks(Id);
+            var book = await _bookService.FindByIdAsync(Id);
+            if (book == null)
+            {
+                ViewBag.ErrorTitle = $"You are tring to CheckOut a book with invalid model state!";
+                return View("Error");
+            }
+            var books = await _bookService.GetAllSameBooks(Id);
             var user = await _userManager.GetUserAsync(User);
             if (user.Id == null)
             {
@@ -69,7 +75,7 @@ namespace LMS.Web.Controllers
 
             var canUserReview = await _reviewService.CheckIfUserCanReview(user.Id, Id);
          
-            var vm = MapToViewModel.MapToReviewViewModel(book.First(), user.Id);
+            var vm = MapToViewModel.MapToReviewViewModel(books.First(), user.Id);
             vm.Id = Id;
             vm.UserId = user.Id;
                 
@@ -82,13 +88,13 @@ namespace LMS.Web.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
 
-            var sameBooks = await _bookService.GetAllSameBooks(vm.Id);
             if (user.Id == null || vm.Id == null)
             {
                 ViewBag.ErrorTitle = $"You are tring to Review a book with invalid User state!";
                 ViewBag.ErrorMessage = "User or review Id cannot be null!";
                 return View("Error");
             }
+            var sameBooks = await _bookService.GetAllSameBooks(vm.Id);
             if (await _reviewService.CheckIfUserCanReview(user.Id, vm.Id))
             {
                 //var sameBooksVm = sameBooks.Select(b => b.MapToReviewViewModel(user.Id)).ToList();
@@ -115,7 +121,7 @@ namespace LMS.Web.Controllers
             var userId = currUser.FindFirst(ClaimTypes.NameIdentifier).Value;
             //var user = await  _userManager.GetUserAsync(User);
 
-            var book = await _bookService.FindFreeBookByIdAsync(Id);
+            var book = await _bookService.FindByIdAsync(Id); 
             if (book == null)
             {
                 ViewBag.ErrorTitle = $"You are tring to CheckOut a book with invalid model state!";
@@ -187,7 +193,12 @@ namespace LMS.Web.Controllers
                 ViewBag.ErrorTitle = $"You are tring to Return a Book with invalid model state!";
                 return View("Error");
             }
-
+            var book = await _bookService.FindByIdAsync(Id);
+            if (book == null)
+            {
+                ViewBag.ErrorTitle = $"You are tring to see Return  a book with invalid model state";
+                return View("Error");
+            }
             var checkForReservations = await _reservationService.CheckIfBookExistInReservations(Id);
             var user = await _userManager.GetUserAsync(User);
 
@@ -229,6 +240,13 @@ namespace LMS.Web.Controllers
             }
 
             var user = await _userManager.GetUserAsync(User);
+
+            var book = await _bookService.FindByIdAsync(Id);
+            if (book == null)
+            {
+                ViewBag.ErrorTitle = $"You are tring to see Reserve  a book with invalid model state";
+                return View("Error");
+            }
             var hr = await _historyService.RenewBookAsync(Id, user.Id);
 
             var title = await _bookService.GetBookTitleAsync(Id);
@@ -256,7 +274,14 @@ namespace LMS.Web.Controllers
 
             var user = await _userManager.GetUserAsync(User);
 
+            var book = await _bookService.FindByIdAsync(Id);
+            if (book == null)
+            {
+                ViewBag.ErrorTitle = $"You are tring to see Reserve  a book with invalid model state";
+                return View("Error");
+            }
             var notification = await _reservationService.ReserveBookAsync(Id, user.Id);
+
 
             var title = await _bookService.GetBookTitleAsync(Id);
             var username = user.UserName;
